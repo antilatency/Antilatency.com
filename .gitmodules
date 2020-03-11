@@ -1,3 +1,4 @@
 [submodule "Dependencies/Csml"]
 	path = Dependencies/Csml
 	url = https://github.com/antilatency/Csml.git
+	branch = master
