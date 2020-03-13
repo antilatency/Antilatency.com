@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Antilatency.com": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\Antilatency.com\\output"
+    }
+  }
+}
