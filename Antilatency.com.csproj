@@ -5,8 +5,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <OutputPath>build</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-
+    <!--
     <PostBuildEvent>"Antilatency.com.exe"</PostBuildEvent>
+    -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
   </PropertyGroup>
 

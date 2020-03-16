@@ -1,8 +1,7 @@
-using Csml;
+﻿using Csml;
 
-
-public partial class Root {    
-    public static Material Home = new Material("Antilatency", null, $"")
-
-        [Language.ru];
+public partial class Root {
+    public partial class Antilatency : Name<Antilatency>{
+        public static Material ru = new Material("Antilatency", null, $"Компания мечты");
+    }
 }

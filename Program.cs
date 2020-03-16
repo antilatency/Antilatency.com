@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Linq.Expressions;
 
-namespace Csml {
-    public partial class Language {
-        public static Language en = new Language("en");
-        public static Language ru = new Language("ru");
-    }
-}
+
 
 /*public class Lazy<T> {
     Func<T> func;
@@ -22,36 +20,73 @@ public partial class Root {
         return new Lazy<T>(func);
     }
 }*/
-    
-class Program {
+
+
+namespace Csml {
+    public class Lazy<T> where T : class {
+        public T value;
+        public bool HasValue => value != null;
+        private Func<T> func;
+        //public IEnumerable<T> 
+
+        public Lazy(T value) {
+            this.value = value;
+        }
+
+        public Lazy(Func<T> func) {
+            this.func = func;
+        }
+
+        public T GetValue() {
+            if (!HasValue) {
+                value = func();
+            }
+            if (HasValue) {
+                return value;
+            }
+            throw new NullReferenceException();
+        }
+
+        public static implicit operator T(Lazy<T> x) {
+            return x.GetValue();
+        }
+
+        public static implicit operator Lazy<T>(T x) {
+            return new Lazy<T>(x);
+        }
+        public static implicit operator Lazy<T>(Func<T> x) {
+            return new Lazy<T>(x);
+        }
+
+    }
+
+}
+
+
+
+static class Program {
 
     static string ThisFilePath([System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "") {
         return sourceFilePath;
     }
 
 
-    static void Main(string[] args ) {
-
-        Csml.GeneratorContext.ContentDirectory = Path.Combine( Path.GetDirectoryName(ThisFilePath()), "Src");
-
-        Csml.Preprocessor.Process<Root>();
-
-
-        if (args.Length == 1) {
-            var outputDirectory = args[0];
-            //Path.Combine(Environment.CurrentDirectory, "output")
-            new Csml.HtmlGenerator<Root>().Generate(outputDirectory);
-        }
-
+    static void Main(string[] args) {
         
 
+        Csml.Engine.Process<Root>();
 
 
-        /*Csml.Log.Error.Here("a", 0);
 
+        var c = Csml.Context.Current;
+        c.SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src");
+        c.AutoReload = false;
 
-        Console.Error.WriteLine("D:/Antilatency.com/Program.cs (10): error CSML0000: message");
-        throw new Exception("99");*/
+        if (args.Length == 1) {
+            c.OutputRootDirectory = args[0];
+            Csml.Engine.Generate<Root>();
+        }
+
 
 
     }

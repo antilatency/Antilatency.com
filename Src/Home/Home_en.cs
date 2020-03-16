@@ -3,5 +3,7 @@ using Csml;
 
 public partial class Root {
 
-    public static Material Home_en = new Material("Antilatency", null, $"");
+    public partial class Antilatency : Name<Antilatency> {
+        public static Material en = new Material("Antilatency", null, $"");
+    }    
 }
