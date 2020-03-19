@@ -78,13 +78,20 @@ static class Program {
 
 
 
-        var c = Csml.Context.Current;
-        c.SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src");
-        c.AutoReload = false;
+        var context = new Csml.Context();
+        
+        context.SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src");
+
+        
+
+        context.AutoReload = false;
 
         if (args.Length == 1) {
-            c.OutputRootDirectory = args[0];
-            Csml.Engine.Generate<Root>();
+            context.OutputRootDirectory = args[0];
+
+            context.BaseUri = new Uri(context.OutputRootDirectory+"/");
+
+            Csml.Engine.Generate<Root>(context);
         }
 
 
