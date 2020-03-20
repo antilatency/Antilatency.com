@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
-
+using Csml;
 
 
 /*public class Lazy<T> {
@@ -23,7 +23,7 @@ public partial class Root {
 
 
 namespace Csml {
-    public class Lazy<T> where T : class {
+    /*public class Lazy<T> where T : class {
         public T value;
         public bool HasValue => value != null;
         private Func<T> func;
@@ -58,13 +58,14 @@ namespace Csml {
             return new Lazy<T>(x);
         }
 
-    }
+    }*/
 
 }
 
 
 
 static class Program {
+
 
     static string ThisFilePath([System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "") {
         return sourceFilePath;
@@ -74,7 +75,7 @@ static class Program {
     static void Main(string[] args) {
         
 
-        Csml.Engine.Process<Root>();
+        Engine.Process<Root>();
 
 
 
@@ -82,7 +83,10 @@ static class Program {
         
         context.SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src");
 
-        
+        Directory.GetFiles(Path.Combine(context.SourceRootDirectory,"Css"), "*.*", SearchOption.AllDirectories)
+            .ForEach(x => context.AssetsToCopy.Add(x));
+
+
 
         context.AutoReload = false;
 
@@ -91,7 +95,7 @@ static class Program {
 
             context.BaseUri = new Uri(context.OutputRootDirectory+"/");
 
-            Csml.Engine.Generate<Root>(context);
+            Csml.Engine.Generate<Root>(context,true);
         }
 
 

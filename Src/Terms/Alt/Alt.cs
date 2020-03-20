@@ -1,9 +1,15 @@
 ﻿using Csml;
+using System;
+using System.Collections.Generic;
 
 public partial class Root {
     public partial class Alt : Name<Alt> {
 
-        //public static string Image = 
+        public static Lazy<Image> AltAndUsbSocket0 = new Lazy<Image>(() => new Image("./AltAndUsbSocket0.jpg"));
+
+        public static IEnumerable<Image> images() {
+            yield return AltAndUsbSocket0.Value;
+        }
 
         public static Material ru = new Material(Title, null,
 @$"{Reference} - это трекер который работает с {Antilatency_Device_Network.Reference}.
@@ -13,6 +19,8 @@ The second shows radio packets loss rate.The 'packetLossRate'  indicator display
 
 The 'ExtendedMetrics' option includes a larger number of indicators: the number of sent and received radio packets, the amount of sent and received data, additional RSSI values, and more.
 "        
-            );
+            )
+            [images()]
+            ;
     }
 }
