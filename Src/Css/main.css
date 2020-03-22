@@ -1,19 +1,50 @@
 
-@import "pure-release-1.0.1/pure-min.css";
+/* @import "pure-release-1.0.1/pure-min.css"; */
 @import "roboto/roboto.css";
 
-.material{
-	font-family: "Roboto", "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	max-width: 768px;
-	
-	letter-spacing: 0.05em;
-	background: #fff;
+body {
+    margin: 0;
+    padding: 0;
 }
+
+html {
+	font-family: "Roboto", "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+}
+h1 {
+    margin: 0;    
+}
+
+.material {
+    max-width: 768px;
+    text-align: justify;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    letter-spacing: 0.05em;
+    background: #fff;
+}
+
+    .material h1 {
+        font-weight: 300;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .material img {
+        width: 100%;
+        height: auto;
+    }
+
+    .material .roi-image-container{
+        width: 100%;
+        height: 33vh;
+    }
+
 
 .material-title{
     
-    text-align: center;
-    margin: 0 auto;
+    
     padding: 1em;
     
     border-bottom: 1px solid #eee;

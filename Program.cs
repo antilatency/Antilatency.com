@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using Csml;
-
+using static Csml.Utils.Static;
 
 /*public class Lazy<T> {
     Func<T> func;
@@ -67,9 +67,7 @@ namespace Csml {
 static class Program {
 
 
-    static string ThisFilePath([System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "") {
-        return sourceFilePath;
-    }
+    
 
 
     static void Main(string[] args) {

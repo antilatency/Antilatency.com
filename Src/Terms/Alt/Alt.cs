@@ -1,17 +1,27 @@
 ﻿using Csml;
 using System;
 using System.Collections.Generic;
-
+using System.IO;
+using System.Linq;
+using static Csml.Utils.Static;
 public partial class Root {
     public partial class Alt : Name<Alt> {
 
-        public static Lazy<Image> AltAndUsbSocket0 = new Lazy<Image>(() => new Image("./AltAndUsbSocket0.jpg"));
+        public static Image AltAndUsbSocket0 =>
+            Backup(() => new Image("./AltAndUsbSocket0.jpg"));
+        public static Image AltAndUsbSocket1 =>
+            Backup(() => new Image("./AltAndUsbSocket1.jpg"));
 
-        public static IEnumerable<Image> images() {
-            yield return AltAndUsbSocket0.Value;
-        }
+        
 
-        public static Material ru = new Material(Title, null,
+        public static List<Image> AllImages => Backup(() =>
+            Directory.GetFiles(ThisDirectory(), "*.jpg").Select(x => new Image(x)).ToList());
+
+        public static List<Image> AllDeclaredImages => Backup(() => typeof(Alt).GetPropertiesPublicStatic()
+        .Where(x => x.PropertyType == typeof(Image)).Select(x => x.GetValue(null) as Image).ToList());
+
+
+        public static Material ru = new Material(Title, AltAndUsbSocket1,
 @$"{Reference} - это трекер который работает с {Antilatency_Device_Network.Reference}.
 The first is an averaged received signal strength indicator. The 'averageRssi' metric can detect ineffective positions. The smaller the RSSI, the weaker the signal, and the more susceptible it is to interference.
 
@@ -20,7 +30,9 @@ The second shows radio packets loss rate.The 'packetLossRate'  indicator display
 The 'ExtendedMetrics' option includes a larger number of indicators: the number of sent and received radio packets, the amount of sent and received data, additional RSSI values, and more.
 "        
             )
-            [images()]
+            
+            [AllDeclaredImages]
+            [AllDeclaredImages]
             ;
     }
 }
