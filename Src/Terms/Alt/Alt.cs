@@ -6,8 +6,17 @@ using System.Linq;
 using static Csml.Utils.Static;
 
 
-public partial class Root {
-    public partial class Alt : Name<Alt> {
+
+partial class Root {
+
+
+    MultiLanguageGroup Alt => new MultiLanguageGroup();
+
+
+    public Material Alt_ru => new Material(Alt.Title, null, $"");
+
+
+    /*public partial class Alt : Name<Alt> {
 
         public static Image AltAndUsbSocket0 =>
             Backup(() => new Image("./AltAndUsbSocket0.jpg"));
@@ -36,5 +45,5 @@ The 'ExtendedMetrics' option includes a larger number of indicators: the number 
             [AllDeclaredImages]
             [AllDeclaredImages]
             ;
-    }
+    }*/
 }

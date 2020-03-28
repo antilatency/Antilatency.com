@@ -71,15 +71,15 @@ static class Program {
 
 
     static void Main(string[] args) {
-        
-
-        Engine.Process<Root>();
 
 
+        //Engine.Process<Root>();
+        var root = new Root();
+        root.Verify();
 
-        var context = new Csml.Context();
-        
-        context.SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src");
+        var context = new Csml.Context {
+            SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src")
+        };
 
         Directory.GetFiles(Path.Combine(context.SourceRootDirectory,"Css"), "*.*", SearchOption.AllDirectories)
             .ForEach(x => context.AssetsToCopy.Add(x));
@@ -92,8 +92,7 @@ static class Program {
             context.OutputRootDirectory = args[0];
 
             context.BaseUri = new Uri(context.OutputRootDirectory+"/");
-
-            Csml.Engine.Generate<Root>(context,true);
+            root.Generate(context, true);
         }
 
 

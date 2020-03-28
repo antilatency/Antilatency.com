@@ -6,7 +6,5 @@ using System.Linq;
 using static Csml.Utils.Static;
 
 public partial class Root {
-    public partial class Debug : Name<Debug> {
-        
-    }
+    //Material Debug => new Material(null)
 }

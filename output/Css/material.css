@@ -3,7 +3,18 @@
     min-width: 320px;
     margin: 2rem auto 0 auto;
     padding: 0;
+
+  align-items: center;
+  justify-content: center;
 }
+
+.material > *,
+.material .section > *,
+.material .header> *{
+    display: block;
+    padding-bottom: 0.4rem;
+}
+
 
 /*HEADER*/
 .material .header .title{
@@ -28,13 +39,11 @@
 
 .material .header {
     margin-bottom: 4vh;
-}
-
-.material .header .paragraph{
     border-bottom: 1px solid #ddd;				
 }
 
 /*SECTION*/
+
 .material .section .title{
     font-weight: 300;
     font-size: 1.7rem;
@@ -67,18 +76,16 @@
     }
 }
 
-.material .paragraph{
+.material .text{
     font-weight: 400;
     font-size: 1rem;
     color: #777;
     line-height: 1.4;
     letter-spacing: 0.01em;
-
     text-align: justify;
-    padding-bottom: 2vh;
 }
 
-.material .paragraph b{
+.material .text b{
     letter-spacing: 0.01em;
     font-weight: 500;
     color: rgb(121, 190, 30);
@@ -87,7 +94,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .material .paragraph {
+    .material .text {
         text-align: left;
         padding-left: 20px;
         padding-right: 4px;
@@ -95,7 +102,7 @@
 }
 
 @media only screen and (max-width: 816px) {
-    .material .paragraph,
+    .material .text,
     .material .title
     {
         padding-left: 8px;
@@ -104,7 +111,7 @@
 }		
 
 @media only screen and (max-width: 800px) {
-    .material .paragraph {
+    .material p {
         font-size: 2.0vmax;
     }
 }

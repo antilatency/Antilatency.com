@@ -1,9 +1,10 @@
 ﻿using Csml;
 
-public partial class Root {
+partial class Root {
+    MultiLanguageGroup FirmwareUpdateWarning => new MultiLanguageGroup();
 
-    public partial class FirmwareUpdateWarning : Name<FirmwareUpdateWarning> {
-        public static Text ru = new Text("Обновите прошивку!!!");
-        public static Text en = new Text("Update firmware!!!");
-    }
+
+    Paragraph FirmwareUpdateWarning_ru => new Paragraph("Обновите прошивку!!!");
+    Paragraph FirmwareUpdateWarning_en => new Paragraph("Update firmware!!!");
+    
 }

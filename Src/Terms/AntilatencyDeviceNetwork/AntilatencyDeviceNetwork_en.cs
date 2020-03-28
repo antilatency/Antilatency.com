@@ -1,10 +1,9 @@
 using Csml;
 
-public partial class Root {
+partial class Root {
 
-    public partial class Antilatency_Device_Network : Name<Antilatency_Device_Network> {
-        public static Material en = new Material(Title, null,
-        $"{Reference} - eng.")
-        ;
-    }
+    public Material Antilatency_Device_Network_en => new Material(null, null,
+    $"{Antilatency_Device_Network} - eng.")
+    ;
+    
 }

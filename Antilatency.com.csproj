@@ -5,9 +5,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <OutputPath>build</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <!--
+
     <PostBuildEvent>"Antilatency.com.exe"</PostBuildEvent>
-    -->
+
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
   </PropertyGroup>
@@ -15,6 +15,7 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.22" />
     <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.15.4" />
+    <PackageReference Include="PostSharp" Version="6.5.4" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
 

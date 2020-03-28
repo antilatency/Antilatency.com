@@ -1,6 +1,9 @@
 namespace Csml {
+    
     public partial class Language {
-        public static Language en = new Language("en");
-        public static Language ru = new Language("ru");
+        [GetOnce]
+        public static Language En => new Language("en");
+        [GetOnce]
+        public static Language Ru => new Language("ru");
     }
 }

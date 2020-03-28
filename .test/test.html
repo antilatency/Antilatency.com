@@ -48,13 +48,84 @@
 		</script>
 
 		<style>
-			#Инициализация-библиотеки{
 
+
+			a {
+				background-color: red;
+				color: white;
+
+				text-decoration: none;
+				text-transform: uppercase;
 			}
+
+			a:hover {
+				background-color: #555;
+			}
+
+			a:active {
+				background-color: black;
+			}
+
+			
+
+
+			.menu-button{
+				position: fixed;
+				top:0;
+				left: 0;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: 0;
+				overflow: visible;
+			}
+			.menu-button::before
+			{
+				color: #fff;
+				position: relative;
+				display: inline-block;
+
+				padding: 10px;
+				background-color: black;
+				font-family: "Material Design Icons";
+				font-size: 2em;
+				content: "\F035C";
+				z-index: 10;
+			}
+			.menu-button:checked:before{
+				content: "\F0156";
+			}
+			.menu-button + nav{
+				display: none;
+			}
+			.menu-button:checked + nav{
+				display: block;
+				height: 100%;
+				z-index: 0;
+			}
+
 
 		</style>
 	</head>
 	<body >
+		<input class="menu-button" type="checkbox">
+		<nav style="float: left;">
+			
+			<ul>
+				<li><strong>Home</strong></li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="clients.html">Our Clients</a></li>
+				<li><a href="products.html">Our Products</a></li>
+				<li><a href="services.html">Our Services</a></li>
+				<li><a href="contact.html">Contact Us</a></li>
+			</ul>
+		</nav>
+
+		  
+		  
+
+
+
 		<div class="material">
 			<div class="header">
 				
@@ -71,7 +142,7 @@
 					">
 				</div>				
 				
-				<div class="paragraph">
+				<div  class="text">
 					Библиотека для комуникации с устройствами Antilatency.
 					Позволяет <b>находить устройства</b> среди подключенных,
 					<b>отслеживать подключение</b> новых устройств, <b>запускать задачи</b> на устройствах,
@@ -84,18 +155,25 @@
 			</div>
 			<div class="section">
 				
-				<h2 id="Инициализация-библиотеки" class="title">Инициализация
-					<a href="#Инициализация-библиотеки" class="link" title="Heading anchor"></a>
+				<h2 id="Инициализация_библиотеки" class="title">Инициализация
+					<a href="#Инициализация_библиотеки" class="link" title="Heading anchor"></a>
 				</h2>
-				<div class="paragraph">
+				<div class="text">
 					Для начала работы с `Antilatency device network` нужно загрузить библиотеку и создать экземпляр `ILibrary`		
 				</div>
 
 				
+				
 			</div>
+			
+			<a class="text" href="file:///D:/Antilatency.com/output/Terms/AntilatencyDeviceNetwork/Antilatency_Device_Network_en.html">Antilatency Device Network</a>
+			
+			<a class="text" href="file:///D:/Antilatency.com/output/Terms/Alt/Alt_en.html">Alt</a>
+			
+
 			<div class="section">
 				<h2 class="title">Nodes</h2>
-				<div class="paragraph">
+				<div class="text">
 					При подключении к сети каждое устройство получает идентификатор NodeHandle.
 					Идентификаторы не повторяются в процессе работы одного экземпляра сети.	
 				</div>
