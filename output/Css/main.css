@@ -3,9 +3,10 @@
 @import "roboto/roboto.css";
 @import "materialdesignicons/materialdesignicons.css";
 @import "material.css";
+@import "menu.css";
+@import "language-menu.css";
 
-
-body {
+* {
     margin: 0;
     padding: 0;
 }

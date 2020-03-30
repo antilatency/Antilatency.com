@@ -1,7 +1,7 @@
 .material {
     max-width: 800px;
     min-width: 320px;
-    margin: 2rem auto 0 auto;
+    margin: 0 auto 0 auto;
     padding: 0;
 
   align-items: center;
@@ -12,16 +12,19 @@
 .material .section > *,
 .material .header> *{
     display: block;
-    padding-bottom: 0.4rem;
 }
 
+.material .text{
+    padding-bottom: 0.4rem;
+}
 
 /*HEADER*/
 .material .header .title{
     text-align: center;
     font-weight: 200;
     font-size: 3.2rem;
-    color: #000;				
+    color: #000;
+    padding-top: 2rem;			
     padding-bottom: 1rem;
 }
 @media only screen and (max-width: 800px) {
@@ -33,8 +36,12 @@
 .material .header .image{				
     width: 100%;
     height: 50vh;
-
     margin-bottom: 2vh;
+}
+.material .section .image{				
+    width: 100%;
+    height: 33vh;
+    margin-bottom: 1vh;
 }
 
 .material .header {

@@ -1,0 +1,64 @@
+nav.menu {
+    position: fixed;
+    height: 100%;
+    z-index: 10;
+    background-color: #eee;
+    opacity: 0.93;
+    /*#96b500CA*/
+    color: #222;
+
+}
+
+nav.menu > *{
+    display: block;
+    color: inherit;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;    
+}
+
+nav.menu > :not(a){
+    background-color:transparent;
+}
+nav.menu > a:hover {
+    background-color: #ccc;
+}
+
+nav.menu > a:active {
+    background-color: #aaa;
+}
+nav.menu > a {				
+    text-decoration: none;
+}
+
+nav.menu .button{
+    visibility: hidden;
+    background-color:inherit;
+    position: absolute;
+    top: 0px;
+    padding: 8px;
+    left: 100%;				
+}
+
+nav.menu .button.toggle::after{				
+    color:inherit;				
+    font-family: "Material Design Icons";
+    font-size: 2em;
+    content: "\F035C";				
+}
+
+nav.menu .button.toggle.checked:after{
+    content: "\F0156";
+}
+
+
+@media only screen and (max-width: 1220px) {
+    nav.menu .button{
+        visibility: visible;
+    }
+    nav.menu:not(.checked) {
+        visibility: hidden;
+        width: 0;
+    }
+}

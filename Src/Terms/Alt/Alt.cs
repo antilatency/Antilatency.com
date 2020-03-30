@@ -12,38 +12,29 @@ partial class Root {
 
     MultiLanguageGroup Alt => new MultiLanguageGroup();
 
+    Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
+    Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
 
-    public Material Alt_ru => new Material(Alt.Title, null, $"");
+    //List<Image> AllImages => Directory.GetFiles(ThisDirectory(), "*.jpg").Select(x => new Image(x)).ToList();
+    List<Image> AltAndUsbSocketAll => GetType().GetPropertiesAll()
+        .Where(x => x.PropertyType == typeof(Image))
+        .Where(x => x.Name.StartsWith("AltAndUsbSocket"))
+        .Select(x => x.GetValue(this) as Image).ToList();
 
+    public Material Alt_ru => new Material(Alt.Title, AltAndUsbSocket0, $"На этой странице пока побудут некоторые примеры использования движка.")
+        [new Section("<-Ссылки на секции")
+            [$"Оказывается даже такие ссылки валидные, но так делать не нужно"]
+        ]
+        [new Section("Ссылки")
+            [$"Можно вставлять {Alt} в текст"]
+            [$"Если навести на ссылку, то в подсказке будет описание страницы. Это полезно для терминов."]
+        ]
+        [new Section("Картинки")
+            [$"Это AltAndUsbSocket0"]
+            [AltAndUsbSocket0]
+            [$"Это все картинки, имя переменной которых начинается с AltAndUsbSocket"]
+            [AltAndUsbSocketAll]
+        ]
+        ;
 
-    /*public partial class Alt : Name<Alt> {
-
-        public static Image AltAndUsbSocket0 =>
-            Backup(() => new Image("./AltAndUsbSocket0.jpg"));
-        public static Image AltAndUsbSocket1 =>
-            Backup(() => new Image("./AltAndUsbSocket1.jpg"));
-
-        
-
-        public static List<Image> AllImages => Backup(() =>
-            Directory.GetFiles(ThisDirectory(), "*.jpg").Select(x => new Image(x)).ToList());
-
-        public static List<Image> AllDeclaredImages => Backup(() => typeof(Alt).GetPropertiesPublicStatic()
-        .Where(x => x.PropertyType == typeof(Image)).Select(x => x.GetValue(null) as Image).ToList());
-
-
-        public static Material ru = new Material(Title, AltAndUsbSocket1,
-@$"{Reference} - это трекер который работает с {Antilatency_Device_Network.Reference}.
-The first is an averaged received signal strength indicator. The 'averageRssi' metric can detect ineffective positions. The smaller the RSSI, the weaker the signal, and the more susceptible it is to interference.
-
-The second shows radio packets loss rate.The 'packetLossRate'  indicator displays the ratio of lost radio packets.It is expressed as a number from 0 to 1.For example, a coefficient of 0.1 will mean that a tenth of the packets were lost.
-
-The 'ExtendedMetrics' option includes a larger number of indicators: the number of sent and received radio packets, the amount of sent and received data, additional RSSI values, and more.
-"        
-            )
-            
-            [AllDeclaredImages]
-            [AllDeclaredImages]
-            ;
-    }*/
 }

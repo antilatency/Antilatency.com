@@ -1,1 +1,38 @@
-<!DOCTYPE html><html lang="ru"><head><link rel="stylesheet" href="file:///D:/Antilatency.com/output//Css/main.css"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"><title>Alt</title></head><body><div class="material"><div class="header"><h1 class="title">Alt</h1><div class="paragraph"><div class="text"></div></div></div></div></body></html>
+<!DOCTYPE html><html lang="ru"><head><link rel="stylesheet" href="file:///D:/Antilatency.com/output//Css/main.css"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"><title>Alt</title><script id="resizeRoiImages">
+	function resizeRoiImages(){
+		var images = document.getElementsByClassName("roi-image-container")
+		for (var i = 0; i < images.length; i++) {
+			var image = images.item(i);
+			resizeRoiImage(image)
+		}
+	}
+	function resizeRoiImage(container){
+		var aspect = parseFloat(container.getAttribute("data-aspect").split(" "));
+		var roi = container.getAttribute("data-roi").split(" ");
+		var x0 = parseFloat(roi[0])/100;
+		var x1 = parseFloat(roi[1])/100;
+		var y0 = parseFloat(roi[2])/100;
+		var y1 = parseFloat(roi[3])/100;
+		var w = x1-x0
+		var h = y1-y0
+		container.style.minHeight = container.offsetWidth*h*aspect+"px"
+		container.style.maxHeight = container.offsetWidth/w*aspect+"px"
+		
+		var containerAspect = container.offsetHeight/container.offsetWidth 
+		var image = container.getElementsByTagName("img")[0]
+
+		if (containerAspect<aspect){
+			image.style.width = "100%"
+			image.style.height = "auto"
+			var offset = (1-(containerAspect/aspect-h)/(1-h))*y0 *100.0					
+			image.style.transform = "translate(0, -"+offset+"%)"
+		}else{
+			image.style.width = "auto"
+			image.style.height = "100%"
+			var offset = (1-(aspect/containerAspect-w)/(1-w))*x0 *100.0
+			image.style.transform = "translate(-"+offset+"%, 0)"
+		}
+	}
+	document.addEventListener("DOMContentLoaded", resizeRoiImages)
+	window.addEventListener("resize", resizeRoiImages);
+</script></head><body><nav class="menu"><a class="text" href="file:///D:/Antilatency.com/output/Home/Index_en.html" title="">Antilatency</a><a class="text" href="file:///D:/Antilatency.com/output/Terms/AntilatencyDeviceNetwork/Antilatency_Device_Network_en.html" title="Antilatency Device Network - eng.">Antilatency Device Network</a><a class="text" href="file:///D:/Antilatency.com/output/Terms/Alt/Alt_en.html" title="На этой странице пока побудут некоторые примеры использования движка.">Alt</a></nav><nav class="language-menu"><a class="text" href="file:///D:/Antilatency.com/output/Terms/Alt/Alt_en.html" title="На этой странице пока побудут некоторые примеры использования движка.">English</a><a class="text" href="file:///D:/Antilatency.com/output/Terms/Alt/Alt_ru.html" title="На этой странице пока побудут некоторые примеры использования движка.">Русский</a><a class="text" href="file:///D:/Antilatency.com/output/Terms/Alt/Alt_ch.html" title="На этой странице пока побудут некоторые примеры использования движка.">中文</a></nav><div class="material"><div class="header"><h1 class="title">Alt</h1><div style="overflow: hidden;" data-roi="25 68 29 78" data-aspect="1" class="roi-image-container image"><img src="D:\Antilatency.com\output\Terms\Alt\h8U8kBVjZTmpl73j4tXdvrejrUo2000.jpg"></div><div class="paragraph"><div class="text">На этой странице пока побудут некоторые примеры использования движка.</div></div></div><div class="section"><h2 class="title" id="<-Ссылки_на_секции"><-Ссылки на секции<a class="link" href="#<-Ссылки_на_секции" title="Heading anchor"></a></h2><div class="text">Оказывается даже такие ссылки валидные, но так делать не нужно</div></div><div class="section"><h2 class="title" id="Ссылки">Ссылки<a class="link" href="#Ссылки" title="Heading anchor"></a></h2><div class="text">Можно вставлять <a class="text" href="file:///D:/Antilatency.com/output/Terms/Alt/Alt_en.html" title="На этой странице пока побудут некоторые примеры использования движка.">Alt</a> в текст</div><div class="text">Если навести на ссылку, то в подсказке будет описание страницы. Это полезно для терминов.</div></div><div class="section"><h2 class="title" id="Картинки">Картинки<a class="link" href="#Картинки" title="Heading anchor"></a></h2><div class="text">Это AltAndUsbSocket0</div><div style="overflow: hidden;" data-roi="25 68 29 78" data-aspect="1" class="roi-image-container image"><img src="D:\Antilatency.com\output\Terms\Alt\h8U8kBVjZTmpl73j4tXdvrejrUo2000.jpg"></div><div class="text">Это все картинки, имя переменной которых начинается с AltAndUsbSocket</div><div style="overflow: hidden;" data-roi="25 68 29 78" data-aspect="1" class="roi-image-container image"><img src="D:\Antilatency.com\output\Terms\Alt\h8U8kBVjZTmpl73j4tXdvrejrUo2000.jpg"></div><div style="overflow: hidden;" data-roi="17 85 30 72" data-aspect="1" class="roi-image-container image"><img src="D:\Antilatency.com\output\Terms\Alt\vfZnjwEGNIK9KKcbhfzkF19GaUc2000.jpg"></div></div></div></body></html>
