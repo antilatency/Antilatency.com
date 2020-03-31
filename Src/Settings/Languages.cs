@@ -6,6 +6,6 @@
         [GetOnce]
         public static Language Ru => new Language("ru","Русский");
         [GetOnce]
-        public static Language Ch => new Language("ch","中文");
+        public static Language Cn => new Language("cn","中文");
     }
 }

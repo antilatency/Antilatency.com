@@ -14,6 +14,7 @@ partial class Root {
 
     Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
     Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
+    Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
 
     //List<Image> AllImages => Directory.GetFiles(ThisDirectory(), "*.jpg").Select(x => new Image(x)).ToList();
     List<Image> AltAndUsbSocketAll => GetType().GetPropertiesAll()
@@ -21,7 +22,8 @@ partial class Root {
         .Where(x => x.Name.StartsWith("AltAndUsbSocket"))
         .Select(x => x.GetValue(this) as Image).ToList();
 
-    public Material Alt_ru => new Material(Alt.Title, AltAndUsbSocket0, $"На этой странице пока побудут некоторые примеры использования движка.")
+    public Material Alt_ru => new Material(null, AltAndUsbSocket0,
+        $"На этой странице пока побудут некоторые примеры использования движка.")
         [new Section("<-Ссылки на секции")
             [$"Оказывается даже такие ссылки валидные, но так делать не нужно"]
         ]
