@@ -38,7 +38,7 @@ partial class Root {
             [AltAndUsbSocketAll]
         ]
         [new Section("Code")
-            [new GitHubCode()]
+            [Code.LoadFromUri("https://raw.githubusercontent.com/antilatency/Antilatency.com/master/Program.cs").GetClass("Program")]
         ]
         ;
 

@@ -63,40 +63,33 @@ namespace Csml {
 }
 
 
+namespace Csml {
+    static class Program {
+        static void Main(string[] args) {
+            #region CsmlEngineMain
 
-static class Program {
+            //Engine.Process<Root>();
+            var root = new Root();
+            root.Verify();
 
+            var context = new Csml.Context {
+                SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src")
+            };
 
-    
-
-
-    static void Main(string[] args) {
-        #region CsmlEngineMain
-
-        //Engine.Process<Root>();
-        var root = new Root();
-        root.Verify();
-
-        var context = new Csml.Context {
-            SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src")
-        };
-
-        Directory.GetFiles(Path.Combine(context.SourceRootDirectory,"Css"), "*.*", SearchOption.AllDirectories)
-            .ForEach(x => context.AssetsToCopy.Add(x));
+            Directory.GetFiles(Path.Combine(context.SourceRootDirectory, "Css"), "*.*", SearchOption.AllDirectories)
+                .ForEach(x => context.AssetsToCopy.Add(x));
 
 
 
-        context.AutoReload = false;
+            context.AutoReload = false;
 
-        if (args.Length == 1) {
-            context.OutputRootDirectory = args[0];
+            if (args.Length == 1) {
+                context.OutputRootDirectory = args[0];
 
-            context.BaseUri = new Uri(context.OutputRootDirectory+"/");
-            root.Generate(context, true);
+                context.BaseUri = new Uri(context.OutputRootDirectory + "/");
+                root.Generate(context, true);
+            }
+            #endregion
         }
-        #endregion
-
-
     }
 }
-
