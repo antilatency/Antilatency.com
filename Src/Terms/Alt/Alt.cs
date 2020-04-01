@@ -37,6 +37,9 @@ partial class Root {
             [$"Это все картинки, имя переменной которых начинается с AltAndUsbSocket"]
             [AltAndUsbSocketAll]
         ]
+        [new Section("Code")
+            [new GitHubCode()]
+        ]
         ;
 
 }

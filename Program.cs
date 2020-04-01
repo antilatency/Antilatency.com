@@ -71,7 +71,7 @@ static class Program {
 
 
     static void Main(string[] args) {
-
+        #region CsmlEngineMain
 
         //Engine.Process<Root>();
         var root = new Root();
@@ -94,7 +94,7 @@ static class Program {
             context.BaseUri = new Uri(context.OutputRootDirectory+"/");
             root.Generate(context, true);
         }
-
+        #endregion
 
 
     }
