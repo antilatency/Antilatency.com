@@ -60,8 +60,7 @@
 
 .section .title .link{
     text-decoration: none;
-    float: left;
-    
+    float: left;    
 }
 .section .title .link::after{
     color: #ccc;
@@ -70,6 +69,7 @@
     content: "\F0339";
     margin-left: -1.2em;								
 }
+
 @media only screen and (max-width: 880px) {
     .section .title .link{
         text-decoration: none;

@@ -63,6 +63,7 @@
 
 		<style>
 			
+			
 
 
 		</style>
@@ -158,6 +159,37 @@
 				<h2 id="Инициализация_библиотеки" class="title">Инициализация
 					<a href="#Инициализация_библиотеки" class="link" title="Heading anchor"></a>
 				</h2>
+				<a class="github-link" href="https://github.com/antilatency/Antilatency.com/blob/1f7a1475f932bd19a8e880fec245a9007f07c22a/Program.cs"></a>
+				<div class="code"><pre>
+<span style="color:#0000FF;">static</span> <span style="color:#0000FF;">void</span> Main(<span style="color:#0000FF;">string</span>[] args) {
+	<span style="color:#0000FF;">#region</span> CsmlEngineMain
+
+	<span style="color:#008000;">//Engine.Process&lt;Root&gt;();</span>
+	<span style="color:#0000FF;">var</span> root = <span style="color:#0000FF;">new</span> Root();
+	root.Verify();
+
+	<span style="color:#0000FF;">var</span> context = <span style="color:#0000FF;">new</span> Csml.Context {
+		SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), <span style="color:#A31515;">"Src"</span>)
+	};
+
+	Directory.GetFiles(Path.Combine(context.SourceRootDirectory, <span style="color:#A31515;">"Css"</span>), <span style="color:#A31515;">"*.*"</span>, SearchOption.AllDirectories)
+		.ForEach(x =&gt; context.AssetsToCopy.Add(x));
+
+
+
+	context.AutoReload = <span style="color:#0000FF;">false</span>;
+
+	<span style="color:#0000FF;">if</span> (args.Length == <span>1</span>) {
+		context.OutputRootDirectory = args[<span>0</span>];
+
+		context.BaseUri = <span style="color:#0000FF;">new</span> Uri(context.OutputRootDirectory + <span style="color:#A31515;">"/"</span>);
+		root.Generate(context, <span style="color:#0000FF;">true</span>);
+	}
+	<span style="color:#0000FF;">#endregion</span>
+}				
+				</pre></div>
+				
+				
 				<div class="text">
 					Для начала работы с `Antilatency device network` нужно загрузить библиотеку и создать экземпляр `ILibrary`		
 				</div>

@@ -1,0 +1,24 @@
+.github-link{
+    text-decoration: none;
+    float: left;
+}
+.github-link::after{
+    color: #666;
+    position: absolute;
+    font-family: "Material Design Icons";
+    font-size: 1.7rem;
+    content: "\F02A4";
+    margin-left: -1.2em;								
+}
+@media only screen and (max-width: 880px) {
+    .github-link{
+
+        float: right;
+    }
+    .github-link::after
+    {
+        position: relative;
+        float: right;
+        margin-left: 0;
+    }
+}

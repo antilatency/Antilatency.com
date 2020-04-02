@@ -5,7 +5,8 @@
 @import "material.css";
 @import "menu.css";
 @import "language-menu.css";
-
+@import "github-link.css";
+@import "code.css";
 * {
     margin: 0;
     padding: 0;

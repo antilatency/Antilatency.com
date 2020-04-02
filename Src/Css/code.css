@@ -1,0 +1,7 @@
+.code > pre{
+	padding: 8px;
+	overflow: auto;
+	font-size: 1.2rem;
+	background-color: #f9faf6;
+	border-radius: 8px;
+}
