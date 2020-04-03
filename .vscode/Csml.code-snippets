@@ -1,0 +1,66 @@
+{
+	// Place your Antilatency.com workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Material":{
+		"prefix": ["Material", "Ьфеукшфд"],
+		"body": [
+			"public Material $TM_FILENAME_BASE => new Material(null, null, $\"$1\");"
+		],
+		"description": "new Material()"
+	},
+	"MultiLanguageGroup":{
+		"prefix": ["MultiLanguageGroup", "ЬгдешДфтпгфпуПкщгз"],
+		"body": [
+			"public MultiLanguageGroup $TM_FILENAME_BASE => new MultiLanguageGroup();"
+		],
+		"description": "new MultiLanguageGroup()"
+	},
+
+	"Section":{
+		"prefix": ["Section", "Ыусешщт"],
+		"body": [
+			 		"[new Section(\"${1:Title}\")",
+					"\t[$\"$2\"]",
+					"]"
+			 	],
+		"description": "new Section(\"\")[]"
+	},
+
+	"[]":{
+		"prefix": ["[]", "хъ"],
+		"body": [
+			 		"[$\"$1\"]"
+			 	],
+		"description": "[]"
+	},
+
+	"{}":{
+		"prefix": ["{}", "ХЪ"],
+		"body": [
+			 		"{$TM_CURRENT_WORD}"
+			 	],
+		"description": "{}"
+	},
+	"quotes":{
+		"prefix": ["ЭЭ"],
+		"body": [
+			 		"\"$1\""
+			 	],
+		"description": "quotes"
+	}
+
+}

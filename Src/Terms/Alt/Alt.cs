@@ -9,9 +9,6 @@ using static Csml.Utils.Static;
 
 partial class Root {
 
-
-    MultiLanguageGroup Alt => new MultiLanguageGroup();
-
     Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
     Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
     Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
@@ -22,8 +19,25 @@ partial class Root {
         .Where(x => x.Name.StartsWith("AltAndUsbSocket"))
         .Select(x => x.GetValue(this) as Image).ToList();
 
+    public Material Alt => new Material(null, null, $"");
+
+
+    /*public class MethodDefinition {
+
+    }
+    public class InterfaceDefinition { 
+         
+    }
+    public class ILibrary : InterfaceDefinition {
+        public class Create : MethodDefinition {
+            public static object __Name() => "Create";
+            public static object GetName;
+        }
+    }*/
+
+
     public Material Alt_ru => new Material(null, AltAndUsbSocket0,
-        $"На этой странице пока побудут некоторые примеры использования движка.")
+        $"На этой странице странице пока побудут некоторые примеры использования движка.")
         [new Section("<-Ссылки на секции")
             [$"Оказывается даже такие ссылки валидные, но так делать не нужно"]
         ]
@@ -39,10 +53,9 @@ partial class Root {
         ]
         [new Section("Code")
             [$"Файл с Github целиком."]
-            [new CSharpCode(new GithubFile("antilatency", "Antilatency.com", "Program.cs"))]
+            [new CSharpCode(AntilatencyGitHub.AntilatencyCom_Master.GetFile("Program.cs"))]
             [$"Csml.Program.Main()"]
-            [new CSharpCode(new GithubFile("antilatency","Antilatency.com","Program.cs")).GetClass("Csml", "Program").GetMethod("Main")]
-            //[CSharpCode.LoadFromUri("https://raw.githubusercontent.com/antilatency/Antilatency.com/master/Program.cs").GetClass("Csml","Program").GetMethod("Main")]
+            [new CSharpCode(AntilatencyGitHub.AntilatencyCom_Master.GetFile("Program.cs")).GetClass("Csml", "Program").GetMethod("Main")]
         ]
         ;
 

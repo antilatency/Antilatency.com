@@ -20,4 +20,15 @@ partial class Root {
         ,
         null
         );
+
+
+    [GetOnce]
+    public class AntilatencyGitHubGroup {
+        private Csml.GitHub.Owner Owner => new Csml.GitHub.Owner("antilatency");
+        public Csml.GitHub.RepositoryBranch AntilatencyCom_Master => Owner.GetRepositoryBranchPinned("Antilatency.com");
+    }
+
+    public AntilatencyGitHubGroup AntilatencyGitHub => new AntilatencyGitHubGroup();
+
+
 }

@@ -1,0 +1,8 @@
+{//https://stackoverflow.com/questions/33791097/how-can-i-change-keyboard-shortcut-bindings-in-visual-studio-code
+    "key": "ctrl+c ctrl+c",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+       "snippet": "`${TM_SELECTED_TEXT}`"
+    }
+  }
