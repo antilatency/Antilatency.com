@@ -3,23 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static Csml.Utils.Static;
 
 
-
+using static Api.Antilatency.Tracking.ILibrary;
 partial class Root {
 
-    Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
-    Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
-    Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
+    static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
+    static Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
+    static Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
 
     //List<Image> AllImages => Directory.GetFiles(ThisDirectory(), "*.jpg").Select(x => new Image(x)).ToList();
-    List<Image> AltAndUsbSocketAll => GetType().GetPropertiesAll()
+    static List<Image> AltAndUsbSocketAll => ThisType.GetPropertiesAll()
         .Where(x => x.PropertyType == typeof(Image))
         .Where(x => x.Name.StartsWith("AltAndUsbSocket"))
-        .Select(x => x.GetValue(this) as Image).ToList();
+        .Select(x => x.GetValue(null) as Image).ToList();
 
-    public Material Alt => new Material(null, null, $"");
+    public static MultiLanguageGroup Alt => new MultiLanguageGroup();
 
 
     /*public class MethodDefinition {
@@ -36,7 +35,7 @@ partial class Root {
     }*/
 
 
-    public Material Alt_ru => new Material(null, AltAndUsbSocket0,
+    public static Material Alt_ru => new Material(null, AltAndUsbSocket0,
         $"На этой странице странице пока побудут некоторые примеры использования движка.")
         [new Section("<-Ссылки на секции")
             [$"Оказывается даже такие ссылки валидные, но так делать не нужно"]
@@ -57,6 +56,43 @@ partial class Root {
             [$"Csml.Program.Main()"]
             [new CSharpCode(AntilatencyGitHub.AntilatencyCom_Master.GetFile("Program.cs")).GetClass("Csml", "Program").GetMethod("Main")]
         ]
+        [new Section("Api")
+            [$""]
+        ]
         ;
 
+}
+
+
+public sealed partial class Api : Scope<Api>{
+
+    public sealed partial class Antilatency : Scope<Antilatency> {
+
+        public sealed partial class Tracking : Scope<Tracking> {
+            public static MultiLanguageGroup _Material => new MultiLanguageGroup("Antilatency.Tracking");
+            public static Material _Material_en => new Material(_Material.Title, null, $"Namespace");
+
+            public sealed partial class ILibrary : Scope<ILibrary> {
+                public static MultiLanguageGroup _Material => new MultiLanguageGroup("Antilatency.Tracking.ILibrary");//TODO: user defined title
+                private static Material _Material_en => new Material(_Material.Title, null, $"");
+
+                public sealed partial class createEnvironment : Scope<createEnvironment> {
+                    public static MultiLanguageGroup _Material => new MultiLanguageGroup("Antilatency.\u200BTracking.\u200BILibrary.\u200BcreateEnvironment");//TODO: user defined title
+                    private static Material _Material_en => new Material(_Material.Title, null, $"Method");
+                }
+            }
+        }
+    }
+}
+
+partial class Api {
+    partial class Antilatency {
+        partial class Tracking {
+            partial class ILibrary {
+                partial class createEnvironment { 
+                
+                }
+            }
+        }
+    }
 }

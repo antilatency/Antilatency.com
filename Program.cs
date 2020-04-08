@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using Csml;
-using static Csml.Utils.Static;
 
 /*public class Lazy<T> {
     Func<T> func;
@@ -68,17 +67,29 @@ namespace Csml {
         static void Main(string[] args) {
             #region CsmlEngineMain
 
-            //Engine.Process<Root>();
-            var root = new Root();
-            root.Verify();
+            
+            DocumentationGenerator documentationGenerator = new DocumentationGenerator(
+                typeof(Antilatency.DeviceNetwork.ILibrary),
+                typeof(Antilatency.Alt.Tracking.ILibrary)
+                );
+            documentationGenerator.Generate();
+            
 
+
+            //return;
+
+            //Engine.Process<Root>();
+            //var root = new Root();
+            
+            Scope.All.ForEach(x => x.Verify());
+            
             var context = new Csml.Context {
-                SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), "Src")
+                SourceRootDirectory = Path.Combine(Path.GetDirectoryName(Utils.ThisFilePath()), "Src")
             };
 
             Directory.GetFiles(Path.Combine(context.SourceRootDirectory, "Css"), "*.*", SearchOption.AllDirectories)
                 .ForEach(x => context.AssetsToCopy.Add(x));
-
+                
 
 
             context.AutoReload = false;
@@ -87,7 +98,14 @@ namespace Csml {
                 context.OutputRootDirectory = args[0];
 
                 context.BaseUri = new Uri(context.OutputRootDirectory + "/");
-                root.Generate(context, true);
+                context.CleanOutputRootDirectory();
+                context.CopyAssets();
+                Scope.All.ForEach(x => {
+                    Log.Info.Here($"Generation Scope {x.GetType().Name}");
+                    x.Generate(context);
+                    
+                    });
+                //Root.Instance.Generate(context, true);
             }
             #endregion
         }

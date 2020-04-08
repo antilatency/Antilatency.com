@@ -3,7 +3,7 @@ using Csml;
 
 partial class Root {
 
-    Material MissingPages {
+    static Material MissingPages {
         get {
             var result = new Material(null, null, $"");
             var refs = new Section("References");
