@@ -1,0 +1,39 @@
+@import "Fonts/roboto/roboto.scss";
+
+@import "Fonts/materialdesignicons/materialdesignicons.scss";
+@import "Fonts/antilatency/antilatency.scss";
+@import "Styles/material.scss";
+
+
+@import "Styles/menu.scss";
+@import "Styles/language-menu.scss";
+
+@import "Styles/github-link.scss";
+@import "Styles/code.scss";
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+html {
+	font-family: "Roboto";
+    -webkit-font-smoothing: subpixel-antialiased;
+	
+}
+
+h1, h2, h3, h4{
+    
+    padding: 0;
+    margin: 0;
+
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}

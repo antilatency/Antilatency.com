@@ -2,7 +2,7 @@
   "profiles": {
     "Antilatency.com": {
       "commandName": "Project",
-      "commandLineArgs": "D:\\Antilatency.com\\output"
+      "commandLineArgs": "D:\\Antilatency.com.Generated"
     }
   }
 }

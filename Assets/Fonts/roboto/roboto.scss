@@ -1,0 +1,36 @@
+@mixin src($fileName,$localNames...){
+    $sources: ();
+    @each $n in $localNames {
+        $sources: append($sources, local($n), $separator: comma);
+    }
+    $sources: append($sources, url($current-directory+'/'+$fileName+'.woff2') format('woff2'), $separator: comma);
+    $sources: append($sources, url($current-directory+'/'+$fileName+'.woff') format('woff'), $separator: comma);
+    $sources: append($sources, url($current-directory+'/'+$fileName+'.ttf') format('truetype'), $separator: comma);
+    src: $sources
+}
+
+@mixin roboto-font-face($style, $weight ,$fileName,$localNames...){
+    @font-face {
+        font-family: 'Roboto';
+        @include src($fileName,$localNames...);
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+@include roboto-font-face(normal,100,'Robotothin','Roboto Thin','Roboto-Thin');
+@include roboto-font-face(italic,100,'Robotothinitalic','Roboto Thin Italic','Roboto-ThinItalic');
+
+@include roboto-font-face(normal,300,'Robotolight','Roboto Light','Roboto-Light');
+@include roboto-font-face(italic,300,'Robotolightitalic','Roboto Light Italic','Roboto-LightItalic');
+
+@include roboto-font-face(normal,400,'Roboto','Roboto','Roboto-Regular');
+@include roboto-font-face(italic,400,'Robotoitalic','Roboto Italic','Roboto-Italic');
+
+@include roboto-font-face(normal,500,'Robotomedium','Roboto Medium','Roboto-Medium');
+@include roboto-font-face(italic,500,'Robotomediumitalic','Roboto Medium Italic','Roboto-MediumItalic');
+
+@include roboto-font-face(normal,700,'Robotobold','Roboto Bold','Roboto-Bold');
+@include roboto-font-face(italic,700,'Robotobolditalic','Roboto Bold Italic','Roboto-BoldItalic');
+
+@include roboto-font-face(normal,900,'Robotoblack','Roboto Black','Roboto-Black');
+@include roboto-font-face(italic,900,'Robotoblackitalic','Roboto Black Italic','Roboto-BlackItalic');

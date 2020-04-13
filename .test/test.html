@@ -5,7 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="file:///D:/Antilatency.com/Src/Css/main.css">
 		<title>Тег SCRIPT</title>
+		<style>
 
+		</style>
 
 		<script id="resizeRoiImages">
 			function resizeRoiImages(){
@@ -68,15 +70,59 @@
 
 		</style>
 	</head>
-	<body >
-
+	<body style="visibility: hidden;">
+		
 		<script>
-			var ToggleButton = {
+			var Behaviour = {
+				GetCode: function(methodName, ...parameters){
+					return "var parent = document.currentScript.parentElement;"+
+						"parent.removeChild(document.currentScript);"+
+						methodName+"(parent,"+parameters.map(function(x) {return JSON.stringify(x)}) +");"
+				},
+				Initialize: function(methodName, ...parameters){
+					var code = Behaviour.GetCode(methodName,...parameters)
+					
+					eval(code)
+				},
+				Create: function(methodName, ...parameters){
+					var result = document.createElement('script');
+					
+					result.innerHTML = Behaviour.GetCode(methodName,...parameters)
+					return result
+				},
+
+
+				Print: function(element, ...parameters){
+					parameters.map(function(x){console.log(x)})
+				},
+				PrintParent: function(element, ...parameters){
+					console.log(element)
+				}
+			}
+
+			/*var OnClick = {
 				Create: function(element){
-					let button = document.createElement('div');
+					var button = document.createElement('div');
 					button.className = "button toggle"
 					button.onclick = function(){ToggleButton.Toggle(element,button)}
+
+					element.appendChild(Behaviour.Create("ToggleButton.Print"));
 					element.appendChild(button);
+				}
+			}*/
+
+			var ToggleButton = {
+				
+				Create: function(element, ...parameters){
+					var button = document.createElement('div');
+					
+					button.className = "button toggle"
+					button.onclick = function(){ToggleButton.Toggle(element,button)}					
+					button.appendChild(Behaviour.Create("Behaviour.PrintParent","string"));
+					console.log(element)
+					element.appendChild(button);
+					console.log(element)
+					console.log(button.parentElement)
 				},
 				
 				Toggle: function(element,button){
@@ -109,14 +155,17 @@
 
 
 		<nav class="menu">
-			<strong>Antilatency Antilatency</strong>
+			<a style="font-family: 'antilatency' !important; color: black;"><span style="color: #acc435;">a</span><span>l</span</a>
+			<a style="font-family: 'antilatency' !important; font-size: 50px; color: black;"><span style="color: #acc435;">a</span><span>l</span</a>
+			<a style="font-family: 'antilatency' !important; font-size: 100px; color: black;"><span style="color: #acc435;">a</span><span>l</span</a>
+			<a style="font-family: 'antilatency' !important; font-size: 50px; color: white;"><span style="color: #acc435;">a</span><span>l</span</a>
 			<a href="file:///D:/Antilatency.com/.test/test.html">This</a>
 			<a href="clients.html">Our Clients</a>
 			<a href="products.html">Our Products</a>
 			<a href="services.html">Our Services</a>
 			<a href="contact.html">Contact Us</a>
 			<a href="contact.html">Contact Us</a>
-			<behaviour class="ToggleButton.Create">
+			<script defer>Behaviour.Initialize("ToggleButton.Create",8,"string")</script>
 		</nav>
 		
 		<nav class="language-menu">
@@ -153,6 +202,15 @@
 				</div>
 			</div>
 
+				<a class="noselect" style="font-family: 'antilatency' !important; font-size: 200px;">al</a>
+			<img>
+			<a href="file:///D:/Antilatency.com/.test/test.html">This</a>
+			<a href="clients.html">Our Clients</a>
+			<a href="products.html">Our Products</a>
+			<a href="services.html">Our Services</a>
+			<a href="contact.html">Contact Us</a>
+			<a href="contact.html">Contact Us</a>
+			<script defer>Behaviour.Initialize("ToggleButton.Create",8,"string")</script>
 
 			<div class="section">
 				
@@ -160,34 +218,7 @@
 					<a href="#Инициализация_библиотеки" class="link" title="Heading anchor"></a>
 				</h2>
 				<a class="github-link" href="https://github.com/antilatency/Antilatency.com/blob/1f7a1475f932bd19a8e880fec245a9007f07c22a/Program.cs"></a>
-				<div class="code"><pre>
-<span style="color:#0000FF;">static</span> <span style="color:#0000FF;">void</span> Main(<span style="color:#0000FF;">string</span>[] args) {
-	<span style="color:#0000FF;">#region</span> CsmlEngineMain
-
-	<span style="color:#008000;">//Engine.Process&lt;Root&gt;();</span>
-	<span style="color:#0000FF;">var</span> root = <span style="color:#0000FF;">new</span> Root();
-	root.Verify();
-
-	<span style="color:#0000FF;">var</span> context = <span style="color:#0000FF;">new</span> Csml.Context {
-		SourceRootDirectory = Path.Combine(Path.GetDirectoryName(ThisFilePath()), <span style="color:#A31515;">"Src"</span>)
-	};
-
-	Directory.GetFiles(Path.Combine(context.SourceRootDirectory, <span style="color:#A31515;">"Css"</span>), <span style="color:#A31515;">"*.*"</span>, SearchOption.AllDirectories)
-		.ForEach(x =&gt; context.AssetsToCopy.Add(x));
-
-
-
-	context.AutoReload = <span style="color:#0000FF;">false</span>;
-
-	<span style="color:#0000FF;">if</span> (args.Length == <span>1</span>) {
-		context.OutputRootDirectory = args[<span>0</span>];
-
-		context.BaseUri = <span style="color:#0000FF;">new</span> Uri(context.OutputRootDirectory + <span style="color:#A31515;">"/"</span>);
-		root.Generate(context, <span style="color:#0000FF;">true</span>);
-	}
-	<span style="color:#0000FF;">#endregion</span>
-}				
-				</pre></div>
+				
 				
 				
 				<div class="text">
@@ -238,7 +269,25 @@
 
 		
 	
+		<script>
+			var counter = 10 
+			function check(){
+				if (!document.fonts.check('1em Roboto')) return false;
+				return true;
+			}
+			function waitForResources () {
 
+				if (!check() & counter>0){
+					console.log("waiting")
+					counter--;
+					setTimeout(waitForResources, 10)
+				}else{
+					document.body.style.visibility = "visible";
+				}
+			}
+			waitForResources()
+
+		</script>
 			
 	</body>
 </html>

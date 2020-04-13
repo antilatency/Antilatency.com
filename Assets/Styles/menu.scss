@@ -1,0 +1,83 @@
+@import "common.scss";
+$max-menu-width: 220px;
+
+.base-menu{
+    background-color: #eee;
+    color: #222;
+    >* {
+        display: block;
+        color: inherit;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;    
+    }
+
+    > :not(a){
+        background-color:transparent;
+    }
+    > a:hover {
+        background-color: #ccc;
+    }    
+    > a:active {
+        background-color: #aaa;
+    }
+    > a {				
+        text-decoration: none;
+    }
+
+}
+
+.menu {
+    @extend .base-menu;
+    position: fixed;
+    height: 100%;
+    max-width: $max-menu-width;
+    z-index: 10;    
+    opacity: 0.93;
+
+    .button{
+        visibility: hidden;
+        background-color:inherit;
+        position: absolute;
+        top: 0px;
+        padding: 8px;
+        left: 100%;				
+    }
+    
+    .button.toggle:after{				
+        color:inherit;				
+        font-family: "Material Design Icons";
+        font-size: 2em;
+        content: "\F035C";				
+    }
+    
+    .button.toggle.checked:after{
+        content: "\F0156";
+    }
+
+}
+
+/*nav.menu > *{
+    display: block;
+    color: inherit;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;    
+}*/
+
+
+
+
+
+
+@media only screen and (max-width: 1220px) {
+    nav.menu .button{
+        visibility: visible;
+    }
+    nav.menu:not(.checked) {
+        visibility: hidden;
+        width: 0;
+    }
+}

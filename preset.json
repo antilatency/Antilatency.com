@@ -1,0 +1,28 @@
+Preset {
+    Fullbody{
+        HeadPicoG2{
+            Alt{
+                ACHA0Alt__A
+                ACHA0Socket__UB
+            }
+            ACHA0Socket_PicoG2_RUA
+        }
+        Hand:2{
+            Alt{
+                ACHA0Alt__A
+                ACHA0Socket__UB
+            }
+            ACHA0Bracer__RA
+        }
+        Leg:2{
+            Alt{
+                ACHA0Alt__A
+                ACHA0Socket__UB
+            }
+            ACHA0Socket__RA //tag
+        }
+
+    }
+
+
+}
