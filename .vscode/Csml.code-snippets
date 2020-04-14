@@ -61,6 +61,18 @@
 			 		"\"$1\""
 			 	],
 		"description": "quotes"
-	}
+	},
+	"Scope":{
+		"prefix": ["Scope", "Ысщзу"],
+		"body": [
+					"partial class $1 : Scope<$1> {",
+					"",    
+					"}"
+			 	],
+		"description": "new Section(\"\")[]"
+	},
+
+	
+
 
 }
