@@ -67,6 +67,10 @@ namespace Csml {
                     context.SourceRootDirectory,
                     context.OutputRootDirectory,
                     "Assets/style.scss");
+                JavascriptProcessor javascriptProcessor = new JavascriptProcessor(
+                    context.SourceRootDirectory,
+                    context.OutputRootDirectory);
+
 
                 Scope.All.ForEach(x => {
                     Log.Info.Here($"Generation Scope {x.GetType().Name}");
@@ -92,6 +96,7 @@ namespace Csml {
                         }
                         Thread.Sleep(250);
                         reloadRequired |= sassProcessor.UpdateIfChanged();
+                        reloadRequired |= javascriptProcessor.UpdateIfChanged();
                     }
 
                 }
