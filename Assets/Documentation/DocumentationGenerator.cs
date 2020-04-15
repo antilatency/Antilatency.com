@@ -113,7 +113,7 @@ public class DocumentationGenerator {
 
 
     public IEnumerable<string> Generate(Namespace ns) {
-        yield return $"public sealed partial class {ns.Name} : Scope<{ns.Name}>{{";
+        yield return $"public sealed partial class {ns.Name} : Scope{{";
         
         yield return $"\tpublic static MultiLanguageGroup _Material => new MultiLanguageGroup(\"{ns.FullNameWithZWS}\");"; ;
         
@@ -146,7 +146,7 @@ public class DocumentationGenerator {
     }
 
     public IEnumerable<string> Generate(Type x) {
-        yield return $"public sealed partial class {x.Name} : Scope<{x.Name}>{{";
+        yield return $"public sealed partial class {x.Name} : Scope{{";
         
         yield return "}";
     }

@@ -1,0 +1,12 @@
+"steamvr" : {
+    "activateMultipleDrivers" : true
+},
+"TrackingOverrides" : {
+    "/devices/antilatency/Head" : "/devices/lighthouse/LHR-979B50DB"
+},
+"driver_antilatency" : {
+    "enable" : true
+},
+"trackers" : {
+    "/devices/antilatency/Head" : "TrackerRole_None"
+}

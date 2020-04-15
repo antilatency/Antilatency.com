@@ -32,7 +32,7 @@ namespace Csml {
 
 
 
-            var context = new Csml.Context {
+            var context = new Context {
                 SourceRootDirectory = Path.GetDirectoryName(Utils.ThisFilePath()),
                 Watch = true
             };

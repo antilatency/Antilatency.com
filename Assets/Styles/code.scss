@@ -1,10 +1,28 @@
-.code > pre{
-	padding: 8px;
+.material .code{
+	max-height: 80vh;
 	overflow: auto;
-	font-size: 1rem;
+	margin-bottom: 1rem;
+}
+$code-font: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
 
-	background-color: #faf6fa;
-	border-radius: 8px;
-	font-weight: 200;
-	font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+@mixin code {
+    font-family: $code-font;
+    background-color: #faf6fa;
+}
+
+code {
+    @include code;
+    font-size: 1rem;
+    padding: 2px 5px;
+}
+
+.code > pre {
+    @include code;
+    padding: 8px;
+    overflow: auto;
+    font-size: 1rem;
+    
+    border-radius: 8px;
+    font-weight: 200;
+    
 }

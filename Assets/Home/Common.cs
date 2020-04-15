@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Csml;
 using HtmlAgilityPack;
 
-partial class Root : Scope<Root> {
+partial class Root : Scope {
     
 
     public Root() {
@@ -20,7 +20,8 @@ partial class Root : Scope<Root> {
         [Index]
         [Antilatency_Device_Network]
         [Alt]
-        //[MenuButton]
+        [Internal.Debug]
+        [CsmlPredefined.ToggleButton]
         ;
     static LanguageMenu LanguageMenu => new LanguageMenu();
 
@@ -34,16 +35,10 @@ partial class Root : Scope<Root> {
 
 
 
-    public class AntilatencyGitHub : Scope<AntilatencyGitHub> {
-        static private Csml.GitHub.Owner Owner => new Csml.GitHub.Owner("antilatency");
-        
-        public class AntilatencyCom_Master : Scope<AntilatencyCom_Master> {
-            static public Csml.GitHub.RepositoryBranch RepositoryBranch => Owner.GetRepositoryBranchPinned("Antilatency.com");
-            static public CSharpCode Programm => new CSharpCode(RepositoryBranch.GetFile("Program.cs"));
-        }
-    }
+    
 
     //public AntilatencyGitHubGroup AntilatencyGitHub => new AntilatencyGitHubGroup();
 
 
 }
+
