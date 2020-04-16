@@ -8,6 +8,15 @@
 
     align-items: center;
     justify-content: center;
+
+    ul, ol{
+        margin-left: 20px;
+        list-style-position: outside;
+
+        ul, ol{
+            margin-top: $vertical-space;
+        }
+    }
 }
 
 .material > *,
@@ -17,7 +26,7 @@
 }
 
 .material .text{
-    padding-bottom: 0.4rem;
+    padding-bottom: $vertical-space;
 }
 
 /*HEADER*/

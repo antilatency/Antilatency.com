@@ -21,9 +21,9 @@ public partial class Internal : Scope {
         [new Section("Markdown")
             [$"`code` *bold* _italic_ ~strikethrough~ ~*bold*strikethrough~ ~_*bold*italic_strikethrough~ `~_*bold*italic_strikethrough~`"]
             [$"`код со ссылкой {Debug}`"]
-            
-            
-        ]               
+
+
+        ]
         [new Section("Картинки")
             [$"Это AltAndUsbSocket0"]
             [AltAndUsbSocket0]
@@ -44,7 +44,27 @@ public partial class Internal : Scope {
             [$"Json из файла."]
             [TestJson]
         ]
-        
+
+        [new Section("Lists")
+            [new UnorderedList()
+                [$"Раньше было доступно 33 канала. Сейчас доступен полный диапазон каналов (141 шт.) для более гибкой настройки."]
+                [new Paragraph("Вложенный {0}")[
+                    new UnorderedList()
+                        [$"One."]
+                        [$"Ссылка {Terms.Alt}"]
+                        [WikipediaCSharp]
+                    ]
+                ]
+                [new Paragraph("Нумерованный {0}")[
+                    new OrderedList()
+                        [$"One."]
+                        [$"Ссылка {Terms.Alt}"]
+                        [WikipediaCSharp]
+                    ]
+                ]
+            ]
+        ]
+
         [new Section("Api")
             [$"{Api.Antilatency.Alt._Material}"]
         ]
