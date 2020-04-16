@@ -18,14 +18,14 @@
 	"Material":{
 		"prefix": ["Material", "Ьфеукшфд"],
 		"body": [
-			"public Material $TM_FILENAME_BASE => new Material(null, null, $\"$1\");"
+			"public static Material $TM_FILENAME_BASE => new Material(null, null, $\"$1\");"
 		],
 		"description": "new Material()"
 	},
 	"MultiLanguageGroup":{
 		"prefix": ["MultiLanguageGroup", "ЬгдешДфтпгфпуПкщгз"],
 		"body": [
-			"public MultiLanguageGroup $TM_FILENAME_BASE => new MultiLanguageGroup();"
+			"public static MultiLanguageGroup $TM_FILENAME_BASE => new MultiLanguageGroup();"
 		],
 		"description": "new MultiLanguageGroup()"
 	},
@@ -51,7 +51,7 @@
 	"{}":{
 		"prefix": ["{}", "ХЪ"],
 		"body": [
-			 		"{$TM_CURRENT_WORD}"
+			 		"{$1}"
 			 	],
 		"description": "{}"
 	},
@@ -62,10 +62,20 @@
 			 	],
 		"description": "quotes"
 	},
+	"Assets":{
+		"prefix": ["Assets", "Фыыуеы"],
+		"body": [
+					"public partial class ${TM_FILENAME_BASE}_Assets : Scope {",
+					"",    
+					"}"
+			 	],
+		"description": "new Section(\"\")[]"
+	},
+
 	"Scope":{
 		"prefix": ["Scope", "Ысщзу"],
 		"body": [
-					"partial class $1 : Scope<$1> {",
+					"public partial class $1 : Scope {",
 					"",    
 					"}"
 			 	],

@@ -19,7 +19,7 @@ partial class Root : Scope {
         [Logo40Black]
         [Index]
         [Antilatency_Device_Network]
-        [Alt]
+        [Terms.Alt]
         [Internal.Debug]
         [CsmlPredefined.ToggleButton]
         ;

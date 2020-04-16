@@ -5,8 +5,7 @@ using System.IO;
 using System.Linq;
 
 
-
-partial class Root {
+partial class Terms: Scope {
 
     static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
     static Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
@@ -17,22 +16,6 @@ partial class Root {
         .Where(x => x.PropertyType == typeof(Image))
         .Where(x => x.Name.StartsWith("AltAndUsbSocket"))
         .Select(x => x.GetValue(null) as Image).ToList();
-
-    public static MultiLanguageGroup Alt => new MultiLanguageGroup();
-
-
-    /*public class MethodDefinition {
-
-    }
-    public class InterfaceDefinition { 
-         
-    }
-    public class ILibrary : InterfaceDefinition {
-        public class Create : MethodDefinition {
-            public static object __Name() => "Create";
-            public static object GetName;
-        }
-    }*/
 
 
     public static Material Alt_ru => new Material(null, AltAndUsbSocket0,
@@ -52,9 +35,9 @@ partial class Root {
         ]
         [new Section("Code")
             [$"Файл с Github целиком."]
-            [AntilatencyGitHub.AntilatencyCom_Master.Programm]
+            [AntilatencyGitHub.AntilatencyCom_Master.Program]
             [$"Csml.Program.Main()"]
-            [AntilatencyGitHub.AntilatencyCom_Master.Programm.GetClass("Csml", "Program").GetMethod("Main")]
+            [AntilatencyGitHub.AntilatencyCom_Master.Program.GetClass("Csml", "Program").GetMethod("Main")]
         ]
         [new Section("Api")
             //[$"{Api.Antilatency.Alt.Tracking._Material}"]

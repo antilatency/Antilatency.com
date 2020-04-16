@@ -5,12 +5,12 @@ public class AntilatencyGitHub : Scope {
 
     public class AntilatencyCom_Master : Scope {
         static public Csml.GitHub.RepositoryBranch RepositoryBranch => Owner.GetRepositoryBranchPinned("Antilatency.com");
-        static public CSharpCode Programm => new CSharpCode(RepositoryBranch.GetFile("Program.cs"));
+        static public CSharpCode Program => new CSharpCode(RepositoryBranch.GetFile("Program.cs"));
     }
 
     public class TrackingMinimalDemoCSharp_Master : Scope {
         static public Csml.GitHub.RepositoryBranch RepositoryBranch => Owner.GetRepositoryBranchPinned("TrackingMinimalDemoCSharp");
-        static public CSharpCode Programm => new CSharpCode(RepositoryBranch.GetFile("Program.cs"));
+        static public CSharpCode Program => new CSharpCode(RepositoryBranch.GetFile("Program.cs"));
     }
 
 

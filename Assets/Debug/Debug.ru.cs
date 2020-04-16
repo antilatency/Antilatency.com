@@ -4,7 +4,7 @@ using static Internal.Debug_Assets;
 public partial class Internal : Scope {
 
     public static Material Debug_ru => new Material(null, AltAndUsbSocket0,
-        $"На этой странице странице пока побудут некоторые примеры использования движка.")
+        $"На этой странице странице некоторые примеры использования движка.")
         [new Section("Ссылки")
             [$"Можно вставлять {Terms.Alt} в текст"]
             [$"Если навести на ссылку, то в подсказке будет описание страницы. Это полезно для терминов."]
@@ -21,6 +21,8 @@ public partial class Internal : Scope {
         [new Section("Markdown")
             [$"`code` *bold* _italic_ ~strikethrough~ ~*bold*strikethrough~ ~_*bold*italic_strikethrough~ `~_*bold*italic_strikethrough~`"]
             [$"`код со ссылкой {Debug}`"]
+            
+            
         ]               
         [new Section("Картинки")
             [$"Это AltAndUsbSocket0"]
@@ -30,9 +32,9 @@ public partial class Internal : Scope {
         ]
         [new Section("Code")
             [$"Файл с Github целиком."]
-            [AntilatencyGitHub.AntilatencyCom_Master.Programm]
+            [AntilatencyGitHub.AntilatencyCom_Master.Program]
             [$"Csml.Program.Main()"]
-            [AntilatencyGitHub.AntilatencyCom_Master.Programm.GetClass("Csml", "Program").GetMethod("Main")]
+            [AntilatencyGitHub.AntilatencyCom_Master.Program.GetClass("Csml", "Program").GetMethod("Main")]
         ]
         [new Section("Xml from file")
             [$"Xml код с загрузкой из файла."]
@@ -44,7 +46,7 @@ public partial class Internal : Scope {
         ]
         
         [new Section("Api")
-            [$"{Api.Antilatency.Alt.Tracking._Material}"]
+            [$"{Api.Antilatency.Alt._Material}"]
         ]
         ;
 }
