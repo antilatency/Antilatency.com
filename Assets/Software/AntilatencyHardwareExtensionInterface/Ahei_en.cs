@@ -1,9 +1,9 @@
 ﻿using Csml;
-using static Software.Ahei_Assets;
+using static Software.AntilatencyHardwareExtensionInterface_Assets;
 
 partial class Software : Scope {
-    static Material Ahei_en => new Material("Antilatency hardware extension interface library", null,
-    $"Library for {Terms.Ahei}")
+    static Material AntilatencyHardwareExtensionInterface_en => new Material("Antilatency Hardware Extension Interface Library", null,
+    $"Library for {Terms.Antilatency_Hardware_Extension_Interface}")
         [new Section("How to use a library")
             [new OrderedList()
                 [$"Load a library;"]

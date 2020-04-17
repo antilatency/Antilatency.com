@@ -1,8 +1,8 @@
 using Csml;
 
 partial class Software : Scope {
-    public static MultiLanguageGroup Ahei => new MultiLanguageGroup();
-    public partial class Ahei_Assets : Scope {
+    public static MultiLanguageGroup AntilatencyHardwareExtensionInterface => new MultiLanguageGroup();
+    public partial class AntilatencyHardwareExtensionInterface_Assets : Scope {
 
         public static CSharpCode IInputPinCode => new CSharpCode(@"public interface IInputPin : Antilatency.InterfaceContract.IInterface {
     Interop.PinState getState();
