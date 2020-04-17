@@ -19,17 +19,17 @@ partial class Tutorials : Scope {
         [new Section("Работа с драйвером")
             [$"Драйвер добавляет поддрежку следующих типов устройств в SteamVR:"]
             [new UnorderedList()
-                [$"Трекер ({Terms.Alt} + любой {Terms.Socket} или {Terms.Tag})"]
-                [$"Контроллер ({Terms.Bracer})"]
+                [$"Трекер ({Terms.Alt} + любой {Hardware.Socket} или {Hardware.Tag})"]
+                [$"Контроллер ({Hardware.Bracer})"]
             ]
 
-            [$@"{ Terms.Placement} для трекера ищется по имени  заданным в свойстве `Tag` у {Terms.Socket}, если свойство не задано или такой {Terms.Placement} не найдет, то берется установленный по умолчанию в {Terms.AntilatencyService}.
-            {Terms.Placement} для {Terms.Bracer} устанавливается автоматически в зависимости от свойства `Tag` у {Terms.Socket}, для левой и для правой руки свойство `Tag` должно быть задано как `LeftHand` или `RightHand`, соответственно."]
+            [$@"{ Terms.Placement} для трекера ищется по имени  заданным в свойстве `Tag` у {Hardware.Socket}, если свойство не задано или такой {Terms.Placement} не найдет, то берется установленный по умолчанию в {Terms.AntilatencyService}.
+            {Terms.Placement} для {Hardware.Bracer} устанавливается автоматически в зависимости от свойства `Tag` у {Hardware.Socket}, для левой и для правой руки свойство `Tag` должно быть задано как `LeftHand` или `RightHand`, соответственно."]
 
             [$"*Кнопки брейсера*"]
             [new OrderedList()
-                [$"Trigger click - обычное нажатие на {Terms.Bracer}"]
-                [$"System click - нажатие на {Terms.Bracer}, держа руку над головой и смотря прямо (Работает только если трекинг хедсета подменен на текинг Antilatency)"]
+                [$"Trigger click - обычное нажатие на {Hardware.Bracer}"]
+                [$"System click - нажатие на {Hardware.Bracer}, держа руку над головой и смотря прямо (Работает только если трекинг хедсета подменен на текинг Antilatency)"]
             ]
         ]
 
