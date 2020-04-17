@@ -8,6 +8,8 @@ public partial class Internal : Scope {
     public static MultiLanguageGroup Debug => new MultiLanguageGroup();
 
     public partial class Debug_Assets : Scope {
+        public static Image ExtensionBoard => new Image("ExtensionBoard.jpg");
+        public static Image SmallImage => new Image("SmallImage.png");
         public static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
 
         public static List<Image> AltAndUsbSocketAll => ThisType.GetPropertiesAll()

@@ -29,6 +29,10 @@ public partial class Internal : Scope {
             [AltAndUsbSocket0]
             [$"Это все картинки, имя переменной которых начинается с AltAndUsbSocket"]
             [AltAndUsbSocketAll]
+            [$"Картинки без roi"]
+            [ExtensionBoard]
+            [$"Маленькие картинки выравниваются по центру"]
+            [SmallImage]
         ]
         [new Section("Code")
             [$"Файл с Github целиком."]
@@ -65,8 +69,17 @@ public partial class Internal : Scope {
             ]
         ]
 
+        [new Table(new Column("A", new Column("a1"), new Column("a2")), new Column("B"))
+            [$"a1"][$"b1"]
+            [$"a2"][$"b2"]
+        ]
+
+
         [new Section("Api")
             [$"{Api.Antilatency.Alt._Material}"]
         ]
         ;
+
+    
+
 }
