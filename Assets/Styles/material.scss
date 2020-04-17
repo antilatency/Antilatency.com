@@ -96,37 +96,48 @@
 
 /*SECTION*/
 
-.material .section .title{
+.section>.title{
     font-weight: 300;
     font-size: 1.7rem;
     color: #888;
     padding-bottom: 0.2rem;
 }
-
-.section .title .link{
-    text-decoration: none;
-    float: left;    
+.section>.section{
+    margin-left: 20px;
+    .title{
+        font-weight: 400;
+        font-size: 1.6rem;
+        color: #aaa;
+    }
 }
-.section .title .link::after{
+.section>.section>.section>.title{    
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #ccc;    
+}
+
+.section>.title>.link{
+    text-decoration: none;
+    float: left; 
+    @media only screen and (max-width: 880px) {
+        text-decoration: none;
+        float: right;
+    }  
+}
+.section>.title>.link::after{
     color: #ccc;
     position: absolute;
     font-family: "Material Design Icons";
     content: "\F0339";
-    margin-left: -1.2em;								
-}
-
-@media only screen and (max-width: 880px) {
-    .section .title .link{
-        text-decoration: none;
-        float: right;
-    }
-    .section .title .link::after
-    {
+    margin-left: -1.2em;
+    @media only screen and (max-width: 880px) {
         position: relative;
         float: right;
         margin-left: 0;
-    }
+    }								
 }
+
+
 
 .material .text{
     font-weight: 400;
