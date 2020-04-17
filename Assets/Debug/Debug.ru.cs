@@ -74,7 +74,12 @@ public partial class Internal : Scope {
                 [$"a"][$"a"]
                 [$"a"][$"a"]
             ]
-
+            [$"Таблица с заголовком"]
+            [new Table("A","B","C")
+                [$"a"][$"b"][$"c"]
+                [$"d"][$"e"][$"f"]
+            ]
+            [$"Таблица с многоуровневыми заголовками по вертикали и горизонтали"]
             [new Table(
                 new Column("xA",
                     new Column("xa1"), new Column("xa2")),

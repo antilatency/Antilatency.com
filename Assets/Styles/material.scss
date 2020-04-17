@@ -23,9 +23,11 @@
     }
 
     table{
+        width: 100%;
         border-collapse: collapse;
-        
+        margin-bottom: $vertical-space;
         >tbody{
+            
             th{
                 border: 1px solid white;
                 background-color: #eee;
@@ -53,11 +55,6 @@
     }
 }
 
-.material > *,
-.material .section > *,
-.material .header> *{
-    display: block;
-}
 
 
 
@@ -133,13 +130,12 @@
     font-weight: 400;
     font-size: 1rem;
     color: #777;
-    line-height: 1.4;
+    line-height: 1.6;
     letter-spacing: 0.01em;
     //text-align: justify;
 }
 
 .material .text b{
-    letter-spacing: 0.01em;
     font-weight: 500;
     color: rgb(121, 190, 30);
     text-align: left;
