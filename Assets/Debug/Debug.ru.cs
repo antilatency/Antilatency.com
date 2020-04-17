@@ -21,8 +21,7 @@ public partial class Internal : Scope {
         [new Section("Markdown")
             [$"`code` *bold* _italic_ ~strikethrough~ ~*bold*strikethrough~ ~_*bold*italic_strikethrough~ `~_*bold*italic_strikethrough~`"]
             [$"`код со ссылкой {Debug}`"]
-
-
+            [$"`<tag>content</tag>`"]
         ]
         [new Section("Картинки")
             [$"Это AltAndUsbSocket0"]
