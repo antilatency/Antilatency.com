@@ -11,6 +11,7 @@ public partial class Internal : Scope {
         public static Image ExtensionBoard => new Image("ExtensionBoard.jpg");
         public static Image SmallImage => new Image("SmallImage.png");
         public static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
+        public static Image Input => new Image("Input.png");
 
         public static List<Image> AltAndUsbSocketAll => ThisType.GetPropertiesAll()
             .Where(x => x.PropertyType == typeof(Image))

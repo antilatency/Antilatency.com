@@ -32,6 +32,7 @@ public partial class Internal : Scope {
             [ExtensionBoard]
             [$"Маленькие картинки выравниваются по центру"]
             [SmallImage]
+            [Input]
         ]
         [new Section("Code")
             [$"Файл с Github целиком."]
@@ -67,12 +68,29 @@ public partial class Internal : Scope {
                 ]
             ]
         ]
+        [new Section("Tables")
+            [$"Просто таблица"]
+            [new Table(2)
+                [$"a"][$"a"]
+                [$"a"][$"a"]
+            ]
 
-        [new Table(new Column("A", new Column("a1"), new Column("a2")), new Column("B"))
-            [$"a1"][$"b1"]
-            [$"a2"][$"b2"]
+            [new Table(
+                new Column("xA",
+                    new Column("xa1"), new Column("xa2")),
+                new Column("xB"),
+            
+                new Row("yA",
+                    new Row("ya1"), new Row("ya2")),
+                new Row("yB")
+
+                )
+
+                [$"a"][$"a"][$"b"]
+                [$"a"][$"a"][$"b"]
+                [$"a"][$"a"][$"b"]
+            ]
         ]
-
 
         [new Section("Api")
             [$"{Api.Antilatency.Alt._Material}"]

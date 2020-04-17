@@ -17,6 +17,40 @@
             margin-top: $vertical-space;
         }
     }
+
+    .text{
+        padding-bottom: $vertical-space;
+    }
+
+    table{
+        border-collapse: collapse;
+        
+        >tbody{
+            th{
+                border: 1px solid white;
+                background-color: #eee;
+                padding: 4px 10px 4px 10px;
+                color: #666;
+                font-weight: 500;
+            }
+            td {
+                border: 1px solid #ddd;
+                border-width: 1px;
+                border
+                .text{
+                    padding-bottom: 4px
+                }
+                >*{
+                    padding: 4px;
+                    
+                }
+            }
+            td:empty{
+                border: 1px solid transparent;
+            }
+            width: 100%;
+        }
+    }
 }
 
 .material > *,
@@ -25,9 +59,7 @@
     display: block;
 }
 
-.material .text{
-    padding-bottom: $vertical-space;
-}
+
 
 /*HEADER*/
 .material .header .title{
