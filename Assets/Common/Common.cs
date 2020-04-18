@@ -21,6 +21,7 @@ partial class Root : Scope {
         [Antilatency_Device_Network]
         [Terms.Alt]
         [Internal.Debug]
+        [CsmlPredefined.Diagnostics]
         [CsmlPredefined.ToggleButton]
         ;
     static LanguageMenu LanguageMenu => new LanguageMenu();

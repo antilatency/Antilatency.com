@@ -19,7 +19,7 @@ namespace Csml {
 
         static void Main(string[] args) {
             #region CsmlEngineMain
-            Scope.EnableGetOnce();
+            ScopeUtils.EnableGetOnce();
             GitHub.RepositoryBranch.IgnorePinning = true;
 
             using (new Stopwatch("DocumentationGenerator")) {
@@ -39,7 +39,7 @@ namespace Csml {
             Cache.RootDirectory = Path.Combine(context.SourceRootDirectory, "cache");
 
             using (new Stopwatch("Verify")) {
-                Scope.All.ForEach(x => x.Verify());
+                ScopeUtils.All.ForEach(x => x.Verify());
             }
 
 
@@ -72,7 +72,7 @@ namespace Csml {
                     context.OutputRootDirectory);
 
 
-                Scope.All.ForEach(x => {
+                ScopeUtils.All.ForEach(x => {
                     Log.Info.Here($"Generation Scope {x.GetType().Name}");
                     x.Generate(context);
                     
