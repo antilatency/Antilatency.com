@@ -13,11 +13,11 @@ namespace Csml {
         public override IEnumerable<HtmlNode> Generate(Context context) {
             yield return HtmlNode.CreateNode("<div>").Do(x => {
                 x.AddClass("color-sequence");
-                x.SetAttributeValue("style", $"background: conic-gradient({GetGradient()});");
+                x.SetAttributeValue("style", $"background-image: conic-gradient({GetGradient()});");
                 x.Add("<div>").Do(x => {
                     x.SetAttributeValue("style", $"animation: animatedRotateCentered {TotalDuration}s linear infinite;");
                     x.Add("<div>").Do(x => {
-                        x.SetAttributeValue("style", $"background:linear-gradient({GetGradient()}); background-size: 100% 1000000%; animation: animatedBackgroundPositionVertical {TotalDuration}s linear infinite;");
+                        x.SetAttributeValue("style", $"background-image:linear-gradient(to top, {GetGradient()}); background-size: 100% 1000000%; animation: animatedBackgroundPositionVertical {TotalDuration}s linear infinite;");
                     });
                 });
             });
@@ -83,7 +83,7 @@ namespace Csml {
                 var y = 0.5f * MathF.Cos(a) + 0.5f;
                 var color = Min.Lerp(Max, y);
                 if (i > 0) stringBuilder.Append(',');
-                stringBuilder.Append($"#{color.ToRgba().ToString("x8")} {100 * p}%");
+                stringBuilder.Append($"#{color.ToRgb().ToString("x6")} {100 * p}%");
             }
 
             
