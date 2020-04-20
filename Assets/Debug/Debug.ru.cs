@@ -1,10 +1,13 @@
 ﻿using Csml;
+using System.Drawing;
 using static Internal.Debug_Assets;
 
 public partial class Internal : Scope {
 
     public static Material Debug_ru => new Material(null, AltAndUsbSocket0,
         $"На этой странице странице некоторые примеры использования движка.")
+
+        
         [new Section("Ссылки")
             [$"Можно вставлять {Terms.Alt} в текст"]
             [$"Если навести на ссылку, то в подсказке будет описание страницы. Это полезно для терминов."]
@@ -115,7 +118,17 @@ public partial class Internal : Scope {
                 ]
             ]
         ]
-
+        [new Section("Color Sequence")
+            [new ColorSequenceCos(Color.FromArgb(255, 128, 64), Color.Blue, 1.792f)]
+            [new ColorSequence()
+                [Color.Red, 0.3f]
+                ["black", 0.3f]
+                ["green", 0.3f]
+                ["black", 0.3f]
+                ["red", 0.3f]
+                ["black", 2.3f]
+            ]
+        ]
         [new Section("Api")
             [$"{Api.Antilatency.Alt._Material}"]
         ]
