@@ -10,6 +10,12 @@ namespace Csml {
     static class Program {
         static void Main(string[] args) {
             #region CsmlEngineMain
+
+            //Set dot decimal separator
+            var customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = customCulture;
+
             ScopeUtils.EnableGetOnce();
             GitHub.RepositoryBranch.IgnorePinning = true;
 
