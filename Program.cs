@@ -6,17 +6,8 @@ using System.Linq.Expressions;
 using System.Threading;
 using Csml;
 
-
-
-
-
-
 namespace Csml {
-    
     static class Program {
-
-        
-
         static void Main(string[] args) {
             #region CsmlEngineMain
             ScopeUtils.EnableGetOnce();
@@ -29,8 +20,6 @@ namespace Csml {
                     );
                 documentationGenerator.Generate();
             }
-
-
 
             var context = new Context {
                 SourceRootDirectory = Path.GetDirectoryName(Utils.ThisFilePath()),
@@ -47,10 +36,6 @@ namespace Csml {
             Directory.GetFiles(context.SourceRootDirectory, "*.woff", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));
             Directory.GetFiles(context.SourceRootDirectory, "*.woff2", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));
             Directory.GetFiles(context.SourceRootDirectory, "*.svg", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));
-
-
-
-
 
             context.AutoReload = false;
 
@@ -78,7 +63,11 @@ namespace Csml {
                     
                     });
 
+                Console.WriteLine("All files generated!");
+                Console.WriteLine();
+
                 if (context.Watch) {
+                    Console.WriteLine("Watching for file changes. Press any key to exit.");
                     bool reloadRequired = true;
 
                     string ScssError = null;
@@ -100,8 +89,6 @@ namespace Csml {
                     }
 
                 }
-                
-
             }
             #endregion
         }
