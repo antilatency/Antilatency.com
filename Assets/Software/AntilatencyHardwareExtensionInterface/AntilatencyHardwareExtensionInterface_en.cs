@@ -31,17 +31,17 @@ partial class Software : Scope {
             [IPulseCounterPinCode]
             [$"`getValue()` returns the number of pulses for the last period."]]
 
-        [$"*Todo info* Before the task enters *Run* state, all methods of these interfaces will have default values."]
+        [new Info()[$"Before the task enters *Run* state, all methods of these interfaces will have default values."]]
 
         [new Section("ICotask")
             [ICotaskCode]
-                [$"*Todo info* ICotaskMethods for creating pins form an initialization table only. The table will be sent to the device via the `run()` method."]
+                [new Info()[$"ICotaskMethods for creating pins form an initialization table only. The table will be sent to the device via the `run()` method."]]
                 [$"The task is in ​Init​ state right after being launched. In this state only methods for creating pins work."]
                 [$"`createInputPin()` creates a pin in input mode."]
                 [$"`createOutputPin()` creates a pin in output mode. It is necessary to pass the state that the pin will takeimmediately after initialization."]
                 [$"`createAnalogPin()` creates a pin in analog input mode. `refreshIntervalMs` - time (in milliseconds) of the value update. *Todo add from api* See Constants::AnalogMinRefreshIntervalMs and Constants::AnalogMaxRefreshIntervalMs."]
                 [$"`createPulseCounterPin()` creates a pin in pulse counter mode. `refreshIntervalMs` - time (in milliseconds) of the update interval. *Todo add from api* See Constants::PulseCounterMinRefreshIntervalMs and Constants::PulseCounterMaxRefreshIntervalMs."]
-                [$"*Todo info* Currently, the system supports only the same update interval for the two pins in pulse counter mode."]
+                [new Info()[$"Currently, the system supports only the same update interval for the two pins in pulse counter mode."]]
                 [$"Here is a list of reasons that can cause exceptions to be thrown when using methods for creating pins:"]
                 [new OrderedList()
                     [$"The ​`run()`​ method has already been called."]
