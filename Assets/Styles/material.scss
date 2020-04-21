@@ -5,7 +5,7 @@
     min-width: $min-width;
     margin: 0 auto 0 auto;
     padding: 0;
-
+    margin-bottom: 50px; //for footer
     align-items: center;
     justify-content: center;
 
@@ -19,7 +19,16 @@
     }
 
     .text{
-        padding-bottom: $vertical-space;
+        font-weight: 400;
+        font-size: 1rem;
+        color: #777;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+        //text-align: justify;
+        
+    }
+    *:not(:last-child){
+        margin-bottom: $vertical-space;
     }
 
     table{
@@ -39,15 +48,36 @@
 
                 border: 1px solid #ddd;
                 border-width: 1px;
-                .text{
-                    padding-bottom: 4px
-                }
+                padding: 4px 10px 4px 10px;
+                
             }
+
             td:empty{
                 border: 1px solid transparent;
             }
             width: 100%;
         }
+    }
+
+    .header div.image{	
+        display: block;			
+        width: 100%;
+        height: 50vh;
+        margin-bottom: 2vh;
+    }
+    
+    .section div.image{
+        display: block;					
+        width: 100%;
+        height: 30vh;
+        margin-bottom: 1vh;
+    }
+
+    img.image{
+        display: block;	
+        margin-left: auto;
+        margin-right: auto;
+        height: auto; 
     }
 }
 
@@ -60,8 +90,8 @@
     font-weight: 200;
     font-size: 3.2rem;
     color: #000;
-    padding-top: 2rem;			
-    padding-bottom: 1rem;
+    margin-top: 2rem;			
+    margin-bottom: 1rem;
     @include small-screen{
         font-size: 6.4vmax;
     }
@@ -72,18 +102,7 @@
     }
 }*/
 
-.material .header .image{	
-    display: block;			
-    width: 100%;
-    height: 50vh;
-    margin-bottom: 2vh;
-}
-.material .section .image{
-    display: block;					
-    width: 100%;
-    height: 30vh;
-    margin-bottom: 1vh;
-}
+
 
 .material .header {
     margin-bottom: 4vh;
@@ -96,7 +115,7 @@
     font-weight: 300;
     font-size: 1.7rem;
     color: #888;
-    padding-bottom: 0.2rem;
+    margin-bottom: 0.2rem;
 }
 .section>.section{
     margin-left: 20px;
@@ -135,14 +154,6 @@
 
 
 
-.material .text{
-    font-weight: 400;
-    font-size: 1rem;
-    color: #777;
-    line-height: 1.6;
-    letter-spacing: 0.01em;
-    //text-align: justify;
-}
 
 .material .text b{
     font-weight: 500;

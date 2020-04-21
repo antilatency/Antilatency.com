@@ -13,13 +13,7 @@ namespace Csml {
         public override IEnumerable<HtmlNode> Generate(Context context) {
             yield return HtmlNode.CreateNode("<div>").Do(x => {
                 x.AddClass("color-sequence");
-                x.SetAttributeValue("style", $"background-image: conic-gradient({GetGradient()});");
-                x.Add("<div>").Do(x => {
-                    x.SetAttributeValue("style", $"animation: animatedRotateCentered {TotalDuration}s linear infinite;");
-                    x.Add("<div>").Do(x => {
-                        x.SetAttributeValue("style", $"background-image:linear-gradient(to top, {GetGradient()}); background-size: 100% 1000000%; animation: animatedBackgroundPositionVertical {TotalDuration}s linear infinite;");
-                    });
-                });
+                x.SetAttributeValue("style", $"background:linear-gradient(to right, {GetGradient()}); animation: animatedBackgroundPositionHorizontal {TotalDuration}s linear infinite;");
             });
         }
     }
@@ -57,7 +51,7 @@ namespace Csml {
                 if (currentPosition > 0) stringBuilder.Append(',');
                 stringBuilder.Append($"{e.color} {100 * currentPosition / totalDuration}%,");
                 currentPosition += e.duration;
-                stringBuilder.Append($"{e.color} {100 * (currentPosition) / totalDuration -1/*1% smoothing*/ }%");                
+                stringBuilder.Append($"{e.color} {100 * (currentPosition) / totalDuration }%");                
             }
             return stringBuilder.ToString();
         }
