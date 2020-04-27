@@ -16,6 +16,86 @@ code {
     padding: 2px 5px;
 }
 
+.code{
+    .xmlDocComment, .htmlComment, .comment{color:#008000;}
+
+    .keyword{
+        color: #0000ff
+    }
+    .preprocessorKeyword{
+        color: darkgray;
+    }
+    .string,
+    .htmlElementName,
+    .stringCSharpVerbatim
+    {color: #a31515;}
+
+    .namespace{color:#000080;}
+
+    .method{color: #74531f;}
+
+    .type{color:#008080;}
+    .className{color:#48D1CC;}
+
+
+    .number{color: rgb(139, 97, 34);}
+    
+    .operator{}
+    .delimiter{}
+    .specialChar{}
+
+    .htmlServerSideScript{color:#FFFF00;}
+    
+
+    .htmlTagDelimiter{color:#0000FF;}
+    .htmlElementName{color:#A31515;}
+    .htmlAttributeName{color:#FF0000;}
+    .htmlAttributeValue{color:#0000FF;}
+    .htmlOperator{color:#0000FF;}
+
+    .xmlDocTag{color:#808080;}
+
+    
+
+    .htmlEntity{color:#FF0000;}
+    .xmlAttribute{color:#FF0000;}
+    .xmlAttributeQuotes{color:#000000;}
+    .xmlAttributeValue{color:#0000FF;}
+    .xmlCDataSection{color:#808080;}
+    .xmlComment{color:#008000;}
+    .xmlDelimiter{color:#0000FF;}
+    .xmlName{color:#A31515;}
+    
+    .cssSelector{color:#A31515;}
+    .cssPropertyName{color:#FF0000;}
+    .cssPropertyValue{color:#0000FF;}
+    .sqlSystemFunction{color:#FF00FF;}
+    .powershellAttribute{color:#B0E0E6;}
+    .powershellOperator{color:#808080;}
+    .powershellType{color:#008080;}
+    .powershellVariable{color:#FF4500;}
+    
+    .typeVariable{color:#008080;font-style: italic;}
+    
+    .constructor{color:#800080;}
+    .predefined{color:#000080;}
+    .pseudoKeyword{color:#000080;}
+    .stringEscape{color:#808080;}
+    .controlKeyword{color:#0000FF;}
+    
+    .markdownHeader{color:#0000FF;font-weight: bold;}
+    .markdownCode{color:#008080;}
+    .markdownListItem{font-weight: bold;}
+    .italic{font-style: italic;}
+    .bold{font-weight: bold;}
+    .builtinFunction{color:#6B8E23;font-weight: bold;}
+    .builtinValue{color:#556B2F;font-weight: bold;}
+    .attribute{color:#008B8B;font-style: italic;}
+    
+
+
+}
+
 .code > pre {
     @include code;
     padding: 8px;

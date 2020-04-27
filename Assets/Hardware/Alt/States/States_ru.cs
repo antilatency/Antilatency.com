@@ -33,7 +33,7 @@ partial class Hardware : Scope {
         ]
 
          [new Section("Пример ошибки")
-            [@$"Ошибка #1 в подсистеме #1"]
+            [$"Ошибка #1 в подсистеме #1"]
             [new ColorSequence()
                 [Color.FromArgb(0x00, 0xff, 0x00), 0.3f]
                 ["black", 0.3f]

@@ -19,13 +19,6 @@ namespace Csml {
             ScopeUtils.EnableGetOnce();
             GitHub.RepositoryBranch.IgnorePinning = true;
 
-            using (new Stopwatch("DocumentationGenerator")) {
-                DocumentationGenerator documentationGenerator = new DocumentationGenerator(
-                    typeof(Antilatency.DeviceNetwork.ILibrary),
-                    typeof(Antilatency.Alt.Tracking.ILibrary)
-                    );
-                documentationGenerator.Generate();
-            }
 
             var context = new Context {
                 SourceRootDirectory = Path.GetDirectoryName(Utils.ThisFilePath()),
