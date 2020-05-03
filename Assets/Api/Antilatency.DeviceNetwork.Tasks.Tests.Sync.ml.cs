@@ -6,9 +6,9 @@ public sealed partial class Api : Scope {
 			public sealed partial class Tasks : Scope {
 				public sealed partial class Tests : Scope {
 					public sealed partial class Sync : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"Sync");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.Sync");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.FullNameRef}`")[new Section("Types")
+						public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Sync");
+						public static IElement FullNameRef => new Deferred(()=>Material);
+						public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.FullNameRef}`")[new Section("Types")
 							[new UnorderedList()
 								[$"*constant group* `{Constants.NameRef}`"]
 								[$"*interface* `{IHostToDevice.NameRef}`"]
@@ -16,45 +16,53 @@ public sealed partial class Api : Scope {
 							]
 						];
 						public sealed partial class Constants : Scope {
-							public static IElement NameRef => new ContentReplace(FullNameRef, $"Constants");
-							public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.Sync.Constants");
-							private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.Constants",null,$"Constants in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.FullNameRef}`");
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Constants");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.Constants",null,$"Constants in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.FullNameRef}`");
 						} //scope Constants
 						
 						public sealed partial class IHostToDevice : Scope {
-							public static IElement NameRef => new ContentReplace(FullNameRef, $"IHostToDevice");
-							public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.Sync.IHostToDevice");
-							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type("Antilatency.InterfaceContract.IInterface")} {{\n    {ack.RawDeclarationCode}\n}}");
-							private static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-							private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IHostToDevice",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.FullNameRef}`")[CodeBlock];
-							public sealed partial class ack : Scope {
-								public static IElement NameRef => new ContentReplace(FullNameRef, $"ack");
-								public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.Sync.IHostToDevice.ack");
-								public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}()");
-								private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IHostToDevice\u200B.ack",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.IHostToDevice.FullNameRef)}`\n`{Type("void")} {NameRef}()`")
-									[new Section("Parameters")]
-									;
-								public sealed partial class Parameters : Scope {
-								} //scope Parameters
-							} //scope ack
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IHostToDevice");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.ack.RawDeclarationCode};\n}}");
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IHostToDevice",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.FullNameRef}`")[CodeBlock];
+							public sealed partial class Methods : Scope {
+								public sealed partial class ack : Scope {
+									public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"ack");
+									public static IElement FullNameRef => new Deferred(()=>Material);
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}()");
+									public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IHostToDevice\u200B.ack",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.IHostToDevice.NameRef)}`\n`{RawDeclarationCode}`")
+										[new Section("Parameters")]
+										;
+									public sealed partial class Parameters : Scope {
+									} //scope Parameters
+								} //scope ack
+							} //scope Methods
 						} //scope IHostToDevice
 						
 						public sealed partial class IDeviceToHost : Scope {
-							public static IElement NameRef => new ContentReplace(FullNameRef, $"IDeviceToHost");
-							public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.Sync.IDeviceToHost");
-							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type("Antilatency.InterfaceContract.IInterface")} {{\n    {ack.RawDeclarationCode}\n}}");
-							private static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-							private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IDeviceToHost",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.FullNameRef}`")[CodeBlock];
-							public sealed partial class ack : Scope {
-								public static IElement NameRef => new ContentReplace(FullNameRef, $"ack");
-								public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.Sync.IDeviceToHost.ack");
-								public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}()");
-								private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IDeviceToHost\u200B.ack",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.IDeviceToHost.FullNameRef)}`\n`{Type("void")} {NameRef}()`")
-									[new Section("Parameters")]
-									;
-								public sealed partial class Parameters : Scope {
-								} //scope Parameters
-							} //scope ack
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IDeviceToHost");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.ack.RawDeclarationCode};\n}}");
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IDeviceToHost",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.FullNameRef}`")[CodeBlock];
+							public sealed partial class Methods : Scope {
+								public sealed partial class ack : Scope {
+									public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"ack");
+									public static IElement FullNameRef => new Deferred(()=>Material);
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}()");
+									public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.Sync\u200B.IDeviceToHost\u200B.ack",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Tasks.Tests.Sync.IDeviceToHost.NameRef)}`\n`{RawDeclarationCode}`")
+										[new Section("Parameters")]
+										;
+									public sealed partial class Parameters : Scope {
+									} //scope Parameters
+								} //scope ack
+							} //scope Methods
 						} //scope IDeviceToHost
 						
 						

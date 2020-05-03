@@ -6,7 +6,7 @@ using System.Linq;
 
 
 partial class Hardware: Scope {
-    public static MultiLanguageGroup ExtensionBoard => new MultiLanguageGroup("Antilatency extension board");
+    public static LanguageSelector<IMaterial> ExtensionBoard => new LanguageSelector<IMaterial>();
     public partial class ExtensionBoard_Assets : Scope {
         public static Image ExtensionBoard => new Image("Images/ExtensionBoard.png");
 

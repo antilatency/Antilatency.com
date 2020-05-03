@@ -11,12 +11,6 @@ partial class Terms: Scope {
     static Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
     static Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
 
-    //List<Image> AllImages => Directory.GetFiles(ThisDirectory(), "*.jpg").Select(x => new Image(x)).ToList();
-    static List<Image> AltAndUsbSocketAll => ThisType.GetPropertiesAll()
-        .Where(x => x.PropertyType == typeof(Image))
-        .Where(x => x.Name.StartsWith("AltAndUsbSocket"))
-        .Select(x => x.GetValue(null) as Image).ToList();
-
 
     public static Material Alt_ru => new Material(null, AltAndUsbSocket0,
         $"На этой странице странице пока побудут некоторые примеры использования движка.")
@@ -27,12 +21,7 @@ partial class Terms: Scope {
             [$"Можно вставлять {Alt} в текст"]
             [$"Если навести на ссылку, то в подсказке будет описание страницы. Это полезно для терминов."]
         ]
-        [new Section("Картинки")
-            [$"Это AltAndUsbSocket0"]
-            [AltAndUsbSocket0]
-            [$"Это все картинки, имя переменной которых начинается с AltAndUsbSocket"]
-            [AltAndUsbSocketAll]
-        ]
+
         [new Section("Code")
             [$"Файл с Github целиком."]
             [AntilatencyGitHub.AntilatencyCom_Master.Program]

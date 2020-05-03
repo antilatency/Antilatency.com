@@ -2,7 +2,7 @@
 
 partial class Terms : Scope {
     static Material Antilatency_Hardware_Extension_Interface_ru => new Material(null, null,
-    $"Реализаци доступа к GPIO сокета через UsbTypeC разъём с помощью {Hardware.ExtensionBoard} и {Software.AntilatencyHardwareExtensionInterface}")
+    $"Реализаци доступа к GPIO сокета через UsbTypeC разъём с помощью {Hardware.ExtensionBoard} и {Software.Antilatency_Hardware_Extension_Interface_Library}")
         [new Section("Поддерживаемые сокеты")
             [new UnorderedList()
                 [$"*{Hardware.SocketUsbRadio}*(hardware version 2.0.0) - режим UsbRadioSocket и RadioSocket."]]]

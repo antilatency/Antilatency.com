@@ -5,24 +5,44 @@ public sealed partial class Api : Scope {
 		public sealed partial class DeviceNetwork : Scope {
 			public sealed partial class Interop : Scope {
 				public sealed partial class BigPacket : Scope {
-					public static IElement NameRef => new ContentReplace(FullNameRef, $"BigPacket");
-					public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Interop.BigPacket");
-					private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.BigPacket",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[new Section("Types")
+					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"BigPacket");
+					public static IElement FullNameRef => new Deferred(()=>Material);
+					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.BigPacket",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[new Section("Types")
 						[new UnorderedList()
 							[$"*struct* `{FullBlock.NameRef}`"]
 							[$"*struct* `{PartialBlock.NameRef}`"]
 						]
 					];
 					public sealed partial class FullBlock : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"FullBlock");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Interop.BigPacket.FullBlock");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.BigPacket\u200B.FullBlock",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Interop.BigPacket.FullNameRef}`");
+						public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"FullBlock");
+						public static IElement FullNameRef => new Deferred(()=>Material);
+						public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.BigPacket\u200B.FullBlock",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Interop.BigPacket.FullNameRef}`")[CodeBlock];
+						public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+						public static IElement RawDeclarationCode => new Text($"{Struct} {NameRef} {{\n    {Fields.payload.RawDeclarationCode};\n}}");
+						public sealed partial class Fields : Scope {
+							public sealed partial class payload : Scope {
+								public static IElement RawDeclarationCode => new Text($"Memory.{Type(Api.Antilatency.DeviceNetwork.Interop.Memory.Memory63.NameRef)} {Name}");
+								public static IElement Name => new Modify($"payload").SetAttributeValue("title", "field payload");
+							} //scope payload
+						} //scope Fields
 					} //scope FullBlock
 					
 					public sealed partial class PartialBlock : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"PartialBlock");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Interop.BigPacket.PartialBlock");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.BigPacket\u200B.PartialBlock",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Interop.BigPacket.FullNameRef}`");
+						public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"PartialBlock");
+						public static IElement FullNameRef => new Deferred(()=>Material);
+						public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.BigPacket\u200B.PartialBlock",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Interop.BigPacket.FullNameRef}`")[CodeBlock];
+						public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+						public static IElement RawDeclarationCode => new Text($"{Struct} {NameRef} {{\n    {Fields.payloadSize.RawDeclarationCode};\n    {Fields.payload.RawDeclarationCode};\n}}");
+						public sealed partial class Fields : Scope {
+							public sealed partial class payloadSize : Scope {
+								public static IElement RawDeclarationCode => new Text($"{Keyword("byte")} {Name}");
+								public static IElement Name => new Modify($"payloadSize").SetAttributeValue("title", "field payloadSize");
+							} //scope payloadSize
+							public sealed partial class payload : Scope {
+								public static IElement RawDeclarationCode => new Text($"Memory.{Type(Api.Antilatency.DeviceNetwork.Interop.Memory.Memory63.NameRef)} {Name}");
+								public static IElement Name => new Modify($"payload").SetAttributeValue("title", "field payload");
+							} //scope payload
+						} //scope Fields
 					} //scope PartialBlock
 					
 					

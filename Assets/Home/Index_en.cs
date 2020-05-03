@@ -4,10 +4,7 @@ using Csml;
 public partial class Root {
     
     
-    static Material Index_en => new Material("Antilatency", null, $"")
-        [Antilatency_Device_Network]
-        [Terms.Alt]
-        ;
+    static Material Index_en => new Material("Antilatency", null, $"");
 
-    public static MultiLanguageGroup Index => new MultiLanguageGroup();
+    public static LanguageSelector<IMaterial> Index => new LanguageSelector<IMaterial>();
 }

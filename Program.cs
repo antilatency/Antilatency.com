@@ -7,6 +7,9 @@ using System.Threading;
 using Csml;
 
 namespace Csml {
+
+
+
     static class Program {
         static void Main(string[] args) {
             #region CsmlEngineMain
@@ -17,6 +20,7 @@ namespace Csml {
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = customCulture;
 
             ScopeUtils.EnableGetOnce();
+
             GitHub.RepositoryBranch.IgnorePinning = true;
 
 
@@ -31,12 +35,16 @@ namespace Csml {
             }
 
 
-            Directory.GetFiles(context.SourceRootDirectory, "*.ttf", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));
-            Directory.GetFiles(context.SourceRootDirectory, "*.woff", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));
-            Directory.GetFiles(context.SourceRootDirectory, "*.woff2", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));
-            Directory.GetFiles(context.SourceRootDirectory, "*.svg", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));
+            context.AssetsToCopy = Directory.GetFiles(context.SourceRootDirectory, "*.ttf", SearchOption.AllDirectories)
+                .Concat(Directory.GetFiles(context.SourceRootDirectory, "*.woff", SearchOption.AllDirectories))
+                .Concat(Directory.GetFiles(context.SourceRootDirectory, "*.woff2", SearchOption.AllDirectories))
+                .Concat(Directory.GetFiles(context.SourceRootDirectory, "*.svg", SearchOption.AllDirectories))
+                .ToHashSet();
 
-            context.AutoReload = false;
+            /*.ForEach(x => context.AssetsToCopy.Add(x));
+            .ForEach(x => context.AssetsToCopy.Add(x));
+            Directory.GetFiles(context.SourceRootDirectory, "*.svg", SearchOption.AllDirectories).ForEach(x => context.AssetsToCopy.Add(x));*/
+
 
             if (args.Length == 1) {
                 
@@ -57,7 +65,7 @@ namespace Csml {
 
 
                 ScopeUtils.All.ForEach(x => {
-                    Log.Info.Here($"Generation Scope {x.GetType().Name}");
+                    //Log.Info.Here($"Generation Scope {x.GetType().Name}");
                     x.Generate(context);
                     
                     });

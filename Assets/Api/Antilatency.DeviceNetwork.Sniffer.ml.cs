@@ -4,108 +4,152 @@ public sealed partial class Api : Scope {
 	public sealed partial class Antilatency : Scope {
 		public sealed partial class DeviceNetwork : Scope {
 			public sealed partial class Sniffer : Scope {
-				public static IElement NameRef => new ContentReplace(FullNameRef, $"Sniffer");
-				public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer");
-				private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.FullNameRef}`")[new Section("Types")
+				public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Sniffer");
+				public static IElement FullNameRef => new Deferred(()=>Material);
+				public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.FullNameRef}`")[new Section("Types")
 					[new UnorderedList()
 						[$"*interface* `{ISniffer.NameRef}`"]
 						[$"*interface* `{ISnifferable.NameRef}`"]
 					]
 				];
 				public sealed partial class ISniffer : Scope {
-					public static IElement NameRef => new ContentReplace(FullNameRef, $"ISniffer");
-					public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer.ISniffer");
-					public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type("Antilatency.InterfaceContract.IInterface")} {{\n    {onDeviceConnected.RawDeclarationCode}\n    {onDeviceDisconnected.RawDeclarationCode}\n    {onDataRx.RawDeclarationCode}\n    {onDataTx.RawDeclarationCode}\n}}");
-					private static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Sniffer.FullNameRef}`")[CodeBlock];
-					public sealed partial class onDeviceConnected : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"onDeviceConnected");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer.ISniffer.onDeviceConnected");
-						public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}({Parameters.name.RawDeclarationCode}, {Parameters.id.RawDeclarationCode})");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDeviceConnected",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.FullNameRef)}`\n`{Type("void")} {NameRef}({Parameters.name.RawDeclarationCode}, {Parameters.id.RawDeclarationCode})`")
-							[new Section("Parameters")]
-							;
-						public sealed partial class Parameters : Scope {
-							public sealed partial class name : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("string")} {Name}");public static IElement Name => new Modify($"name").SetAttributeValue("title", "parameter name");
-							} //scope name
-							public sealed partial class id : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("uint")} {Name}");public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
-							} //scope id
-						} //scope Parameters
-					} //scope onDeviceConnected
-					public sealed partial class onDeviceDisconnected : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"onDeviceDisconnected");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer.ISniffer.onDeviceDisconnected");
-						public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}({Parameters.id.RawDeclarationCode})");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDeviceDisconnected",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.FullNameRef)}`\n`{Type("void")} {NameRef}({Parameters.id.RawDeclarationCode})`")
-							[new Section("Parameters")]
-							;
-						public sealed partial class Parameters : Scope {
-							public sealed partial class id : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("uint")} {Name}");public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
-							} //scope id
-						} //scope Parameters
-					} //scope onDeviceDisconnected
-					public sealed partial class onDataRx : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"onDataRx");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer.ISniffer.onDataRx");
-						public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}({Parameters.id.RawDeclarationCode}, {Parameters.data.RawDeclarationCode}, {Parameters.size.RawDeclarationCode})");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDataRx",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.FullNameRef)}`\n`{Type("void")} {NameRef}({Parameters.id.RawDeclarationCode}, {Parameters.data.RawDeclarationCode}, {Parameters.size.RawDeclarationCode})`")
-							[new Section("Parameters")]
-							;
-						public sealed partial class Parameters : Scope {
-							public sealed partial class id : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("uint")} {Name}");public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
-							} //scope id
-							public sealed partial class data : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("constPointer")} {Name}");public static IElement Name => new Modify($"data").SetAttributeValue("title", "parameter data");
-							} //scope data
-							public sealed partial class size : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("uint")} {Name}");public static IElement Name => new Modify($"size").SetAttributeValue("title", "parameter size");
-							} //scope size
-						} //scope Parameters
-					} //scope onDataRx
-					public sealed partial class onDataTx : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"onDataTx");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer.ISniffer.onDataTx");
-						public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}({Parameters.id.RawDeclarationCode}, {Parameters.data.RawDeclarationCode}, {Parameters.size.RawDeclarationCode})");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDataTx",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.FullNameRef)}`\n`{Type("void")} {NameRef}({Parameters.id.RawDeclarationCode}, {Parameters.data.RawDeclarationCode}, {Parameters.size.RawDeclarationCode})`")
-							[new Section("Parameters")]
-							;
-						public sealed partial class Parameters : Scope {
-							public sealed partial class id : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("uint")} {Name}");public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
-							} //scope id
-							public sealed partial class data : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("constPointer")} {Name}");public static IElement Name => new Modify($"data").SetAttributeValue("title", "parameter data");
-							} //scope data
-							public sealed partial class size : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type("uint")} {Name}");public static IElement Name => new Modify($"size").SetAttributeValue("title", "parameter size");
-							} //scope size
-						} //scope Parameters
-					} //scope onDataTx
+					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"ISniffer");
+					public static IElement FullNameRef => new Deferred(()=>Material);
+					public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.onDeviceConnected.RawDeclarationCode};\n    {Methods.onDeviceDisconnected.RawDeclarationCode};\n    {Methods.onDataRx.RawDeclarationCode};\n    {Methods.onDataTx.RawDeclarationCode};\n}}");
+					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Sniffer.FullNameRef}`")[CodeBlock];
+					public sealed partial class Methods : Scope {
+						public sealed partial class onDeviceConnected : Scope {
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"onDeviceConnected");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static IElement CodeInline => CodeInline(RawDeclarationCode);
+							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.name.RawDeclarationCode}, {Parameters.id.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDeviceConnected",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.NameRef)}`\n`{RawDeclarationCode}`")
+								[new Section("Parameters")]
+								;
+							public sealed partial class Parameters : Scope {
+								public sealed partial class name : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {Name}");
+									public static IElement Name => new Modify($"name").SetAttributeValue("title", "parameter name");
+								} //scope name
+								public sealed partial class id : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
+									public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+								} //scope id
+							} //scope Parameters
+						} //scope onDeviceConnected
+						public sealed partial class onDeviceDisconnected : Scope {
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"onDeviceDisconnected");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static IElement CodeInline => CodeInline(RawDeclarationCode);
+							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.id.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDeviceDisconnected",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.NameRef)}`\n`{RawDeclarationCode}`")
+								[new Section("Parameters")]
+								;
+							public sealed partial class Parameters : Scope {
+								public sealed partial class id : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
+									public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+								} //scope id
+							} //scope Parameters
+						} //scope onDeviceDisconnected
+						public sealed partial class onDataRx : Scope {
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"onDataRx");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static IElement CodeInline => CodeInline(RawDeclarationCode);
+							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.id.RawDeclarationCode}, {Parameters.data.RawDeclarationCode}, {Parameters.size.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDataRx",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.NameRef)}`\n`{RawDeclarationCode}`")
+								[new Section("Parameters")]
+								;
+							public sealed partial class Parameters : Scope {
+								public sealed partial class id : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
+									public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+								} //scope id
+								public sealed partial class data : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("constPointer")} {Name}");
+									public static IElement Name => new Modify($"data").SetAttributeValue("title", "parameter data");
+								} //scope data
+								public sealed partial class size : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
+									public static IElement Name => new Modify($"size").SetAttributeValue("title", "parameter size");
+								} //scope size
+							} //scope Parameters
+						} //scope onDataRx
+						public sealed partial class onDataTx : Scope {
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"onDataTx");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static IElement CodeInline => CodeInline(RawDeclarationCode);
+							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.id.RawDeclarationCode}, {Parameters.data.RawDeclarationCode}, {Parameters.size.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISniffer\u200B.onDataTx",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.NameRef)}`\n`{RawDeclarationCode}`")
+								[new Section("Parameters")]
+								;
+							public sealed partial class Parameters : Scope {
+								public sealed partial class id : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
+									public static IElement Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+								} //scope id
+								public sealed partial class data : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("constPointer")} {Name}");
+									public static IElement Name => new Modify($"data").SetAttributeValue("title", "parameter data");
+								} //scope data
+								public sealed partial class size : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
+									public static IElement Name => new Modify($"size").SetAttributeValue("title", "parameter size");
+								} //scope size
+							} //scope Parameters
+						} //scope onDataTx
+					} //scope Methods
 				} //scope ISniffer
 				
 				public sealed partial class ISnifferable : Scope {
-					public static IElement NameRef => new ContentReplace(FullNameRef, $"ISnifferable");
-					public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer.ISnifferable");
-					public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type("Antilatency.InterfaceContract.IInterface")} {{\n    {setSniffer.RawDeclarationCode}\n}}");
-					private static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISnifferable",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Sniffer.FullNameRef}`")[CodeBlock];
-					public sealed partial class setSniffer : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"setSniffer");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Sniffer.ISnifferable.setSniffer");
-						public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}({Parameters.sniffer.RawDeclarationCode})");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISnifferable\u200B.setSniffer",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISnifferable.FullNameRef)}`\n`{Type("void")} {NameRef}({Parameters.sniffer.RawDeclarationCode})`")
-							[new Section("Parameters")]
-							;
-						public sealed partial class Parameters : Scope {
-							public sealed partial class sniffer : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.FullNameRef)} {Name}");public static IElement Name => new Modify($"sniffer").SetAttributeValue("title", "parameter sniffer");
-							} //scope sniffer
-						} //scope Parameters
-					} //scope setSniffer
+					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"ISnifferable");
+					public static IElement FullNameRef => new Deferred(()=>Material);
+					public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.setSniffer.RawDeclarationCode};\n}}");
+					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISnifferable",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Sniffer.FullNameRef}`")[CodeBlock];
+					public sealed partial class Methods : Scope {
+						public sealed partial class setSniffer : Scope {
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"setSniffer");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static IElement CodeInline => CodeInline(RawDeclarationCode);
+							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.sniffer.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Sniffer\u200B.ISnifferable\u200B.setSniffer",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISnifferable.NameRef)}`\n`{RawDeclarationCode}`")
+								[new Section("Parameters")]
+								;
+							public sealed partial class Parameters : Scope {
+								public sealed partial class sniffer : Scope {
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Sniffer.ISniffer.NameRef)} {Name}");
+									public static IElement Name => new Modify($"sniffer").SetAttributeValue("title", "parameter sniffer");
+								} //scope sniffer
+							} //scope Parameters
+						} //scope setSniffer
+					} //scope Methods
 				} //scope ISnifferable
 				
 				

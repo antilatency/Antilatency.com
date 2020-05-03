@@ -1,10 +1,10 @@
 using Csml;
 using System;
-using static Tutorials.OpenVRPlugin_Assets;
+using static Tutorials.OpenVR_Plugin_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material OpenVRPlugin_ru => new Material("OpenVR Plugin", null, $"")
+    public static Material OpenVR_Plugin_ru => new Material(null, null, $"")
         [new Section("Структура плагина")
             [DirectoryStructure]
         ]

@@ -6,9 +6,9 @@ public sealed partial class Api : Scope {
 			public sealed partial class Tasks : Scope {
 				public sealed partial class Tests : Scope {
 					public sealed partial class SoftReset : Scope {
-						public static IElement NameRef => new ContentReplace(FullNameRef, $"SoftReset");
-						public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.SoftReset");
-						private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.FullNameRef}`")[new Section("Types")
+						public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"SoftReset");
+						public static IElement FullNameRef => new Deferred(()=>Material);
+						public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.FullNameRef}`")[new Section("Types")
 							[new UnorderedList()
 								[$"*constant group* `{Constants.NameRef}`"]
 								[$"*interface* `{IHostToDevice.NameRef}`"]
@@ -16,38 +16,47 @@ public sealed partial class Api : Scope {
 							]
 						];
 						public sealed partial class Constants : Scope {
-							public static IElement NameRef => new ContentReplace(FullNameRef, $"Constants");
-							public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.Constants");
-							private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.Constants",null,$"Constants in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.FullNameRef}`");
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Constants");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.Constants",null,$"Constants in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.FullNameRef}`");
 						} //scope Constants
 						
 						public sealed partial class IHostToDevice : Scope {
-							public static IElement NameRef => new ContentReplace(FullNameRef, $"IHostToDevice");
-							public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.IHostToDevice");
-							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type("Antilatency.InterfaceContract.IInterface")} {{\n    {timeout.RawDeclarationCode}\n}}");
-							private static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-							private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.IHostToDevice",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.FullNameRef}`")[CodeBlock];
-							public sealed partial class timeout : Scope {
-								public static IElement NameRef => new ContentReplace(FullNameRef, $"timeout");
-								public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.IHostToDevice.timeout");
-								public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}({Parameters.delay.RawDeclarationCode})");
-								private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.IHostToDevice\u200B.timeout",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.IHostToDevice.FullNameRef)}`\n`{Type("void")} {NameRef}({Parameters.delay.RawDeclarationCode})`")
-									[new Section("Parameters")]
-									;
-								public sealed partial class Parameters : Scope {
-									public sealed partial class delay : Scope {
-										public static IElement RawDeclarationCode => new Text($"{Type("uint")} {Name}");public static IElement Name => new Modify($"delay").SetAttributeValue("title", "parameter delay");
-									} //scope delay
-								} //scope Parameters
-							} //scope timeout
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IHostToDevice");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.timeout.RawDeclarationCode};\n}}");
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.IHostToDevice",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.FullNameRef}`")[CodeBlock];
+							public sealed partial class Methods : Scope {
+								public sealed partial class timeout : Scope {
+									public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"timeout");
+									public static IElement FullNameRef => new Deferred(()=>Material);
+									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+									public static IElement CodeInline => CodeInline(RawDeclarationCode);
+									public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.delay.RawDeclarationCode})");
+									public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.IHostToDevice\u200B.timeout",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.IHostToDevice.NameRef)}`\n`{RawDeclarationCode}`")
+										[new Section("Parameters")]
+										;
+									public sealed partial class Parameters : Scope {
+										public sealed partial class delay : Scope {
+											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+											public static IElement CodeInline => CodeInline(RawDeclarationCode);
+											public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
+											public static IElement Name => new Modify($"delay").SetAttributeValue("title", "parameter delay");
+										} //scope delay
+									} //scope Parameters
+								} //scope timeout
+							} //scope Methods
 						} //scope IHostToDevice
 						
 						public sealed partial class IDeviceToHost : Scope {
-							public static IElement NameRef => new ContentReplace(FullNameRef, $"IDeviceToHost");
-							public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.IDeviceToHost");
-							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type("Antilatency.InterfaceContract.IInterface")} {{\n}}");
-							private static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-							private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.IDeviceToHost",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.FullNameRef}`")[CodeBlock];
+							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IDeviceToHost");
+							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n}}");
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests\u200B.SoftReset\u200B.IDeviceToHost",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Tasks.Tests.SoftReset.FullNameRef}`")[CodeBlock];
+							public sealed partial class Methods : Scope {
+							} //scope Methods
 						} //scope IDeviceToHost
 						
 						

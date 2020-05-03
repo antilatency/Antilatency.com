@@ -2,35 +2,45 @@
 using Csml;
 public sealed partial class Api : Scope {
 	public sealed partial class AndroidJniWrapper : Scope {
-		public static IElement NameRef => new ContentReplace(FullNameRef, $"AndroidJniWrapper");
-		public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("AndroidJniWrapper");
-		private static Material FullNameRef_en => new Material("AndroidJniWrapper",null,$"Root namespace")[new Section("Types")
+		public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"AndroidJniWrapper");
+		public static IElement FullNameRef => new Deferred(()=>Material);
+		public static Material Material => new Material("AndroidJniWrapper",null,$"Root namespace")[new Section("Types")
 			[new UnorderedList()
 				[$"*interface* `{IAndroidJni.NameRef}`"]
 			]
 		];
 		public sealed partial class IAndroidJni : Scope {
-			public static IElement NameRef => new ContentReplace(FullNameRef, $"IAndroidJni");
-			public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("AndroidJniWrapper.IAndroidJni");
-			public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type("Antilatency.InterfaceContract.IInterface")} {{\n    {initJni.RawDeclarationCode}\n}}");
-			private static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-			private static Material FullNameRef_en => new Material("AndroidJniWrapper\u200B.IAndroidJni",null,$"Interface in `{Api.AndroidJniWrapper.FullNameRef}`")[CodeBlock];
-			public sealed partial class initJni : Scope {
-				public static IElement NameRef => new ContentReplace(FullNameRef, $"initJni");
-				public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("AndroidJniWrapper.IAndroidJni.initJni");
-				public static IElement RawDeclarationCode => new Text($"{Type("void")} {NameRef}({Parameters.vm.RawDeclarationCode}, {Parameters.context.RawDeclarationCode})");
-				private static Material FullNameRef_en => new Material("AndroidJniWrapper\u200B.IAndroidJni\u200B.initJni",null,$"Method of `{Type(Api.AndroidJniWrapper.IAndroidJni.FullNameRef)}`\n`{Type("void")} {NameRef}({Parameters.vm.RawDeclarationCode}, {Parameters.context.RawDeclarationCode})`")
-					[new Section("Parameters")]
-					;
-				public sealed partial class Parameters : Scope {
-					public sealed partial class vm : Scope {
-						public static IElement RawDeclarationCode => new Text($"{Type("pointer")} {Name}");public static IElement Name => new Modify($"vm").SetAttributeValue("title", "parameter vm");
-					} //scope vm
-					public sealed partial class context : Scope {
-						public static IElement RawDeclarationCode => new Text($"{Type("pointer")} {Name}");public static IElement Name => new Modify($"context").SetAttributeValue("title", "parameter context");
-					} //scope context
-				} //scope Parameters
-			} //scope initJni
+			public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IAndroidJni");
+			public static IElement FullNameRef => new Deferred(()=>Material);
+			public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : ntilatency.InterfaceContract.{Type("IInterface")} {{\n    {Methods.initJni.RawDeclarationCode};\n}}");
+			public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+			public static Material Material => new Material("AndroidJniWrapper\u200B.IAndroidJni",null,$"Interface in `{Api.AndroidJniWrapper.FullNameRef}`")[CodeBlock];
+			public sealed partial class Methods : Scope {
+				public sealed partial class initJni : Scope {
+					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"initJni");
+					public static IElement FullNameRef => new Deferred(()=>Material);
+					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+					public static IElement CodeInline => CodeInline(RawDeclarationCode);
+					public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.vm.RawDeclarationCode}, {Parameters.context.RawDeclarationCode})");
+					public static Material Material => new Material("AndroidJniWrapper\u200B.IAndroidJni\u200B.initJni",null,$"Method of `{Type(Api.AndroidJniWrapper.IAndroidJni.NameRef)}`\n`{RawDeclarationCode}`")
+						[new Section("Parameters")]
+						;
+					public sealed partial class Parameters : Scope {
+						public sealed partial class vm : Scope {
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static IElement CodeInline => CodeInline(RawDeclarationCode);
+							public static IElement RawDeclarationCode => new Text($"{Keyword("pointer")} {Name}");
+							public static IElement Name => new Modify($"vm").SetAttributeValue("title", "parameter vm");
+						} //scope vm
+						public sealed partial class context : Scope {
+							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+							public static IElement CodeInline => CodeInline(RawDeclarationCode);
+							public static IElement RawDeclarationCode => new Text($"{Keyword("pointer")} {Name}");
+							public static IElement Name => new Modify($"context").SetAttributeValue("title", "parameter context");
+						} //scope context
+					} //scope Parameters
+				} //scope initJni
+			} //scope Methods
 		} //scope IAndroidJni
 		
 		

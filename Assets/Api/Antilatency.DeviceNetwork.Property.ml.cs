@@ -4,24 +4,44 @@ public sealed partial class Api : Scope {
 	public sealed partial class Antilatency : Scope {
 		public sealed partial class DeviceNetwork : Scope {
 			public sealed partial class Property : Scope {
-				public static IElement NameRef => new ContentReplace(FullNameRef, $"Property");
-				public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Property");
-				private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Property",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.FullNameRef}`")[new Section("Types")
+				public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Property");
+				public static IElement FullNameRef => new Deferred(()=>Material);
+				public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Property",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.FullNameRef}`")[new Section("Types")
 					[new UnorderedList()
 						[$"*enum* `{AccessLevel.NameRef}`"]
 						[$"*struct* `{KeyString.NameRef}`"]
 					]
 				];
 				public sealed partial class AccessLevel : Scope {
-					public static IElement NameRef => new ContentReplace(FullNameRef, $"AccessLevel");
-					public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Property.AccessLevel");
-					private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Property\u200B.AccessLevel",null,$"Enum in `{Api.Antilatency.DeviceNetwork.Property.FullNameRef}`");
+					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"AccessLevel");
+					public static IElement FullNameRef => new Deferred(()=>Material);
+					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Property\u200B.AccessLevel",null,$"Enum in `{Api.Antilatency.DeviceNetwork.Property.FullNameRef}`")[CodeBlock];
+					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+					public static IElement RawDeclarationCode => new Text($"{Enum} {NameRef} {{\n    {Fields.System.RawDeclarationCode},\n    {Fields.User.RawDeclarationCode}\n}}");
+					public sealed partial class Fields : Scope {
+						public sealed partial class System : Scope {
+							public static IElement RawDeclarationCode => new Text($"{Name}");
+							public static IElement Name => new Modify($"System").SetAttributeValue("title", "enum element System");
+						} //scope System
+						public sealed partial class User : Scope {
+							public static IElement RawDeclarationCode => new Text($"{Name}");
+							public static IElement Name => new Modify($"User").SetAttributeValue("title", "enum element User");
+						} //scope User
+					} //scope Fields
 				} //scope AccessLevel
 				
 				public sealed partial class KeyString : Scope {
-					public static IElement NameRef => new ContentReplace(FullNameRef, $"KeyString");
-					public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency.DeviceNetwork.Property.KeyString");
-					private static Material FullNameRef_en => new Material("Antilatency\u200B.DeviceNetwork\u200B.Property\u200B.KeyString",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Property.FullNameRef}`");
+					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"KeyString");
+					public static IElement FullNameRef => new Deferred(()=>Material);
+					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Property\u200B.KeyString",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Property.FullNameRef}`")[CodeBlock];
+					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+					public static IElement RawDeclarationCode => new Text($"{Struct} {NameRef} {{\n    {Fields.mem.RawDeclarationCode};\n}}");
+					public sealed partial class Fields : Scope {
+						public sealed partial class mem : Scope {
+							public static IElement RawDeclarationCode => new Text($"Interop.Memory.{Type(Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32.NameRef)} {Name}");
+							public static IElement Name => new Modify($"mem").SetAttributeValue("title", "field mem");
+						} //scope mem
+					} //scope Fields
 				} //scope KeyString
 				
 				

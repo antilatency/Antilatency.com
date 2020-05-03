@@ -3,12 +3,13 @@
 nav.language-menu {
     @extend .base-menu;
     position: fixed;
-    right: 4px;
-    top: 4px;
+    right: 0px;
+    top: 0px;
     z-index: 10;
     background-color: #eee;
     opacity: 0.93;
     color: #222;
+
 }
 
 /*nav.language-menu > *{

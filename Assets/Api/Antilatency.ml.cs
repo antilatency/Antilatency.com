@@ -2,9 +2,9 @@
 using Csml;
 public sealed partial class Api : Scope {
 	public sealed partial class Antilatency : Scope {
-		public static IElement NameRef => new ContentReplace(FullNameRef, $"Antilatency");
-		public static MultiLanguageGroup FullNameRef => new MultiLanguageGroup("Antilatency");
-		private static Material FullNameRef_en => new Material("Antilatency",null,$"Root namespace")[new Section("Types")
+		public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Antilatency");
+		public static IElement FullNameRef => new Deferred(()=>Material);
+		public static Material Material => new Material("Antilatency",null,$"Root namespace")[new Section("Types")
 			[new UnorderedList()
 			]
 		];

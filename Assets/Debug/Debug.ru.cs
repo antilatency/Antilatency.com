@@ -6,7 +6,13 @@ public partial class Internal : Scope {
 
     public static Material Debug_ru => new Material(null, AltAndUsbSocket0,
         $"На этой странице странице некоторые примеры использования движка.")
-
+        
+        
+        [new Section("Grid")
+            [new Grid(120,1,2,3,4)
+                
+            ]
+        ]
         
         [new Section("Ссылки")
             [$"Можно вставлять {Terms.Alt} в текст"]
@@ -157,10 +163,10 @@ public partial class Internal : Scope {
         [new Section("Api")
             [$"Указать ссылку на метод можно несколькими способами"]
             [new UnorderedList()
-                [new Modify(Api.Antilatency.DeviceNetwork.ILibrary.createNetwork.FullNameRef).ContentReplace($"link").Tag("span")]
-                [$"Полное имя {Api.Antilatency.DeviceNetwork.ILibrary.createNetwork.FullNameRef}"]
-                [$"Имя {Api.Antilatency.DeviceNetwork.ILibrary.createNetwork.NameRef}"]
-                [$"При указании в тексте следует оборачивать в code `{Api.Antilatency.DeviceNetwork.ILibrary.createNetwork.NameRef}`"]
+                [new Modify(Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.FullNameRef).ContentReplace($"link").Tag("span")]
+                [$"Полное имя {Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.FullNameRef}"]
+                [$"Имя {Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.NameRef}"]
+                [$"При указании в тексте следует оборачивать в code `{Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.NameRef}`"]
             ]
         ]
         ;

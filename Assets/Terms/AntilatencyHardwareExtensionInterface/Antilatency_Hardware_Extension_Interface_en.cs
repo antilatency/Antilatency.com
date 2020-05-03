@@ -2,7 +2,7 @@
 
 partial class Terms : Scope {
     static Material Antilatency_Hardware_Extension_Interface_en => new Material(null, null,
-    $"Accessing the GPIO of a socket through a USB type C connector with {Hardware.ExtensionBoard} and {Software.AntilatencyHardwareExtensionInterface}")
+    $"Accessing the GPIO of a socket through a USB type C connector with {Hardware.ExtensionBoard} and {Software.Antilatency_Hardware_Extension_Interface_Library}")
         [new Section("Currently supported")
             [new UnorderedList()
                 [$"*{Hardware.SocketUsbRadio}*(hardware version 2.0.0) - UsbRadioSocket and RadioSocket modes."]]]

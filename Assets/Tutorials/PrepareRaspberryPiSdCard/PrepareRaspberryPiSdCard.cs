@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 public partial class Tutorials : Scope {
-    public static MultiLanguageGroup PrepareRaspberryPiSdCard => new MultiLanguageGroup("Prepare SD card image for Raspberry Pi");
+    public static LanguageSelector<IMaterial> PrepareRaspberryPiSdCard => new LanguageSelector<IMaterial>();
 
     public partial class PrepareRaspberryPiSdCard_Assets : Scope {       
         public static Code WpaSupplicantConf => new Code(

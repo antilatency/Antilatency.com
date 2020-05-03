@@ -2,8 +2,8 @@
 
 
 partial class Tutorials : Scope {
-    public static MultiLanguageGroup OpenVRPlugin => new MultiLanguageGroup("OpenVR Plugin");
-    public partial class OpenVRPlugin_Assets : Scope {
+    public static LanguageSelector<IMaterial> OpenVR_Plugin => new LanguageSelector<IMaterial>();
+    public partial class OpenVR_Plugin_Assets : Scope {
         public static Code DirectoryStructure => new Code(@"antilatency/
 ├── bin /
 │   └── ...
