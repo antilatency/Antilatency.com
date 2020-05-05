@@ -1,106 +1,22 @@
 @import "common.scss";
-
+body{
+    margin-top: 50px;
+}
 .material {
-    max-width: $max-width;
-    min-width: $min-width;
     margin: 0 auto 0 auto;
     padding: 0;
+    //padding-right: calc(0.5 * (100% - #{$max-width});
     margin-bottom: 50px; //for footer
+    
     ul, ol {
         margin-left: 20px;
         list-style-position: outside;
-
         ul, ol {
-            margin-top: $vertical-space;
+            margin-top: $verticalGap;
         }
     }
-
-    .text {
-        font-weight: 400;
-        font-size: 1rem;
-        color: #777;
-        line-height: 1.6;
-        letter-spacing: 0.01em;
-        //text-align: justify;
-    }
-
-    *:not(:last-child)[style*="display:block"] {
-        margin-bottom: $vertical-space;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: $vertical-space;
-
-        > tbody {
-
-            th {
-                border: 1px solid white;
-                background-color: #eee;
-                padding: 4px 10px 4px 10px;
-                color: #666;
-                font-weight: 500;
-            }
-
-            td {
-                border: 1px solid #ddd;
-                border-width: 1px;
-                padding: 4px 10px 4px 10px;
-            }
-
-            td:empty {
-                border: 1px solid transparent;
-            }
-
-            width: 100%;
-        }
-    }
-
-    .header div.image {
-        display: block;
-        width: 100%;
-        height: 50vh;
-        margin-bottom: 2vh;
-    }
-
-    .section div.image {
-        display: block;
-        width: 100%;
-        height: 30vh;
-        margin-bottom: 1vh;
-    }
-
-    img.image {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        height: auto;
-        width: 100%;
-    }
-
 
     
-    > .header, > .section {
-        > .text, > .title {
-            @media only screen and (max-width: 816px) {
-                padding-left: 8px;
-                padding-right: 8px;
-            }
-        }
-    }
-
-    >.header>.title{
-        text-align: center;
-        font-weight: 200;
-        font-size: 3.2rem;
-        color: #000;
-        margin-top: 2rem;			
-        margin-bottom: 1rem;
-        @include small-screen{
-            font-size: 6.4vmax;
-        }
-    }
 }
 
 
@@ -116,53 +32,11 @@
 
 
 
-.material .header {
-    margin-bottom: 4vh;
-    border-bottom: 1px solid #ddd;				
-}
 
 /*SECTION*/
 
-.section>.title{
-    font-weight: 300;
-    font-size: 1.7rem;
-    color: #888;
-    margin-bottom: 0.2rem;
-}
-.section>.section{
-    margin-left: 20px;
-    .title{
-        font-weight: 400;
-        font-size: 1.6rem;
-        color: #aaa;
-    }
-}
-.section>.section>.section>.title{    
-    font-weight: 500;
-    font-size: 1.4rem;
-    color: #ccc;    
-}
 
-.section>.title>.link{
-    text-decoration: none;
-    float: left; 
-    @media only screen and (max-width: 880px) {
-        text-decoration: none;
-        float: right;
-    }  
-}
-.section>.title>.link::after{
-    color: #ccc;
-    position: absolute;
-    font-family: "Material Design Icons";
-    content: "\F0339";
-    margin-left: -1.2em;
-    @media only screen and (max-width: 880px) {
-        position: relative;
-        float: right;
-        margin-left: 0;
-    }								
-}
+
 
 
 

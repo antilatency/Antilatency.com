@@ -2,26 +2,33 @@
 
 @mixin gridElement ($numColumns, $gap) {
     & > * {
-        width: calc(100% / #{$numColumns} - #{$gap});
+        width: calc((100% - (#{$numColumns} - 1) * #{$gap}) / #{$numColumns});
         //padding-top: calc((100% / #{$numColumns} - #{$gap}) * 1 + 5rem);
         //height: 0;
+    }
+
+    & > :nth-child(#{$numColumns}n) {
+        margin-right: 0;
     }
 }
 
 .grid {
     $gap: 8px;
-    width: calc(100% + #{$gap});
-
+    width: 100%; //calc(100% + #{$gap});
     @for $i from 1 through 12 {
         &.columns#{$i} {
             @include gridElement($i,$gap)
         }
     }
 
+
+
     & > * {
         margin-right: $gap;
         margin-bottom: $gap;
     }
+
+    
 }
 
 
@@ -35,8 +42,6 @@
     position: relative;
     width: 100%;
     //padding-top: 100%;
-
-
     display: block;
     float: left;
     height: $height;
@@ -46,16 +51,13 @@
     text-decoration: none;
 
     @include box-shadow( 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
-    transition: box-shadow 0.15s ease-in-out;
+    @include transition( box-shadow 0.15s ease-in-out);
 
 
     &:hover {
         @include box-shadow( 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23));
     }
 
-    * {
-        //position: absolute;
-    }
 
     .title, .text {
         text-align: left;
@@ -102,7 +104,7 @@
 
 
 
-    &:active > * {
-        opacity: 0.8;
+    &:active{
+        @include box-shadow( 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
     }
 }

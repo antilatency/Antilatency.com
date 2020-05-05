@@ -5,8 +5,12 @@ using HtmlAgilityPack;
 
 namespace Csml {
     partial class Scope {
-        public static ITemplate Template => new Root.RegularPage();
+        public static ITemplate Template => new Csml.TemplateRegularMaterial(Root.MainMenu)
+            [Root.LanguageMenu]
+            ;
     }
+
+    
 }
 
 
@@ -23,24 +27,17 @@ partial class Root : Scope {
 
     
 
-    static Menu MainMenu => new Menu()
+    public static Menu MainMenu => new Menu()
         [Logo40Black]
         [Index]
         [Terms.Antilatency_Device_Network]
         [Terms.Alt]
         [Internal.Debug]
         [CsmlPredefined.Diagnostics]
-        [CsmlPredefined.ToggleButton]
         ;
-    static LanguageMenu LanguageMenu => new LanguageMenu();
+    public static LanguageMenu LanguageMenu => new LanguageMenu();
 
-    public class RegularPage : Template {
-        public override void ModifyBody(HtmlNode x, Context context, IMaterial material) {
-            base.ModifyBody(x, context, material);
-            x.Add(MainMenu.Generate(context));
-            x.Add(LanguageMenu.Generate(context));
-        }
-    }
+    
 
 
     /*public static Template RegularPage => new Template(

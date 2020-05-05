@@ -1,10 +1,11 @@
 
 
 nav.language-menu {
+
     @extend .base-menu;
     position: fixed;
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
     z-index: 10;
     background-color: #eee;
     opacity: 0.93;
@@ -12,7 +13,7 @@ nav.language-menu {
 
 }
 
-/*nav.language-menu > *{
+nav.language-menu > *{
     display: block;
     color: inherit;
     padding-left: 16px;
@@ -21,4 +22,4 @@ nav.language-menu {
     padding-bottom: 8px; 
     text-decoration: none; 
     text-align: right; 
-}*/
+}
