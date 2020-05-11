@@ -27,7 +27,7 @@ namespace Csml {
         public override float TotalDuration => Elements.Sum(x => x.duration);
 
         public ColorSequence() { }
-        public ColorSequence this[string color, float duration] {
+        private ColorSequence this[string color, float duration] {
             get {
                 if (duration <= 0) {
                     Log.Error.OnCaller("Invalid duration");
@@ -51,7 +51,7 @@ namespace Csml {
                 if (currentPosition > 0) stringBuilder.Append(',');
                 stringBuilder.Append($"{e.color} {100 * currentPosition / totalDuration}%,");
                 currentPosition += e.duration;
-                stringBuilder.Append($"{e.color} {100 * (currentPosition) / totalDuration }%");                
+                stringBuilder.Append($"{e.color} {100 * currentPosition / totalDuration/* - 0.5f*/}%");                
             }
             return stringBuilder.ToString();
         }

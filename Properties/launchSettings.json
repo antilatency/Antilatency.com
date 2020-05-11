@@ -3,6 +3,19 @@
     "Antilatency.com": {
       "commandName": "Project",
       "commandLineArgs": "D:\\Antilatency.com.Generated"
+    },
+    "DeployToGithubIoWorkingCopy": {
+      "commandName": "Project",
+      "commandLineArgs": "DeployToGithubIoWorkingCopy(~D:\\\\antilatency.github.io~);",
+      "nativeDebugging": false
+    },
+    "DeveloperBuild": {
+      "commandName": "Project",
+      "commandLineArgs": "DeveloperBuild(@~D:\\Antilatency.com.Generated~);"
+    },
+    "DeveloperBuild_WatchJsCss": {
+      "commandName": "Project",
+      "commandLineArgs": "DeveloperBuildWatchJsCss(@~D:\\Antilatency.com.Generated~);"
     }
   }
 }

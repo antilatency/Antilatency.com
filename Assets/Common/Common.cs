@@ -15,7 +15,7 @@ namespace Csml {
 
 
 partial class Root : Scope {
-    //public new static Template Template => Landing;
+    public new static ITemplate Template => new Csml.TemplateLanding(MainMenu);
 
     //public Root() {
         //Material.DefaultTemplate = RegularPage;
@@ -30,6 +30,7 @@ partial class Root : Scope {
     public static Menu MainMenu => new Menu()
         [Logo40Black]
         [Index]
+        [Store.PresetEditor]
         [Terms.Antilatency_Device_Network]
         [Terms.Alt]
         [Internal.Debug]
@@ -37,28 +38,7 @@ partial class Root : Scope {
         ;
     public static LanguageMenu LanguageMenu => new LanguageMenu();
 
-    
 
-
-    /*public static Template RegularPage => new Template(
-        new Collection()
-            [MainMenu]
-            [LanguageMenu]
-        ,
-        null
-        );
-
-    static Template Landing => new Template(
-        new Collection()
-            [MainMenu]
-            [LanguageMenu]
-        ,
-        null
-        );*/
-
-
-
-    //public AntilatencyGitHubGroup AntilatencyGitHub => new AntilatencyGitHubGroup();
 
 
 }

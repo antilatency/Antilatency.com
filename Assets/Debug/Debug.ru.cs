@@ -128,11 +128,11 @@ public partial class Internal : Scope {
             [new ColorSequenceCos(Color.FromArgb(255, 128, 64), Color.Blue, 1.792f)]
             [new ColorSequence()
                 [Color.Red, 0.3f]
-                ["black", 0.3f]
-                ["green", 0.3f]
-                ["black", 0.3f]
-                ["red", 0.3f]
-                ["black", 2.3f]
+                [Color.Black, 0.3f]
+                [Color.Green, 0.3f]
+                [Color.Black, 0.3f]
+                [Color.Red, 0.3f]
+                [Color.Black, 2.3f]
             ]
         ]
 
