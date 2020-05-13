@@ -26,7 +26,7 @@ partial class Terms: Scope {
             [$"Файл с Github целиком."]
             [AntilatencyGitHub.AntilatencyCom_Master.Program]
             [$"Csml.Program.Main()"]
-            [AntilatencyGitHub.AntilatencyCom_Master.Program.GetClass("Csml", "Program").GetMethod("Main")]
+            [AntilatencyGitHub.AntilatencyCom_Master.Program.GetClass("Csml", "Application").GetMethod("Main")]
         ]
         [new Section("Api")
             //[$"{Api.Antilatency.Alt.Tracking._Material}"]

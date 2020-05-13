@@ -13,6 +13,9 @@ public partial class Internal : Scope {
         public static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
         public static Image Input => new Image("Input.png");
 
+        public static Downloadable DownloadableDirTest => new Downloadable("DownloadableDirTest");
+        public static Downloadable DownloadableFileTest => new Downloadable("Test.json");
+
         public static List<Image> AltAndUsbSocketAll => typeof(Debug_Assets).GetPropertiesAll()
             .Where(x => x.PropertyType == typeof(Image))
             .Where(x => x.Name.StartsWith("AltAndUsbSocket"))
