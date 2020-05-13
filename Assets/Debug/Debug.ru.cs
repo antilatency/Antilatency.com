@@ -47,7 +47,7 @@ public partial class Internal : Scope {
             [$"Файл с Github целиком."]
             [AntilatencyGitHub.AntilatencyCom_Master.Program]
             [$"Csml.Program.Main()"]
-            [AntilatencyGitHub.AntilatencyCom_Master.Program.GetClass("Csml", "Program").GetMethod("Main")]
+            [AntilatencyGitHub.AntilatencyCom_Master.Program.GetClass("Csml", "Application").GetMethod("Main")]
         ]
         [new Section("Xml from file")
             [$"Xml код с загрузкой из файла."]
@@ -168,6 +168,13 @@ public partial class Internal : Scope {
                 [$"Имя {Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.NameRef}"]
                 [$"При указании в тексте следует оборачивать в code `{Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.NameRef}`"]
             ]
+        ]
+
+        [new Section("Скачиваемые файлы")
+            [$"Скачать папку"]
+            [DownloadableDirTest]
+            [$"Скачать файл"]
+            [DownloadableFileTest]
         ]
         ;
 

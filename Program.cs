@@ -53,6 +53,8 @@ namespace Csml {
             ImageCache.RootUri = new Uri(BaseUri, "Images/");
             YoutubeVideoCache.RootDirectory = Path.Combine(OutputRootDirectory, "Videos");
             YoutubeVideoCache.RootUri = new Uri(BaseUri, "Videos/");
+            DownloadableCache.RootDirectory = Path.Combine(OutputRootDirectory, "Downloads");
+            DownloadableCache.RootUri = new Uri(BaseUri, "Downloads/");
 
             CleanUpGitHubIoWorkingCopy(OutputRootDirectory);
 
@@ -79,6 +81,7 @@ namespace Csml {
 
             ImageCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/images");
             YoutubeVideoCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/videos");
+            DownloadableCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/downloadable");
             GitHub.RepositoryBranch.IgnorePinning = true;
 
 
