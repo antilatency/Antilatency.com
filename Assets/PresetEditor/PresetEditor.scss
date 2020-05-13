@@ -1,0 +1,175 @@
+//group F0626 F0A3E
+
+.PresetEditor {
+
+    &.ItemInTheAir {
+
+        .DropArea {
+            //z-index: 10;
+            position: absolute;
+            display: inline-block;
+            background-color: greenyellow;
+            border-radius: 4px;
+            border: 1px solid white;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            opacity: 0.2;
+
+            &:hover {
+                opacity: 0.4;
+            }
+        }
+
+        .Dragged .DropArea {
+            display: none;
+        }
+    }
+
+    @mixin itemLike {
+        margin: 8px;
+        margin-left: 16px;
+        float: left;
+        border-radius: 2px;
+    }
+
+    .PresetEditorTree {
+
+
+
+        item {
+            $padding: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            position: relative;
+            left: 0px;
+            padding: $padding;
+
+            @include itemLike;
+            //padding-bottom: 8px;
+            //border: 10px solid transparent;
+            @include box-shadow( 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
+            @include transition( box-shadow 0.15s ease-in-out);
+
+            .Title {
+                display: inline;
+                position: relative;
+                z-index: 2;
+                margin-left: 24px;
+            }
+            //z-index: 0;
+            /*&:before {
+                //z-index: -1;
+                position: absolute;
+                display: block;
+                background-color: #f00;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                content: "";
+            }
+
+            &::before:hover {
+                //z-index: -1;
+                position: absolute;
+                display: block;
+                background-color: #0f0;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                content: "";
+            }*/
+            /*&:before:hover {
+                background-color: #0f0;
+                //@include box-shadow( 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23));
+            }*/
+            /*&:hover > :hover {
+                pointer-events: none;
+            }*/
+            @include selectable(none);
+            display: block;
+
+            &.Group {
+                background-color: #fafafa;
+                font-style: italic;
+                font-weight: normal;
+            }
+
+            &.Product {
+                font-style: normal;
+                font-weight: bold;
+
+                .Title {
+                    pointer-events: none;
+                }
+            }
+
+
+                &.Dragged {
+                    z-index: 10;
+                    position: fixed;
+                    margin-left: -1em;
+                    margin-top: -16px;
+                }
+                /*> item {
+                margin-left: 16px;
+            }*/
+                .DragPlaceholder {
+                    @include itemLike;
+                    background-color: #eee;
+                }
+
+                ui {
+                    position: relative;
+                    display: block;
+                    //padding: 4px;
+                    //top: -$padding;
+                    //left: -$padding;
+                    //right: -2*$padding;
+                    height: 32px;
+
+                    .DragArea {
+                        position: absolute;
+                        display: block;
+                        //left: -$dragAreaWidth;
+                        top: -$padding;
+                        left: -$padding;
+                        right: -$padding;
+                        bottom: 0;
+                        //width: 100%;
+                        //height: 100%;
+                        //float: left;
+                        background-color: #ddd;
+                        //margin-right: 4px;
+                        cursor: move;
+                        border-bottom-right-radius: 10px;
+
+                        &:after {
+                            //position: relative;
+                            margin: auto;
+                            display: block;
+                            padding: 7px;
+                            color: #666;
+                            font-family: "Material Design Icons";
+                            content: "\F0626";
+                            font-style: normal;
+                            font-weight: normal;
+                            //vertical-align: central;
+                            //margin: 8px;
+                            //padding: 8px;
+                        }
+                    }
+
+                    input {
+                        width: 100%
+                    }
+                    /*&.Selected {
+                    background-color: cornflowerblue
+                }*/
+                }
+            }
+        }
+    }

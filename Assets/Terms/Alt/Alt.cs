@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 
 
-partial class Terms: Scope {
+partial class Hardware: Scope {
+
+    public static LanguageSelector<IMaterial> Alt => new LanguageSelector<IMaterial>();
 
     static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
     static Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");

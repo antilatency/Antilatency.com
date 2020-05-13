@@ -1,7 +1,7 @@
 using Csml;
 
 partial class Terms : Scope {
-    public static LanguageSelector<IMaterial> Alt => new LanguageSelector<IMaterial>();
+    
     public static LanguageSelector<IMaterial> Environment => new LanguageSelector<IMaterial>();
     public static LanguageSelector<IMaterial> Task => new LanguageSelector<IMaterial>();
     public static LanguageSelector<IMaterial> AntilatencyService => new LanguageSelector<IMaterial>();

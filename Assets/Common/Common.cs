@@ -22,17 +22,12 @@ partial class Root : Scope {
     //}
 
 
-    
-
-
-    
-
     public static Menu MainMenu => new Menu()
         [Logo40Black]
         [Index]
         [Store.PresetEditor]
         [Terms.Antilatency_Device_Network]
-        [Terms.Alt]
+        [Hardware.Alt]
         [Internal.Debug]
         [CsmlPredefined.Diagnostics]
         ;

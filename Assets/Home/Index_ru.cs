@@ -10,8 +10,8 @@ public partial class Root {
         [new Section("Уроки")]
 
         [new Grid(320,1,2,3,4)
-            [new MaterialCard(Terms.Alt)][new MaterialCard(Terms.Alt)]
-            [new MaterialCard(Terms.Alt)][new MaterialCard(Terms.Alt)]
+            [new MaterialCard(Hardware.Alt)][new MaterialCard(Hardware.Alt)]
+            [new MaterialCard(Hardware.Alt)][new MaterialCard(Hardware.Alt)]
         
         ]
 

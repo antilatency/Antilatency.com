@@ -15,7 +15,7 @@ public partial class Internal : Scope {
         ]
         
         [new Section("Ссылки")
-            [$"Можно вставлять {Terms.Alt} в текст"]
+            [$"Можно вставлять {Hardware.Alt} в текст"]
             [$"Если навести на ссылку, то в подсказке будет описание страницы. Это полезно для терминов."]
         ]
         [new Section("Внешние ссылки")
@@ -64,14 +64,14 @@ public partial class Internal : Scope {
                 [new Paragraph($"Вложенный {0}")[
                     new UnorderedList()
                         [$"One."]
-                        [$"Ссылка {Terms.Alt}"]
+                        [$"Ссылка {Hardware.Alt}"]
                         [WikipediaCSharp]
                     ]
                 ]
                 [new Paragraph($"Нумерованный {0}")[
                     new OrderedList()
                         [$"One."]
-                        [$"Ссылка {Terms.Alt}"]
+                        [$"Ссылка {Hardware.Alt}"]
                         [WikipediaCSharp]
                     ]
                 ]
@@ -138,9 +138,9 @@ public partial class Internal : Scope {
 
         [new Section("Нормальные состояния прошивки")
             [new Table("Отображение", "Описание")
-                [new ColorSequenceCos(Color.Black, Color.FromArgb(0xa8, 0x00, 0xff), 1.792f)][$"Loading - Первое состояние {Terms.Alt} при подаче питания или перезагрузке, происходит инициализация периферии и применение настроек."]
+                [new ColorSequenceCos(Color.Black, Color.FromArgb(0xa8, 0x00, 0xff), 1.792f)][$"Loading - Первое состояние {Hardware.Alt} при подаче питания или перезагрузке, происходит инициализация периферии и применение настроек."]
                 [new ColorSequenceCos(Color.Black, Color.FromArgb(0x7f, 0xba, 0xd9), 1.792f)][$"Idle - Ожидание задачи."]
-                [new ColorSequenceCos(Color.Black, Color.FromArgb(0x00, 0xff, 0x00), 1.792f)][$"Task running - {Terms.Alt} выполняет задачу. Это может быть задача трекинга, обращение к свойствам или любая другая доступная задача."]
+                [new ColorSequenceCos(Color.Black, Color.FromArgb(0x00, 0xff, 0x00), 1.792f)][$"Task running - {Hardware.Alt} выполняет задачу. Это может быть задача трекинга, обращение к свойствам или любая другая доступная задача."]
             ]
         ]
         [new Section("Modify")

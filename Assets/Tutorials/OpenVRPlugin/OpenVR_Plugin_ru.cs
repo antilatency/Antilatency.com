@@ -19,7 +19,7 @@ partial class Tutorials : Scope {
         [new Section("Работа с драйвером")
             [$"Драйвер добавляет поддрежку следующих типов устройств в SteamVR:"]
             [new UnorderedList()
-                [$"Трекер ({Terms.Alt} + любой {Hardware.Socket} или {Hardware.Tag})"]
+                [$"Трекер ({Hardware.Alt} + любой {Hardware.Socket} или {Hardware.Tag})"]
                 [$"Контроллер ({Hardware.Bracer})"]
             ]
 
