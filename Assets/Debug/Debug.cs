@@ -13,7 +13,9 @@ public partial class Internal : Scope {
         public static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
         public static Image Input => new Image("Input.png");
 
-        public static Downloadable DownloadableDirTest => new Downloadable("DownloadableDirTest");
+        public static Downloadable DownloadableFolderTest => new Downloadable("DownloadableDirTest", DownloadableIcon.Cloud);
+        public static Downloadable DownloadableFolderTestWithoutPng => new Downloadable("DownloadableDirTest", DownloadableIcon.Zip, packToArchivePredicate: x => Path.GetExtension(x) != ".png");
+        public static Downloadable DownloadableFolderTestWithoutTxt => new Downloadable("DownloadableDirTest", DownloadableIcon.Zip, packToArchivePredicate: x => Path.GetExtension(x) != ".txt");
         public static Downloadable DownloadableFileTest => new Downloadable("Test.json");
 
         public static List<Image> AltAndUsbSocketAll => typeof(Debug_Assets).GetPropertiesAll()
