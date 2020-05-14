@@ -176,12 +176,11 @@ function SdkConfigurator(sdkConfigurator) {
 
     }
 
-    var clearHash = decodeURIComponent(location.hash.replace(/^[#]/, ""));
-    console.log(clearHash);
-    state = JSON.parse(clearHash);
+    
 
     try {
-        
+        var clearHash = decodeURIComponent(location.hash.replace(/^[#]/, ""));
+        state = JSON.parse(clearHash);
     } catch(e){
         state = {}
     }
