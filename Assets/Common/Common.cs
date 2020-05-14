@@ -26,6 +26,7 @@ partial class Root : Scope {
         [Logo40Black]
         [Index]
         [Store.PresetEditor]
+        [Sdk.Configurator]
         [Terms.Antilatency_Device_Network]
         [Hardware.Alt]
         [Internal.Debug]

@@ -1,0 +1,46 @@
+.SdkConfigurator {
+    max-width: 480px;
+    margin: 0 auto 0 auto;
+    padding-left: 28px;
+    padding-right: 4px;
+
+    & > label {
+        height: 32px;
+        display: block;
+        margin-bottom: 8px;
+
+        & > * {
+            float: right
+        }
+
+        @for $i from 0 through 12 {
+            &.Space#{$i} {
+                margin-left: $i*20px
+            }
+        }
+
+        &.Unity {
+            &:before {
+                font-family: "Material Design Icons";
+                //font-size: 24px;
+                content: "\F06AF";
+            }
+        }
+
+        &.Library {
+            &:before {
+                font-family: "Material Design Icons";
+                //font-size: 24px;
+                content: "\F08D6";
+            }
+        }
+
+        &:before {
+            position: absolute;
+            color: #bbb;
+            font-size: 24px;
+            margin-top: -4px;
+            margin-left: -26px;
+        }
+    }
+}
