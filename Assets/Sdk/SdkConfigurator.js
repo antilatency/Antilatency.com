@@ -124,16 +124,6 @@ function SdkConfigurator(sdkConfigurator) {
         location.hash = JSON.stringify(state);
     }
 
-    //var updateNeeded = false;
-
-    /*var Set = function (name, value = true) {
-        
-
-        console.log("set " + name + " = " + value)
-        if (state[name] == value) return;
-        state[name] = value;        
-        updateNeeded = true;
-    }*/
     //library F0431
     //unity F06AF
     //unreal F09B1

@@ -15,7 +15,10 @@ namespace Csml {
 
 
 partial class Root : Scope {
-    public new static ITemplate Template => new Csml.TemplateLanding(MainMenu);
+
+    public new static ITemplate Template => new Csml.TemplateLanding(MainMenu)
+        [Root.LanguageMenu]
+            ;
 
     //public Root() {
         //Material.DefaultTemplate = RegularPage;

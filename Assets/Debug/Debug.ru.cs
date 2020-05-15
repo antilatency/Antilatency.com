@@ -61,21 +61,20 @@ public partial class Internal : Scope {
         [new Section("Lists")
             [new UnorderedList()
                 [$"Раньше было доступно 33 канала. Сейчас доступен полный диапазон каналов (141 шт.) для более гибкой настройки."]
-                [new Paragraph($"Вложенный {0}")[
-                    new UnorderedList()
+                [new Paragraph(@$"Вложенный {new UnorderedList()
                         [$"One."]
                         [$"Ссылка {Hardware.Alt}"]
                         [WikipediaCSharp]
-                    ]
-                ]
-                [new Paragraph($"Нумерованный {0}")[
-                    new OrderedList()
-                        [$"One."]
-                        [$"Ссылка {Hardware.Alt}"]
-                        [WikipediaCSharp]
-                    ]
+                    }")
                 ]
             ]
+            [new Paragraph($"Нумерованный")]
+            [new OrderedList()
+                [$"One."]
+                [$"Ссылка {Hardware.Alt}"]
+                [WikipediaCSharp]
+            ]
+
         ]
         [new Section("Tables")
             [$"Просто таблица"]

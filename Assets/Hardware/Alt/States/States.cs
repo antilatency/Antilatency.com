@@ -1,5 +1,7 @@
 using Csml;
 
 partial class Hardware : Scope {
-    public static LanguageSelector<IMaterial> AltStates => new LanguageSelector<IMaterial>();
+    partial class AltDescription : Scope {
+        public static LanguageSelector<IMaterial> ColorCodes => new LanguageSelector<IMaterial>();
+    }
 }

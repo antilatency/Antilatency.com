@@ -1,4 +1,5 @@
 ﻿using Csml;
+using System.Linq;
 using static Root.Index_Assets;
 
 public partial class Root {
@@ -7,13 +8,15 @@ public partial class Root {
 
         [Logo40Black]
 
-        [new Section("Уроки")]
+        [new Section("Оборудование")
+            [AllHardware]
+        ]        
 
-        [new Grid(320,1,2,3,4)
-            [new MaterialCard(Hardware.Alt)][new MaterialCard(Hardware.Alt)]
-            [new MaterialCard(Hardware.Alt)][new MaterialCard(Hardware.Alt)]
-        
+        [new Section("Уроки")
+            [AllTutorials]
         ]
+        
+        
 
     ;    
 }
