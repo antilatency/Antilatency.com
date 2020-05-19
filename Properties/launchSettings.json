@@ -1,9 +1,5 @@
 {
   "profiles": {
-    "Antilatency.com": {
-      "commandName": "Project",
-      "commandLineArgs": "D:\\Antilatency.com.Generated"
-    },
     "DeployToGithubIoWorkingCopy": {
       "commandName": "Project",
       "commandLineArgs": "DeployToGithubIoWorkingCopy(~D:\\\\antilatency.github.io~);",
