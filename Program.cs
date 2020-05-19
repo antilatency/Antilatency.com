@@ -19,6 +19,10 @@ namespace Csml {
 
         public static string TitlePrefix { get; internal set; }
 
+        public static Uri CssUri => new Uri(BaseUri, sassProcessor.OutputFileName);
+        public static Uri JsUri => new Uri(BaseUri, javascriptProcessor.OutputFileName);
+
+
         static Application() {
             var customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -60,8 +64,8 @@ namespace Csml {
 
             Log.Info.Here($"DeployToGithubIoWorkingCopy: Fonts;Sass;Javascript");
             CopyFonts();
-            BeginSass();
-            BeginJavascript();
+            BeginSass(false);
+            BeginJavascript(false);
 
             Log.Info.Here($"DeployToGithubIoWorkingCopy: Generate...");
             Context context = new Context();
@@ -87,14 +91,14 @@ namespace Csml {
 
             CleanUpDirectory(OutputRootDirectory);
 
-            if (watch) {
-                TitlePrefix = F5.Prefix;
-            }
+            
+            TitlePrefix = F5.Prefix;
+            
 
             Log.Info.Here($"DeveloperBuild: Fonts;Sass;Javascript");
             CopyFonts();
-            BeginSass();
-            BeginJavascript();
+            BeginSass(true);
+            BeginJavascript(true);
 
             Log.Info.Here($"DeveloperBuild: Generate...");
             
@@ -191,14 +195,16 @@ namespace Csml {
             }
         }
 
-        private static void BeginSass() {
+        private static void BeginSass(bool developerMode) {
             sassProcessor = new SassProcessor(
+                developerMode,
                 ProjectRootDirectory,
                 OutputRootDirectory,
                 "Style.scss");
         }
-        private static void BeginJavascript() {
+        private static void BeginJavascript(bool developerMode) {
             javascriptProcessor = new JavascriptProcessor(
+                developerMode,
                 ProjectRootDirectory,
                 OutputRootDirectory);
         }
