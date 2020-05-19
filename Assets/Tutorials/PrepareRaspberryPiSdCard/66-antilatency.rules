@@ -1,1 +1,0 @@
-echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="3237", ATTRS{idProduct}=="0000", MODE="0666", GROUP="pi"' | sudo tee /etc/udev/rules.d/66-alt.rules
