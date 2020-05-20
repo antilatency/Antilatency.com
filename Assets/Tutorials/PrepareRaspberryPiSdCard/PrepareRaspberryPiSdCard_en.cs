@@ -33,7 +33,8 @@ public partial class Tutorials : Scope {
             [AptUpdate]
         ]
 
-        [new Section($"Add support for {Terms.AntilatencyRPiSocket} power button")
+        [new Section($"Power button")
+            [$"Add support for {Terms.AntilatencyRPiSocket} power button."]
             [$"Enable software shutdown via GPIO:"]
             [$"See more {new ExternalReference("https://www.stderr.nl/Blog/Hardware/RaspberryPi/PowerButton.html", "PowerButton")}"]
             [GpioShutdown]
@@ -52,8 +53,8 @@ public partial class Tutorials : Scope {
             [RpiOffOkGpioPinSystemD]
         ]
 
-        [new Section($"Prepare antilatency software installation directory")
-            [$"Create package directories and change owner:"]
+        [new Section($"Prepare installation directory")
+            [$"Create package directories for Antilatency software and change owner:"]
             [CreateOptAntilatencyDir]           
 
             [$"Add rule for Antilatency USB devices:"]
