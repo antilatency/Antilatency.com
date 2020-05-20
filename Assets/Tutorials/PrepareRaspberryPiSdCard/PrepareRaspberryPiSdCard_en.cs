@@ -21,6 +21,8 @@ public partial class Tutorials : Scope {
 
             [$"`wpa_supplicant.conf`:"]
             [WpaSupplicantConf]
+            [$"On the Raspberry Pi 3A+, 3B+, 4 and above, you will also need to set the {new ExternalReference("https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements", "country code")}, so that the 5G networking can choose the correct frequency bands:"]
+            [$"`country=GB`"]
             [$"You can edit this settings later, see {new ExternalReference("https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md", "documentation")}."]
 
             [$"`ssh`:"]
