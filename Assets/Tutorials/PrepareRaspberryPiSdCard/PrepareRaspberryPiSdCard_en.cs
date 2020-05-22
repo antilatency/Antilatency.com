@@ -19,14 +19,7 @@ public partial class Tutorials : Scope {
             [$"You need to write WiFi network name / password to the Raspberry Pi SD card and enable SSH server before you can get remote access."]
             [$"Insert microSD card to your PC card reader then create two files `wpa_supplicant.conf` and `ssh` in the `boot` folder on the SD card."]
 
-            [$"`wpa_supplicant.conf`:"]
-            [WpaSupplicantConf]
-            [$"On the Raspberry Pi 3A+, 3B+, 4 and above, you will also need to set the {new ExternalReference("https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements", "country code")}, so that the 5G networking can choose the correct frequency bands:"]
-            [$"`country=GB`"]
-            [$"You can edit this settings later, see {new ExternalReference("https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md", "documentation")}."]
-
-            [$"`ssh`:"]
-            [$"Just empty file with `ssh` file name without extension."]
+            [$"See {new ExternalReference("https://www.raspberrypi.org/documentation/configuration/wireless/headless.md", "headless setup")} manual for details."]
         ]
 
         [new Section("Update installed software")
