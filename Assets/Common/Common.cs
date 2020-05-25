@@ -34,6 +34,7 @@ partial class Root : Scope {
         [Hardware.Alt]
         [Internal.Debug]
         [CsmlPredefined.Diagnostics]
+        [Software.Antilatency_Service]
         ;
     public static LanguageMenu LanguageMenu => new LanguageMenu();
 

@@ -1,0 +1,1 @@
+Certutil -delStore TrustedPeople "2A66F943-627E-494F-A0B4-7AD721F0A573"
