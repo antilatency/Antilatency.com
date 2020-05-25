@@ -8,21 +8,6 @@ public partial class Tutorials : Scope {
     public static LanguageSelector<IMaterial> PrepareRaspberryPiSdCard => new LanguageSelector<IMaterial>();
 
     public partial class PrepareRaspberryPiSdCard_Assets : Scope {       
-        public static Code WpaSupplicantConf => new Code(
-            @"echo -e 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=GB
-
-network={
-    ssid=""Antilatency_5G""
-    psk = ""standardpassword""
-}
-
-network={
-    ssid=""Antilatency""
-    psk=""standardpassword""
-}' | sudo tee /etc/wpa_suplicant.conf"
-            , ProgrammingLanguage.Cpp);
         public static Code RpiOsOkGpioPinRcLocal => new Code(
             @"/usr/bin/gpio mode 2 output
 /usr/bin/gpio write 2 1"

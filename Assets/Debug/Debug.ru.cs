@@ -169,7 +169,7 @@ public partial class Internal : Scope {
             ]
         ]
 
-        [new Section("Скачиваемые файлы")
+        /*[new Section("Скачиваемые файлы")
             [$"Скачать папку"]
             [DownloadableFolderTest]
             [$"Скачать ту же папку, но без '.png' файлов"]
@@ -178,7 +178,7 @@ public partial class Internal : Scope {
             [DownloadableFolderTestWithoutTxt]
             [$"Скачать файл"]
             [DownloadableFileTest]
-        ]
+        ]*/
         ;
 
     

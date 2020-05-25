@@ -19,19 +19,15 @@ public partial class Tutorials : Scope {
             [$"You need to write WiFi network name / password to the Raspberry Pi SD card and enable SSH server before you can get remote access."]
             [$"Insert microSD card to your PC card reader then create two files `wpa_supplicant.conf` and `ssh` in the `boot` folder on the SD card."]
 
-            [$"`wpa_supplicant.conf`:"]
-            [WpaSupplicantConf]
-            [$"You can edit this settings later, see {new ExternalReference("https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md", "documentation")}."]
-
-            [$"`ssh`:"]
-            [$"Just empty file with `ssh` file name without extension."]
+            [$"See {new ExternalReference("https://www.raspberrypi.org/documentation/configuration/wireless/headless.md", "headless setup")} manual for details."]
         ]
 
         [new Section("Update installed software")
             [AptUpdate]
         ]
 
-        [new Section($"Add support for {Terms.AntilatencyRPiSocket} power button")
+        [new Section($"Power button")
+            [$"Add support for {Terms.AntilatencyRPiSocket} power button."]
             [$"Enable software shutdown via GPIO:"]
             [$"See more {new ExternalReference("https://www.stderr.nl/Blog/Hardware/RaspberryPi/PowerButton.html", "PowerButton")}"]
             [GpioShutdown]
@@ -50,8 +46,8 @@ public partial class Tutorials : Scope {
             [RpiOffOkGpioPinSystemD]
         ]
 
-        [new Section($"Prepare antilatency software installation directory")
-            [$"Create package directories and change owner:"]
+        [new Section($"Prepare installation directory")
+            [$"Create package directories for Antilatency software and change owner:"]
             [CreateOptAntilatencyDir]           
 
             [$"Add rule for Antilatency USB devices:"]

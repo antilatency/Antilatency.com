@@ -15,14 +15,14 @@ partial class Hardware: Scope {
         public static Image HighLoadOutput => new Image("Images/HighLoadOutput.png");
         public static Image Analog => new Image("Images/Analog.png");
 
-        public static Table PinFunctions => new Table("Pin", "Input", "Output", "PulseCounter", "Analog")
-                [$"IO_1"][$"+"][$"+"][$"+"][$"-"]
-                [$"IO_2"][$"+"][$"+"][$"+"][$"-"]
-                [$"IOA_3"][$"+"][$"+"][$"+"][$"+"]
-                [$"IOA_4"][$"+"][$"+"][$"+"][$"+"]
-                [$"IO_5"][$"+"][$"+"][$"+"][$"-"]
-                [$"IO_6"][$"+"][$"+"][$"+"][$"-"]
-                [$"IO_7"][$"+"][$"+"][$"+"][$"-"]
-                [$"IO_8"][$"+"][$"+"][$"+"][$"-"];
+        public static Table PinFunctions => new Table("Pin", "Input", "Output", "PulseCounter", "Pwm", "Analog")
+                [$"IO_1"]   [$"+"][$"+"][$"+"][$"+"][$"-"]
+                [$"IO_2"]   [$"+"][$"+"][$"+"][$"+"][$"-"]
+                [$"IOA_3"]  [$"+"][$"+"][$"+"][$"+"][$"+"]
+                [$"IOA_4"]  [$"+"][$"+"][$"+"][$"+"][$"+"]
+                [$"IO_5"]   [$"+"][$"+"][$"+"][$"+"][$"-"]
+                [$"IO_6"]   [$"+"][$"+"][$"+"][$"+"][$"-"]
+                [$"IO_7"]   [$"+"][$"+"][$"+"][$"+"][$"-"]
+                [$"IO_8"]   [$"+"][$"+"][$"+"][$"+"][$"-"];
     }
 }
