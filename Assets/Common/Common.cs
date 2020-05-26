@@ -26,7 +26,7 @@ partial class Root : Scope {
 
 
     public static Menu MainMenu => new Menu()
-        [Logo40Black]
+        [LogoGreenBlack]
         [Index]
         [Store.PresetEditor]
         [Sdk.Configurator]

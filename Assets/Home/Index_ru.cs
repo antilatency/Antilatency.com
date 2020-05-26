@@ -6,7 +6,7 @@ public partial class Root {
     static Material Index_ru => new Material("Antilatency", null, $"Компания мечты")
         [TitleVideo.GetPlayer().ConfigureAsBackgroundVideo()]
 
-        [Logo40Black]
+        [LogoWhiteBlack]
 
         [new Section("Оборудование")
             [AllHardware]

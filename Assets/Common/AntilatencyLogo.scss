@@ -1,0 +1,51 @@
+
+.AntilatencyLogo{
+    @include SelectNone();
+    text-decoration: none;
+
+}
+
+.LeftSideMenu {
+    > .AntilatencyLogo {
+        font-size: 40px;
+    }
+}
+
+.TemplateLanding {
+    > .Content > .AntilatencyLogo {
+
+        $minWidth: 680;
+        $fontHeigth: 64;
+        $heigth: 1.3*$fontHeigth;
+
+        position: static;
+        display: block;
+        height: #{$heigth}px;
+        font-size: #{$fontHeigth}px;
+        text-align: center;
+
+        @media only screen and (max-width: #{$minWidth}px) {
+            font-size: calc(100vw / #{$minWidth} * #{$fontHeigth});
+            height: calc(100vw / #{$minWidth} * #{$heigth});
+        }
+
+        > * {
+            position: relative;
+            display: inline-block;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &:before {
+            z-index: -1;
+            position: absolute;
+            background-color: #acc435;
+            display: block;
+            left: 0;
+            width: 100%;
+            height: inherit;
+            content: " "
+        }
+    }
+}
+
