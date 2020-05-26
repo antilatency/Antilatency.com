@@ -18,6 +18,19 @@
             "stopAtEntry": false
         },
         {
+            "name": "DeveloperBuild",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/build/Antilatency.com.dll",
+            "args": ["DeveloperBuild(@~D:/Antilatency.com.Generated~);"],
+            "cwd": "${workspaceFolder}",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "externalTerminal",
+            "stopAtEntry": false
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",
