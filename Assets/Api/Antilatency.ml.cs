@@ -2,8 +2,8 @@
 using Csml;
 public sealed partial class Api : Scope {
 	public sealed partial class Antilatency : Scope {
-		public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Antilatency");
-		public static IElement FullNameRef => new Deferred(()=>Material);
+		public static IElement _FullNameRef => new Deferred(()=>Material).Modify().AddClasses("Namespace");
+		public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 		public static Material Material => new Material("Antilatency",null,$"Root namespace")[new Section("Types")
 			[new UnorderedList()
 			]

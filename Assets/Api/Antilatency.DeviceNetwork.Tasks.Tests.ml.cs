@@ -5,9 +5,9 @@ public sealed partial class Api : Scope {
 		public sealed partial class DeviceNetwork : Scope {
 			public sealed partial class Tasks : Scope {
 				public sealed partial class Tests : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Tests");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Tasks\u200B.Tests",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Tasks.FullNameRef}`")[new Section("Types")
+					public static IElement _FullNameRef => new Deferred(()=>Material).Modify().AddClasses("Namespace");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Tasks.Tests",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.Tasks._FullNameRef}`")[new Section("Types")
 						[new UnorderedList()
 						]
 					];

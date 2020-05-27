@@ -72,6 +72,7 @@ namespace Csml {
             ScopeUtils.All.ForEach(x => {
                 x.Generate(context);
             });
+
         }
 
         public static void DeveloperBuildWatchJsCss(string outputDirectory) {

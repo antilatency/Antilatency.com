@@ -142,30 +142,12 @@ public partial class Internal : Scope {
                 [new ColorSequenceCos(Color.Black, Color.FromArgb(0x00, 0xff, 0x00), 1.792f)][$"Task running - {Hardware.Alt} выполняет задачу. Это может быть задача трекинга, обращение к свойствам или любая другая доступная задача."]
             ]
         ]
-        [new Section("Modify")
-            [new Modify(
-                new Collection(false)
-                    [new Modify($"public interface").Wrap("span").AddClasses("keyword")]
-                    [$" "]
-                    [new Modify(Api.Antilatency.DeviceNetwork.ILibrary.NameRef).AddClasses("typename")]
-                    ["{\n".ToFormattableString()]
-                    [new Modify($"bool isSupported(INetwork network, NodeHandle node);").Wrap("span").AddClasses("method")]
-                ).Wrap("pre").Wrap("div").AddClasses("code")
-            ]
-            [$"{Api.Interface} {Api.Type(Api.Antilatency.DeviceNetwork.ILibrary.NameRef)} "]
-            [$"*interface* {Api.Antilatency.DeviceNetwork.ILibrary.NameRef} {{\n\t_bool_ `isSupported`({Api.Antilatency.DeviceNetwork.NameRef} network, {Api.Antilatency.DeviceNetwork.NodeHandle.NameRef} node);\n}}"]
 
-            [new Modify($"{new Modify($"public interface").Wrap("span").AddClasses("keyword")} {new Modify(Api.Antilatency.DeviceNetwork.ILibrary.NameRef).AddClasses("typename")}").Wrap("pre").Wrap("div").AddClasses("code")
-            
-            ]
-        ]
         [new Section("Api")
             [$"Указать ссылку на метод можно несколькими способами"]
             [new UnorderedList()
-                [new Modify(Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.FullNameRef).ContentReplace($"link").Tag("span")]
-                [$"Полное имя {Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.FullNameRef}"]
-                [$"Имя {Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.NameRef}"]
-                [$"При указании в тексте следует оборачивать в code `{Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.NameRef}`"]
+                [$"Полное имя {Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.FullNameRefCode}"]
+                [$"Имя {Api.Antilatency.DeviceNetwork.ILibrary.Methods.createNetwork.NameRefCode}"]
             ]
         ]
 

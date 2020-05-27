@@ -4,26 +4,28 @@ public sealed partial class Api : Scope {
 	public sealed partial class Antilatency : Scope {
 		public sealed partial class DeviceNetwork : Scope {
 			public sealed partial class Interop : Scope {
-				public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Interop");
-				public static IElement FullNameRef => new Deferred(()=>Material);
-				public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop",null,$"Namespace in `{Api.Antilatency.DeviceNetwork.FullNameRef}`")[new Section("Types")
+				public static IElement _FullNameRef => new Deferred(()=>Material).Modify().AddClasses("Namespace");
+				public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+				public static Material Material => new Material("Antilatency.DeviceNetwork.Interop",null,$"Namespace in `{Api.Antilatency.DeviceNetwork._FullNameRef}`")[new Section("Types")
 					[new UnorderedList()
-						[$"*interface* `{IDataReceiver.NameRef}`"]
-						[$"*struct* `{Packet.NameRef}`"]
-						[$"*constant group* `{Constants.NameRef}`"]
-						[$"*struct* `{String16.NameRef}`"]
-						[$"*struct* `{WriteBufferOverflowException.NameRef}`"]
-						[$"*struct* `{PacketDescription.NameRef}`"]
-						[$"*interface* `{ITaskSignature.NameRef}`"]
-						[$"*interface* `{IConnection.NameRef}`"]
+						[$"*interface* `{IDataReceiver._NameRef}`"]
+						[$"*struct* `{Packet._NameRef}`"]
+						[$"*constant group* `{Constants._NameRef}`"]
+						[$"*struct* `{String16._NameRef}`"]
+						[$"*struct* `{WriteBufferOverflowException._NameRef}`"]
+						[$"*struct* `{PacketDescription._NameRef}`"]
+						[$"*interface* `{ITaskSignature._NameRef}`"]
+						[$"*interface* `{IConnection._NameRef}`"]
 					]
 				];
 				public sealed partial class Packet : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Packet");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.Packet",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[CodeBlock];
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Packet").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.Packet",null,$"Struct in {Api.Antilatency.DeviceNetwork.Interop.FullNameRefCode}")[CodeBlock];
 					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					public static IElement RawDeclarationCode => new Text($"{Struct} {NameRef} {{\n    {Fields.id.RawDeclarationCode};\n    {Fields.data.RawDeclarationCode};\n    {Fields.size.RawDeclarationCode};\n}}");
+					public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.id.RawDeclarationCode};\n    {Fields.data.RawDeclarationCode};\n    {Fields.size.RawDeclarationCode};\n}}");
 					public sealed partial class Fields : Scope {
 						public sealed partial class id : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Keyword("byte")} {Name}");
@@ -41,31 +43,36 @@ public sealed partial class Api : Scope {
 				} //scope Packet
 				
 				public sealed partial class IDataReceiver : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IDataReceiver");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.packet.RawDeclarationCode};\n}}");
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IDataReceiver").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static IElement RawDeclarationCode => new Text($"{Interface} {_NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.packet.RawDeclarationCode};\n}}");
 					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.IDataReceiver",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[CodeBlock];
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.IDataReceiver",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Interop._FullNameRef}`")[CodeBlock];
 					public sealed partial class Methods : Scope {
 						/// <summary>Write packet to data receiver</summary>
 						/// <param name = "packet">
 						/// Packet with data
 						/// </param>
 						public sealed partial class packet : Scope {
-							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"packet");
-							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"packet").AddClasses("Method");
+							public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+							public static IElement _FullNameRef => new Text($"{IDataReceiver._FullNameRef}.{_NameRef}");
+							public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 							public static IElement CodeInline => CodeInline(RawDeclarationCode);
-							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.packet.RawDeclarationCode})");
-							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.IDataReceiver\u200B.packet",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.IDataReceiver.NameRef)}`\n`{RawDeclarationCode}`")
+							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {_NameRef}({Parameters.packet.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.IDataReceiver.packet",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.IDataReceiver._NameRef)}`\n`{RawDeclarationCode}`")
 								[new Section("Parameters")]
 								;
 							public sealed partial class Parameters : Scope {
 								public sealed partial class packet : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
-									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.Packet.NameRef)} {Name}");
-									public static IElement Name => new Modify($"packet").SetAttributeValue("title", "parameter packet");
+									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.Packet._NameRef)} {_Name}");
+									public static IElement _Name => new Modify($"packet").SetAttributeValue("title", "parameter packet");
+									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope packet
 							} //scope Parameters
 						} //scope packet
@@ -73,37 +80,91 @@ public sealed partial class Api : Scope {
 				} //scope IDataReceiver
 				
 				public sealed partial class Constants : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Constants");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.Constants",null,$"Constants in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`");
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"Constants").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.Constants",null,$"Constants in `{Api.Antilatency.DeviceNetwork.Interop._FullNameRef}`")[CodeBlock];
+					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
+					public static IElement RawDeclarationCode => new Text($"{Fields.FirmwareNameKey.RawDeclarationCode}\n{Fields.FirmwareVersionKey.RawDeclarationCode}\n{Fields.HardwareNameKey.RawDeclarationCode}\n{Fields.HardwareVersionKey.RawDeclarationCode}\n{Fields.HardwareSerialNumberKey.RawDeclarationCode}\n{Fields.ImageVersionKey.RawDeclarationCode}");
+					public sealed partial class Fields : Scope {
+						public sealed partial class FirmwareNameKey : Scope {
+							public static IElement _Name => new Modify($"FirmwareNameKey").AddClasses("Constant").SetAttributeValue("title", "\"sys/FirmwareName\"");
+							public static IElement NameCode => _Name.Modify().Wrap("code");
+							public static System.String Value => "sys/FirmwareName";
+							public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {_Name} = {_Value}");
+							public static IElement _Value => new Text($"\"sys/FirmwareName\"");
+						} //scope FirmwareNameKey
+						public sealed partial class FirmwareVersionKey : Scope {
+							public static IElement _Name => new Modify($"FirmwareVersionKey").AddClasses("Constant").SetAttributeValue("title", "\"sys/FirmwareVersion\"");
+							public static IElement NameCode => _Name.Modify().Wrap("code");
+							public static System.String Value => "sys/FirmwareVersion";
+							public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {_Name} = {_Value}");
+							public static IElement _Value => new Text($"\"sys/FirmwareVersion\"");
+						} //scope FirmwareVersionKey
+						public sealed partial class HardwareNameKey : Scope {
+							public static IElement _Name => new Modify($"HardwareNameKey").AddClasses("Constant").SetAttributeValue("title", "\"sys/HardwareName\"");
+							public static IElement NameCode => _Name.Modify().Wrap("code");
+							public static System.String Value => "sys/HardwareName";
+							public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {_Name} = {_Value}");
+							public static IElement _Value => new Text($"\"sys/HardwareName\"");
+						} //scope HardwareNameKey
+						public sealed partial class HardwareVersionKey : Scope {
+							public static IElement _Name => new Modify($"HardwareVersionKey").AddClasses("Constant").SetAttributeValue("title", "\"sys/HardwareVersion\"");
+							public static IElement NameCode => _Name.Modify().Wrap("code");
+							public static System.String Value => "sys/HardwareVersion";
+							public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {_Name} = {_Value}");
+							public static IElement _Value => new Text($"\"sys/HardwareVersion\"");
+						} //scope HardwareVersionKey
+						public sealed partial class HardwareSerialNumberKey : Scope {
+							public static IElement _Name => new Modify($"HardwareSerialNumberKey").AddClasses("Constant").SetAttributeValue("title", "\"sys/HardwareSerialNumber\"");
+							public static IElement NameCode => _Name.Modify().Wrap("code");
+							public static System.String Value => "sys/HardwareSerialNumber";
+							public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {_Name} = {_Value}");
+							public static IElement _Value => new Text($"\"sys/HardwareSerialNumber\"");
+						} //scope HardwareSerialNumberKey
+						public sealed partial class ImageVersionKey : Scope {
+							public static IElement _Name => new Modify($"ImageVersionKey").AddClasses("Constant").SetAttributeValue("title", "\"sys/ImageVersion\"");
+							public static IElement NameCode => _Name.Modify().Wrap("code");
+							public static System.String Value => "sys/ImageVersion";
+							public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {_Name} = {_Value}");
+							public static IElement _Value => new Text($"\"sys/ImageVersion\"");
+						} //scope ImageVersionKey
+					} //scope Fields
 				} //scope Constants
 				
 				public sealed partial class String16 : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"String16");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.String16",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[CodeBlock];
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"String16").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.String16",null,$"Struct in {Api.Antilatency.DeviceNetwork.Interop.FullNameRefCode}")[CodeBlock];
 					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					public static IElement RawDeclarationCode => new Text($"{Struct} {NameRef} {{\n    {Fields.data.RawDeclarationCode};\n}}");
+					public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.data.RawDeclarationCode};\n}}");
 					public sealed partial class Fields : Scope {
 						public sealed partial class data : Scope {
-							public static IElement RawDeclarationCode => new Text($"Memory.{Type(Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16.NameRef)} {Name}");
+							public static IElement RawDeclarationCode => new Text($"Memory.{Type(Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef)} {Name}");
 							public static IElement Name => new Modify($"data").SetAttributeValue("title", "field data");
 						} //scope data
 					} //scope Fields
 				} //scope String16
 				
 				public sealed partial class WriteBufferOverflowException : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"WriteBufferOverflowException");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.WriteBufferOverflowException",null,$"Exception in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`");
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"WriteBufferOverflowException").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.WriteBufferOverflowException",null,$"Exception in `{Api.Antilatency.DeviceNetwork.Interop._FullNameRef}`");
 				} //scope WriteBufferOverflowException
 				
 				public sealed partial class PacketDescription : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"PacketDescription");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.PacketDescription",null,$"Struct in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[CodeBlock];
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"PacketDescription").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.PacketDescription",null,$"Struct in {Api.Antilatency.DeviceNetwork.Interop.FullNameRefCode}")[CodeBlock];
 					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					public static IElement RawDeclarationCode => new Text($"{Struct} {NameRef} {{\n    {Fields.id.RawDeclarationCode};\n    {Fields.size.RawDeclarationCode};\n    {Fields.barrierFor.RawDeclarationCode};\n}}");
+					public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.id.RawDeclarationCode};\n    {Fields.size.RawDeclarationCode};\n    {Fields.barrierFor.RawDeclarationCode};\n}}");
 					public sealed partial class Fields : Scope {
 						public sealed partial class id : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Keyword("byte")} {Name}");
@@ -121,69 +182,81 @@ public sealed partial class Api : Scope {
 				} //scope PacketDescription
 				
 				public sealed partial class ITaskSignature : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"ITaskSignature");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.getGuid.RawDeclarationCode};\n    {Methods.getWritePacketDescription.RawDeclarationCode};\n    {Methods.getReadPacketDescription.RawDeclarationCode};\n}}");
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"ITaskSignature").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static IElement RawDeclarationCode => new Text($"{Interface} {_NameRef} : InterfaceContract.{Type("IInterface")} {{\n    {Methods.getGuid.RawDeclarationCode};\n    {Methods.getWritePacketDescription.RawDeclarationCode};\n    {Methods.getReadPacketDescription.RawDeclarationCode};\n}}");
 					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.ITaskSignature",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[CodeBlock];
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.ITaskSignature",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Interop._FullNameRef}`")[CodeBlock];
 					public sealed partial class Methods : Scope {
 						public sealed partial class getGuid : Scope {
-							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"getGuid");
-							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"getGuid").AddClasses("Method");
+							public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+							public static IElement _FullNameRef => new Text($"{ITaskSignature._FullNameRef}.{_NameRef}");
+							public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 							public static IElement CodeInline => CodeInline(RawDeclarationCode);
-							public static IElement RawDeclarationCode => new Text($"{Keyword("Guid")} {NameRef}()");
-							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.ITaskSignature\u200B.getGuid",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.ITaskSignature.NameRef)}`\n`{RawDeclarationCode}`")
+							public static IElement RawDeclarationCode => new Text($"{Keyword("Guid")} {_NameRef}()");
+							public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.ITaskSignature.getGuid",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.ITaskSignature._NameRef)}`\n`{RawDeclarationCode}`")
 								[new Section("Parameters")]
 								;
 							public sealed partial class Parameters : Scope {
 							} //scope Parameters
 						} //scope getGuid
 						public sealed partial class getWritePacketDescription : Scope {
-							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"getWritePacketDescription");
-							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"getWritePacketDescription").AddClasses("Method");
+							public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+							public static IElement _FullNameRef => new Text($"{ITaskSignature._FullNameRef}.{_NameRef}");
+							public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 							public static IElement CodeInline => CodeInline(RawDeclarationCode);
-							public static IElement RawDeclarationCode => new Text($"{Keyword("bool")} {NameRef}({Parameters.index.RawDeclarationCode}, {Parameters.description.RawDeclarationCode})");
-							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.ITaskSignature\u200B.getWritePacketDescription",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.ITaskSignature.NameRef)}`\n`{RawDeclarationCode}`")
+							public static IElement RawDeclarationCode => new Text($"{Keyword("bool")} {_NameRef}({Parameters.index.RawDeclarationCode}, {Parameters.description.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.ITaskSignature.getWritePacketDescription",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.ITaskSignature._NameRef)}`\n`{RawDeclarationCode}`")
 								[new Section("Parameters")]
 								;
 							public sealed partial class Parameters : Scope {
 								public sealed partial class index : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
-									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
-									public static IElement Name => new Modify($"index").SetAttributeValue("title", "parameter index");
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
+									public static IElement _Name => new Modify($"index").SetAttributeValue("title", "parameter index");
+									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope index
 								public sealed partial class description : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
-									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.PacketDescription.NameRef)} {Name}");
-									public static IElement Name => new Modify($"description").SetAttributeValue("title", "parameter description");
+									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.PacketDescription._NameRef)} {_Name}");
+									public static IElement _Name => new Modify($"description").SetAttributeValue("title", "parameter description");
+									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope description
 							} //scope Parameters
 						} //scope getWritePacketDescription
 						public sealed partial class getReadPacketDescription : Scope {
-							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"getReadPacketDescription");
-							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"getReadPacketDescription").AddClasses("Method");
+							public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+							public static IElement _FullNameRef => new Text($"{ITaskSignature._FullNameRef}.{_NameRef}");
+							public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 							public static IElement CodeInline => CodeInline(RawDeclarationCode);
-							public static IElement RawDeclarationCode => new Text($"{Keyword("bool")} {NameRef}({Parameters.index.RawDeclarationCode}, {Parameters.description.RawDeclarationCode})");
-							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.ITaskSignature\u200B.getReadPacketDescription",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.ITaskSignature.NameRef)}`\n`{RawDeclarationCode}`")
+							public static IElement RawDeclarationCode => new Text($"{Keyword("bool")} {_NameRef}({Parameters.index.RawDeclarationCode}, {Parameters.description.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.ITaskSignature.getReadPacketDescription",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.ITaskSignature._NameRef)}`\n`{RawDeclarationCode}`")
 								[new Section("Parameters")]
 								;
 							public sealed partial class Parameters : Scope {
 								public sealed partial class index : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
-									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
-									public static IElement Name => new Modify($"index").SetAttributeValue("title", "parameter index");
+									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
+									public static IElement _Name => new Modify($"index").SetAttributeValue("title", "parameter index");
+									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope index
 								public sealed partial class description : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
-									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.PacketDescription.NameRef)} {Name}");
-									public static IElement Name => new Modify($"description").SetAttributeValue("title", "parameter description");
+									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.PacketDescription._NameRef)} {_Name}");
+									public static IElement _Name => new Modify($"description").SetAttributeValue("title", "parameter description");
+									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope description
 							} //scope Parameters
 						} //scope getReadPacketDescription
@@ -191,27 +264,32 @@ public sealed partial class Api : Scope {
 				} //scope ITaskSignature
 				
 				public sealed partial class IConnection : Scope {
-					public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IConnection");
-					public static IElement FullNameRef => new Deferred(()=>Material);
-					public static IElement RawDeclarationCode => new Text($"{Interface} {NameRef} : {Type(Api.Antilatency.DeviceNetwork.Interop.IDataReceiver.NameRef)} {{\n    {Methods.setDataReceiver.RawDeclarationCode};\n}}");
+					public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"IConnection").AddClasses("Type");
+					public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+					public static IElement _FullNameRef => new Text($"{Interop._FullNameRef}.{_NameRef}");
+					public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
+					public static IElement RawDeclarationCode => new Text($"{Interface} {_NameRef} : {Type(Api.Antilatency.DeviceNetwork.Interop.IDataReceiver._NameRef)} {{\n    {Methods.setDataReceiver.RawDeclarationCode};\n}}");
 					public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
-					public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.IConnection",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Interop.FullNameRef}`")[CodeBlock];
+					public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.IConnection",null,$"Interface in `{Api.Antilatency.DeviceNetwork.Interop._FullNameRef}`")[CodeBlock];
 					public sealed partial class Methods : Scope {
 						public sealed partial class setDataReceiver : Scope {
-							public static IElement NameRef => new Deferred(()=>Material).Modify().ContentReplace($"setDataReceiver");
-							public static IElement FullNameRef => new Deferred(()=>Material);
+							public static IElement _NameRef => new Deferred(()=>Material).Modify().ContentReplace($"setDataReceiver").AddClasses("Method");
+							public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
+							public static IElement _FullNameRef => new Text($"{IConnection._FullNameRef}.{_NameRef}");
+							public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 							public static IElement CodeInline => CodeInline(RawDeclarationCode);
-							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {NameRef}({Parameters.dataReceiver.RawDeclarationCode})");
-							public static Material Material => new Material("Antilatency\u200B.DeviceNetwork\u200B.Interop\u200B.IConnection\u200B.setDataReceiver",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.IConnection.NameRef)}`\n`{RawDeclarationCode}`")
+							public static IElement RawDeclarationCode => new Text($"{Keyword("void")} {_NameRef}({Parameters.dataReceiver.RawDeclarationCode})");
+							public static Material Material => new Material("Antilatency.DeviceNetwork.Interop.IConnection.setDataReceiver",null,$"Method of `{Type(Api.Antilatency.DeviceNetwork.Interop.IConnection._NameRef)}`\n`{RawDeclarationCode}`")
 								[new Section("Parameters")]
 								;
 							public sealed partial class Parameters : Scope {
 								public sealed partial class dataReceiver : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
-									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.IDataReceiver.NameRef)} {Name}");
-									public static IElement Name => new Modify($"dataReceiver").SetAttributeValue("title", "parameter dataReceiver");
+									public static IElement RawDeclarationCode => new Text($"{Type(Api.Antilatency.DeviceNetwork.Interop.IDataReceiver._NameRef)} {_Name}");
+									public static IElement _Name => new Modify($"dataReceiver").SetAttributeValue("title", "parameter dataReceiver");
+									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope dataReceiver
 							} //scope Parameters
 						} //scope setDataReceiver

@@ -1,23 +1,27 @@
 ﻿using Csml;
 using static Software.Antilatency_Hardware_Extension_Interface_Library_Assets;
+using static Api.Antilatency.HardwareExtensionInterface;
 
 partial class Software : Scope {
+    
+
     static Material Antilatency_Hardware_Extension_Interface_Library_ru => new Material(null, null,
     $"Библиотека для {Terms.Antilatency_Hardware_Extension_Interface}")
         [new Section("Использование библиотеки")
             [new OrderedList()
                 [$"Загрузка библиотеки."]
-                [$"Получение ILibrary."]
-                [$"Получение ICotaskConstructor."]
-                [$"Запуск таска с помощью startTask()."]
-                [$"Декларирование режимов работы нужных пинов, получение соответствующих интерфейсов(IInputPin, IOutputPin и т.д.)"]
-                [$"Перевод таска в режим *Run* с помощью run()."]
-                [$"Работа с полученными ранее интерфейсами(IInputPin, IOutputPin и т.д.)"]
+                [$"Получение {ILibrary.NameRefCode}."]
+                [$"Получение {ICotaskConstructor.NameRefCode}, с помощю {ILibrary.Methods.getCotaskConstructor.NameRefCode}."]
+                [$"Запуск таска с помощью {ICotaskConstructor.Methods.startTask.NameRefCode}"]
+                [$"Декларирование режимов работы нужных пинов, вызывая методы {new UnorderedList()[createPinMethods]}"]
+                [$"Перевод таска в режим *Run* с помощью {ICotask.Methods.run.NameRefCode}."]
+                [$"Работа с полученными ранее интерфейсами({IInputPin.NameRefCode}, {IOutputPin.NameRefCode} и т.д.)"]
             ]
         ]
 
         [new Section("IInputPin")
-            [IInputPinCode]
+            [IInputPin.CodeBlock]
+            [IInputPinCode]// <- delete variables
             [$"`getState()` возвращает актуальное состояние пина(изменяется не чаще, чем раз в 5мс)."]
         ]
 
@@ -54,7 +58,8 @@ partial class Software : Scope {
             [$"Сразу после запуска таск находится в состоянии *Init*. Только в этом состоянии работают методы по созданию пинов."]
             [$"`createInputPin()` создаёт пин в режиме входа."]
             [$"`createOutputPin()` создаёт пин в режиме выхода. Необходимо указать состояние, которое примет пин сразу после инициализации."]
-            [$"`createAnalogPin()` создаёт пин в режиме аналогового входа. `refreshIntervalMs` - время(в миллисекундах) обновления значение. *Todo add from api*См. Constants::AnalogMinRefreshIntervalMs и Constants::AnalogMaxRefreshIntervalMs."]
+            [$"{ICotask.Methods.createAnalogPin.NameRefCode} создаёт пин в режиме аналогового входа."]
+            [$"{ICotask.Methods.createAnalogPin.Parameters.refreshIntervalMs.NameCode} - время(в миллисекундах) обновления значение. Значение должно быть в диапазоне{Constants.Fields.AnalogMinRefreshIntervalMs.NameCode}..{Constants.Fields.AnalogMaxRefreshIntervalMs.NameCode} См. {Constants.NameRefCode}"]
             [$"`createPulseCounterPin()` создаёт пин в режиме счетчика импульсов. `refreshIntervalMs` - время(в миллисекундах) обновления значение. *Todo add from api* См. Constants::PulseCounterMinRefreshIntervalMs и Constants::PulseCounterMaxRefreshIntervalMs."]
             [new Info()[$"На текущий момент поддерживается только одинаковое время обновления для двух пинов в режиме счетчика импульсов."]]
             [$"`createPwmPin()` создаёт пин в режиме ШИМ выхода.`frequency` - частота сигнала в герцах *Todo add from api* См. Constants::PwmMinFrequency и Constants::PwmMaxFrequency. `initialDuty` - скважность ШИМ сигнала сразу после инициализации в интервале [0;1]."]
