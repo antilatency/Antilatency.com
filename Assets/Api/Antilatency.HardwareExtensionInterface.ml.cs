@@ -99,7 +99,7 @@ public sealed partial class Api : Scope {
 						public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 						public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 						public static IElement CodeInline => CodeInline(RawDeclarationCode);
-						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_NameRef}()");
+						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_NameRef}()");
 						public static Material Material => new Material("Antilatency.HardwareExtensionInterface.IInputPin.getState",null,$"Method of `{Api.Antilatency.HardwareExtensionInterface.IInputPin._NameRef}`\n`{RawDeclarationCode}`")
 							[new Section("Parameters")]
 							;
@@ -134,7 +134,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class state : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"state").SetAttributeValue("title", "parameter state");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope state
@@ -148,7 +148,7 @@ public sealed partial class Api : Scope {
 						public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 						public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 						public static IElement CodeInline => CodeInline(RawDeclarationCode);
-						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_NameRef}()");
+						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_NameRef}()");
 						public static Material Material => new Material("Antilatency.HardwareExtensionInterface.IOutputPin.getState",null,$"Method of `{Api.Antilatency.HardwareExtensionInterface.IOutputPin._NameRef}`\n`{RawDeclarationCode}`")
 							[new Section("Parameters")]
 							;
@@ -287,7 +287,7 @@ public sealed partial class Api : Scope {
 				public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
 				public static IElement _FullNameRef => new Text($"{HardwareExtensionInterface._FullNameRef}.{_NameRef}");
 				public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
-				public static IElement RawDeclarationCode => new Text($"{Interface} {_NameRef} : {Api.Antilatency.DeviceNetwork._FullNameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.ICotask._NameRef} {{\n    {Methods.createInputPin.RawDeclarationCode};\n    {Methods.createOutputPin.RawDeclarationCode};\n    {Methods.createAnalogPin.RawDeclarationCode};\n    {Methods.createPulseCounterPin.RawDeclarationCode};\n    {Methods.createPwmPin.RawDeclarationCode};\n    {Methods.run.RawDeclarationCode};\n}}");
+				public static IElement RawDeclarationCode => new Text($"{Interface} {_NameRef} : {Api.Antilatency.DeviceNetwork._NameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.ICotask._NameRef} {{\n    {Methods.createInputPin.RawDeclarationCode};\n    {Methods.createOutputPin.RawDeclarationCode};\n    {Methods.createAnalogPin.RawDeclarationCode};\n    {Methods.createPulseCounterPin.RawDeclarationCode};\n    {Methods.createPwmPin.RawDeclarationCode};\n    {Methods.run.RawDeclarationCode};\n}}");
 				public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 				public static Material Material => new Material("Antilatency.HardwareExtensionInterface.ICotask",null,$"Interface in `{Api.Antilatency.HardwareExtensionInterface._FullNameRef}`")[CodeBlock];
 				public sealed partial class Methods : Scope {
@@ -310,7 +310,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class pin : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
@@ -338,14 +338,14 @@ public sealed partial class Api : Scope {
 							public sealed partial class pin : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
 							public sealed partial class initialState : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"initialState").SetAttributeValue("title", "parameter initialState");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope initialState
@@ -373,7 +373,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class pin : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
@@ -408,7 +408,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class pin : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
@@ -446,7 +446,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class pin : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
@@ -489,7 +489,7 @@ public sealed partial class Api : Scope {
 				public static IElement NameRefCode => _NameRef.Modify().Wrap("code");
 				public static IElement _FullNameRef => new Text($"{HardwareExtensionInterface._FullNameRef}.{_NameRef}");
 				public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
-				public static IElement RawDeclarationCode => new Text($"{Interface} {_NameRef} : {Api.Antilatency.DeviceNetwork._FullNameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.ICotaskConstructor._NameRef} {{\n    {Methods.startTask.RawDeclarationCode};\n}}");
+				public static IElement RawDeclarationCode => new Text($"{Interface} {_NameRef} : {Api.Antilatency.DeviceNetwork._NameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.ICotaskConstructor._NameRef} {{\n    {Methods.startTask.RawDeclarationCode};\n}}");
 				public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 				public static Material Material => new Material("Antilatency.HardwareExtensionInterface.ICotaskConstructor",null,$"Interface in `{Api.Antilatency.HardwareExtensionInterface._FullNameRef}`")[CodeBlock];
 				public sealed partial class Methods : Scope {
@@ -509,14 +509,14 @@ public sealed partial class Api : Scope {
 							public sealed partial class network : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork._FullNameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.INetwork._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork._NameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.INetwork._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"network").SetAttributeValue("title", "parameter network");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope network
 							public sealed partial class node : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork._FullNameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.NodeHandle._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork._NameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.NodeHandle._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"node").SetAttributeValue("title", "parameter node");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope node

@@ -154,7 +154,7 @@ public sealed partial class Api : Scope {
 					public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.data.RawDeclarationCode};\n}}");
 					public sealed partial class Fields : Scope {
 						public sealed partial class data : Scope {
-							public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {Name}");
+							public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {Name}");
 							public static IElement Name => new Modify($"data").SetAttributeValue("title", "field data");
 						} //scope data
 					} //scope Fields

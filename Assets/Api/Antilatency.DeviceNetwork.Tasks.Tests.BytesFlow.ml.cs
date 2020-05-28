@@ -138,7 +138,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory2._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory2._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
@@ -159,7 +159,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory4._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory4._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
@@ -180,7 +180,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory8._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory8._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
@@ -201,7 +201,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
@@ -222,7 +222,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
@@ -243,7 +243,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory64._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory64._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
@@ -264,7 +264,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory128._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory128._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
@@ -285,7 +285,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class value : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory255._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory255._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value

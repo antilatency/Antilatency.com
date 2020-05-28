@@ -33,7 +33,7 @@ public sealed partial class Api : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.key.RawDeclarationCode};\n    {Fields.size.RawDeclarationCode};\n}}");
 							public sealed partial class Fields : Scope {
 								public sealed partial class key : Scope {
-									public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._FullNameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {Name}");
+									public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {Name}");
 									public static IElement Name => new Modify($"key").SetAttributeValue("title", "field key");
 								} //scope key
 								public sealed partial class size : Scope {
@@ -53,7 +53,7 @@ public sealed partial class Api : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.mem.RawDeclarationCode};\n}}");
 							public sealed partial class Fields : Scope {
 								public sealed partial class mem : Scope {
-									public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory128._NameRef} {Name}");
+									public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory128._NameRef} {Name}");
 									public static IElement Name => new Modify($"mem").SetAttributeValue("title", "field mem");
 								} //scope mem
 							} //scope Fields
@@ -122,7 +122,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class level : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._FullNameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.AccessLevel._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.AccessLevel._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"level").SetAttributeValue("title", "parameter level");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope level
@@ -164,7 +164,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class key : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._FullNameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"key").SetAttributeValue("title", "parameter key");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope key
@@ -227,7 +227,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class key : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._FullNameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"key").SetAttributeValue("title", "parameter key");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope key
@@ -323,7 +323,7 @@ public sealed partial class Api : Scope {
 										public sealed partial class key : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
-											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._FullNameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
+											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
 											public static IElement _Name => new Modify($"key").SetAttributeValue("title", "parameter key");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope key

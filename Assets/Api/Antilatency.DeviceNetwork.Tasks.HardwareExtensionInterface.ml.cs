@@ -75,7 +75,7 @@ public sealed partial class Api : Scope {
 						public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.pin.RawDeclarationCode};\n}}");
 						public sealed partial class Fields : Scope {
 							public sealed partial class pin : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
 								public static IElement Name => new Modify($"pin").SetAttributeValue("title", "field pin");
 							} //scope pin
 						} //scope Fields
@@ -91,11 +91,11 @@ public sealed partial class Api : Scope {
 						public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.pin.RawDeclarationCode};\n    {Fields.initState.RawDeclarationCode};\n}}");
 						public sealed partial class Fields : Scope {
 							public sealed partial class pin : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
 								public static IElement Name => new Modify($"pin").SetAttributeValue("title", "field pin");
 							} //scope pin
 							public sealed partial class initState : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {Name}");
 								public static IElement Name => new Modify($"initState").SetAttributeValue("title", "field initState");
 							} //scope initState
 						} //scope Fields
@@ -111,7 +111,7 @@ public sealed partial class Api : Scope {
 						public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.pin.RawDeclarationCode};\n    {Fields.refreshInterval.RawDeclarationCode};\n}}");
 						public sealed partial class Fields : Scope {
 							public sealed partial class pin : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
 								public static IElement Name => new Modify($"pin").SetAttributeValue("title", "field pin");
 							} //scope pin
 							public sealed partial class refreshInterval : Scope {
@@ -131,7 +131,7 @@ public sealed partial class Api : Scope {
 						public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.pin.RawDeclarationCode};\n    {Fields.refreshInterval.RawDeclarationCode};\n}}");
 						public sealed partial class Fields : Scope {
 							public sealed partial class pin : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
 								public static IElement Name => new Modify($"pin").SetAttributeValue("title", "field pin");
 							} //scope pin
 							public sealed partial class refreshInterval : Scope {
@@ -151,7 +151,7 @@ public sealed partial class Api : Scope {
 						public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.pin.RawDeclarationCode};\n    {Fields.topValue.RawDeclarationCode};\n    {Fields.dutyValue.RawDeclarationCode};\n}}");
 						public sealed partial class Fields : Scope {
 							public sealed partial class pin : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
 								public static IElement Name => new Modify($"pin").SetAttributeValue("title", "field pin");
 							} //scope pin
 							public sealed partial class topValue : Scope {
@@ -175,7 +175,7 @@ public sealed partial class Api : Scope {
 						public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.pin.RawDeclarationCode};\n    {Fields.dutyValue.RawDeclarationCode};\n}}");
 						public sealed partial class Fields : Scope {
 							public sealed partial class pin : Scope {
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._FullNameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"HardwareExtensionInterface.Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {Name}");
 								public static IElement Name => new Modify($"pin").SetAttributeValue("title", "field pin");
 							} //scope pin
 							public sealed partial class dutyValue : Scope {

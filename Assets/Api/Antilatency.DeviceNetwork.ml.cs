@@ -259,7 +259,7 @@ public sealed partial class Api : Scope {
 						public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 						public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 						public static IElement CodeInline => CodeInline(RawDeclarationCode);
-						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.Packet._NameRef}[] {_NameRef}()");
+						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.Packet._NameRef}[] {_NameRef}()");
 						public static Material Material => new Material("Antilatency.DeviceNetwork.ISynchronousConnection.getPackets",null,$"Method of `{Api.Antilatency.DeviceNetwork.ISynchronousConnection._NameRef}`\n`{RawDeclarationCode}`")
 							[new Section("Parameters")]
 							;
@@ -278,7 +278,7 @@ public sealed partial class Api : Scope {
 						public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 						public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 						public static IElement CodeInline => CodeInline(RawDeclarationCode);
-						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.Packet._NameRef}[] {_NameRef}({Parameters.taskFinished.RawDeclarationCode})");
+						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.Packet._NameRef}[] {_NameRef}({Parameters.taskFinished.RawDeclarationCode})");
 						public static Material Material => new Material("Antilatency.DeviceNetwork.ISynchronousConnection.getAvailablePackets",null,$"Method of `{Api.Antilatency.DeviceNetwork.ISynchronousConnection._NameRef}`\n`{RawDeclarationCode}`")
 							[new Section("Parameters")]
 							;
@@ -307,7 +307,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class packet : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.Packet._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.Packet._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"packet").SetAttributeValue("title", "parameter packet");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope packet
@@ -679,7 +679,7 @@ public sealed partial class Api : Scope {
 						public static IElement FullNameRefCode => _FullNameRef.Modify().Wrap("code");
 						public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 						public static IElement CodeInline => CodeInline(RawDeclarationCode);
-						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.IDataReceiver._NameRef} {_NameRef}({Parameters.node.RawDeclarationCode}, {Parameters.taskId.RawDeclarationCode}, {Parameters.taskDataReceiver.RawDeclarationCode})");
+						public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.IDataReceiver._NameRef} {_NameRef}({Parameters.node.RawDeclarationCode}, {Parameters.taskId.RawDeclarationCode}, {Parameters.taskDataReceiver.RawDeclarationCode})");
 						public static Material Material => new Material("Antilatency.DeviceNetwork.INetwork.nodeStartTask",null,$"Method of `{Api.Antilatency.DeviceNetwork.INetwork._NameRef}`\n`{RawDeclarationCode}`")
 							[new Section("Parameters")]
 							;
@@ -701,7 +701,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class taskDataReceiver : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
-								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._FullNameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.IDataReceiver._NameRef} {_Name}");
+								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.DeviceNetwork.Interop.IDataReceiver._NameRef} {_Name}");
 								public static IElement _Name => new Modify($"taskDataReceiver").SetAttributeValue("title", "parameter taskDataReceiver");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope taskDataReceiver

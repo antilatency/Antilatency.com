@@ -47,7 +47,7 @@ public sealed partial class Api : Scope {
 					public static IElement RawDeclarationCode => new Text($"{Struct} {_NameRef} {{\n    {Fields.mem.RawDeclarationCode};\n}}");
 					public sealed partial class Fields : Scope {
 						public sealed partial class mem : Scope {
-							public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._FullNameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {Name}");
+							public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {Name}");
 							public static IElement Name => new Modify($"mem").SetAttributeValue("title", "field mem");
 						} //scope mem
 					} //scope Fields
