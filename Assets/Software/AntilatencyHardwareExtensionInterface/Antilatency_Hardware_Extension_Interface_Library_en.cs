@@ -1,5 +1,6 @@
 ﻿using Csml;
 using static Software.Antilatency_Hardware_Extension_Interface_Library_Assets;
+using static Api.Antilatency.HardwareExtensionInterface;
 
 partial class Software : Scope {
 
@@ -18,23 +19,23 @@ partial class Software : Scope {
         ]
 
         [new Section("IInputPin")
-            [IInputPinCode]
+            [IInputPin.CodeBlock]
             [$"`getState()` gets the current state of the pin (changes no more than once every 5ms)."]
         ]
 
         [new Section("IOutputPin")
-            [IOutputPinCode]
+            [IOutputPin.CodeBlock]
             [$"`getState()` gets the last state modified with `setState()`(a request to the device is not sent)."]
             [$"`setState()` sends a request to the device to change the state of the pin. Throws an exception if therequest could not be sent."]
         ]
 
         [new Section("IAnalogPin")
-            [IAnalogPinCode]
+            [IAnalogPin.CodeBlock]
             [$"`getValue()` gets the current pin voltage in volts."]
         ]
 
         [new Section("IPulseCounterPin")
-            [IPulseCounterPinCode]
+            [IPulseCounterPin.CodeBlock]
             [$"`getValue()` returns the number of pulses for the last period."]
         ]
 
@@ -42,7 +43,7 @@ partial class Software : Scope {
         ]
 
         [new Section("ICotask")
-            [ICotaskCode]
+            [ICotask.CodeBlock]
             [new Info()[$"ICotaskMethods for creating pins form an initialization table only. The table will be sent to the device via the `run()` method."]]
             [$"The task is in ​Init​ state right after being launched. In this state only methods for creating pins work."]
             [$"`createInputPin()` creates a pin in input mode."]
