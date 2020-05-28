@@ -5,7 +5,7 @@ using static Api.Antilatency.HardwareExtensionInterface;
 partial class Software : Scope {
     
 
-    static Material Antilatency_Hardware_Extension_Interface_Library_ru => new Material(null, null,
+    public static Material Antilatency_Hardware_Extension_Interface_Library_ru => new Material(null, null,
     $"Библиотека для {Terms.Antilatency_Hardware_Extension_Interface}")
         [new Section("Использование библиотеки")
             [new OrderedList()

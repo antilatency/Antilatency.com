@@ -12,9 +12,8 @@ partial class Root {
 
 
 public class AntilatencyLogo : Element<AntilatencyLogo> {
-    Color PrimaryColor;
-    Color SecondaryColor;
-    private string Color;
+    readonly Color PrimaryColor;
+    readonly Color SecondaryColor;
     public AntilatencyLogo(Color primaryColor, Color secondaryColor) {
         PrimaryColor = primaryColor;
         SecondaryColor = secondaryColor;
@@ -23,7 +22,7 @@ public class AntilatencyLogo : Element<AntilatencyLogo> {
         yield return Root.Index.Generate(context).Single().Do((x) => {
             x.AddClass("AntilatencyLogo");
             x.InnerHtml = "";
-            x.SetAttributeValue("style", $"font-family: 'antilatency' !important; color: {Color};");
+            x.SetAttributeValue("style", $"font-family: 'antilatency' !important;");
             x.Add($"<span>").Do(x => {
                 x.SetAttributeValue("style", $"color: #{PrimaryColor.ToRgbString()}");
                 x.Add("a");

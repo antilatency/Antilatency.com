@@ -3,7 +3,7 @@ using static Software.Antilatency_Hardware_Extension_Interface_Library_Assets;
 
 partial class Software : Scope {
 
-    static Material Antilatency_Hardware_Extension_Interface_Library_en => new Material(null, null,
+    public static Material Antilatency_Hardware_Extension_Interface_Library_en => new Material(null, null,
     $"Library for {Terms.Antilatency_Hardware_Extension_Interface}")
         [new Section("How to use a library")
             [new OrderedList()

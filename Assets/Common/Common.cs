@@ -28,13 +28,16 @@ partial class Root : Scope {
     public static Menu MainMenu => new Menu()
         [LogoGreenBlack]
         [Index]
-        [Store.PresetEditor]
-        [Sdk.Configurator]
+        
         [Terms.Antilatency_Device_Network]
         [Hardware.Alt]
         [Internal.Debug]
         [CsmlPredefined.Diagnostics]
         [Software.Antilatency_Service]
+
+        [Store.PresetEditor]
+        [Sdk.Configurator]
+        [Api.Material]
         ;
     public static LanguageMenu LanguageMenu => new LanguageMenu();
 
