@@ -3,8 +3,8 @@ using static Tutorials.TrackingMinimalDemoCSharp_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material TrackingMinimalDemoCSharp_ru =>
-    
+
+    public static Material TrackingMinimalDemoCSharp_ru =>    
     new Material(
         "Tracking: Консольное приложение на C#",
         null,
