@@ -3,11 +3,7 @@ using static Software.AntilatencyIpNetwork_Assets;
 
 partial class Software : Scope {
 
-    public static Material AntilatencyIpNetwork_en => new Material("AntilatencyIpNetwork", null, $"")
-
-        [new Section("AntilatencyIpNetwork")
-            [$"AntilatencyIpNetwork is a cross-platform C++ library with AntilatencyApi interface. The main purpose is to exchange position data from Antilatency Trackers (Alt) between devices, in the same local network (LAN). It supports Windows, Linux (desktop and Raspberry Pi) and Android OS."]
-        ]
+    public static Material AntilatencyIpNetwork_en => new Material("AntilatencyIpNetwork", null, $"AntilatencyIpNetwork is a cross-platform C++ library with AntilatencyApi interface. The main purpose is to exchange position data from Antilatency Trackers ({Hardware.Alt}) between devices, in the same local network (LAN). It supports Windows, Linux (desktop and Raspberry Pi) and Android OS.")
 
         [new Section("API")
             [$"Library interface build around NetworkServer object. NetworkServer can send and receive states (positions, errors, GPIO etc) of network devices in the same multicast group."]

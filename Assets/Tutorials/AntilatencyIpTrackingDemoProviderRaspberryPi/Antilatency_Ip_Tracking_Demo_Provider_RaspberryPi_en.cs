@@ -3,11 +3,7 @@ using static Tutorials.Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_en => new Material("A demo application that provides data from Antilatency Tracker to network hosts", null, $"")
-
-        [new Section("Antilatency.IpTrackingDemo.Provider.RaspberryPi")
-            [$"{new ExternalReference("https://github.com/antilatency/Antilatency.IpTrackingDemo.Provider.RaspberryPi", "Antilatency.IpTrackingDemo.Provider.RaspberryPi")} is a demo application that provides data from {Hardware.Alt} connected to Raspberry Pi single board computer to network hosts."]
-        ]
+    public static Material Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_en => new Material("Antilatency.IpTrackingDemo.Provider.RaspberryPi", null, $"{new ExternalReference("https://github.com/antilatency/Antilatency.IpTrackingDemo.Provider.RaspberryPi", "Antilatency.IpTrackingDemo.Provider.RaspberryPi")} is a demo application that provides data from Antilatency Tracker ({Hardware.Alt}) connected to Raspberry Pi single board computer to network hosts.")
 
         [new Section("Preparation")
             [new UnorderedList()
@@ -20,7 +16,7 @@ partial class Tutorials : Scope {
         ]
 
         [new Section("Send position and rotation to network hosts")
-            [$"It is possible to place tens of Antilatency trackers (Alt) with corresponding amount of RPi’s in the same tracking area. Each RPi can communicate with Alt through USB connection, compute actual position from raw sensors data then send the position to remote hosts via built-in WiFi module. There is the AntilatencyIpNetwork (AIP) library which simplified network communication setup."]
+            [$"It is possible to place tens of Antilatency trackers ({Hardware.Alt}) with corresponding amount of RPi’s in the same tracking area. Each RPi can communicate with Alt through USB connection, compute actual position from raw sensors data then send the position to remote hosts via built-in WiFi module. There is the {Software.AntilatencyIpNetwork} (AIP) library which simplified network communication setup."]
         ]
 
         [new Section("Getting it all together")
@@ -29,7 +25,7 @@ partial class Tutorials : Scope {
             [TrackingDemoOutput]
             [$"You can set:"]
             [new UnorderedList()
-                [$"receiver IP (multicast group) and port (default: `--receivers=239.255.111.X --port=56789`),"]
+                [$"receiver IP (multicast group, see {Software.AntilatencyIpNetwork}) and port (default: `--receivers=239.255.111.X --port=56789`),"]
                 [$"sending rate (default: `--wait-time=16` milliseconds, approximate 60 FPS),"]
                 [$"tracking area (default: `--environment-code=AAVSaWdpZBcABnllbGxvdwQEBAABAQMBAQEDAAEAAD_W` {new ExternalReference ("https://antilatency.com/getting-started/latest/area#content", "DevKit")},"]
                 [$"device ID (default: `--identifier=MAC_ADDR`),"]
@@ -44,7 +40,7 @@ partial class Tutorials : Scope {
             [new UnorderedList()
                 [$"{new ExternalReference("https://github.com/antilatency/Antilatency.IpTrackingDemo.Provider.RaspberryPi/blob/master/BUILD.md", "Build instruction")}."]
                 [$"{Tutorials.PrepareRaspberryPiSdCard} - raspbian OS image modification."]
-                [$"AntilatencyIpNetwork library."]
+                [$"{Software.AntilatencyIpNetwork} library API reference."]
                 [$"{new ExternalReference("https://www.youtube.com/watch?v=1VfFXoJiGFU", "Practical usage demonstration")}."]
             ]
         ]
