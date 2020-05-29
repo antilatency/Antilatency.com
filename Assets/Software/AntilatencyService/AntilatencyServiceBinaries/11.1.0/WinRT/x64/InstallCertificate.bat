@@ -1,0 +1,1 @@
+Certutil -addStore TrustedPeople "%~dp0\AntilatencyService.cer"

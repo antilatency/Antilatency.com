@@ -12,7 +12,7 @@ namespace Csml {
         public abstract float TotalDuration { get; }
         public override IEnumerable<HtmlNode> Generate(Context context) {
             yield return HtmlNode.CreateNode("<div>").Do(x => {
-                x.AddClass("color-sequence");
+                x.AddClass("ColorSequence");
                 x.SetAttributeValue("style", $"background:linear-gradient(to right, {GetGradient()}); animation: animatedBackgroundPositionHorizontal {TotalDuration}s linear infinite;");
             });
         }
