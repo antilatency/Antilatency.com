@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using System.Threading;
 using Csml;
+using Microsoft.Extensions.FileSystemGlobbing;
+using Newtonsoft.Json;
 
 namespace Csml {
+
+
 
     public class Application {
         public static string ExecutablePath;
@@ -22,6 +27,7 @@ namespace Csml {
         public static Uri CssUri => new Uri(BaseUri, sassProcessor.OutputFileName);
         public static Uri JsUri => new Uri(BaseUri, javascriptProcessor.OutputFileName);
 
+        public static List<IMaterial> SiteMap = new List<IMaterial>();
 
         static Application() {
             var customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
@@ -72,7 +78,7 @@ namespace Csml {
             ScopeUtils.All.ForEach(x => {
                 x.Generate(context);
             });
-
+            SaveSiteMap();
         }
 
         public static void DeveloperBuildWatchJsCss(string outputDirectory) {
@@ -107,6 +113,8 @@ namespace Csml {
             ScopeUtils.All.ForEach(x => {
                 x.Generate(context);
             });
+
+            SaveSiteMap();
             Log.Info.Here($"DeveloperBuild: Done!");
 
             if (watch) {
@@ -119,14 +127,43 @@ namespace Csml {
         }
 
         public static void CleanUpGitHubIoWorkingCopy(string directory) {
-            CleanUpDirectory(directory, (path) => {
-                if (directory+"\\index.html" == path) return false;
-                var name = Path.GetFileName(path);
-                if (name.StartsWith(".")) return false;
-                return true;
-            });
+            var csmlDoNotDeleteFileName = "csmlDoNotDelete.json";
+            var csmlDoNotDeletePath = Path.Combine(directory, csmlDoNotDeleteFileName);
+            /*var ignoreList = new string[] { "index.html", ".git", ".gitattributes", ".gitignore" };
+            */
+            Matcher matcher = new Matcher();
+            matcher.AddInclude("**/*");
+            matcher.AddExclude("index.html");
+            matcher.AddExclude("**/.*");
+            matcher.AddExclude(csmlDoNotDeleteFileName);
 
-        }
+            if (File.Exists(csmlDoNotDeletePath)) {
+                var customIgnoreList = JsonConvert.DeserializeObject<string[]>(Utils.ReadAllText(csmlDoNotDeletePath));
+                if (customIgnoreList != null) {
+                    foreach (var i in customIgnoreList) {
+                        matcher.AddExclude(i);
+                    }
+                }
+            }
+
+
+            var filesToDelete = matcher.GetResultsInFullPath(directory);
+
+            foreach (var f in filesToDelete) {
+                File.Delete(f);
+            }
+
+            Utils.DeleteEmptySubdirectories(directory);
+
+                /*CleanUpDirectory(directory, (path) => {
+                    if (directory+"\\index.html" == path) return false;
+                    var name = Path.GetFileName(path);
+                    if (name.StartsWith(".")) return false;
+                    return true;
+                });*/
+            }
+
+
 
         public static void CleanUpDirectory(string directory, Func<string,bool> conditionToDelete) {
             if (!Directory.Exists(directory)) {
@@ -209,6 +246,31 @@ namespace Csml {
                 ProjectRootDirectory,
                 OutputRootDirectory);
         }
+
+
+        public static void SaveSiteMap(string path = null) {
+            if (string.IsNullOrEmpty(path)) {
+                path = Path.Combine(OutputRootDirectory, "SiteMap.xml");
+            }
+
+            StringBuilder result = new StringBuilder();
+            result.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            result.AppendLine("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">");
+
+            foreach (var m in SiteMap) {
+                foreach (var l in Language.All) {
+                    result.AppendLine("\t<url>");
+                    result.AppendLine($"\t<loc>{m.GetUri(l)}</loc>");
+                    foreach (var l2 in Language.All) {
+                        result.AppendLine($"\t\t<xhtml:link rel=\"alternate\" hreflang=\"{l2.Name}\" href=\"{m.GetUri(l2)}\"/>");
+                    }
+                    result.AppendLine("\t</url>");
+                }
+            }
+            result.AppendLine("</urlset>");
+            File.WriteAllText(path, result.ToString());
+        }
+
 
 
     }
