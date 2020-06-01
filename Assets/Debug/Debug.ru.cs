@@ -24,15 +24,17 @@ public partial class Internal : Scope {
             [$"Ссылки с текстом и подсказкой: {new ExternalReference("https://ru.wikipedia.org/wiki/C_Sharp", "C#", "Статья на Wikipedia про язык C#")}"]
             [$"Контекстно-зависимые ссылки: {WikipediaCSharp}. В зависимости от языка _(aka context)_ страницы ссылка будет меняться. Так можно делать с любыми объектами движка."]
         ]
-        [new Section("<-Ссылки на секции")
-            [$"Оказывается даже такие ссылки валидные, но так делать не нужно"]
+        [new Section("Ссылки на секции")
+            [$"Рядом с заголовком секции есть ссылка на эту секцию. По ней вы перейдете на `https://example.com/page#identifier`, где `identifier` это `id` html элемента. Для секций `id` будет создан из `title` если не указан явно."]
+            [$"Если вы явно указываете `identifier`, то убедитесь что во всех переводах страницы указан такой же. Обратите внимание переводчика на то, что этот параметр не переводится."]
+            [$"Можно вставлять в текст ссылки на секции страниц. Например `{{Debug:images}}` {Debug:images}"]
         ]
         [new Section("Markdown")
             [$"`code` *bold* _italic_ ~strikethrough~ ~*bold*strikethrough~ ~_*bold*italic_strikethrough~ `~_*bold*italic_strikethrough~`"]
             [$"`код со ссылкой {Debug}`"]
             [$"`<tag>content</tag>`"]
         ]
-        [new Section("Картинки")
+        [new Section("Картинки", "images")
             [$"Это AltAndUsbSocket0"]
             [AltAndUsbSocket0]
             [$"Это все картинки, имя переменной которых начинается с AltAndUsbSocket"]
