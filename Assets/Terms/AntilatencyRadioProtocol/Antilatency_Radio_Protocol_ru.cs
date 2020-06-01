@@ -29,7 +29,7 @@ partial class Terms {
                 [$"Подключение передатчиков к приемнику по радиопротколу"]
             ]
             [AntilatencyRadioProtocolTopology]
-            [$"Для конфигурации устройств с поддержкой {Terms.Antilatency_Radio_Protocol} см. раздел {Terms.ConfiguringRadioDevices}"]
+            [$"Для конфигурации устройств с поддержкой {Terms.Antilatency_Radio_Protocol} см. раздел {Hardware.ConfiguringRadioDevices}"]
         ]
 
         [new Section("Подключение нескольких устройств к одному приемнику")
