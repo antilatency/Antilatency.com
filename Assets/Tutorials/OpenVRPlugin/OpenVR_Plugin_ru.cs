@@ -4,7 +4,8 @@ using static Tutorials.OpenVR_Plugin_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material OpenVR_Plugin_ru => new Material(null, null, $"")
+    public static Material OpenVR_Plugin_ru => new Material(null, TitleImage, $"")
+        
         [new Section("Структура плагина")
             [DirectoryStructure]
         ]
