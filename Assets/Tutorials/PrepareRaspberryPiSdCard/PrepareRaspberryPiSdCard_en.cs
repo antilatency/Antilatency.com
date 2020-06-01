@@ -3,7 +3,7 @@ using static Tutorials.PrepareRaspberryPiSdCard_Assets;
 
 public partial class Tutorials : Scope {
 
-    public static Material PrepareRaspberryPiSdCard_en => new Material("Prepare SD card image for Raspberry Pi", null, $"")
+    public static Material PrepareRaspberryPiSdCard_en => new Material("Prepare SD card image for Raspberry Pi", TitleImage, $"")
 
         [new Section("Raspbian")
             [$"{new ExternalReference("https://www.raspbian.org/", "Raspbian")} is the Raspberry Pi Foundation’s official supported operation system based on Debian GNU/Linux."]

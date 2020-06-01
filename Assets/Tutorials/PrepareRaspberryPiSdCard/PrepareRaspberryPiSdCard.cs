@@ -7,7 +7,8 @@ using System.Linq;
 public partial class Tutorials : Scope {
     public static LanguageSelector<IMaterial> PrepareRaspberryPiSdCard => new LanguageSelector<IMaterial>();
 
-    public partial class PrepareRaspberryPiSdCard_Assets : Scope {       
+    public partial class PrepareRaspberryPiSdCard_Assets : Scope {     
+        public static Image TitleImage => new Image("./TitleImage.jpg");     
         public static Code RpiOsOkGpioPinRcLocal => new Code(
             @"/usr/bin/gpio mode 2 output
 /usr/bin/gpio write 2 1"
