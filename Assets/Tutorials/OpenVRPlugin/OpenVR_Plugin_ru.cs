@@ -20,12 +20,12 @@ partial class Tutorials : Scope {
         [new Section("Работа с драйвером")
             [$"Драйвер добавляет поддрежку следующих типов устройств в SteamVR:"]
             [new UnorderedList()
-                [$"Трекер ({Hardware.Alt} + любой {Hardware.Socket} или {Hardware.Tag})"]
+                [$"Трекер ({Hardware.Alt} + любой {Hardware.SocketUsb} или {Hardware.Tag})"]
                 [$"Контроллер ({Hardware.Bracer})"]
             ]
 
-            [$@"{ Terms.Placement} для трекера ищется по имени  заданным в свойстве `Tag` у {Hardware.Socket}, если свойство не задано или такой {Terms.Placement} не найдет, то берется установленный по умолчанию в {Terms.AntilatencyService}.
-            {Terms.Placement} для {Hardware.Bracer} устанавливается автоматически в зависимости от свойства `Tag` у {Hardware.Socket}, для левой и для правой руки свойство `Tag` должно быть задано как `LeftHand` или `RightHand`, соответственно."]
+            [$@"{ Terms.Placement} для трекера ищется по имени  заданным в свойстве `Tag` у {Hardware.SocketUsb}, если свойство не задано или такой {Terms.Placement} не найдет, то берется установленный по умолчанию в {Terms.AntilatencyService}.
+            {Terms.Placement} для {Hardware.Bracer} устанавливается автоматически в зависимости от свойства `Tag` у {Hardware.SocketUsb}, для левой и для правой руки свойство `Tag` должно быть задано как `LeftHand` или `RightHand`, соответственно."]
 
             [$"*Кнопки брейсера*"]
             [new OrderedList()
