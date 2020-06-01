@@ -8,7 +8,7 @@ using System.Linq;
 partial class Hardware: Scope {
     public static LanguageSelector<IMaterial> ExtensionBoard => new LanguageSelector<IMaterial>();
     public partial class ExtensionBoard_Assets : Scope {
-        public static Image ExtensionBoard => new Image("Images/ExtensionBoard.png");
+        public static Image TitleImage => new Image("/TitleImage.jpg");
 
         public static Image Input => new Image("Images/Input.png");
         public static Image Output => new Image("Images/Output.png");

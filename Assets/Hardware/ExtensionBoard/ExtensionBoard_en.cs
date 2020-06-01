@@ -6,7 +6,7 @@ partial class Hardware : Scope {
 
         new Material(
             "Antilatency Extension Board",
-            ExtensionBoard_Assets.ExtensionBoard,
+            ExtensionBoard_Assets.TitleImage,
         $"Pcb for easy using {Terms.Antilatency_Hardware_Extension_Interface}")
         [new Section("Pinout")
             [$"There are 8 pins available for the connection, each of them can operate in input or output mode. Any 2 among the pins can be set to pulse counting mode (*PulseCounter*). Only 2 specific pins can be set to analog mode (*Analog*)."]

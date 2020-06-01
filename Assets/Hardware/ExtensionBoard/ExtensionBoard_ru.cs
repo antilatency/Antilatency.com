@@ -6,7 +6,7 @@ partial class Hardware : Scope {
 
         new Material(
             "Antilatency Extension Board",
-            ExtensionBoard_Assets.ExtensionBoard,
+            ExtensionBoard_Assets.TitleImage,
         $"Плата для удобного использования {Terms.Antilatency_Hardware_Extension_Interface}")
         [new Section("Pinout")
             [$"Всего для подключения доступны 8 пинов, среди которых каждый может быть в режиме входа(*Input*) или выхода(*Output*). Любые 2 среди всех пинов могут быть в режиме подсчета импульсов(*PulseCounter*). Любые 4 могут быть в режиме ШИМ выхода(*Pwm*). И только 2 определённых пина могут быть в аналоговом режиме(*Analog*)."]
