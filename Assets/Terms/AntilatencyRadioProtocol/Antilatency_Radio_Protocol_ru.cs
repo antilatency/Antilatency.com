@@ -6,6 +6,7 @@ partial class Terms {
             [$"Список приемников"]
             [new UnorderedList()
                 [$"{Hardware.SocketUsbRadio}"]
+                [$"{Hardware.PicoG2Socket}"]
             ]
 
             [$"Список передатчиков"]
