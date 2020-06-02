@@ -1,5 +1,5 @@
 using Csml;
 
-partial class Hardware {
+partial class Tutorials {
     public static LanguageSelector<IMaterial> ConfiguringRadioDevices => new LanguageSelector<IMaterial>();
 }

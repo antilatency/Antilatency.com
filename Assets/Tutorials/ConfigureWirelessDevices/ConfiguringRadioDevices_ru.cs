@@ -1,5 +1,5 @@
 using Csml;
-partial class Hardware {
+partial class Tutorials {
     public static Material ConfiguringRadioDevices_ru => new Material("Конфигурация беспроводных устройств",  Terms.AntilatencyRadioProtocolTopology,
     $"")
         [new Section("Базовый набор действий")

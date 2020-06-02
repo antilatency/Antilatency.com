@@ -3,12 +3,17 @@ partial class Terms {
     public static Material Antilatency_Radio_Protocol_ru => new Material(null,  null,
     $"Для передачи данных по радиоканалу в устройствах Antilatency используется проприетарный радиопротокол, работающий на частоте 2.4ГГц. Радиопротокол оптимизирован для работы в режиме реального и обладает низкой задержкой при передаче данных (low latency).")
         [new Section("Устройства с поддержкой Antilatency Radio Protocol")
-            [@$"Существует список устройств с поддержкой Antilatency Radio Protocol, который постоянно пополняется. 
-                Полный список устройств можно посмотреть по ссылке: {Hardware.AntilatencyRadioProtocolDevicesList}
-            "]
+            [$"Список приемников"]
+            [new UnorderedList()
+                [$"{Hardware.SocketUsbRadio}"]
+            ]
+
+            [$"Список передатчиков"]
+            [new UnorderedList()
+                [$"{Hardware.Tag}"]
+                [$"{Hardware.Bracer}"]
+            ]
         ]
-
-
         [new Section("Топология подключения устройств по радиопротоколу")
             [$"В {Terms.Antilatency_Radio_Protocol} можно выделить два типа устройств: "]
             [new OrderedList()
@@ -29,7 +34,7 @@ partial class Terms {
                 [$"Подключение передатчиков к приемнику по радиопротколу"]
             ]
             [AntilatencyRadioProtocolTopology]
-            [$"Для конфигурации устройств с поддержкой {Terms.Antilatency_Radio_Protocol} см. раздел {Hardware.ConfiguringRadioDevices}"]
+            [$"Для конфигурации устройств с поддержкой {Terms.Antilatency_Radio_Protocol} см. раздел {Tutorials.ConfiguringRadioDevices}"]
         ]
 
         [new Section("Подключение нескольких устройств к одному приемнику")
