@@ -17,7 +17,7 @@ partial class Hardware {
                 [$"Open Device Network tab"]
                 [@$"Set “RadioChannel” property.
                     The default value is -1 – in this case the socket will choose the first free radio channel from the list: 42 = 2402 MHz, 66 = 2426 MHz, 92 = 2452 MHz, 114 = 2474 MHz, 120 = 2480 MHz.
-                    You can set a specific channel in the range of 0 - 140, that will be used. To know how the channel id is mapped to a radio frequency, см. Доступные каналы
+                    You can set a specific channel in the range of 0 - 140, that will be used. To know how the channel id is mapped to a radio frequency, см. {Terms.Antilatency_Radio_Protocol:channels}
                 "]
                 [@$"Set a connection limit by applying the corresponding value to the “ConnLimit” property. 
                     If you don’t need to use radio on this socket, set the value to 0. 

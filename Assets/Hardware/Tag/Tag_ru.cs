@@ -31,7 +31,7 @@ partial class Hardware : Scope {
                     [$"Ports"][$"Usb Type-C port for charging only"]
                     [$"Battery"][$"250mAh internal LiPo rechargeable battery"]
                     [$"Charging mode"][@$"Fully functional while charging
-                                         Current consumption by charging: 350mA@5"]
+                                         Current consumption by charging: 350mA@5V"]
                     [$"Indication"][@$"RGB LED
                                        For LED signals see table below TODO"]
                     [$"Dimensions"][$"8.5x18.2x65.7 mm"]
