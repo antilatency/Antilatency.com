@@ -13,7 +13,7 @@ partial class Tutorials : Scope {
         [new Section("Установка")
             [new OrderedList()
                 [$"Скопировать папку с драйвером в любую желаемую директорию"]
-                [$"Вызвать `<Steam directory>/steamapps/common/SteamVR/bin/win64/vrpathreg.exe adddriver \"<Driver directory>/antilatency\"`"]
+                [$"Вызвать `<SteamDirectory>/steamapps/common/SteamVR/bin/win64/vrpathreg.exe adddriver \"<DriverDirectory>/antilatency\"`"]
             ]
         ]
 

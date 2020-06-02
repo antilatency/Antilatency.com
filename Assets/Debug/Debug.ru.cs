@@ -6,8 +6,11 @@ public partial class Internal : Scope {
 
     public static Material Debug_ru => new Material(null, AltAndUsbSocket0,
         $"На этой странице странице некоторые примеры использования движка.")
-        
-        
+        [new Section("ToDo")
+            [$"В текст можно вставлять елемент {new ToDo("just do it later")}`new ToDo(\"text\")`"]
+            [$"Этот элемент будет виден только если `ToDo.Enabled = true;` , например в DeveloperBuild"]
+        ]
+
         [new Section("Grid")
             [new Grid(120,1,2,3,4)
                 
@@ -25,9 +28,14 @@ public partial class Internal : Scope {
             [$"Контекстно-зависимые ссылки: {WikipediaCSharp}. В зависимости от языка _(aka context)_ страницы ссылка будет меняться. Так можно делать с любыми объектами движка."]
         ]
         [new Section("Ссылки на секции")
-            [$"Рядом с заголовком секции есть ссылка на эту секцию. По ней вы перейдете на `https://example.com/page#identifier`, где `identifier` это `id` html элемента. Для секций `id` будет создан из `title` если не указан явно."]
-            [$"Если вы явно указываете `identifier`, то убедитесь что во всех переводах страницы указан такой же. Обратите внимание переводчика на то, что этот параметр не переводится."]
+            [$"Рядом с заголовком секции есть якорь (ссылка на эту секцию). По ней вы перейдете на `https://example.com/page#identifier`, где `identifier` это `id` html элемента. Для секций `id` будет создан из `title` если не указан явно."]
+            [$"Если вы явно указываете `identifier`, то убедитесь что во всех переводах страницы указан такой же."]
+            [new Warning($"Обратите внимание переводчика на то, что параметр `identifier` не переводится.")]
             [$"Можно вставлять в текст ссылки на секции страниц. Например `{{Debug:images}}` {Debug:images}"]
+        ]
+        [new Section("Секция без якоря","")
+            [$"Если указать пустой `identifier` то у секции не будет добавлен якорь."]
+            [$"`new Section(\"Секция без якоря\",\"\")`"]
         ]
         [new Section("Markdown")
             [$"`code` *bold* _italic_ ~strikethrough~ ~*bold*strikethrough~ ~_*bold*italic_strikethrough~ `~_*bold*italic_strikethrough~`"]

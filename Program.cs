@@ -94,7 +94,7 @@ namespace Csml {
             YoutubeVideoCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/videos");
             DownloadableCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/downloadable");
             GitHub.RepositoryBranch.IgnorePinning = true;
-
+            ToDo.Enabled = true;
 
             CleanUpDirectory(OutputRootDirectory);
 
