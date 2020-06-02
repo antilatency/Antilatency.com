@@ -5,12 +5,13 @@ using static Internal.Debug_Assets;
 public partial class Internal : Scope {
 
     public static Material Debug_ru => new Material(null, AltAndUsbSocket0,
-        $"На этой странице странице некоторые примеры использования движка.")
+        $"На этой странице странице некоторые примеры использования движка.")        
         [new Section("ToDo")
-            [$"В текст можно вставлять елемент {new ToDo("just do it later",false)}`new ToDo(\"text\")`"]
+            [$"В текст можно вставлять елемент {new ToDo("just do it later", false, true)}`new ToDo(\"text\")`"]
             [$"Параметр конструктора `suppressWarning` сделан исключительно для этого примера. Не используйте его."]
             [$"Этот элемент будет виден только если `ToDo.Enabled = true;` , например в DeveloperBuild"]
         ]
+        [new ToDo("Тут должна быть секция. Чтобы текст отображался ставите `showText:true` (второй параметр)", true, true)]
 
         [new Section("Grid")
             [new Grid(120,1,2,3,4)
