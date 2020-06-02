@@ -1,6 +1,7 @@
 using Csml;
 partial class Tutorials {
-    public static Material ConfiguringRadioDevices_ru => new Material("Конфигурация беспроводных устройств",  Terms.AntilatencyRadioProtocolTopology,
+    public static Material ConfiguringRadioDevices_ru => new Material("Конфигурация беспроводных устройств",
+    ConfiguringRadioDevices_Assets.TitleImage, 
     $"")
         [new Section("Базовый набор действий")
             [$"Для получения данных с беспроводных устройств на хосте необходимо выполнить набор действий:"]
