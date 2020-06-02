@@ -2,6 +2,4 @@
 
 partial class Hardware : Scope {
     public static LanguageSelector<IMaterial> SocketUsb => new LanguageSelector<IMaterial>(); 
-    public static LanguageSelector<IMaterial> PicoG2Socket => new LanguageSelector<IMaterial>();
-
 }
