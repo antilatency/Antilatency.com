@@ -3,198 +3,25 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="file:///D:/Antilatency.com.Generated/style.css">
+		<link rel="stylesheet" href="file:///D:/Antilatency.com.Generated/Style.css">
+		<script src="file:///D:/Antilatency.com.Generated/Script.js"></script>
 		<title>f5me.test</title>
-		<style>
 
-		</style>
-
-		<script id="resizeRoiImages">
-			function resizeRoiImages(){
-				var images = document.getElementsByClassName("roi-image-container")
-				for (var i = 0; i < images.length; i++) {
-					var image = images.item(i);
-					resizeRoiImage(image)
-				}
-			}
-			function resizeRoiImage(container){
-				var aspect = parseFloat(container.getAttribute("data-aspect").split(" "));
-				var roi = container.getAttribute("data-roi").split(" ");
-				var x0 = parseFloat(roi[0])/100;
-				var x1 = parseFloat(roi[1])/100;
-				var y0 = parseFloat(roi[2])/100;
-				var y1 = parseFloat(roi[3])/100;
-				var w = x1-x0
-				var h = y1-y0
-				container.style.minHeight = container.offsetWidth*h*aspect+"px"
-				container.style.maxHeight = container.offsetWidth/w*aspect+"px"
-				
-				var containerAspect = container.offsetHeight/container.offsetWidth 
-				//console.log(containerAspect)
-				var image = container.getElementsByTagName("img")[0]
-
-				if (containerAspect<aspect){
-					image.style.width = "100%"
-					image.style.height = "auto"
-					var offset = (1-(containerAspect/aspect-h)/(1-h))*y0 *100.0					
-					image.style.transform = "translate(0, -"+offset+"%)"
-				}else{
-					image.style.width = "auto"
-					image.style.height = "100%"
-					var offset = (1-(aspect/containerAspect-w)/(1-w))*x0 *100.0
-					image.style.transform = "translate(-"+offset+"%, 0)"
-				}
-			}
-			document.addEventListener("DOMContentLoaded", resizeRoiImages)
-			window.addEventListener("resize", resizeRoiImages);
-		</script>
-
-		<script>
-			/*var header = document.getElementsByClassName("menu-button");
-			var btns = header.getElementsByClassName("btn");
-			for (var i = 0; i < btns.length; i++) {
-			btns[i].addEventListener("click", function() {
-				var current = document.getElementsByClassName("active");
-				current[0].className = current[0].className.replace(" active", "");
-				this.className += " active";
-				});
-			}*/
-		</script>
-
-
-
-		<style>
-			
-			
-
-
-		</style>
 	</head>
-	<body style="visibility: visible;">
-		
-		<script>
-			var Behaviour = {
-				GetCode: function(methodName, ...parameters){
-					return "var parent = document.currentScript.parentElement;"+
-						"parent.removeChild(document.currentScript);"+
-						methodName+"(parent,"+parameters.map(function(x) {return JSON.stringify(x)}) +");"
-				},
-				Initialize: function(methodName, ...parameters){
-					var code = Behaviour.GetCode(methodName,...parameters)
-					
-					eval(code)
-				},
-				Create: function(methodName, ...parameters){
-					var result = document.createElement('script');
-					
-					result.innerHTML = Behaviour.GetCode(methodName,...parameters)
-					return result
-				},
+	<body class="TemplateRegularMaterial">
 
-
-				Print: function(element, ...parameters){
-					parameters.map(function(x){console.log(x)})
-				},
-				PrintParent: function(element, ...parameters){
-					console.log(element)
-				}
-			}
-
-			/*var OnClick = {
-				Create: function(element){
-					var button = document.createElement('div');
-					button.className = "button toggle"
-					button.onclick = function(){ToggleButton.Toggle(element,button)}
-
-					element.appendChild(Behaviour.Create("ToggleButton.Print"));
-					element.appendChild(button);
-				}
-			}*/
-
-			var ToggleButton = {
-				
-				Create: function(element, ...parameters){
-					var button = document.createElement('div');
-					
-					button.className = "button toggle"
-					button.onclick = function(){ToggleButton.Toggle(element,button)}					
-					button.appendChild(Behaviour.Create("Behaviour.PrintParent","string"));
-					console.log(element)
-					element.appendChild(button);
-					console.log(element)
-					console.log(button.parentElement)
-				},
-				
-				Toggle: function(element,button){
-					if (button.classList.contains("checked")){
-						element.classList.remove("checked")
-						button.classList.remove("checked")
-					}else{
-						element.classList.add("checked")
-						button.classList.add("checked")
-					}
-					console.log(element.classList)
-				}
-			}
-		</script>
-
-		<script id="Behaviours">
-			var Behaviours = {
-				Execute: function () {
-					var behaviours = document.getElementsByTagName("behaviour");
-					for (var i =0; i< behaviours.length; i++) {
-						var b = behaviours[i]
-						var f = new Function('element', b.className+'(element)');
-						f(b.parentNode)
-						b.parentNode.removeChild(b)
-					}					
-				}
-			}
-			document.addEventListener("DOMContentLoaded", Behaviours.Execute)
-		</script>
-
-
-		<nav class="menu">
-			<a style="font-family: 'antilatency' !important; color: black;"><span style="color: #acc435;">a</span><span>l</span</a>
-			<a style="font-family: 'antilatency' !important; font-size: 50px; color: black;"><span style="color: #acc435;">a</span><span>l</span</a>
-			<a style="font-family: 'antilatency' !important; font-size: 100px; color: black;"><span style="color: #acc435;">a</span><span>l</span</a>
-			<a style="font-family: 'antilatency' !important; font-size: 50px; color: white;"><span style="color: #acc435;">a</span><span>l</span</a>
-			<a href="file:///D:/Antilatency.com/.test/test.html">This</a>
-			<a href="clients.html">Our Clients</a>
-			<a href="products.html">Our Products</a>
-			<a href="services.html">Our Services</a>
-			<a href="contact.html">Contact Us</a>
-			<a href="contact.html">Contact Us</a>
-			<script>Behaviour.Initialize("ToggleButton.Create",8,"string")</script>
-		</nav>
-		
-		<nav class="language-menu">
-			<a class="text" href="file:///D:/Antilatency.com/output/Terms/AntilatencyDeviceNetwork/Antilatency_Device_Network_en.html" title="Antilatency Device Network - eng.">English</a>
-			<a class="text" href="file:///D:/Antilatency.com/output/Terms/AntilatencyDeviceNetwork/Antilatency_Device_Network_ru.html" title="Библиотека для комуникации с устройствами Antilatency. Позволяет находить устройства среди подключенных, отслеживать подключение новых устройств, запускать задачи на устройствах, а также обновлять прошивку.">Русский</a>
-			<a class="text" href="file:///D:/Antilatency.com/output/Terms/AntilatencyDeviceNetwork/Antilatency_Device_Network_ch.html" title="Antilatency Device Network - eng.">中文</a>
-		</nav>
-
-		
-		
-		
-		
-
-		<div class="material">
-			
-
-
-
+		<div class="Content anchorsOutside" style="max-width: 800px;">
 
 			<div class="header">				
 				<h1 class="title">Antilatency device network</h1>
 			
-				<div class="roi-image-container image" style="overflow: hidden;""
-				data-roi="22 82 22 77" data-aspect="1">					
-					<img  src="D:\Antilatency.com\Assets\Terms\Alt\AltAndUsbSocket2.jpg"				
+				<div class="roi-image-container image" style="overflow: hidden;">					
+					<img  src="D:\Antilatency.com\Assets\Hardware\Alt\AltAndUsbSocket0.jpg"				
 					style="
 					width: 100%;
 					height: auto;			
 					">
+					<script>Behaviour.Initialize("RoiImage",1.0,[25.0,68.0,29.0,78.0])</script>
 				</div>				
 				
 				<div  class="text">
@@ -204,21 +31,6 @@
 					а также <b>обновлять прошивку</b>.		
 				</div>
 			</div>
-
-			<div class="code">
-				<pre><keyword>keyword</keyword>
-					<typename>Type</typename>
-					<method>Method</method>
-					<comment>Comment</comment>
-					<string>String</string>
-				</pre>
-			</div>
-
-			<div class="color-sequence" style="background:
-				linear-gradient(to right, red 0%,red 25%, orange 25%, yellow 50%, green 75%, blue 100%);
-				animation: animatedBackgroundPositionHorizontal 2000ms linear infinite;">				
-			</div>
-
 
 			
 
@@ -233,10 +45,6 @@
 						<span style="color:#0000FF;">using</span> System;
 					</pre>
 				</div>
-
-				<img 
-				style="height: auto; max-width: 563px; margin: 0 auto 0 auto;"
-				src="file:///D:/Antilatency.com.Generated/Assets/Debug/OrvMBXJTH3bU27SmsCIgL41c0wU563.png" class="image">
 
 
 				<table style="width: 100%">
@@ -310,33 +118,10 @@
 				</table>
 
 				<div class="text">
-					Для начала работы с `Antilatency device network` нужно загрузить библиотеку и создать экземпляр `ILibrary`		
+					Для начала работы с <code>Antilatency device network</code> нужно загрузить библиотеку и создать экземпляр `ILibrary`		
 				</div>
 
-
-
-				<div class="roi-image-container image" style="overflow: hidden;""
-				data-roi="22 82 22 77" data-aspect="1">					
-					<img  src="D:\Antilatency.com\Assets\Terms\Alt\AltAndUsbSocket2.jpg"				
-					style="
-					width: 100%;
-					height: auto;			
-					">
-				</div>
-				<div class="roi-image-container image" style="overflow: hidden;""
-				data-roi="22 82 22 77" data-aspect="1">					
-					<img  src="D:\Antilatency.com\Assets\Terms\Alt\AltAndUsbSocket2.jpg"				
-					style="
-					width: 100%;
-					height: auto;			
-					">
-				</div>
 			</div>
-			
-			<a class="text" href="file:///D:/Antilatency.com/output/Terms/AntilatencyDeviceNetwork/Antilatency_Device_Network_en.html">Antilatency Device Network</a>
-			
-			<a class="text" href="file:///D:/Antilatency.com/output/Terms/Alt/Alt_en.html">Alt</a>
-			
 
 			<div class="section">
 				<h2 class="title">Nodes</h2>
@@ -351,34 +136,8 @@
 		</div>
 
 
-		
-
-		  
-		  
 
 
-
-		
-	
-		<script>
-			var counter = 10 
-			function check(){
-				if (!document.fonts.check('1em Roboto')) return false;
-				return true;
-			}
-			function waitForResources () {
-
-				if (!check() & counter>0){
-					console.log("waiting")
-					counter--;
-					setTimeout(waitForResources, 10)
-				}else{
-					document.body.style.visibility = "visible";
-				}
-			}
-			waitForResources()
-
-		</script>
 			
 	</body>
 </html>
