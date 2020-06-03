@@ -15,10 +15,10 @@ partial class Hardware : Scope {
                 [$"В работе {Terms.Antilatency_Radio_Protocol} {Hardware.PicoG2Socket} выступает в качестве приемника данных от передатчиков. {Hardware.PicoG2Socket} собирает данные от подключенных к нему беспроводных устройств и передает их на шлем по USB вместе с данными своего трекера."] 
             ]
 
-            [new Section("Проброс данных USB")
-                [$"Помимо разъема USB type-C Male для подключения к шлему {Hardware.PicoG2Socket} имеет разъем USB type-C Female для проброса данных на шлем. Таким образом, единожды подключив {Hardware.PicoG2Socket} к шлему и зафиксировав, {Hardware.PicoG2Socket} уже не нужно будет отключать: зарядка шлема и передача данных по USB для установки приложений будет происходить через указанный разъем USB type-C Female."] 
+            [new Section("Дополнительный разъем USB type-C Female")
+                [$"Помимо разъема USB type-C Male для подключения к шлему {Hardware.PicoG2Socket} имеет разъем USB type-C Female. При подключении кабеля к разъему USB type-C Female, {Hardware.PicoG2Socket} начинает работать как USB-переходник для зарядки и проброса USB-данных на щлем. Таким образом, единожды подключив {Hardware.PicoG2Socket} к шлему и зафиксировав, {Hardware.PicoG2Socket} уже не нужно будет отключать: зарядка шлема и передача данных по USB для установки приложений будет происходить через указанный разъем USB type-C Female."] 
                 [new Info()
-                    [$"USB type-C разъем на шлеме не позволяет одновременно использовать {Hardware.PicoG2Socket} и заряжать шлем через разъем USB type-C Female"]
+                    [$"{Hardware.PicoG2Socket} работает в 2-х взаимоисключающих режимах: либо в режиме USB-устройства, передающее данные трекинга на шлем, либо в режиме USB-переходника."]
                 ]                
             ]
 
