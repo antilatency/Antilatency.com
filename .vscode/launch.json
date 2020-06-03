@@ -4,37 +4,36 @@
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
-        {
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/build/Antilatency.com.dll",
-            "args": ["${workspaceFolder}.Generated"],
-            "cwd": "${workspaceFolder}",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "externalTerminal",
-            "stopAtEntry": false
-        },
-        {
-            "name": "DeveloperBuild",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/build/Antilatency.com.dll",
-            "args": ["DeveloperBuild(@~D:/Antilatency.com.Generated~);"],
-            "cwd": "${workspaceFolder}",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "externalTerminal",
-            "stopAtEntry": false
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
-        }
+    {            
+        "name": "DeveloperBuild_WatchJsCss",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/build/Antilatency.com.dll",
+        "args": ["DeveloperBuildWatchJsCss(@~D:/Antilatency.com.Generated~);"],
+        "cwd": "${workspaceFolder}",
+        "console": "externalTerminal",
+    },
+    {
+        "name": "DeveloperBuild",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/build/Antilatency.com.dll",
+        "args": ["DeveloperBuild(@~D:/Antilatency.com.Generated~);"],
+        "cwd": "${workspaceFolder}",
+        "console": "externalTerminal",
+    },
+    
+    {
+        "name": "DeployToGithubIoWorkingCopy",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/build/Antilatency.com.dll",
+        "args": ["DeployToGithubIoWorkingCopy(@~D:/antilatency.github.io~);"],
+        "cwd": "${workspaceFolder}",
+        "console": "externalTerminal",
+    }
     ]
 }
