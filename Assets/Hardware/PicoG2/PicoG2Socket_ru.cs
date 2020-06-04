@@ -16,7 +16,7 @@ partial class Hardware : Scope {
             ]
 
             [new Section("Дополнительный разъем USB type-C Female")
-                [$"Помимо разъема USB type-C Male для подключения к шлему {Hardware.PicoG2Socket} имеет разъем USB type-C Female. При подключении кабеля к разъему USB type-C Female, {Hardware.PicoG2Socket} начинает работать как USB-переходник для зарядки и проброса USB-данных на щлем. Таким образом, единожды подключив {Hardware.PicoG2Socket} к шлему и зафиксировав, {Hardware.PicoG2Socket} уже не нужно будет отключать: зарядка шлема и передача данных по USB для установки приложений будет происходить через указанный разъем USB type-C Female."] 
+                [$"Помимо разъема USB type-C Male для подключения к шлему {Hardware.PicoG2Socket} имеет разъем USB type-C Female. При подключении кабеля к разъему USB type-C Female, {Hardware.PicoG2Socket} начинает работать как USB-переходник для зарядки и проброса USB-данных на шлем. Таким образом, единожды подключив {Hardware.PicoG2Socket} к шлему и зафиксировав, {Hardware.PicoG2Socket} уже не нужно будет отключать: зарядка шлема и передача данных по USB для установки приложений будет происходить через указанный разъем USB type-C Female."] 
                 [new Info()
                     [$"{Hardware.PicoG2Socket} работает в 2-х взаимоисключающих режимах: либо в режиме USB-устройства, передающее данные трекинга на шлем, либо в режиме USB-переходника."]
                 ]                
