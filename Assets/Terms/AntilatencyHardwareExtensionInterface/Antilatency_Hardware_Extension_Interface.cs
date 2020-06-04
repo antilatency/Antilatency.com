@@ -4,7 +4,6 @@ partial class Terms : Scope {
     public static LanguageSelector<IMaterial> Antilatency_Hardware_Extension_Interface => new LanguageSelector<IMaterial>();
 
     public partial class Antilatency_Hardware_Extension_Interface_Assets : Scope {
-        public static Image Connection => new Image("Images/AntilatencyHardwareExtensionBoardPCB.png");
         public static YoutubeVideo Video => new YoutubeVideo("d2bnT24EWTM");
     }
 }

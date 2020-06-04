@@ -9,6 +9,7 @@ partial class Hardware: Scope {
     public static LanguageSelector<IMaterial> ExtensionBoard => new LanguageSelector<IMaterial>();
     public partial class ExtensionBoard_Assets : Scope {
         public static Image TitleImage => new Image("TitleImage.jpg");
+        public static Image Connection => new Image("Images/AntilatencyHardwareExtensionBoardPCB.png");
 
         public static Image Input => new Image("Images/Input.png");
         public static Image Output => new Image("Images/Output.png");

@@ -11,7 +11,7 @@ partial class Terms : Scope {
 
         [new Section("Connection")
             [$"{Hardware.ExtensionBoard} 2.0.0 is used."]
-            [Antilatency_Hardware_Extension_Interface_Assets.Connection]]
+            [Hardware.ExtensionBoard_Assets.Connection]]
 
         [new UnorderedList()
             [$"Connect the socket to {Hardware.ExtensionBoard} using a USB 3.1 Type-C cable(3.1 is important as all 4 differential pairs are needed for it to work). It is necessary to connect the socket and the extension board with the same orientation of the connectors to prevent crossing the signal lines. There are cables which already have a crossover of signal lines inside. You need to connect such cables the other way around, that is, upside down."]
