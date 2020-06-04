@@ -29,9 +29,9 @@ partial class Tutorials {
         ]
 
         [new Section("Конфигурация передатчика")
-            [@$"By default передатчики try to connect to the nearest приемник. This behavior is quite simple and good for local testing purposes or when you have only one active приемник at a time. 
-                You can allow a wireless socket to connect only to a приемник with a specific Serial number using Master serial number (MasterSN) property передатчика.  There are 2 ways to apply this setting.
-                Перед тем как запарить передатчик и приемник нужно удостовериться, что у передатчика еще не выставлено значение свойства MasterSN. См. Check and reset MasterSN property. 
+            [@$"Можно сконфигурировать передатчик, чтобы он подключался только к конкретному приемнику, используя свойство MasterSN (Подробнее о MasterSN См. {Terms.Antilatency_Radio_Protocol:MasterSN})
+            Существует 2 способа, чтобы задать свойство MasterSN.
+            Перед тем как запарить передатчик и приемник нужно удостовериться, что у передатчика еще не выставлено значение свойства MasterSN. См. Check and reset MasterSN property. 
             "]
         ]
 
