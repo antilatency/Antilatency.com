@@ -14,26 +14,7 @@ partial class Hardware: Scope {
     static Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
 
 
-    public static Material Alt_ru => new Material(null, AltAndUsbSocket0,
-        $"На этой странице странице пока побудут некоторые примеры использования движка.")
-        [new Section("<-Ссылки на секции")
-            [$"Оказывается даже такие ссылки валидные, но так делать не нужно"]
-        ]
-        [new Section("Ссылки")
-            [$"Можно вставлять {Alt} в текст"]
-            [$"Если навести на ссылку, то в подсказке будет описание страницы. Это полезно для терминов."]
-        ]
 
-        [new Section("Code")
-            [$"Файл с Github целиком."]
-            [AntilatencyGitHub.AntilatencyCom_Master.Program]
-            [$"Csml.Program.Main()"]
-            [AntilatencyGitHub.AntilatencyCom_Master.Program.GetClass("Csml", "Application").GetMethod("Main")]
-        ]
-        [new Section("Api")
-            //[$"{Api.Antilatency.Alt.Tracking._Material}"]
-        ]
-        ;
 
 }
 
