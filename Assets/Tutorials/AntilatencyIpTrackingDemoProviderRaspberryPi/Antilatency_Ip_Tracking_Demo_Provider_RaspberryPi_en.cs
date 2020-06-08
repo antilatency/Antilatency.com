@@ -3,7 +3,7 @@ using static Tutorials.Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_en => new Material("Antilatency.IpTrackingDemo.Provider.RaspberryPi", null, $"{new ExternalReference("https://github.com/antilatency/Antilatency.IpTrackingDemo.Provider.RaspberryPi", "Antilatency.IpTrackingDemo.Provider.RaspberryPi")} is a demo application that provides data from Antilatency Tracker ({Hardware.Alt}) connected to Raspberry Pi single board computer to network hosts.")
+    public static Material Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_en => new Material("Antilatency.IpTrackingDemo.Provider.RaspberryPi", Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_Assets.TitleImage, $"{new ExternalReference("https://github.com/antilatency/Antilatency.IpTrackingDemo.Provider.RaspberryPi", "Antilatency.IpTrackingDemo.Provider.RaspberryPi")} is a demo application that provides data from Antilatency Tracker ({Hardware.Alt}) connected to Raspberry Pi single board computer to network hosts.")
 
         [new Section("Preparation")
             [new UnorderedList()

@@ -3,7 +3,8 @@ using Csml;
 partial class Tutorials : Scope {
     public static LanguageSelector<IMaterial> Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi => new LanguageSelector<IMaterial>();
 
-    public partial class Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_Assets : Scope {       
+    public partial class Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi_Assets : Scope {
+        public static Image TitleImage => new Image("./TitleImage.jpg");        
         public static Code TrackingDemoOutput => new Code(
             @"/opt/antilatency/bin/AntilatencyIpTrackingDemoProvider -v
 [15:27:31.905][000741][info] Start factory creation
