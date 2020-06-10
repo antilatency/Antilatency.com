@@ -69,6 +69,7 @@ partial class Root : Scope {
             ]
 
             [new FooterMenuSection("")
+                //[LogoGreenBlack]
                 [$"Copyright © 2020, ALT LLC. info@antilatency.com"]
             ]
         ]
