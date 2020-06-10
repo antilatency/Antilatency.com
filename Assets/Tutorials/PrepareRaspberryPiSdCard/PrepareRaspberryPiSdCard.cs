@@ -25,7 +25,7 @@ public partial class Tutorials : Scope {
         public static Code RpiOffOkGpioPinSystemD => new Code(
             @"echo -e '#!/bin/sh
 gpio mode 3 output
-gpio write 2 1
+gpio write 3 1
 sleep 1
 exit 0' | sudo tee /lib/systemd/system-shutdown/rpi_off_ok.sh > /dev/null"
             , ProgrammingLanguage.PowerShell);
