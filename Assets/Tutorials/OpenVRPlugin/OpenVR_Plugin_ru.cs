@@ -4,7 +4,8 @@ using static Tutorials.OpenVR_Plugin_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material OpenVR_Plugin_ru => new Material(null, TitleImage, $"")
+    public static Material OpenVR_Plugin_ru => new Material(null, TitleImage, 
+    $"Инструкция по установке OpenVR драйвера, который позволяет использовать систему трекинга Antilatency с приложениями SteamVR. ")
         
         [new Section("Структура плагина")
             [DirectoryStructure]
