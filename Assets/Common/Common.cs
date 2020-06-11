@@ -7,7 +7,7 @@ namespace Csml {
     partial class Scope {
         public static ITemplate Template => new Csml.TemplateRegularMaterial(Root.MainMenu)
             [Root.LanguageMenu]
-            [Root.CommonFooter]
+            [Root.Footer]
             ;
     }
 
@@ -19,7 +19,7 @@ partial class Root : Scope {
 
     public new static ITemplate Template => new Csml.TemplateLanding(MainMenu)
         [Root.LanguageMenu]
-        [Root.CommonFooter]
+        [Root.Footer]
             ;
 
     //public Root() {
@@ -44,13 +44,11 @@ partial class Root : Scope {
     public static LanguageMenu LanguageMenu => new LanguageMenu();
 
 
-    public static Footer CommonFooter => new Footer()
-        [new FooterMenu()
+    public static Footer Footer => new Footer()
+        [new Grid(250, 1, 2, 3, 4)
             [LogoGreenBlack]
-        ]
-        
-        [new FooterMenu()
-            [new FooterMenuSection("SECTION 1")
+
+            [new Section("SECTION 1")
                 [new UnorderedList()
                     [Terms.Antilatency_Device_Network]
                     [Hardware.Alt]
@@ -60,7 +58,7 @@ partial class Root : Scope {
                 ]
             ]
 
-            [new FooterMenuSection("SECTION 2")
+            [new Section("SECTION 2")
                 [new UnorderedList()
                     [Store.PresetEditor]
                     [Sdk.Configurator]
@@ -68,12 +66,8 @@ partial class Root : Scope {
                 ]
             ]
 
-            [new FooterMenuSection("")
-                //[LogoGreenBlack]
-                [$"Copyright © 2020, ALT LLC. info@antilatency.com"]
-            ]
+            [$"Copyright © 2020, ALT LLC. info@antilatency.com"]
         ]
-
         ;
 
 }
