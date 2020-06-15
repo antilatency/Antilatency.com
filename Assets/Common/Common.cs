@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Csml;
+using System.Linq;
 using HtmlAgilityPack;
+using static Root.Common_Assets;
 
 
 namespace Csml {
@@ -46,28 +48,39 @@ partial class Root : Scope {
 
     public static Footer Footer => new Footer()
         [new Grid(250, 1, 2, 3, 4)
-            [LogoGreenBlack]
-
-            [new Section("SECTION 1")
+            [new Section("Products")
                 [new UnorderedList()
-                    [Terms.Antilatency_Device_Network]
-                    [Hardware.Alt]
-                    [Internal.Debug]
-                    [CsmlPredefined.Diagnostics]
-                    [Software.Antilatency_Service]
+                    [HardwareProducts]
                 ]
             ]
 
-            [new Section("SECTION 2")
+             [new Section("Customer Support")
                 [new UnorderedList()
-                    [Store.PresetEditor]
-                    [Sdk.Configurator]
-                    [Api.Material]
+                    [new ExternalReference("https://antilatency.com", "Get Started")]
+                    [new ExternalReference("https://antilatency.com", "Care Center")]
+                    [new ExternalReference("https://antilatency.com", "Downloads")]
                 ]
             ]
 
-            [$"Copyright © 2020, ALT LLC. info@antilatency.com"]
+            [new Section("For Developers")
+                [new UnorderedList()
+                    [new ExternalReference("https://antilatency.com", "API")]
+                    [new ExternalReference("https://antilatency.com", "Tutorials")]
+                    [new ExternalReference("https://antilatency.com", "Tools")]
+                ]
+            ]
+
+            [new Section("Company")
+                [new UnorderedList()
+                    [new ExternalReference("https://antilatency.com", "About")]
+                    [new ExternalReference("https://antilatency.com", "Contact Us")]
+                    [new ExternalReference("https://antilatency.com", "Become a partner")]
+                ]
+            ]   
         ]
+
+
+        [$"{new ExternalReference("https://antilatency.com", "Personal data processing policy")} | {new ExternalReference("https://antilatency.com", "Terms of Services")} | Copyright © {CopyrightYear}, ALT LLC. info@antilatency.com"]
         ;
 
 }
