@@ -5,13 +5,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
-using Csml;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Newtonsoft.Json;
 
 namespace Csml {
-
-
 
     public class Application {
         public static string ExecutablePath;
@@ -37,15 +34,12 @@ namespace Csml {
 
             ExecutablePath = System.Reflection.Assembly.GetEntryAssembly().Location;
             ProjectRootDirectory = Path.GetFullPath("..", Path.GetDirectoryName(ExecutablePath));
-            GitHub.FileCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/gitHubFileCache");
+
+            CacheConfig.PrivateCacheDirectory = Path.Combine(ProjectRootDirectory, ".cache");
         }
 
         static void Main(string[] args) {
             var scriptWarmUp = CSharpScript.WarmUpAsync();
-
-            /*using (new Stopwatch("Verify")) {
-                ScopeUtils.All.ForEach(x => x.Verify());
-            }*/
 
             scriptWarmUp.Wait();
             CSharpScript.ExecuteCommandLineArguments<Application>(args);
@@ -57,14 +51,11 @@ namespace Csml {
             Log.Info.Here($"DeployToGithubIoWorkingCopy({workingCopyDirectory})");
             
             OutputRootDirectory = workingCopyDirectory;
-            BaseUri = new Uri("https://" +Path.GetFileName(workingCopyDirectory)+"/");            
-            
-            ImageCache.RootDirectory = Path.Combine(OutputRootDirectory, "Images");
-            ImageCache.RootUri = new Uri(BaseUri, "Images/");
-            YoutubeVideoCache.RootDirectory = Path.Combine(OutputRootDirectory, "Videos");
-            YoutubeVideoCache.RootUri = new Uri(BaseUri, "Videos/");
-            DownloadableCache.RootDirectory = Path.Combine(OutputRootDirectory, "Downloads");
-            DownloadableCache.RootUri = new Uri(BaseUri, "Downloads/");
+            BaseUri = new Uri("https://" + Path.GetFileName(workingCopyDirectory) + "/");
+
+            CacheConfig.PublicCacheDirectory = OutputRootDirectory;
+            CacheConfig.PublicCacheUri = BaseUri;
+
 
             CleanUpGitHubIoWorkingCopy(OutputRootDirectory);
 
@@ -90,9 +81,10 @@ namespace Csml {
             OutputRootDirectory = outputDirectory;
             BaseUri = new Uri(OutputRootDirectory + "/");
 
-            ImageCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/images");
-            YoutubeVideoCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/videos");
-            DownloadableCache.RootDirectory = Path.Combine(ProjectRootDirectory, ".cache/downloadable");
+            CacheConfig.PublicCacheDirectory = Path.Combine(ProjectRootDirectory, ".cache");
+            CacheConfig.PublicCacheUri = null;
+
+
             GitHub.RepositoryBranch.IgnorePinning = true;
             ToDo.Enabled = true;
 
