@@ -33,7 +33,7 @@ namespace Csml {
             var customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = customCulture;
-            ScopeUtils.EnableGetOnce();
+            ScopeHelper.EnableGetOnce();
 
             ExecutablePath = System.Reflection.Assembly.GetEntryAssembly().Location;
             ProjectRootDirectory = Path.GetFullPath("..", Path.GetDirectoryName(ExecutablePath));
@@ -75,7 +75,7 @@ namespace Csml {
 
             Log.Info.Here($"DeployToGithubIoWorkingCopy: Generate...");
             Context context = new Context();
-            ScopeUtils.All.ForEach(x => {
+            ScopeHelper.All.ForEach(x => {
                 x.Generate(context);
             });
             SaveSiteMap();
@@ -110,7 +110,7 @@ namespace Csml {
             Log.Info.Here($"DeveloperBuild: Generate...");
             
             Context context = new Context();
-            ScopeUtils.All.ForEach(x => {
+            ScopeHelper.All.ForEach(x => {
                 x.Generate(context);
             });
 

@@ -7,7 +7,7 @@ using static Root.Common_Assets;
 
 namespace Csml {
     partial class Scope {
-        public static ITemplate Template => new Csml.TemplateRegularMaterial(Root.MainMenu)
+        public static IPageTemplate Template => new Csml.TemplateRegularMaterial(Root.MainMenu)
             [Root.LanguageMenu]
             [Root.Footer]
             ;
@@ -19,7 +19,7 @@ namespace Csml {
 
 partial class Root : Scope {
 
-    public new static ITemplate Template => new Csml.TemplateLanding(MainMenu)
+    public new static IPageTemplate Template => new Csml.TemplateLanding(MainMenu)
         [Root.LanguageMenu]
         [Root.Footer]
             ;

@@ -7,9 +7,9 @@ public partial class Root {
         public static YoutubeVideo TitleVideo => new YoutubeVideo("qj6S37xIqK0");
 
         public static IElement AllHardware => new Grid(320, 1, 2, 3, 4)
-            [ScopeUtils.GetScopePropertiesOfType<Hardware, ILanguageSelector<IMaterial>>().Where(x=>x.HasTarget).Select(x => new MaterialCard(x))];
+            [ScopeHelper.GetScopePropertiesOfType<Hardware, ILanguageSelector<IMaterial>>().Where(x=>x.HasTarget).Select(x => new MaterialCard(x))];
         public static IElement AllTutorials => new Grid(320, 1, 2, 3, 4)
-            [ScopeUtils.GetScopePropertiesOfType<Tutorials, ILanguageSelector<IMaterial>>().Where(x => x.HasTarget).Select(x => new MaterialCard(x))];
+            [ScopeHelper.GetScopePropertiesOfType<Tutorials, ILanguageSelector<IMaterial>>().Where(x => x.HasTarget).Select(x => new MaterialCard(x))];
         
 
     }
