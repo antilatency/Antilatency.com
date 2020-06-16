@@ -28,6 +28,7 @@ public partial class Internal : Scope {
             [$"Ссылки с текстом: {new ExternalReference("https://ru.wikipedia.org/wiki/C_Sharp", "C#")}"]
             [$"Ссылки с текстом и подсказкой: {new ExternalReference("https://ru.wikipedia.org/wiki/C_Sharp", "C#", "Статья на Wikipedia про язык C#")}"]
             [$"Контекстно-зависимые ссылки: {WikipediaCSharp}. В зависимости от языка _(aka context)_ страницы ссылка будет меняться. Так можно делать с любыми объектами движка."]
+            [$"Ссылки картинками: {new ExternalReference("https://ru.wikipedia.org/wiki/C_Sharp", SmallImage)}"]
         ]
         [new Section("Ссылки на секции")
             [$"Рядом с заголовком секции есть якорь (ссылка на эту секцию). По ней вы перейдете на `https://example.com/page#identifier`, где `identifier` это `id` html элемента. Для секций `id` будет создан из `title` если не указан явно."]

@@ -41,14 +41,14 @@ namespace Csml {
         }
 
         static void Main(string[] args) {
-            var scriptWarmUp = CommandLineScript.WarmUpAsync();
+            var scriptWarmUp = CSharpScript.WarmUpAsync();
 
             /*using (new Stopwatch("Verify")) {
                 ScopeUtils.All.ForEach(x => x.Verify());
             }*/
 
             scriptWarmUp.Wait();
-            CommandLineScript.ExecuteCommandLineArguments<Application>(args);
+            CSharpScript.ExecuteCommandLineArguments<Application>(args);
         }
 
         //private static CopyFonts
