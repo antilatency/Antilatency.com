@@ -5,7 +5,7 @@ using static Tutorials.Device_Update_Assets;
 partial class Tutorials : Scope {
 
     public static Material Device_Update_ru => new Material("Cистема обновления Antilatency",
-     null, 
+     TitleImage, 
      $"Пошаговая инструкция обновления прошивок на устройствах Antilatency")
 
         [new Section("Видео инструкция по обновлению прошивок")
