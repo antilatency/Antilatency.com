@@ -19,11 +19,7 @@ namespace Csml {
         }
 
         static void Main(string[] args) {
-           // var scriptWarmUp = CSharpScript.WarmUpAsync();
-
-           // scriptWarmUp.Wait();
             CSharpScript.ExecuteCommandLineArguments<Application>(args);
-
             //DeveloperBuild(@"D:\Antilatency.com.Generated");
         }
 
