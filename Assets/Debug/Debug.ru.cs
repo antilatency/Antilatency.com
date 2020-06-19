@@ -55,6 +55,8 @@ public partial class Internal : Scope {
             [$"Маленькие картинки выравниваются по центру"]
             [SmallImage]
             [Input]
+            [$"Векторная картника"]
+            [VectorImage]
         ]
         [new Section("Code")
             [$"Файл с Github целиком."]
