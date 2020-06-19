@@ -14,14 +14,14 @@ partial class Terms {
             [DeviceHierarchy]
             [$"Мастер сокет подключается к HMD или backpack PC, в обоих случаях возможно подключение Antilatency трекера к этому сокету для отслеживания головы или любой другой части тела."]
             [$"К мастер сокету подключаются четыре сокета - два Tag и два Bracer. Эти сокеты являются передатчиками данных своих трекеров к мастер - сокету. Таким образом создается сеть, позволяющая создать fullbody трекинг на основе знания о позиции пяти точек."]
-            [$"[здесь будет скрин из AntilatencyService]"]
+            [DeviceTreeInAntilatencyService]
             [$"Вот так выглядит дерево девайсов для данного сетапа в AntilatencyService."]
         ]
 
         [new Section("Полезные ссылки")
-        [$"{Tutorials.ConfiguringRadioDevices_ru}"]
-        [$"{Tutorials.Device_Update_ru}"]
-        [$"ссылка на туториал по назначению проперти"]
+        [$"{Tutorials.ConfiguringRadioDevices}"]
+        [$"{Tutorials.Device_Update}"]
+        [$"{Tutorials.Set_Device_Custom_Properties}"]
         ];
 
         

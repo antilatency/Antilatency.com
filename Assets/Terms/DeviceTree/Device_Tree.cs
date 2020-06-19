@@ -5,5 +5,6 @@ partial class Terms {
 
     public static Image RadioScheme => new Image("./RadioScheme.png");
     public static Image DeviceHierarchy => new Image("./DeviceHierarchy.jpg");
+    public static Image DeviceTreeInAntilatencyService => new Image("./DeviceTreeInAntilatencyService.png");
     
 }
