@@ -12,6 +12,7 @@ public partial class Internal : Scope {
         public static Image SmallImage => new Image("SmallImage.png");
         public static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
         public static Image Input => new Image("Input.png");
+        public static Image VectorImage => new Image("VectorImage.svg");
 
         /*public static Downloadable DownloadableFolderTest => new Downloadable("DownloadableDirTest", DownloadableIcon.Cloud);
         public static Downloadable DownloadableFolderTestWithoutPng => new Downloadable("DownloadableDirTest", DownloadableIcon.Zip, packToArchivePredicate: x => Path.GetExtension(x) != ".png");
