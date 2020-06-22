@@ -1,8 +1,7 @@
 
-.AntilatencyLogo{
-    @include SelectNone();
+.AntilatencyLogo {
+    @include Unselectable();
     text-decoration: none;
-
 }
 
 .LeftSideMenu {
