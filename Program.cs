@@ -16,14 +16,11 @@ namespace Csml {
             var customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = customCulture;
-            ScopeHelper.EnableGetOnce();
         }
 
         static void Main(string[] args) {
-            var scriptWarmUp = CSharpScript.WarmUpAsync();
-
-            scriptWarmUp.Wait();
             CSharpScript.ExecuteCommandLineArguments<Application>(args);
+            //DeveloperBuild(@"D:\Antilatency.com.Generated");
         }
 
         private static string GetProjectRootDirectory() {
@@ -45,13 +42,12 @@ namespace Csml {
         private static Matcher GetGithubIoWorkingCopyCleanupMatcher(string directory) { 
             var csmlDoNotDeleteFileName = "csmlDoNotDelete.json";
             var csmlDoNotDeletePath = Path.Combine(directory, csmlDoNotDeleteFileName);
-            /*var ignoreList = new string[] { "index.html", ".git", ".gitattributes", ".gitignore" };
-            */
-            var matcher = new Matcher();
-            matcher.AddInclude("**/*");
-            matcher.AddExclude("index.html");
-            matcher.AddExclude("**/.*");
-            matcher.AddExclude(csmlDoNotDeleteFileName);
+
+            var matcher = new Matcher()
+                .AddInclude("**/*")
+                .AddExclude("index.html")
+                .AddExclude("**/.*")
+                .AddExclude(csmlDoNotDeleteFileName);
 
             if (File.Exists(csmlDoNotDeletePath)) {
                 var customIgnoreList = JsonConvert.DeserializeObject<string[]>(Utils.ReadAllText(csmlDoNotDeletePath));
@@ -90,7 +86,6 @@ namespace Csml {
                 F5.Send();
             }
         }
-
 
 
         static void Watch(CsmlWorkspace ws) {
