@@ -17,6 +17,7 @@ partial class Tutorials : Scope {
         public static Image OculusRiftSPlacement => new Image("./OculusRiftSPlacement.jpg");
         public static Image PicoG2Placement => new Image("./PicoG2Placement.jpg");
         public static Image ViveProPlacement => new Image("./ViveProPlacement.jpg");
+         public static Image PicoG2Socket => new Image("./PicoG2Socket.jpg");
 
 
         
