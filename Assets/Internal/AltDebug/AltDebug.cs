@@ -16,5 +16,6 @@ partial class Internal : Scope {
         public static Image Image_DeviceTree => new Image("Images/Image_DeviceTree.png");
         public static Image Image_Rows => new Image("Images/Image_Rows.png");
         public static Image Startup => new Image("Images/Startup.png");
+        public static Downloadable AltDebugLink => new Downloadable("AltDebug", "AltDebug/sdk2/Windows/x64");
     }
 }

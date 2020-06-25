@@ -10,8 +10,7 @@ partial class Internal : Scope {
             TitleImage,
         $"*AltDebug* is a debugging application that helps diagnose tracking problems. In this tutorial, we will look at an example of getting an image that trackers see. It can be used to diagnose incorrect positioning of bars or broken markers.")
 
-        [new Downloadable("AltDebug", "AltDebug",
-            Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
+        [AltDebugLink]
 
         [new Section("Device tree")
             [$"After opening *AltDebug*, you will see the initial application window."]
