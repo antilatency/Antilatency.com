@@ -48,15 +48,20 @@ partial class Root : Scope {
 
     public static Footer Footer => new Footer()
         [new Grid(250, 1, 2, 3, 4)
+            [new Section("Internal")
+                [$"{new ExternalReference("https://antilatency.atlassian.net/secure/RapidBoard.jspa?rapidView=175&projectKey=CSML", "Jira CSML")}"]
+                [$"{new ExternalReference("https://antilatency.atlassian.net/secure/RapidBoard.jspa?rapidView=177&projectKey=ALCOM", "Jira Antilatency.com")}"]
+            ]
+
             [new Section("Products")
                 [HardwareProducts]
             ]
 
-             [new Section("Customer Support")
+           /* [new Section("Customer Support")
                 [$"{new ExternalReference("https://antilatency.com", "Get Started")}"]
                 [$"{new ExternalReference("https://antilatency.com", "Care Center")}"]
                 [$"{new ExternalReference("https://antilatency.com", "Downloads")}"]
-            ]
+            ]*/
 
             [new Section("For Developers")
                 [$"{new ExternalReference("https://antilatency.com", "API")}"]

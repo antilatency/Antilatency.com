@@ -1,6 +1,7 @@
 $max-width: 800px;
 $min-width: 320px;
 
+$AntilatencyColor: #acc435;
 
 @mixin screen-smaller-then($width) {
     @media only screen and (max-width: $width) {
