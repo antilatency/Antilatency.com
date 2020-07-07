@@ -1,4 +1,4 @@
-@import "Dependencies/Csml/Src/Csml.scss";
+@import "Dependencies/Csml/Src/Scss/Csml.scss";
 
 @import "Fonts/roboto/roboto.scss";
 @import "Fonts/materialdesignicons/materialdesignicons.scss";
@@ -18,24 +18,4 @@
 @import "Assets/Common/AntilatencyLogo.scss";
 
 
-
-
-* {
-    margin: 0;
-    padding: 0;
-    
-}
-
-html {
-	font-family: "Roboto";
-    -webkit-font-smoothing: subpixel-antialiased;
-	
-}
-
-h1, h2, h3, h4{
-    
-    padding: 0;
-    margin: 0;
-
-}
 

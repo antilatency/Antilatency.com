@@ -48,34 +48,31 @@ partial class Root : Scope {
 
     public static Footer Footer => new Footer()
         [new Grid(250, 1, 2, 3, 4)
-            [new Section("Products")
-                [new UnorderedList()
-                    [HardwareProducts]
-                ]
+            [new Section("Internal")
+                [$"{new ExternalReference("https://antilatency.atlassian.net/secure/RapidBoard.jspa?rapidView=175&projectKey=CSML", "Jira CSML")}"]
+                [$"{new ExternalReference("https://antilatency.atlassian.net/secure/RapidBoard.jspa?rapidView=177&projectKey=ALCOM", "Jira Antilatency.com")}"]
             ]
 
-             [new Section("Customer Support")
-                [new UnorderedList()
-                    [new ExternalReference("https://antilatency.com", "Get Started")]
-                    [new ExternalReference("https://antilatency.com", "Care Center")]
-                    [new ExternalReference("https://antilatency.com", "Downloads")]
-                ]
+            [new Section("Products")
+                [HardwareProducts]
             ]
+
+           /* [new Section("Customer Support")
+                [$"{new ExternalReference("https://antilatency.com", "Get Started")}"]
+                [$"{new ExternalReference("https://antilatency.com", "Care Center")}"]
+                [$"{new ExternalReference("https://antilatency.com", "Downloads")}"]
+            ]*/
 
             [new Section("For Developers")
-                [new UnorderedList()
-                    [new ExternalReference("https://antilatency.com", "API")]
-                    [new ExternalReference("https://antilatency.com", "Tutorials")]
-                    [new ExternalReference("https://antilatency.com", "Tools")]
-                ]
+                [$"{new ExternalReference("https://antilatency.com", "API")}"]
+                [$"{new ExternalReference("https://antilatency.com", "Tutorials")}"]
+                [$"{new ExternalReference("https://antilatency.com", "Tools")}"]
             ]
 
             [new Section("Company")
-                [new UnorderedList()
-                    [new ExternalReference("https://antilatency.com", "About")]
-                    [new ExternalReference("https://antilatency.com", "Contact Us")]
-                    [new ExternalReference("https://antilatency.com", "Become a partner")]
-                ]
+                [$"{new ExternalReference("https://antilatency.com", "About")}"]
+                [$"{new ExternalReference("https://antilatency.com", "Contact Us")}"]
+                [$"{new ExternalReference("https://antilatency.com", "Become a partner")}"]
             ]   
         ]
 
