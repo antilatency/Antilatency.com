@@ -39,8 +39,9 @@ function PresetEditor(presetEditor) {
         `{
             "Demo: 10 FullbodyUsingPicoG2~2":{
                 "Fullbody~10":{
-                    "HeadPicoG2":{
-                        "ACHA0Alt__A":1
+                    "Head":{
+                        "ACHA0Alt__A":1,
+						"ACHA0PicoG2Socket__A": 1
                     },
                     "Hand~2":{
                         "ACHA0Alt__A":1,
@@ -69,16 +70,33 @@ function PresetEditor(presetEditor) {
         return true;
     }
 
+    this.GetProductUnitPrice = function (productName, productQuantityGlobal) {
+        if (this.IsEmptyObject(productQuantityGlobal)) {
+            productQuantityGlobal = 1;
+        }
+
+        var productInfo = productsList[productName];
+        var productPrice = 0;
+
+        for (let j = 0; j < productInfo.Prices.length; j++) {
+            if (productInfo.Prices[j].From <= productQuantityGlobal) {
+                productPrice = productInfo.Prices[j].Price;
+            }
+        }
+
+        return productPrice;
+    }
+
     this.UpdatePrices = function () {
         var productsQuantity = {}
-        var rootGroup = document.querySelector(".PresetEditorTree > .Group");
+        var presetEditorRootGroup = document.querySelector(".PresetEditorTree > .Group");
 
         var UpdatePriceTitles = function (item, price, priceTotal) {
             var priceTitle = item.querySelector("div#price");
             var priceTotalTitle = item.querySelector("div#priceTotal");
 
-            priceTitle.textContent = price + "$ x";
-            priceTotalTitle.textContent = "= " + priceTotal + "$";
+            priceTitle.textContent = price + "$";
+            priceTotalTitle.textContent = priceTotal + "$";
         }
 
         var CountProducts = function (group, quantityMultiplier) {
@@ -103,14 +121,14 @@ function PresetEditor(presetEditor) {
             }
         }
 
-        var SetPrices = function (group) {
+        var UpdateGroupPricesRecursively = function (group) {
             var groups = group.querySelectorAll("item:scope > .Group");
             var products = group.querySelectorAll("item:scope > .Product");
 
             var groupPrice = 0;
 
             for (let i = 0; i < groups.length; i++) {
-                groupPrice += SetPrices(groups[i]);
+                groupPrice += UpdateGroupPricesRecursively(groups[i]);
             }
 
             for (let i = 0; i < products.length; i++) {
@@ -118,22 +136,15 @@ function PresetEditor(presetEditor) {
                 var productName = product.getAttribute("name");
                 var productQuantity = product.getAttribute("quantity");
                 var productQuantityGlobal = productsQuantity[productName];
-                var productInfo = productsList[productName];
-                var productPrice = 0;
-
-                for (let j = 0; j < productInfo.Prices.length; j++) {
-                    if (productInfo.Prices[j].From <= productQuantityGlobal) {
-                        productPrice = productInfo.Prices[j].Price;
-                    }
-                }
+                var productPrice = _this.GetProductUnitPrice(productName, productQuantityGlobal);
 
                 product.setAttribute("price", productPrice);
 
-                var producPriceTotal = productPrice * productQuantity;
+                var productPriceTotal = productPrice * productQuantity;
 
-                groupPrice += producPriceTotal;
+                groupPrice += productPriceTotal;
 
-                UpdatePriceTitles(product, productPrice, producPriceTotal);
+                UpdatePriceTitles(product, productPrice, productPriceTotal);
             }
 
             group.setAttribute("price", groupPrice);
@@ -145,8 +156,24 @@ function PresetEditor(presetEditor) {
             return groupPriceTotal;
         }
 
-        CountProducts(rootGroup, 1);
-        SetPrices(rootGroup);
+        var UpdateProductsViewPrices = function () {
+            var products = document.querySelector(".ProductsView").querySelectorAll(".Product");
+
+            for (let i = 0; i < products.length; i++) {
+                var product = products[i];
+                var productName = product.getAttribute("name");
+                var productQuantityGlobal = productsQuantity[productName];
+                var productPrice = _this.GetProductUnitPrice(productName, productQuantityGlobal);
+
+                product.setAttribute("price", productPrice);
+
+                UpdatePriceTitles(product, productPrice, productPrice);
+            }
+        }
+
+        CountProducts(presetEditorRootGroup, 1);
+        UpdateGroupPricesRecursively(presetEditorRootGroup);
+        UpdateProductsViewPrices();
     }
 
     /*var ToggleSelected = function (ui,event) {
@@ -167,6 +194,7 @@ function PresetEditor(presetEditor) {
 
 
         draggedItem = item;
+
         item.classList.add("Dragged");
 
         Move(draggedItem, event)
@@ -175,42 +203,73 @@ function PresetEditor(presetEditor) {
         element.parentNode.removeChild(element);
     }
 
+    var DragStop = function (element) {
+        element.classList.remove("Dragged");
+        element.style.left = 0;
+        element.style.top = 0;
+    }
+
     var DropOn = function (target) {
         presetEditor.classList.remove("ItemInTheAir");
         dragPlaceholder && Delete(dragPlaceholder);
         dragPlaceholder = null;
 
         if (target != null) {
-            console.log(draggedItem)
-            console.log("DropOn")
-            console.log(target)
-            Delete(draggedItem)
-            let firstItem = target.children[1];
-            if (firstItem == undefined) {
-                console.log("appendChild")
-                target.appendChild(draggedItem)
-            } else {
-                console.log("insertBefore")
-                target.insertBefore(draggedItem, firstItem)
+            let isDraggedFromProductsView = draggedItem.parentElement.classList.contains("ProductsView");
+            let draggedItemName = draggedItem.getAttribute("name");
+            let draggedItemIsProduct = draggedItem.classList.contains("Product");
+
+            if (draggedItemIsProduct) {
+                let sameItemInTargetGroup = target.querySelector("item:scope > [name=\"" + draggedItemName + "\"]");
+
+                if (!_this.IsEmptyObject(sameItemInTargetGroup)) {
+                    let newQuantityValue = Number(draggedItem.getAttribute("quantity")) + Number(sameItemInTargetGroup.getAttribute("quantity"));
+
+                    sameItemInTargetGroup.setAttribute("quantity", newQuantityValue);
+                    sameItemInTargetGroup.querySelector("input.ItemCounter").value = newQuantityValue;
+
+                    DragStop(draggedItem);
+
+                    if (!isDraggedFromProductsView) {
+                        Delete(draggedItem);
+                    }
+
+                    draggedItem = null;
+                }
             }
 
+            if (draggedItem != null) {
+                if (isDraggedFromProductsView) {
+                    DragStop(draggedItem);
 
+                    if (draggedItemIsProduct) {
+                        draggedItem = _this.CreateProductItem(target, draggedItemName, 1);
+                    } else {
+                        draggedItem = _this.CreateGroupItem(target, draggedItemName);
+                    }
+                }
+
+                let firstItem = target.children[1];
+                if (firstItem == undefined) {
+                    console.log("appendChild");
+                    target.appendChild(draggedItem);
+                } else {
+                    console.log("insertBefore");
+                    target.insertBefore(draggedItem, firstItem);
+                }
+            }
+
+            _this.UpdatePrices();
         }
 
         if (draggedItem) {
-
-            draggedItem.classList.remove("Dragged");
-            draggedItem.style.left = 0;
-            draggedItem.style.top = 0;
+            DragStop(draggedItem);
             draggedItem = null;
         }
-
-
-
-
     }
 
     var Move = function (item, event) {
+
         draggedItem.style.left = event.pageX + 'px';
         draggedItem.style.top = event.pageY + 50 + 'px';
     }
@@ -267,30 +326,19 @@ function PresetEditor(presetEditor) {
 
     this.CreateCounterUi = function (parent, value, onChangeCallback) {
         var price = parent.appendChild(document.createElement("div"));
-        price.textContent = "000$ x";
-        price.style.position = "relative";
-        price.style.marginLeft = "25px";
-        price.style.display = "inline";
-        price.style.fontStyle = "normal";
-        price.style.fontSize = "small";
+        price.textContent = "000$";
+        price.className = "Price";
         price.id = "price";
 
         var counter = parent.appendChild(document.createElement("input"));
         counter.type = "number";
         counter.min = 1;
-        counter.style.position = "relative";
-        counter.style.marginLeft = "10px";
-        counter.style.width = "40px";
-        counter.style.display = "inline";
+        counter.className = "ItemCounter";
         counter.value = value;
 
         var priceTotal = parent.appendChild(document.createElement("div"));
-        priceTotal.textContent = "= 000$";
-        priceTotal.style.position = "relative";
-        priceTotal.style.marginLeft = "10px";
-        priceTotal.style.display = "inline";
-        priceTotal.style.fontStyle = "normal";
-        priceTotal.style.fontSize = "small";
+        priceTotal.textContent = "000$";
+        priceTotal.className = "PriceTotal";
         priceTotal.id = "priceTotal";
 
         counter.onchange = function () {
@@ -414,18 +462,45 @@ function PresetEditor(presetEditor) {
         }
     }
 
-    var presetEditorTree = document.createElement("div");
-    presetEditorTree.className = "PresetEditorTree";
-    presetEditorTree.ondragstart = function () { return false; }
-    presetEditorTree.ondrop = function () { return false; }
+    this.CreateTitle = function (name) {
+        var title = presetEditor.appendChild(document.createElement("h3"));
+        title.textContent = name;
+    }
 
-    presetEditor.appendChild(presetEditorTree);
+    this.CreatePresetEditorTree = function (presetJson) {
+        this.CreateTitle("Editor");
 
-    this.obj = this.HashToObj(sourceJson);
+        var presetEditorTree = presetEditor.appendChild(document.createElement("div"));
+        presetEditorTree.className = "PresetEditorTree";
+        presetEditorTree.style.overflow = "auto";
+        presetEditorTree.ondragstart = function () { return false; }
+        presetEditorTree.ondrop = function () { return false; }
 
-    this.ObjToDom(presetEditorTree, this.obj, productsList);
+        this.ObjToDom(presetEditorTree, this.HashToObj(presetJson), productsList);
 
-    this.UpdatePrices();
+        this.UpdatePrices();
+    }
+
+    this.CreateProductsList = function () {
+        this.CreateTitle("Products");
+
+        var productsView = presetEditor.appendChild(document.createElement("div"));
+        productsView.className = "ProductsView";
+        productsView.style.overflow = "auto";
+        productsView.ondragstart = function () { return false; }
+        productsView.ondrop = function () { return false; }
+
+        var keys = Object.keys(productsList);
+        for (let i = 0; i < keys.length; i++) {
+            this.CreateProductItem(productsView, keys[i], 1);
+        }
+
+        this.CreateGroupItem(productsView, "New Group");
+    }
+
+    presetEditor.style.overflow = "auto";
+    this.CreateProductsList();
+    this.CreatePresetEditorTree(sourceJson);
 
 
     this.Head = new RegExp('((".+")|(\w+))\s*(\:\s*\d+)?\s*');

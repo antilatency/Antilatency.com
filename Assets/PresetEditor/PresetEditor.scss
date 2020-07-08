@@ -2,6 +2,37 @@
 
 .PresetEditor {
 
+    .Price {
+        position: relative;
+        margin-left: 25px;
+        display: inline;
+        font-style: normal;
+        font-size: small;
+
+        &:after {
+            content: " x";
+        }
+    }
+
+    .PriceTotal {
+        position: relative;
+        margin-left: 10px;
+        display: inline;
+        font-style: normal;
+        font-size: small;
+
+        &:before {
+            content: "= ";
+        }
+    }
+
+    .ItemCounter {
+        position: relative;
+        margin-left: 10px;
+        width: 40px !important;
+        display: inline;
+    }
+
     &.ItemInTheAir {
 
         .DropArea {
@@ -35,9 +66,6 @@
     }
 
     .PresetEditorTree {
-
-
-
         item {
             $padding: 8px;
             overflow: hidden;
@@ -108,68 +136,86 @@
             }
 
 
-                &.Dragged {
-                    z-index: 10;
-                    position: fixed;
-                    margin-left: -1em;
-                    margin-top: -16px;
-                }
-                /*> item {
+            &.Dragged {
+                z-index: 10;
+                position: fixed;
+                margin-left: -1em;
+                margin-top: -16px;
+            }
+            /*> item {
                 margin-left: 16px;
             }*/
-                .DragPlaceholder {
-                    @include itemLike;
-                    background-color: #eee;
+            .DragPlaceholder {
+                @include itemLike;
+                background-color: #eee;
+            }
+
+            ui {
+                position: relative;
+                display: block;
+                //padding: 4px;
+                //top: -$padding;
+                //left: -$padding;
+                //right: -2*$padding;
+                height: 32px;
+
+                .DragArea {
+                    position: absolute;
+                    display: block;
+                    //left: -$dragAreaWidth;
+                    top: -$padding;
+                    left: -$padding;
+                    right: -$padding;
+                    bottom: 0;
+                    //width: 100%;
+                    //height: 100%;
+                    //float: left;
+                    background-color: #ddd;
+                    //margin-right: 4px;
+                    cursor: move;
+                    border-bottom-right-radius: 10px;
+
+                    &:after {
+                        //position: relative;
+                        margin: auto;
+                        display: block;
+                        padding: 7px;
+                        color: #666;
+                        font-family: "Material Design Icons";
+                        content: "\F0626";
+                        font-style: normal;
+                        font-weight: normal;
+                        //vertical-align: central;
+                        //margin: 8px;
+                        //padding: 8px;
+                    }
                 }
 
-                ui {
-                    position: relative;
-                    display: block;
-                    //padding: 4px;
-                    //top: -$padding;
-                    //left: -$padding;
-                    //right: -2*$padding;
-                    height: 32px;
-
-                    .DragArea {
-                        position: absolute;
-                        display: block;
-                        //left: -$dragAreaWidth;
-                        top: -$padding;
-                        left: -$padding;
-                        right: -$padding;
-                        bottom: 0;
-                        //width: 100%;
-                        //height: 100%;
-                        //float: left;
-                        background-color: #ddd;
-                        //margin-right: 4px;
-                        cursor: move;
-                        border-bottom-right-radius: 10px;
-
-                        &:after {
-                            //position: relative;
-                            margin: auto;
-                            display: block;
-                            padding: 7px;
-                            color: #666;
-                            font-family: "Material Design Icons";
-                            content: "\F0626";
-                            font-style: normal;
-                            font-weight: normal;
-                            //vertical-align: central;
-                            //margin: 8px;
-                            //padding: 8px;
-                        }
-                    }
-
-                    input {
-                        width: 100%
-                    }
-                    /*&.Selected {
+                input {
+                    width: 100%
+                }
+                /*&.Selected {
                     background-color: cornflowerblue
                 }*/
-                }
             }
         }
     }
+
+    .ProductsView {
+        @extend .PresetEditorTree;
+
+        .Price {
+            &:after {
+                content: "";
+            }
+        }
+
+        .PriceTotal {
+            display: none;
+        }
+
+        .ItemCounter {
+            display: none;
+        }
+    }
+}
