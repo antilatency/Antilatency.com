@@ -2,6 +2,13 @@
 
 .PresetEditor {
 
+    @mixin itemLike {
+        margin: 8px;
+        margin-left: 16px;
+        float: left;
+        border-radius: 2px;
+    }
+
     .Price {
         position: relative;
         margin-left: 25px;
@@ -33,6 +40,11 @@
         display: inline;
     }
 
+    .DragPlaceholder {
+        @include itemLike;
+        background-color: #eee;
+    }
+
     &.ItemInTheAir {
 
         .DropArea {
@@ -56,13 +68,6 @@
         .Dragged .DropArea {
             display: none;
         }
-    }
-
-    @mixin itemLike {
-        margin: 8px;
-        margin-left: 16px;
-        float: left;
-        border-radius: 2px;
     }
 
     .PresetEditorTree {
@@ -145,11 +150,6 @@
             /*> item {
                 margin-left: 16px;
             }*/
-            .DragPlaceholder {
-                @include itemLike;
-                background-color: #eee;
-            }
-
             ui {
                 position: relative;
                 display: block;

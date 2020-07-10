@@ -202,6 +202,8 @@ function PresetEditor(presetEditor) {
                 draggedItem.parentElement.insertBefore(draggedItemPlaceholder, draggedItem);
 
                 draggedItem.classList.add("Dragged");
+
+                Drag(event);
             }
         }
 
