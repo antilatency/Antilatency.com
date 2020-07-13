@@ -8,9 +8,6 @@ if($LastExitCode -ne 0){
     exit 1
 }
 
-git pull
-git submodule update --init --recursive
-git submodule foreach -q --recursive 'git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master) && git pull'
 
 if($originUrl -ne $realUpstreamUrl){
     Write-Host "This is fork repo!"
@@ -22,5 +19,10 @@ if($originUrl -ne $realUpstreamUrl){
 
     git pull upstream master
 }
+
+git pull
+git submodule update --init --recursive
+git submodule foreach -q --recursive 'git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master) && git pull'
+
 
 popd
