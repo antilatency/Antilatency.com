@@ -112,9 +112,13 @@ function PresetEditor(presetEditor) {
             let priceInfo = productInfo.Prices[i];
 
             if (priceInfo.From <= productQuantityGlobal) {
+                if (productPriceOld == 0 || productPrice == 0) {
+                    productPriceOld = Math.max(productPriceOld, productPrice);
+                } else {
+                    productPriceOld = Math.min(productPriceOld, productPrice);
+                }
+
                 productPrice = priceInfo.Price;
-            } else if (priceInfo.Price > productPriceOld) {
-                productPriceOld = priceInfo.Price;
             }
         }
 
