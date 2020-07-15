@@ -57,46 +57,106 @@ function PresetEditor(presetEditor) {
         
         }`;
 
-
-    this.HashToObj = function (hash) {
-        return JSON.parse(hash);
-    }
-
-    this.IsEmptyObject = function (obj) {
-        if (obj && obj !== 'null' && obj !== 'undefined') {
+    function IsEmptyObject(obj) {
+        if (obj && obj !== null && obj !== undefined) {
             return false;
         }
 
         return true;
     }
 
-    this.GetProductUnitPrice = function (productName, productQuantityGlobal) {
-        if (this.IsEmptyObject(productQuantityGlobal)) {
+    function GetClosestParent(element, selector) {
+        for (; element && element !== document; element = element.parentNode) {
+            if (element.matches(selector)) {
+                return element;
+            }
+        }
+
+        return null;
+    }
+
+    function CreateElement(tag, className) {
+        var element = document.createElement(tag);
+        element.className = className;
+
+        return element;
+    }
+
+    function SetTextboxInputFilter(textbox, inputFilter) {
+        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+            textbox.addEventListener(event, function () {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                } else {
+                    this.value = "";
+                }
+            });
+        });
+    }
+
+    function GetProductUnitPrice(productName, productQuantityGlobal) {
+        if (IsEmptyObject(productQuantityGlobal)) {
             productQuantityGlobal = 1;
         }
 
         var productInfo = productsList[productName];
         var productPrice = 0;
+        var productPriceOld = 0;
 
-        for (let j = 0; j < productInfo.Prices.length; j++) {
-            if (productInfo.Prices[j].From <= productQuantityGlobal) {
-                productPrice = productInfo.Prices[j].Price;
+        for (let i = 0; i < productInfo.Prices.length; i++) {
+            let priceInfo = productInfo.Prices[i];
+
+            if (priceInfo.From <= productQuantityGlobal) {
+                if (productPriceOld == 0 || productPrice == 0) {
+                    productPriceOld = Math.max(productPriceOld, productPrice);
+                } else {
+                    productPriceOld = Math.min(productPriceOld, productPrice);
+                }
+
+                productPrice = priceInfo.Price;
             }
         }
 
-        return productPrice;
+        if (productPriceOld == 0) {
+            productPriceOld = productPrice;
+        }
+
+        return { productPrice, productPriceOld };
     }
 
-    this.UpdatePrices = function () {
+    function UpdatePrices() {
         var productsQuantity = {}
         var presetEditorRootGroup = document.querySelector(".PresetEditorTree > .Group");
 
-        var UpdatePriceTitles = function (item, price, priceTotal) {
+        var UpdateGroupPriceTitles = function (item, price, priceTotal) {
             var priceTitle = item.querySelector("div#price");
             var priceTotalTitle = item.querySelector("div#priceTotal");
 
-            priceTitle.textContent = price + "$";
-            priceTotalTitle.textContent = priceTotal + "$";
+            priceTitle.textContent = "$" + price;
+            priceTotalTitle.textContent = "$" + priceTotal;
+        }
+
+        var UpdateProductPriceTitles = function (item, price, priceTotal, priceOld, quantity) {
+            var priceTitle = item.querySelector("div#price");
+            var priceTotalTitle = item.querySelector("div#priceTotal");
+            var priceBreakTitle = item.querySelector("div#priceBreak");
+
+            priceTitle.textContent = "$" + price;
+            priceTotalTitle.textContent = "$" + price + " x " + quantity + " = $" + priceTotal;
+
+            if (!IsEmptyObject(priceBreakTitle)) {
+                if (price != priceOld) {
+                    priceBreakTitle.classList.remove("Hide");
+                    priceBreakTitle.textContent = "$" + priceOld;
+                } else {
+                    priceBreakTitle.classList.add("Hide");
+                }
+            }
         }
 
         var CountProducts = function (group, quantityMultiplier) {
@@ -136,7 +196,7 @@ function PresetEditor(presetEditor) {
                 var productName = product.getAttribute("name");
                 var productQuantity = product.getAttribute("quantity");
                 var productQuantityGlobal = productsQuantity[productName];
-                var productPrice = _this.GetProductUnitPrice(productName, productQuantityGlobal);
+                const { productPrice, productPriceOld } = GetProductUnitPrice(productName, productQuantityGlobal);
 
                 product.setAttribute("price", productPrice);
 
@@ -144,14 +204,14 @@ function PresetEditor(presetEditor) {
 
                 groupPrice += productPriceTotal;
 
-                UpdatePriceTitles(product, productPrice, productPriceTotal);
+                UpdateProductPriceTitles(product, productPrice, productPriceTotal, productPriceOld, productQuantity);
             }
 
             group.setAttribute("price", groupPrice);
 
             var groupPriceTotal = groupPrice * group.getAttribute("quantity");
 
-            UpdatePriceTitles(group, groupPrice, groupPriceTotal);
+            UpdateGroupPriceTitles(group, groupPrice, groupPriceTotal);
 
             return groupPriceTotal;
         }
@@ -163,11 +223,11 @@ function PresetEditor(presetEditor) {
                 var product = products[i];
                 var productName = product.getAttribute("name");
                 var productQuantityGlobal = productsQuantity[productName];
-                var productPrice = _this.GetProductUnitPrice(productName, productQuantityGlobal);
+                const { productPrice, productPriceOld } = GetProductUnitPrice(productName, productQuantityGlobal);
 
                 product.setAttribute("price", productPrice);
 
-                UpdatePriceTitles(product, productPrice, productPrice);
+                UpdateProductPriceTitles(product, productPrice, productPrice, productPriceOld, 1);
             }
         }
 
@@ -176,147 +236,171 @@ function PresetEditor(presetEditor) {
         UpdateProductsViewPrices();
     }
 
-    /*var ToggleSelected = function (ui,event) {
+    function EnableDragAndDrop() {
+        var draggedItem = null;
+        var draggedItemName = "";
+        var draggedItemIsProduct = false;
+        var draggedItemFromProductsView = false;
+        var draggedItemPlaceholder = null;
 
-        //console.log(event.target)
-        ui.classList.toggle("Selected");
-    }*/
+        var IsDraggable = (element) => !IsEmptyObject(element) && element.classList.contains("DragArea");
+        var IsDropArea = (element) => !IsEmptyObject(element) && element.classList.contains("DropArea");
 
-    var Drag = function (item, event) {
-        presetEditor.classList.add("ItemInTheAir");
+        var DragStart = function (event) {
+            if (IsDraggable(event.target)) {
+                draggedItem = GetClosestParent(event.target, "item");
+                draggedItemName = draggedItem.getAttribute("name");
+                draggedItemIsProduct = draggedItem.classList.contains("Product");
+                draggedItemFromProductsView = draggedItem.parentElement.classList.contains("ProductsView");
 
-        dragPlaceholder = document.createElement("div");
-        dragPlaceholder.className = "DragPlaceholder"
-        dragPlaceholder.style.width = item.offsetWidth + "px";
-        dragPlaceholder.style.height = item.offsetHeight + "px";
+                presetEditor.classList.add("ItemInTheAir");
 
-        item.parentElement.insertBefore(dragPlaceholder, item);
+                draggedItemPlaceholder = document.createElement("div");
+                draggedItemPlaceholder.className = draggedItemIsProduct ? "ProductCardPlaceholder" : "DragPlaceholder"
+                draggedItemPlaceholder.style.width = draggedItem.offsetWidth + "px";
+                draggedItemPlaceholder.style.height = draggedItem.offsetHeight + "px";
 
+                draggedItem.parentElement.insertBefore(draggedItemPlaceholder, draggedItem);
 
-        draggedItem = item;
+                draggedItem.classList.add("Dragged");
 
-        item.classList.add("Dragged");
-
-        Move(draggedItem, event)
-    }
-    var Delete = function (element) {
-        element.parentNode.removeChild(element);
-    }
-
-    var DragStop = function (element) {
-        element.classList.remove("Dragged");
-        element.style.left = 0;
-        element.style.top = 0;
-    }
-
-    var DropOn = function (target) {
-        presetEditor.classList.remove("ItemInTheAir");
-        dragPlaceholder && Delete(dragPlaceholder);
-        dragPlaceholder = null;
-
-        if (target != null) {
-            let isDraggedFromProductsView = draggedItem.parentElement.classList.contains("ProductsView");
-            let draggedItemName = draggedItem.getAttribute("name");
-            let draggedItemIsProduct = draggedItem.classList.contains("Product");
-
-            if (draggedItemIsProduct) {
-                let sameItemInTargetGroup = target.querySelector("item:scope > [name=\"" + draggedItemName + "\"]");
-
-                if (!_this.IsEmptyObject(sameItemInTargetGroup)) {
-                    let newQuantityValue = Number(draggedItem.getAttribute("quantity")) + Number(sameItemInTargetGroup.getAttribute("quantity"));
-
-                    sameItemInTargetGroup.setAttribute("quantity", newQuantityValue);
-                    sameItemInTargetGroup.querySelector("input.ItemCounter").value = newQuantityValue;
-
-                    DragStop(draggedItem);
-
-                    if (!isDraggedFromProductsView) {
-                        Delete(draggedItem);
-                    }
-
-                    draggedItem = null;
-                }
+                Drag(event);
             }
+        }
 
-            if (draggedItem != null) {
-                if (isDraggedFromProductsView) {
-                    DragStop(draggedItem);
+        var Drag = function (event) {
+            if (!IsEmptyObject(draggedItem)) {
+                var left = 0, top = 0;
 
-                    if (draggedItemIsProduct) {
-                        draggedItem = _this.CreateProductItem(target, draggedItemName, 1);
-                    } else {
-                        draggedItem = _this.CreateGroupItem(target, draggedItemName);
-                    }
-                }
-
-                let firstItem = target.children[1];
-                if (firstItem == undefined) {
-                    console.log("appendChild");
-                    target.appendChild(draggedItem);
+                if (event.type === "touchmove") {
+                    left = event.touches[0].clientX;
+                    top = event.touches[0].clientY;
                 } else {
-                    console.log("insertBefore");
-                    target.insertBefore(draggedItem, firstItem);
+                    left = event.clientX;
+                    top = event.clientY;
                 }
+
+                draggedItem.style.left = left + 'px';
+                draggedItem.style.top = top + 40 + 'px';
+            }
+        }
+
+        var Drop = function (event) {
+            if (IsDropArea(event.target) && !IsEmptyObject(draggedItem)) {
+                let target = GetClosestParent(event.target, ".Group");
+                let dropToTarget = true;
+
+                if (draggedItemIsProduct) {
+                    let sameItemInTargetGroup = target.querySelector("item:scope > [name=\"" + draggedItemName + "\"]");
+
+                    if (!IsEmptyObject(sameItemInTargetGroup)) {
+                        if (sameItemInTargetGroup != draggedItem) {
+                            let newQuantityValue = Number(draggedItem.getAttribute("quantity")) +
+                                Number(sameItemInTargetGroup.getAttribute("quantity"));
+
+                            sameItemInTargetGroup.setAttribute("quantity", newQuantityValue);
+                            sameItemInTargetGroup.querySelector("input#counter").value = newQuantityValue;
+
+                            if (!draggedItemFromProductsView) {
+                                draggedItem.parentNode.removeChild(draggedItem);
+                                draggedItem = null;
+                            }
+                        }
+
+                        dropToTarget = false;
+                    }
+                }
+
+                if (dropToTarget) {
+                    let firstChildItem = target.children[1];
+
+                    if (draggedItemFromProductsView) {
+                        if (draggedItemIsProduct) {
+                            target.insertBefore(_this.CreateProductItem(target, draggedItemName, 1), firstChildItem);
+                        } else {
+                            target.insertBefore(_this.CreateGroupItem(target, draggedItemName), firstChildItem);
+                        }
+                    } else {
+                        target.insertBefore(draggedItem, firstChildItem);
+                    }
+                }
+
+                UpdatePrices();
+            }
+        }
+
+        var DragEnd = function (event) {
+            presetEditor.classList.remove("ItemInTheAir");
+
+            Drop(event);
+
+            if (!IsEmptyObject(draggedItem)) {
+                draggedItem.classList.remove("Dragged");
+                draggedItem.style.left = 0;
+                draggedItem.style.top = 0;
+                draggedItem = null;
             }
 
-            _this.UpdatePrices();
+            if (!IsEmptyObject(draggedItemPlaceholder)) {
+                draggedItemPlaceholder.parentNode.removeChild(draggedItemPlaceholder);
+                draggedItemPlaceholder = null;
+            }
         }
 
-        if (draggedItem) {
-            DragStop(draggedItem);
-            draggedItem = null;
-        }
+
+        document.addEventListener("touchstart", DragStart, false);
+        document.addEventListener("touchmove", Drag, false);
+        document.addEventListener("touchend", DragEnd, false);
+
+        document.addEventListener("mousedown", DragStart, false);
+        document.addEventListener("mousemove", Drag, false);
+        document.addEventListener("mouseup", DragEnd, false);
     }
 
-    var Move = function (item, event) {
+    function CreateItemCounter(item, quantity) {
+        var body = CreateElement("div", "SpinboxBody");
+        var dec = body.appendChild(CreateElement("div", "SpinboxButtonDec"));
+        var input = body.appendChild(CreateElement("input", "SpinboxInput"));
+        var inc = body.appendChild(CreateElement("div", "SpinboxButtonInc"));
 
-        draggedItem.style.left = event.pageX + 'px';
-        draggedItem.style.top = event.pageY + 50 + 'px';
+        input.type = "text";
+        input.id = "counter";
+        input.value = quantity;
+
+        SetTextboxInputFilter(input, (value) => /^\d+$/.test(value));
+
+        var UpdateQuantity = function (quantity) {
+            item.setAttribute("quantity", quantity);
+            UpdatePrices();
+        }
+
+        input.onchange = function () {
+            if (Number(input.value) == 0) {
+                input.value = 1;
+            }
+
+            UpdateQuantity(input.value);
+        }
+
+        inc.onclick = function () {
+            input.value = parseInt(input.value, 10) + 1;
+            UpdateQuantity(input.value);
+        }
+
+        dec.onclick = function () {
+            input.value = Math.max(parseInt(input.value, 10) - 1, 1);
+            UpdateQuantity(input.value);
+        }
+
+        return body;
     }
 
-    var PointedItem = null;
-    document.addEventListener("mousemove", function (event) {
-
-        if (!draggedItem) {
-            var x = event.clientX;
-            var y = event.clientY;
-            var element = document.elementFromPoint(x, y);
-            while ((element != null) && (element.tagName.toLowerCase() != "item")) {
-                element = element.parentElement;
-            }
-            if (PointedItem != element) {
-                PointedItem && PointedItem.classList.remove("PointedItem");
-                PointedItem = element;
-                PointedItem && PointedItem.classList.add("PointedItem");
-
-            }
-        }
-
-
-
-        if (draggedItem) {
-            Move(draggedItem, event);
-
-        }
-    });
-
-    document.addEventListener("mouseup", function () {
-        DropOn(null);
-    });
-    var dragPlaceholder = null;
-    var draggedItem = null;
-
-
-    this.CreateUi = function (item) {
+    this.CreateUiRoot = function () {
         var ui = document.createElement("ui");
-
 
         var dragArea = ui.appendChild(document.createElement("span"));
         dragArea.className = "DragArea";
-        dragArea.onmousedown = function (event) { Drag(item, event) }
 
-
-        //ui.onclick = function (event) { if (event.target == ui) ToggleSelected(ui, event) };
         return ui;
     }
 
@@ -334,6 +418,7 @@ function PresetEditor(presetEditor) {
         counter.type = "number";
         counter.min = 1;
         counter.className = "ItemCounter";
+        counter.id = "counter";
         counter.value = value;
 
         var priceTotal = parent.appendChild(document.createElement("div"));
@@ -344,18 +429,18 @@ function PresetEditor(presetEditor) {
         counter.onchange = function () {
             var value = counter.value;
 
-            if (!_this.IsEmptyObject(onChangeCallback)) {
+            if (!IsEmptyObject(onChangeCallback)) {
                 onChangeCallback(value);
             }
 
-            _this.UpdatePrices();
+            UpdatePrices();
         }
 
         return counter;
     }
 
     this.CreateGroupUi = function (item, name) {
-        var ui = this.CreateUi(item);
+        var ui = this.CreateUiRoot();
 
         var text = ui.appendChild(document.createElement("div"));
         text.textContent = name;
@@ -373,8 +458,6 @@ function PresetEditor(presetEditor) {
             item.setAttribute("quantity", value);
         });
 
-
-        dropArea.onmouseup = function () { DropOn(item) }
 
         text.ondblclick = function (event) {
             input.style.display = "block";
@@ -401,7 +484,7 @@ function PresetEditor(presetEditor) {
     }
 
     this.CreateProductUi = function (item, name) {
-        var ui = this.CreateUi(item);
+        var ui = this.CreateUiRoot();
         var text = ui.appendChild(document.createElement("div"));
         text.textContent = name;
         text.className = "Title";
@@ -413,15 +496,10 @@ function PresetEditor(presetEditor) {
         return ui;
     }
 
-
-
     this.CreateItem = function (parent, name, quantity) {
         var item = document.createElement("item");
         item.setAttribute("quantity", quantity);
         item.setAttribute("name", name);
-
-        //item.onmousemove = function (e) { console.log("onmousemove" + e.target); return false;};
-        //item.onmouseout  = function (e) { console.log("Leave"); return false; };
         parent.appendChild(item);
         return item;
     }
@@ -429,7 +507,34 @@ function PresetEditor(presetEditor) {
     this.CreateProductItem = function (parent, name, quantity) {
         var item = this.CreateItem(parent, name, quantity);
         item.className = "Product";
-        item.appendChild(this.CreateProductUi(item, productsList[name].Name));
+        //item.appendChild(this.CreateProductUi(item, productsList[name].Name));
+
+        item.setAttribute("style", "padding: 0px!important; margin: 4px;");
+
+        var view = item.appendChild(CreateElement("div", "ProductCard"));
+        var viewCard = view.appendChild(CreateElement("div", "ProductCardContent DragArea"));
+        var viewCardImage = viewCard.appendChild(CreateElement("img", "ProductCardImage"));
+        var viewCardInfo = viewCard.appendChild(CreateElement("div", "ProductCardInfoBody"));
+        var viewCardInfoPriceBreak = viewCardInfo.appendChild(CreateElement("div", "ProductCardPriceBreak"));
+        var viewCardInfoPrice = viewCardInfo.appendChild(CreateElement("div", "ProductCardPrice"));
+        var viewCardInfoTitle = viewCardInfo.appendChild(CreateElement("div", "ProductCardTitle"));
+        var viewCardPriceTotal = viewCard.appendChild(CreateElement("div", "ProductCardPriceTotal"));
+
+        var viewCounter = view.appendChild(CreateItemCounter(item, quantity));
+
+        viewCardImage.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY2BgYAAAAAQAAVzN/2kAAAAASUVORK5CYII=";
+
+        viewCardInfoPriceBreak.textContent = "$000";
+        viewCardInfoPriceBreak.id = "priceBreak";
+
+        viewCardInfoPrice.textContent = "$000";
+        viewCardInfoPrice.id = "price";
+
+        viewCardInfoTitle.textContent = productsList[name].Name;
+
+        viewCardPriceTotal.textContent = "$000";
+        viewCardPriceTotal.id = "priceTotal";
+
         return item;
     }
 
@@ -473,12 +578,10 @@ function PresetEditor(presetEditor) {
         var presetEditorTree = presetEditor.appendChild(document.createElement("div"));
         presetEditorTree.className = "PresetEditorTree";
         presetEditorTree.style.overflow = "auto";
-        presetEditorTree.ondragstart = function () { return false; }
-        presetEditorTree.ondrop = function () { return false; }
 
-        this.ObjToDom(presetEditorTree, this.HashToObj(presetJson), productsList);
+        this.ObjToDom(presetEditorTree, JSON.parse(presetJson));
 
-        this.UpdatePrices();
+        UpdatePrices();
     }
 
     this.CreateProductsList = function () {
@@ -487,8 +590,6 @@ function PresetEditor(presetEditor) {
         var productsView = presetEditor.appendChild(document.createElement("div"));
         productsView.className = "ProductsView";
         productsView.style.overflow = "auto";
-        productsView.ondragstart = function () { return false; }
-        productsView.ondrop = function () { return false; }
 
         var keys = Object.keys(productsList);
         for (let i = 0; i < keys.length; i++) {
@@ -501,6 +602,8 @@ function PresetEditor(presetEditor) {
     presetEditor.style.overflow = "auto";
     this.CreateProductsList();
     this.CreatePresetEditorTree(sourceJson);
+
+    EnableDragAndDrop();
 
 
     this.Head = new RegExp('((".+")|(\w+))\s*(\:\s*\d+)?\s*');

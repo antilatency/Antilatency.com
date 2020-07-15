@@ -2,6 +2,174 @@
 
 .PresetEditor {
 
+    .DragArea {
+        cursor: move;
+    }
+
+    .Hide {
+        display: none !important;
+    }
+
+    .SpinboxBody {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+
+        @mixin SpinboxRoundButton($diameter) {
+            position: relative;
+            display: inline-block;
+            color: #000;
+            font-weight: 400;
+            font-size: medium;
+            line-height: 20px;
+            padding: 0;
+            text-align: center;
+            cursor: pointer;
+            vertical-align: middle;
+            width: $diameter;
+            height: $diameter;
+            border: 1px solid #aaa;
+            border-radius: 100%;
+        }
+
+        @mixin SpinboxButtonDashSign($width) {
+            position: absolute;
+            display: block;
+            content: '';
+            width: $width;
+            height: 1px;
+            background: #000;
+            left: calc(50% - (#{$width}/2));
+            top: 50%;
+        }
+
+        .SpinboxInput {
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            font-weight: 400;
+            font-size: medium;
+            line-height: 20px;
+            background: 0 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+            vertical-align: middle;
+            width: 30px;
+            height: 20px;
+            cursor: default;
+        }
+
+        .SpinboxButtonInc {
+            @include SpinboxRoundButton(20px);
+
+            &:after {
+                @include SpinboxButtonDashSign(8px);
+            }
+
+            &:before {
+                @include SpinboxButtonDashSign(8px);
+                transform: rotate(-90deg);
+            }
+        }
+
+        .SpinboxButtonDec {
+            @include SpinboxRoundButton(20px);
+
+            &:after {
+                @include SpinboxButtonDashSign(8px);
+            }
+        }
+    }
+
+    .ProductCard {
+        position: relative;
+        width: 80px;
+    }
+
+    .ProductCardContent {
+        position: relative;
+
+        .ProductCardImage {
+            position: relative;
+            display: block;
+            border-radius: 2px 2px 0 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .ProductCardInfoBody {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            max-width: 100%;
+            padding: 4px;
+            text-align: right;
+            pointer-events: none;
+
+            .ProductCardPriceBreak {
+                position: relative;
+                display: block;
+                margin: 0;
+                color: #aaa;
+                text-decoration: line-through;
+                font-size: x-small;
+                line-height: 1;
+                font-weight: normal;
+            }
+
+            .ProductCardPrice {
+                position: relative;
+                display: block;
+                margin: 0;
+                color: #aaa;
+                font-size: small;
+                line-height: 1.2;
+                font-weight: normal;
+            }
+
+            .ProductCardTitle {
+                position: relative;
+                display: block;
+                margin: 0;
+                color: #aaa;
+                font-size: small;
+                line-height: 1;
+                font-weight: bold;
+            }
+        }
+
+        .ProductCardPriceTotal {
+            position: absolute;
+            color: #aaa;
+            font-size: x-small;
+            font-weight: normal;
+            top: 0px;
+            left: 0px;
+            max-width: 100%;
+            padding: 4px;
+            pointer-events: none;
+        }
+    }
+
+    .ProductCardPlaceholder {
+        @extend .ProductCard;
+        float: left;
+        background-color: #eee;
+    }
+
+    @mixin itemLike {
+        margin: 2px;
+        margin-left: 6px;
+        float: left;
+        border-radius: 2px;
+    }
+
     .Price {
         position: relative;
         margin-left: 25px;
@@ -33,6 +201,11 @@
         display: inline;
     }
 
+    .DragPlaceholder {
+        @include itemLike;
+        background-color: #eee;
+    }
+
     &.ItemInTheAir {
 
         .DropArea {
@@ -58,16 +231,9 @@
         }
     }
 
-    @mixin itemLike {
-        margin: 8px;
-        margin-left: 16px;
-        float: left;
-        border-radius: 2px;
-    }
-
     .PresetEditorTree {
         item {
-            $padding: 8px;
+            $padding: 2px;
             overflow: hidden;
             background-color: #fff;
             position: relative;
@@ -77,6 +243,7 @@
             @include itemLike;
             //padding-bottom: 8px;
             //border: 10px solid transparent;
+            @include Selectable(none);
             @include BoxShadow( 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
             @include Transition( box-shadow 0.15s ease-in-out);
 
@@ -86,38 +253,7 @@
                 z-index: 2;
                 margin-left: 24px;
             }
-            //z-index: 0;
-            /*&:before {
-                //z-index: -1;
-                position: absolute;
-                display: block;
-                background-color: #f00;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                content: "";
-            }
 
-            &::before:hover {
-                //z-index: -1;
-                position: absolute;
-                display: block;
-                background-color: #0f0;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                content: "";
-            }*/
-            /*&:before:hover {
-                background-color: #0f0;
-                //@include box-shadow( 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23));
-            }*/
-            /*&:hover > :hover {
-                pointer-events: none;
-            }*/
-            @include Selectable(none);
             display: block;
 
             &.Group {
@@ -145,11 +281,6 @@
             /*> item {
                 margin-left: 16px;
             }*/
-            .DragPlaceholder {
-                @include itemLike;
-                background-color: #eee;
-            }
-
             ui {
                 position: relative;
                 display: block;
@@ -214,7 +345,19 @@
             display: none;
         }
 
+        .ProductCardPriceTotal {
+            display: none;
+        }
+
+        .SpinboxBody {
+            display: none;
+        }
+
         .ItemCounter {
+            display: none;
+        }
+
+        .DropArea {
             display: none;
         }
     }

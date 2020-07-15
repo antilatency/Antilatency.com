@@ -25,7 +25,7 @@ partial class Tutorials : Scope {
             [TrackingDemoOutput]
             [$"You can set:"]
             [new UnorderedList()
-                [$"receiver IP (multicast group, see {Software.AntilatencyIpNetwork}) and port (default: `--receivers=239.255.111.X --port=56789`),"]
+                [$"receiver IP (multicast group, see {Software.AntilatencyIpNetwork}) and port (default: `--receiver=239.255.111.X --port=56789`),"]
                 [$"sending rate (default: `--wait-time=16` milliseconds, approximate 60 FPS),"]
                 [$"tracking area (default: `--environment-code=AAVSaWdpZBcABnllbGxvdwQEBAABAQMBAQEDAAEAAD_W` {new ExternalReference ("https://antilatency.com/getting-started/latest/area#content", "DevKit")},"]
                 [$"device ID (default: `--identifier=MAC_ADDR`),"]
