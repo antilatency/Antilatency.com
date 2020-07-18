@@ -1,54 +1,53 @@
 using Csml;
 partial class Tutorials {
-    public static Material ConfiguringRadioDevices_en => new Material("Конфигурация беспроводных устройств",
+    public static Material ConfiguringRadioDevices_en => new Material("Wireless Devices Configuration",
     ConfiguringRadioDevices_Assets.TitleImage,
-    $"В этом материале мы рассмотрим настройку и использование беспроводных устройств Antilatency. Данная настройка позволяет достичь максимальной производительности системы, а также повысить её стабильность. Особенно актуально для многопользовательских сценариев и сложных сетапов.")
-        [new Section("Возможные опции")
+    $"In this tutorial we will look at configuring and using wireless devices in Antilatency. We will learn how to configure the system for top productivity and make it more stable. This is essential for multi-user scenarios and complex setups.")
+        [new Section("Possible options")
             [new OrderedList()
-                [$"Установить на *приёмнике* максимально возможное количество подключенных передатчиков(`ConnLimit`). Позволяет не тратить время на поиск устройств, тем самым увеличивается пропускная способность и снижается задержка."]
-                [$"Установить конкретный канал(`RadioChannel`) на *приёмнике*. Позволяет поставить менее шумный канал или разнести несколько приёмников на разные частоты."]
-                [$"Установить маску каналов(`ChannelsMask`) для *передатчика*. Позволяет гораздо быстрее искать нужный приёмник."]
-                [$"Установить на приёмнике серийный номер(`MasterSN`) *передатчика*. Позволяет подключаться только к одному заданному приёмнику."]
+                [$"Set the *receiver* to the maximum amount of connected transmitters(`ConnLimit`). You will save time looking for and connecting to available devices. This will increase network throughput and reduce latency."]
+                [$"Set a specific channel(`RadioChannel`) on the *receiver*. You will thus select a less noisy channel and assign different frequencies to different receivers."]
+                [$"Set a channel mask(`ChannelsMask`) for the *receiver*. The system will search for the right receiver much faster."]
+                [$"Set a serial number  (`MasterSN`) on the  *receiver*. Your connection will work only with one specific receiver."]
             ]
-            [new Info($"Само по себе свойство `MasterSN` также позволяет в некоторых случаях сократить время подключения устройств даже на большой маске. Так как поиск будет завершён сразу после обнаружения нужного приёмника. Если же это свойство не задано, поиск завершится только после сканирования всех доступных каналов.")]
+            [new Info($"In some cases, setting a serial number `MasterSN` will also cut down on device connection time even for a large mask because the search will stop right after detecting a designated receiver. If you do not enable this setting, the search will stop only after scanning all available channels.")]
         ]
-        [new Section("Восстановление связи с передатчиком")
-            [$"В случае неправильной конфигурации передатчик может не хотеть подключаться. А значит его было бы невозможно настроить. Однако существует способ восстановить связь с устройством."]
+        [new Section("Reconnecting to the receiver")
+            [$"The receiver will fail to connect if configured wrong. This means that configuring it would be impossible. However, there is a way to re-connect to the device."]
             [new UnorderedList()
-                [@$"На передатчике установлен *серийный номер*(`MasterSN`) *неизвестного приёмника* или он утерян. Сбросить это свойство можно с помощью {ConfiguringRadioDevices:ResetMaster} "]                    
-                [@$"На передатчике установлена *неизвестная маска каналов*(`ChannelsMask`). Для решения этой проблемы необходимо на передатчике установить `92` канал. Данный канал всегда активен для поиска и его невозможно сбросить."]]
+                [@$"The *serial number*(`MasterSN`) on the receiver is set to an *unknown receiver* or lost. You can reset this with the help of {ConfiguringRadioDevices:ResetMaster} "]                    
+                [@$"The receiver is set to an *unknown channel mask*(`ChannelsMask`). To solve this problem, set the receiver to Channel `92`. This channel is always active for search and it cannot be reset."]]
         ]
-        [new Info($"Сначала необходимо настроить передатчик, и только потом приёмник.")]
+        [new Info($"First, you need to set up the transmitter and only then the receiver.")]
 
-        [new Section("Свойства передатчика")
+        [new Section("Transmitter properties")
             [new UnorderedList()
                 [@$"`MasterSN`
-                    Данное свойство нужно, чтобы передатчик подключался только к конкретному приемнику. Получив Serial number приемника, его можно записать в свойство `MasterSN` передатчика, и теперь он будет подключаться только к приемнику с указанным Serial number.
-                    Существует 2 способа, чтобы задать данное свойство(с помощью кнопки на сокете {ConfiguringRadioDevices:SetMasterSoft} и с помощью {Terms.AntilatencyService} см. {ConfiguringRadioDevices:SetMasterHard}). По индикации передатчика можно понять установлено это свойство или нет см. {Hardware.Tag:LED signals}. "]
+                    This property enables the transmitter to connect only to a specific receiver. After receiving the serial number from the receiver, you can enter it into the `MasterSN` setting of the transmitter. It will then connect only to the receiver with this serial number.
+                    You can set this up in two ways (by using a button on the socket {ConfiguringRadioDevices:SetMasterSoft} and with the help of {Terms.AntilatencyService}. For more information, please see {ConfiguringRadioDevices:SetMasterHard}). The receiver will display this setting as enabled or not, see {Hardware.Tag:LED signals}. "]
 
                 [$@"`ChannelsMask` 
-                    задаёт маску каналов, по которой передатчик будет искать приемник для подключения.  
-                    Это строка длиной 141 символ (по количеству доступных каналов) , состоящая из `0` и `1`, где `1` означает, что соответствующий канал будет использован при поиске приемника, а `0` - что канал будет проигнорирован. Первый символ в строке отвечает за последний(140) канал. 
-                Маска для каналов по умолчанию выглядит следующим образом: 
+                    sets the channel mask for the transmitter to look for a receiver connection.  
+                    This is a 141-symbol line (corresponds to the number of available channels) consisting of 0's and 1's where 1 denotes that the respective channel will be used while searching for a receiver while 0 implies that the channels will be ignored. The first symbol in the line is responsible for the last channel (140). 
+                The default channel mask looks as follows: 
                 `000000000000000000001000001000000000000000000000100000000000000000000000001000000000000000000000001000000000000000000000000000000000000000000`
-                Положение символов `1` в данной маске соответствует списку каналов по умолчанию(42, 66, 92, 114, 120).
-                Для удобства существуют alias, которые можно отправлять вместо строковой маски: {new UnorderedList()
-                        [$"`full` - для поиска активны все каналы"]
-                        [$"`default` - для поиска активны только 5 каналов по умолчанию"]
-                        [$"`N` - для поиска активен только канал `N`. Например, для `140` будет установлена маска `100....000`"]}"]
+                The location of 1's in this mask corresponds to the default channel list (42, 66, 92, 114, 120).
+                For your convenience, you can use aliases that can be sent instead of a line mask: {new UnorderedList()
+                        [$"`full` - all channels are active for search"]
+                        [$"`default` - only five channels are active for search by default"]
+                        [$"`N` - only channel 'N' is active for search. For example, for channel `140` a `100....000` mask will be set"]}"]
             ]
         ]
 
-        [new Section("Свойства приемника")
-            [new ToDo("Ссылка на статью про работу со свойствами.", true)]            
+        [new Section("Receiver properties")
+            [new ToDo("Link to the article on properties.", true)]            
             [new OrderedList()
                 [@$"`RadioChannel`
-                    Значение по умолчанию `-1` – приемник случайно выберет первый свободный радиоканал из списка: 42 = 2402 MHz, 66 = 2426 MHz, 92 = 2452 MHz, 114 = 2474 MHz, 120 = 2480 MHz.
-                    You can set a specific channel in the range of `0 - 140`, that will be used. To know how the channel id is mapped to a radio frequency, см. {Terms.Antilatency_Radio_Protocol:channels}
+                    The default setting is `-1`. The receiver will randomly select the first available radio channel from the list: 42 = 2402 MHz, 66 = 2426 MHz, 92 = 2452 MHz, 114 = 2474 MHz, 120 = 2480 MHz.
+                    You can set a specific channel in the range of `0 - 140`, that will be used. To know how the channel id is mapped to a radio frequency, please see {Terms.Antilatency_Radio_Protocol:channels}
                 "]
                 [@$"`ConnLimit`
-                    Это максимальное количество передатчиков, которые могу быть подключены к этому приёмнику. Значение `0` полностью отключает радио на устройстве.
-                    Если значение больше, чем количество фактически подключённых устройств - часть траффика будет тратиться на поиск новых устройств. Поэтому желательно ставить ровно столько, сколько планируется подключать устройств."]
+                    This is a maximum number of transmitters that that can connect to this receiver. The `0` value shuts down the radio on the device completely. If the value exceeds the number of connected devices, part of the traffic will go toward searching for new devices. Therefore, set this value to exactly match the number of the planned connections."]
             ]
         ]
 
@@ -57,7 +56,7 @@ partial class Tutorials {
         ]
 
         [new Section($"Set MasterSN property by wireless socket's power button", "SetMasterHard")
-            [$"Ниже описана конфигурация, где приемником выступает {Hardware.SocketUsbRadio}."]
+            [$"Below is a configuration where {Hardware.SocketUsbRadio} serves as a receiver."]
             [new OrderedList()
                 [$"Connect the {Hardware.SocketUsbRadio} to the {Terms.Host}"]
                 [$"Power up the wireless socket by the single-click power on button"]
@@ -67,7 +66,7 @@ partial class Tutorials {
         ]
 
         [new Section($"Set MasterSN property by {Software.Antilatency_Service}", "SetMasterSoft")
-            [$"Ниже описана конфигурация, где приемником выступает {Hardware.SocketUsbRadio}."]
+            [$"Below is a configuration where {Hardware.SocketUsbRadio}serves as a receiver."]
             [new OrderedList()
                 [$"Connect the {Hardware.SocketUsbRadio} to the {Terms.Host}"]
                 [$"Power up the wireless socket by the single-click power on button"]
