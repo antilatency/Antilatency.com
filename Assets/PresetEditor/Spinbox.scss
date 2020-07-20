@@ -1,0 +1,72 @@
+.Spinbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+
+    @mixin SpinboxRoundButton($diameter) {
+        position: relative;
+        display: inline-block;
+        color: #000;
+        font-weight: 400;
+        font-size: medium;
+        line-height: 20px;
+        padding: 0;
+        text-align: center;
+        cursor: pointer;
+        vertical-align: middle;
+        width: $diameter;
+        height: $diameter;
+        border: 1px solid #aaa;
+        border-radius: 100%;
+    }
+
+    @mixin SpinboxButtonDashSign($width) {
+        position: absolute;
+        display: block;
+        content: '';
+        width: $width;
+        height: 1px;
+        background: #000;
+        left: calc(50% - (#{$width}/2));
+        top: 50%;
+    }
+
+    .SpinboxInput {
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        font-weight: 400;
+        font-size: medium;
+        line-height: 20px;
+        background: 0 0;
+        padding: 0;
+        border: none;
+        text-align: center;
+        vertical-align: middle;
+        width: 30px;
+        height: 20px;
+        cursor: default;
+    }
+
+    .SpinboxButtonUp {
+        @include SpinboxRoundButton(20px);
+
+        &:after {
+            @include SpinboxButtonDashSign(8px);
+        }
+
+        &:before {
+            @include SpinboxButtonDashSign(8px);
+            transform: rotate(-90deg);
+        }
+    }
+
+    .SpinboxButtonDown {
+        @include SpinboxRoundButton(20px);
+
+        &:after {
+            @include SpinboxButtonDashSign(8px);
+        }
+    }
+}
