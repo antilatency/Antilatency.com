@@ -21,14 +21,18 @@
     }
 
     .ProductBadgeTitle {
-        position: relative;
-        display: block;
+        position: absolute;
+        display: inline-block;
         margin: 0;
-        color: #383838;
+        color: #aaa;
         font-size: small;
         line-height: 1;
         font-weight: bold;
         text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
     }
 }
 
