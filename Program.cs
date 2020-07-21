@@ -35,7 +35,7 @@ namespace Csml {
         public static void DeveloperBuild(string outputDirectory, bool watch = false) {
             Log.Info.Here($"DeveloperBuild({outputDirectory},{watch})");
 
-            CsmlApplication.DeveloperBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"));
+            CsmlApplication.DeveloperBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"), watch);
         }
     }
 }

@@ -1,6 +1,7 @@
 //group F0626 F0A3E
 
 .PresetEditor {
+    display: flex;
 
     .DragArea {
         cursor: move;
@@ -8,202 +9,6 @@
 
     .Hide {
         display: none !important;
-    }
-
-    .SpinboxBody {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2px;
-
-        @mixin SpinboxRoundButton($diameter) {
-            position: relative;
-            display: inline-block;
-            color: #000;
-            font-weight: 400;
-            font-size: medium;
-            line-height: 20px;
-            padding: 0;
-            text-align: center;
-            cursor: pointer;
-            vertical-align: middle;
-            width: $diameter;
-            height: $diameter;
-            border: 1px solid #aaa;
-            border-radius: 100%;
-        }
-
-        @mixin SpinboxButtonDashSign($width) {
-            position: absolute;
-            display: block;
-            content: '';
-            width: $width;
-            height: 1px;
-            background: #000;
-            left: calc(50% - (#{$width}/2));
-            top: 50%;
-        }
-
-        .SpinboxInput {
-            position: relative;
-            display: inline-block;
-            margin: 0;
-            font-weight: 400;
-            font-size: medium;
-            line-height: 20px;
-            background: 0 0;
-            padding: 0;
-            border: none;
-            text-align: center;
-            vertical-align: middle;
-            width: 30px;
-            height: 20px;
-            cursor: default;
-        }
-
-        .SpinboxButtonInc {
-            @include SpinboxRoundButton(20px);
-
-            &:after {
-                @include SpinboxButtonDashSign(8px);
-            }
-
-            &:before {
-                @include SpinboxButtonDashSign(8px);
-                transform: rotate(-90deg);
-            }
-        }
-
-        .SpinboxButtonDec {
-            @include SpinboxRoundButton(20px);
-
-            &:after {
-                @include SpinboxButtonDashSign(8px);
-            }
-        }
-    }
-
-    .ProductCard {
-        position: relative;
-        width: 80px;
-    }
-
-    .ProductCardContent {
-        position: relative;
-
-        .ProductCardImage {
-            position: relative;
-            display: block;
-            border-radius: 2px 2px 0 0;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-            pointer-events: none;
-        }
-
-        .ProductCardInfoBody {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-            max-width: 100%;
-            padding: 4px;
-            text-align: right;
-            pointer-events: none;
-
-            .ProductCardPriceBreak {
-                position: relative;
-                display: block;
-                margin: 0;
-                color: #aaa;
-                text-decoration: line-through;
-                font-size: x-small;
-                line-height: 1;
-                font-weight: normal;
-            }
-
-            .ProductCardPrice {
-                position: relative;
-                display: block;
-                margin: 0;
-                color: #aaa;
-                font-size: small;
-                line-height: 1.2;
-                font-weight: normal;
-            }
-
-            .ProductCardTitle {
-                position: relative;
-                display: block;
-                margin: 0;
-                color: #aaa;
-                font-size: small;
-                line-height: 1;
-                font-weight: bold;
-            }
-        }
-
-        .ProductCardPriceTotal {
-            position: absolute;
-            color: #aaa;
-            font-size: x-small;
-            font-weight: normal;
-            top: 0px;
-            left: 0px;
-            max-width: 100%;
-            padding: 4px;
-            pointer-events: none;
-        }
-    }
-
-    .ProductCardPlaceholder {
-        @extend .ProductCard;
-        float: left;
-        background-color: #eee;
-    }
-
-    @mixin itemLike {
-        margin: 2px;
-        margin-left: 6px;
-        float: left;
-        border-radius: 2px;
-    }
-
-    .Price {
-        position: relative;
-        margin-left: 25px;
-        display: inline;
-        font-style: normal;
-        font-size: small;
-
-        &:after {
-            content: " x";
-        }
-    }
-
-    .PriceTotal {
-        position: relative;
-        margin-left: 10px;
-        display: inline;
-        font-style: normal;
-        font-size: small;
-
-        &:before {
-            content: "= ";
-        }
-    }
-
-    .ItemCounter {
-        position: relative;
-        margin-left: 10px;
-        width: 40px !important;
-        display: inline;
-    }
-
-    .DragPlaceholder {
-        @include itemLike;
-        background-color: #eee;
     }
 
     &.ItemInTheAir {
@@ -231,134 +36,126 @@
         }
     }
 
-    .PresetEditorTree {
-        item {
-            $padding: 2px;
-            overflow: hidden;
-            background-color: #fff;
-            position: relative;
-            left: 0px;
-            padding: $padding;
+    item {
+        position: relative;
+        display: block;
+        margin: 4px;
+        float: left;
 
-            @include itemLike;
-            //padding-bottom: 8px;
-            //border: 10px solid transparent;
-            @include Selectable(none);
-            @include BoxShadow( 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
-            @include Transition( box-shadow 0.15s ease-in-out);
+        &.Dragged {
+            z-index: 10;
+            position: fixed;
+            margin-left: -1em;
+            margin-top: -16px;
+        }
+    }
 
-            .Title {
-                display: inline;
-                position: relative;
-                z-index: 2;
-                margin-left: 24px;
-            }
+    .ItemPlaceholder {
+        margin: 4px;
+        float: left;
+        background-color: #eee;
+        border-radius: 2px;
+    }
 
+    .Group {
+        $GroupSpacerWidth: 4px;
+
+        margin-left: 6px;
+        padding: 4px 4px 8px 4px;
+        overflow: hidden;
+        border-radius: 2px;
+
+        @include Selectable(none);
+        @include BoxShadow( 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
+        @include Transition( box-shadow 0.15s ease-in-out);
+
+        .GroupSpacer {
+            position: absolute;
             display: block;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: $GroupSpacerWidth;
+            pointer-events: none;
+            background-color: #b3e2fb;
+        }
 
-            &.Group {
-                background-color: #fafafa;
-                font-style: italic;
-                font-weight: normal;
-            }
-
-            &.Product {
-                font-style: normal;
-                font-weight: bold;
-
-                .Title {
-                    pointer-events: none;
-                }
-            }
+        .GroupHead {
+            position: relative;
+            display: block;
+            margin-left: $GroupSpacerWidth;
+            margin-right: $GroupSpacerWidth;
+            margin-bottom: 0;
+            height: 32px;
 
 
-            &.Dragged {
-                z-index: 10;
-                position: fixed;
-                margin-left: -1em;
-                margin-top: -16px;
-            }
-            /*> item {
-                margin-left: 16px;
-            }*/
-            ui {
+            .GroupTitle {
                 position: relative;
-                display: block;
-                //padding: 4px;
-                //top: -$padding;
-                //left: -$padding;
-                //right: -2*$padding;
-                height: 32px;
-
-                .DragArea {
-                    position: absolute;
-                    display: block;
-                    //left: -$dragAreaWidth;
-                    top: -$padding;
-                    left: -$padding;
-                    right: -$padding;
-                    bottom: 0;
-                    //width: 100%;
-                    //height: 100%;
-                    //float: left;
-                    background-color: #ddd;
-                    //margin-right: 4px;
-                    cursor: move;
-                    border-bottom-right-radius: 10px;
-
-                    &:after {
-                        //position: relative;
-                        margin: auto;
-                        display: block;
-                        padding: 7px;
-                        color: #666;
-                        font-family: "Material Design Icons";
-                        content: "\F0626";
-                        font-style: normal;
-                        font-weight: normal;
-                        //vertical-align: central;
-                        //margin: 8px;
-                        //padding: 8px;
-                    }
-                }
-
-                input {
-                    width: 100%
-                }
-                /*&.Selected {
-                    background-color: cornflowerblue
-                }*/
+                display: inline-block;
+                z-index: 2;
+                cursor: pointer;
+                text-decoration: underline;
+                max-width: 90%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
+
+            .GroupTitleEditor {
+                position: relative;
+                display: inline;
+                z-index: 2;
+                max-width: 90%;
+            }
+
+            .GroupCounter {
+                position: absolute;
+                display: inline;
+                right: 0;
+                z-index: 2;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+
+        .GroupContainer {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+
+    .PresetEditorTree {
+        flex: 75%;
+
+        .ProductBadge {
+            display: none !important;
         }
     }
 
     .ProductsView {
-        @extend .PresetEditorTree;
+        flex: 25%;
+        margin: 0;
+        padding: 0;
 
-        .Price {
-            &:after {
-                content: "";
-            }
-        }
-
-        .PriceTotal {
-            display: none;
+        .ProductCard {
+            display: none !important;
         }
 
         .ProductCardPriceTotal {
-            display: none;
+            display: none !important;
         }
 
-        .SpinboxBody {
-            display: none;
+        .Spinbox {
+            display: none !important;
         }
 
-        .ItemCounter {
-            display: none;
+        .GroupCounter {
+            display: none !important;
         }
 
         .DropArea {
-            display: none;
+            display: none !important;
         }
     }
 }
