@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 
 namespace Csml {
 
@@ -12,7 +13,15 @@ namespace Csml {
         }
 
         static void Main(string[] args) {
-            CSharpScript.ExecuteCommandLineArguments<Application>(args);
+            var thread = new Thread(() => {
+                CSharpScript.ExecuteCommandLineArguments<Application>(args);
+            }, 0x400000);
+
+            thread.Start();
+
+            thread.Join();
+
+            //CSharpScript.ExecuteCommandLineArguments<Application>(args);
             //DeveloperBuild(@"D:\Antilatency.com.Generated");
         }
 
