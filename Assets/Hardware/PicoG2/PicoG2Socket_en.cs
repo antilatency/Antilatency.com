@@ -2,7 +2,7 @@ using Csml;
 
 partial class Hardware : Scope {
 
-    public static Material PicoG2Socket_ru => new Material(
+    public static Material PicoG2Socket_en => new Material(
             "Pico G2 Socket",
             PicoG2Socket_Assets.PicoG2SocketProduct0,
              $"{Hardware.PicoG2Socket} - это wireless {Terms.Socket}, спроектированный под шлем PicoG2 для трекинга шлема и приема данных от беспроводных устройств по {Terms.Antilatency_Radio_Protocol}.")

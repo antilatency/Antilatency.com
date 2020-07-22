@@ -2,7 +2,7 @@ using Csml;
 
 partial class Hardware : Scope {
 
-    public static Material SocketUsbRadio_ru => new Material(
+    public static Material SocketUsbRadio_en => new Material(
             "HMD Radio Socket",
             SocketUsbRadio_Assets.SocketUsbRadioProduct0,
              $"{Hardware.SocketUsbRadio} - это wireless {Terms.Socket}, который поддерживает как прием данных от беспроводных устройств по {Terms.Antilatency_Radio_Protocol}, так и передачу данных трекинга при размещении на объектах отслеживания. ")
