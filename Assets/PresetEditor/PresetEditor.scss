@@ -11,31 +11,6 @@
         display: none !important;
     }
 
-    &.ItemInTheAir {
-
-        .DropArea {
-            //z-index: 10;
-            position: absolute;
-            display: inline-block;
-            background-color: greenyellow;
-            border-radius: 4px;
-            border: 1px solid white;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            opacity: 0.2;
-
-            &:hover {
-                opacity: 0.4;
-            }
-        }
-
-        .Dragged .DropArea {
-            display: none;
-        }
-    }
-
     item {
         position: relative;
         display: block;
@@ -64,6 +39,8 @@
         padding: 4px 4px 8px 4px;
         overflow: hidden;
         border-radius: 2px;
+        min-width: 100px;
+        background-color: white;
 
         @include Selectable(none);
         @include BoxShadow( 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
@@ -105,7 +82,7 @@
                 position: relative;
                 display: inline;
                 z-index: 2;
-                max-width: 90%;
+                width: 90%;
             }
 
             .GroupCounter {
@@ -134,28 +111,94 @@
     }
 
     .ProductsView {
+        position: relative;
         flex: 25%;
         margin: 0;
         padding: 0;
+
+        .ProductsContainer {
+
+            .ProductCard {
+                display: none !important;
+            }
+
+            .GroupCounter {
+                display: none !important;
+            }
+
+            .DropArea {
+                display: none !important;
+            }
+
+            .DropAreaRemoveItem {
+                position: absolute;
+                display: none;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                border-radius: 4px;
+                z-index: 9;
+                background-image: linear-gradient(45deg, #ffffff 25%, #e4e8eb 25%, #e4e8eb 50%, #ffffff 50%, #ffffff 75%, #e4e8eb 75%, #e4e8eb 100%);
+                //background-image: linear-gradient(45deg, #dde6eb 25%, #ffffff 25%, #ffffff 50%, #dde6eb 50%, #dde6eb 75%, #ffffff 75%, #ffffff 100%);
+                background-size: 20px 20px;
+
+                &:hover {
+                    background-image: linear-gradient(45deg, #ffffff 25%, #f5e7e7 25%, #f5e7e7 50%, #ffffff 50%, #ffffff 75%, #f5e7e7 75%, #f5e7e7 100%);
+                    //background-image: linear-gradient(45deg, #bbdef0 25%, #ffffff 25%, #ffffff 50%, #bbdef0 50%, #bbdef0 75%, #ffffff 75%, #ffffff 100%);
+                }
+
+                &:after {
+                    position: absolute;
+                    display: inline-block;
+                    content: "REMOVE";
+                    color: black;
+                    font-weight: 500;
+                    font-size: 6rem;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(90deg);
+                    opacity: 0.2;
+                }
+            }
+        }
+    }
+
+
+    &.ItemInTheAir {
+
+        .DropArea {
+            //z-index: 10;
+            position: absolute;
+            display: inline-block;
+            background-color: greenyellow;
+            border-radius: 4px;
+            border: 1px solid white;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            opacity: 0.2;
+
+            &:hover {
+                opacity: 0.4;
+            }
+        }
+
+        .Dragged .DropArea {
+            display: none;
+        }
 
         .ProductCard {
             display: none !important;
         }
 
-        .ProductCardPriceTotal {
-            display: none !important;
+        .ProductBadge {
+            display: block !important;
         }
 
-        .Spinbox {
-            display: none !important;
-        }
-
-        .GroupCounter {
-            display: none !important;
-        }
-
-        .DropArea {
-            display: none !important;
+        .DropAreaRemoveItem {
+            display: block !important;
         }
     }
 }

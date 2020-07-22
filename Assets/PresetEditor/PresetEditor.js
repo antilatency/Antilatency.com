@@ -175,13 +175,14 @@ function PresetEditor(presetEditor) {
 
         var IsDraggable = (element) => !IsEmptyObject(element) && element.classList.contains("DragArea");
         var IsDropArea = (element) => !IsEmptyObject(element) && element.classList.contains("DropArea");
+        var IsDropAreaForRemoveItem = (element) => !IsEmptyObject(element) && element.classList.contains("DropAreaRemoveItem");
 
         var DragStart = function (event) {
             if (IsDraggable(event.target)) {
                 draggedItem = GetClosestParent(event.target, "item");
                 draggedItemName = draggedItem.getAttribute("name");
                 draggedItemIsProduct = draggedItem.classList.contains("Product");
-                draggedItemFromProductsView = draggedItem.parentElement.classList.contains("ProductsView");
+                draggedItemFromProductsView = GetClosestParent(draggedItem, ".ProductsView") != null;
 
                 presetEditor.classList.add("ItemInTheAir");
 
@@ -217,7 +218,18 @@ function PresetEditor(presetEditor) {
         }
 
         var Drop = function (event) {
-            if (IsDropArea(event.target) && !IsEmptyObject(draggedItem)) {
+            if (IsEmptyObject(draggedItem)) {
+                return;
+            }
+
+            if (IsDropAreaForRemoveItem(event.target)) {
+                if (!draggedItemFromProductsView) {
+                    draggedItem.parentNode.removeChild(draggedItem);
+                    draggedItem = null;
+
+                    UpdatePrices();
+                }
+            } else if (IsDropArea(event.target)) {
                 let target = GetClosestParent(event.target, ".Group");
                 let container = target.querySelector(".GroupContainer");
                 let dropToTarget = true;
@@ -434,16 +446,19 @@ function PresetEditor(presetEditor) {
     this.CreateProductsList = function () {
         //this.CreateTitle("Products");
 
-        var productsView = presetEditor.appendChild(document.createElement("div"));
-        productsView.className = "ProductsView";
+        var productsView = presetEditor.appendChild(CreateElement("div", "ProductsView"));
         productsView.style.overflow = "auto";
+
+        var container = productsView.appendChild(CreateElement("div", "ProductsContainer"));
+
+        container.appendChild(CreateElement("div", "DropAreaRemoveItem"));
 
         var keys = Object.keys(Store.PRODUCTS);
         for (let i = 0; i < keys.length; i++) {
-            this.CreateProductItem(productsView, keys[i], 1);
+            this.CreateProductItem(container, keys[i], 1);
         }
 
-        this.CreateGroupItem(productsView, "Group");
+        this.CreateGroupItem(container, "Group");
     }
 
     presetEditor.style.overflow = "auto";
