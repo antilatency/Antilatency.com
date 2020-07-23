@@ -2,8 +2,8 @@ using Csml;
 
 partial class Hardware : Scope {
         public static Material Alt_en => new Material("Alt", AltAndUsbSocket0,
-        @$"{Hardware.Alt} это оптико-инерциальный модуль трекинга. {Hardware.Alt} размещается на объектах отслеживания и определяет свое положение в пространстве относительно инфракрасных маркеров. 
-            {Hardware.Alt} поставляется в комплекте с проводным {Hardware.SocketUsb}.")
+        @$"{Hardware.Alt} is an optical inertial tracking module. {Hardware.Alt} is located on objects being tracked and determines their position in space in relation to infrared markers. 
+            {Hardware.Alt} is supplied as a bundle with a wired {Hardware.SocketUsb}.")
         [new Section("Sensor fusion")
             [$"{Hardware.Alt} is based on a sensor fusion approach. It's an inertial measurement unit (IMU) based tracking system with real-time IMU correction based on optical data."]
         ]
@@ -21,7 +21,7 @@ partial class Hardware : Scope {
         ]
 
 
-        [new Section("Техническая спецификация")
+        [new Section("Technical specifications")
             [new Table(2)
                 [$"Sensors"][$"Optical sensor,  accelerometer,  gyroscope"]
                 [$"Position frequency"][$"2000Hz"]
