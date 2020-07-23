@@ -6,7 +6,7 @@ function PresetEditor(presetEditor) {
 
     var sourceJson =
         `{
-            "Demo: 10 FullbodyUsingPicoG2~2":{
+            "Demo: 10 FullbodyUsingPicoG2~1":{
                 "Fullbody~10":{
                     "Head":{
                         "ACHA0Alt__A":1,
@@ -141,7 +141,7 @@ function PresetEditor(presetEditor) {
 
             var groupPriceTotal = groupPrice * group.getAttribute("quantity");
 
-            UpdateGroupPriceTitles(group, groupPrice, groupPriceTotal);
+            //UpdateGroupPriceTitles(group, groupPrice, groupPriceTotal);
 
             return groupPriceTotal;
         }
@@ -161,12 +161,22 @@ function PresetEditor(presetEditor) {
             }
         }
 
+        var UpdateCheckoutPrices = function (total) {
+            const discount = Object.entries(productsQuantity)
+                                    .map(([k, v]) => Store.GetProductUnitPrice(k, 1).productPrice * v)
+                                    .reduce((r, v) => r + v, 0) - total;
+
+            document.querySelector("#totalDiscount").textContent = "$" + discount;
+            document.querySelector("#totalPrice").textContent = "$" + total;
+        }
+
         CountProducts(presetEditorRootGroup, 1);
-        UpdateGroupPricesRecursively(presetEditorRootGroup);
         UpdateProductsViewPrices();
+        UpdateCheckoutPrices(UpdateGroupPricesRecursively(presetEditorRootGroup));
     }
 
     function EnableDragAndDrop() {
+        var pointedGroup = null;
         var draggedItem = null;
         var draggedItemName = "";
         var draggedItemIsProduct = false;
@@ -181,7 +191,7 @@ function PresetEditor(presetEditor) {
             if (IsDraggable(event.target)) {
                 draggedItem = GetClosestParent(event.target, "item");
                 draggedItemName = draggedItem.getAttribute("name");
-                draggedItemIsProduct = draggedItem.classList.contains("Product");
+                draggedItemIsProduct = draggedItem.classList.contains("Product") && draggedItemName != "Group";
                 draggedItemFromProductsView = GetClosestParent(draggedItem, ".ProductsView") != null;
 
                 presetEditor.classList.add("ItemInTheAir");
@@ -201,19 +211,27 @@ function PresetEditor(presetEditor) {
         }
 
         var Drag = function (event) {
+            var x = 0, y = 0;
+
+            if (event.type === "touchmove") {
+                x = event.touches[0].clientX;
+                y = event.touches[0].clientY;
+            } else {
+                x = event.clientX;
+                y = event.clientY;
+            }
+
+            var group = GetClosestParent(document.elementFromPoint(x, y), ".Group"); 
+            if (pointedGroup != group) {
+                pointedGroup && pointedGroup.classList.remove("PointedGroup");
+                pointedGroup = group;
+                pointedGroup && pointedGroup.classList.add("PointedGroup");
+
+            }
+
             if (!IsEmptyObject(draggedItem)) {
-                var left = 0, top = 0;
-
-                if (event.type === "touchmove") {
-                    left = event.touches[0].clientX;
-                    top = event.touches[0].clientY;
-                } else {
-                    left = event.clientX;
-                    top = event.clientY;
-                }
-
-                draggedItem.style.left = left + 'px';
-                draggedItem.style.top = top + 40 + 'px';
+                draggedItem.style.left = x + 'px';
+                draggedItem.style.top = y + 40 + 'px';
             }
         }
 
@@ -323,7 +341,7 @@ function PresetEditor(presetEditor) {
         const defaultImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY2BgYAAAAAQAAVzN/2kAAAAASUVORK5CYII=";
 
         var productView = item.appendChild(CreateElement("div", "ProductViewContainer"));
-        var badge = productView.appendChild(CreateElement("div", "ProductBadge DragArea"));
+        var badge = productView.appendChild(CreateElement("div", "ProductBadge DragArea DropArea"));
         var badgeImage = badge.appendChild(CreateElement("img", "ProductBadgeImage"));
         var badgeTitle = badge.appendChild(CreateElement("div", "ProductBadgeTitle"));
 
@@ -358,16 +376,14 @@ function PresetEditor(presetEditor) {
     }
 
     function CreateGroupHead(group, name, quantity) {
-        var head = group.appendChild(CreateElement("div", "GroupHead DragArea"));
+        var head = group.appendChild(CreateElement("div", "GroupHead DragArea DropArea"));
 
-        var title = head.appendChild(CreateElement("div", "GroupTitle"));
+        var title = head.appendChild(CreateElement("div", "GroupTitle DropArea"));
         var titleEditor = head.appendChild(CreateElement("input", "GroupTitleEditor Hide"));
         title.textContent = name;
         titleEditor.value = name;
 
-        var dropArea = head.appendChild(CreateElement("span", "DropArea"));
-
-        var counter = head.appendChild(CreateElement("div", "GroupCounter"));
+        var counter = head.appendChild(CreateElement("div", "GroupCounter DropArea"));
         counter.id = "counter";
         counter.textContent = quantity;
 
@@ -406,7 +422,7 @@ function PresetEditor(presetEditor) {
         item.appendChild(CreateElement("div", "GroupSpacer"));
 
         CreateGroupHead(item, name, quantity);
-        item.appendChild(CreateElement("div", "GroupContainer"));
+        item.appendChild(CreateElement("div", "GroupContainer DragArea DropArea"));
 
         return item;
     }
@@ -426,27 +442,17 @@ function PresetEditor(presetEditor) {
         }
     }
 
-    this.CreateTitle = function (name) {
-        var title = presetEditor.appendChild(document.createElement("h3"));
-        title.textContent = name;
-    }
 
-    this.CreatePresetEditorTree = function (presetJson) {
-        //this.CreateTitle("Editor");
-
-        var presetEditorTree = presetEditor.appendChild(document.createElement("div"));
+    this.CreatePresetEditorTree = function (parent, presetJson) {
+        var presetEditorTree = parent.appendChild(document.createElement("div"));
         presetEditorTree.className = "PresetEditorTree";
         presetEditorTree.style.overflow = "auto";
 
         this.ObjToDom(presetEditorTree, JSON.parse(presetJson));
-
-        UpdatePrices();
     }
 
-    this.CreateProductsList = function () {
-        //this.CreateTitle("Products");
-
-        var productsView = presetEditor.appendChild(CreateElement("div", "ProductsView"));
+    this.CreateProductsList = function (parent) {
+        var productsView = parent.appendChild(CreateElement("div", "ProductsView"));
         productsView.style.overflow = "auto";
 
         var container = productsView.appendChild(CreateElement("div", "ProductsContainer"));
@@ -458,13 +464,46 @@ function PresetEditor(presetEditor) {
             this.CreateProductItem(container, keys[i], 1);
         }
 
-        this.CreateGroupItem(container, "Group");
+        //this.CreateGroupItem(container, "Group");
+        //this.CreateProductItem(container, "Group", 1);
+    }
+
+    function CreateCheckoutPanel(parent) {
+        var panel = parent.appendChild(CreateElement("div", "CheckoutPanel"));
+
+        var priceTitlesBlock = panel.appendChild(CreateElement("div", "PriceBlock"));
+        var discountTitle = priceTitlesBlock.appendChild(CreateElement("div", "Title"));
+        var totalTitle = priceTitlesBlock.appendChild(CreateElement("div", "Title"));
+
+        var pricesBlock = panel.appendChild(CreateElement("div", "PriceBlock"));
+        var discount= pricesBlock.appendChild(CreateElement("div", "Price"));
+        var totalPrice = pricesBlock.appendChild(CreateElement("div", "Price"));
+
+
+        var buy = panel.appendChild(CreateElement("div", "BuyButton"));
+
+        discountTitle.textContent = "Discount:";
+        totalTitle.textContent = "Total:";
+
+        discount.textContent = "$000";
+        totalPrice.textContent = "$000";
+
+        discount.id = "totalDiscount";
+        totalPrice.id = "totalPrice";
+
+        buy.textContent = "Buy";
+        buy.onclick = () => alert("No");
     }
 
     presetEditor.style.overflow = "auto";
-    this.CreateProductsList();
-    this.CreatePresetEditorTree(sourceJson);
 
+    var workspace = presetEditor.appendChild(CreateElement("div", "EditorWorkspace"));
+
+    this.CreateProductsList(workspace);
+    this.CreatePresetEditorTree(workspace, sourceJson);
+    CreateCheckoutPanel(presetEditor);
+
+    UpdatePrices();
     EnableDragAndDrop();
 
 

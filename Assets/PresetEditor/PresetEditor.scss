@@ -1,10 +1,15 @@
 //group F0626 F0A3E
 
 .PresetEditor {
-    display: flex;
 
     .DragArea {
         cursor: move;
+    }
+
+    .DropArea {
+    }
+
+    .PointedGroup {
     }
 
     .Hide {
@@ -36,7 +41,7 @@
         $GroupSpacerWidth: 4px;
 
         margin-left: 6px;
-        padding: 4px 4px 8px 4px;
+        padding: 4px 4px 6px 4px;
         overflow: hidden;
         border-radius: 2px;
         min-width: 100px;
@@ -96,9 +101,18 @@
         }
 
         .GroupContainer {
-            margin: 0;
+            margin-left: $GroupSpacerWidth;
             padding: 0;
+            overflow: auto;
+            min-width: 180px;
+
+            border-radius: 2px;
         }
+    }
+
+    .EditorWorkspace {
+        position: relative;
+        display: flex;
     }
 
 
@@ -110,11 +124,58 @@
         }
     }
 
+    .CheckoutPanel {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        background-color: #b7ea6f;
+
+        .PriceBlock {
+            margin: 4px;
+
+            .Title {
+                text-align: right;
+            }
+
+            .Price {
+            }
+        }
+
+        .BuyButton {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 8px;
+            padding: 8px;
+            width: 25%;
+            max-width: 200px;
+            color: black;
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+            @include MaterialShadow();
+
+            @include Transition( box-shadow 0.15s ease-in-out);
+
+            &:hover {
+                @include BoxShadow( 0 3px 6px rgba(0, 0, 0, 0.13), 0 2px 4px rgba(0, 0, 0, 0.28));
+            }
+        }
+    }
+
     .ProductsView {
         position: relative;
-        flex: 25%;
+        //flex: 25%;
         margin: 0;
         padding: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 4px;
+        background-color: #e4e8eb;
+        width: 70px;
 
         .ProductsContainer {
 
@@ -123,10 +184,6 @@
             }
 
             .GroupCounter {
-                display: none !important;
-            }
-
-            .DropArea {
                 display: none !important;
             }
 
@@ -141,25 +198,25 @@
                 z-index: 9;
                 background-image: linear-gradient(45deg, #ffffff 25%, #e4e8eb 25%, #e4e8eb 50%, #ffffff 50%, #ffffff 75%, #e4e8eb 75%, #e4e8eb 100%);
                 //background-image: linear-gradient(45deg, #dde6eb 25%, #ffffff 25%, #ffffff 50%, #dde6eb 50%, #dde6eb 75%, #ffffff 75%, #ffffff 100%);
-                background-size: 20px 20px;
+                background-size: 15px 15px;
 
                 &:hover {
                     background-image: linear-gradient(45deg, #ffffff 25%, #f5e7e7 25%, #f5e7e7 50%, #ffffff 50%, #ffffff 75%, #f5e7e7 75%, #f5e7e7 100%);
                     //background-image: linear-gradient(45deg, #bbdef0 25%, #ffffff 25%, #ffffff 50%, #bbdef0 50%, #bbdef0 75%, #ffffff 75%, #ffffff 100%);
                 }
-
-                &:after {
+                /*&:after {
                     position: absolute;
                     display: inline-block;
                     content: "REMOVE";
                     color: black;
                     font-weight: 500;
                     font-size: 6rem;
+                    line-height: 0.4;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%) rotate(90deg);
                     opacity: 0.2;
-                }
+                }*/
             }
         }
     }
@@ -167,26 +224,18 @@
 
     &.ItemInTheAir {
 
-        .DropArea {
-            //z-index: 10;
-            position: absolute;
-            display: inline-block;
-            background-color: greenyellow;
-            border-radius: 4px;
-            border: 1px solid white;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            opacity: 0.2;
-
-            &:hover {
-                opacity: 0.4;
-            }
+        .GroupContainer {
+            background-image: linear-gradient(-45deg, #ffffff 25%, #e4e8eb 25%, #e4e8eb 50%, #ffffff 50%, #ffffff 75%, #e4e8eb 75%, #e4e8eb 100%);
+            background-size: 15px 15px;
         }
 
-        .Dragged .DropArea {
-            display: none;
+        .PointedGroup > .GroupContainer {
+            background-image: linear-gradient(-45deg, #ffffff 25%, #bbdef0 25%, #bbdef0 50%, #ffffff 50%, #ffffff 75%, #bbdef0 75%, #bbdef0 100%);
+            background-size: 15px 15px;
+        }
+
+        .Dragged > .GroupContainer {
+            background-image: none;
         }
 
         .ProductCard {

@@ -28,6 +28,11 @@ class Store {
         TrackingArea10m2: {
             Name: "Tracking area 10m2",
             Prices: [{ From: 1, Price: 250 }]
+        },
+
+        Group: {
+            Name: "Group",
+            Prices: [{ From: 1, Price: 0 }]
         }
     };
 
