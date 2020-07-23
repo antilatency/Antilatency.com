@@ -176,6 +176,7 @@ function PresetEditor(presetEditor) {
     }
 
     function EnableDragAndDrop() {
+        var pointedElement = null;
         var pointedGroup = null;
         var draggedItem = null;
         var draggedItemName = "";
@@ -212,16 +213,23 @@ function PresetEditor(presetEditor) {
 
         var Drag = function (event) {
             var x = 0, y = 0;
+            var isTouchEvent = false;
 
             if (event.type === "touchmove") {
-                x = event.touches[0].clientX;
-                y = event.touches[0].clientY;
+                x = event.touches[0].clientX || 0;
+                y = event.touches[0].clientY || 0;
+
+                isTouchEvent = true;
             } else {
-                x = event.clientX;
-                y = event.clientY;
+                x = event.clientX || 0;
+                y = event.clientY || 0;
             }
 
-            var group = GetClosestParent(document.elementFromPoint(x, y), ".Group"); 
+
+            pointedElement = document.elementFromPoint(x, y);
+
+            var group = GetClosestParent(pointedElement, ".Group"); 
+
             if (pointedGroup != group) {
                 pointedGroup && pointedGroup.classList.remove("PointedGroup");
                 pointedGroup = group;
@@ -230,25 +238,29 @@ function PresetEditor(presetEditor) {
             }
 
             if (!IsEmptyObject(draggedItem)) {
+                if (isTouchEvent) {
+                    event.preventDefault();
+                }
+
                 draggedItem.style.left = x + 'px';
                 draggedItem.style.top = y + 40 + 'px';
             }
         }
 
-        var Drop = function (event) {
+        var Drop = function (dropArea) {
             if (IsEmptyObject(draggedItem)) {
                 return;
             }
 
-            if (IsDropAreaForRemoveItem(event.target)) {
+            if (IsDropAreaForRemoveItem(dropArea)) {
                 if (!draggedItemFromProductsView) {
                     draggedItem.parentNode.removeChild(draggedItem);
                     draggedItem = null;
 
                     UpdatePrices();
                 }
-            } else if (IsDropArea(event.target)) {
-                let target = GetClosestParent(event.target, ".Group");
+            } else if (IsDropArea(dropArea)) {
+                let target = GetClosestParent(dropArea, ".Group");
                 let container = target.querySelector(".GroupContainer");
                 let dropToTarget = true;
 
@@ -292,7 +304,7 @@ function PresetEditor(presetEditor) {
         var DragEnd = function (event) {
             presetEditor.classList.remove("ItemInTheAir");
 
-            Drop(event);
+            Drop(event.type === "touchend" ? pointedElement : event.target);
 
             if (!IsEmptyObject(draggedItem)) {
                 draggedItem.classList.remove("Dragged");
@@ -308,9 +320,18 @@ function PresetEditor(presetEditor) {
         }
 
 
-        document.addEventListener("touchstart", DragStart, false);
-        document.addEventListener("touchmove", Drag, false);
-        document.addEventListener("touchend", DragEnd, false);
+        var supportsPassive = false;
+        try {
+            window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+                get: () => supportsPassive = true
+            }));
+        } catch (e) { }
+
+        var touchOpt = supportsPassive ? { passive: false } : false;
+
+        document.addEventListener("touchstart", DragStart, touchOpt);
+        document.addEventListener("touchmove", Drag, touchOpt);
+        document.addEventListener("touchend", DragEnd, touchOpt);
 
         document.addEventListener("mousedown", DragStart, false);
         document.addEventListener("mousemove", Drag, false);
@@ -326,17 +347,18 @@ function PresetEditor(presetEditor) {
         return spinbox.container;
     }
 
-    this.CreateItem = function (parent, name, quantity) {
+    this.CreateItem = function (parent, name, quantity, className) {
         var item = parent.appendChild(document.createElement("item"));
         item.setAttribute("quantity", quantity);
         item.setAttribute("name", name);
+
+        item.className = className;
 
         return item;
     }
 
     this.CreateProductItem = function (parent, name, quantity) {
-        var item = this.CreateItem(parent, name, quantity);
-        item.className = "Product";
+        var item = this.CreateItem(parent, name, quantity, "Product");
 
         const defaultImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY2BgYAAAAAQAAVzN/2kAAAAASUVORK5CYII=";
 
@@ -411,23 +433,33 @@ function PresetEditor(presetEditor) {
     }
 
 
-    this.CreateGroupItem = function (parent, rawName) {
+    this.CreateGroupItem = function (parent, rawName, isRoot) {
         var nameParsed = rawName.match(/^([^~]*)(~(\d+))?$/);
         if (nameParsed == null) throw new Error("Invalid group name:" + rawName);
         var name = nameParsed[1];
-        var quantity = (nameParsed[3] != undefined) ? parseInt(nameParsed[3], 10) : 1;
 
-        var item = this.CreateItem(parent, name, quantity);
-        item.className = "Group DragArea";
-        item.appendChild(CreateElement("div", "GroupSpacer"));
+        if (!isRoot) {
+            var quantity = (nameParsed[3] != undefined) ? parseInt(nameParsed[3], 10) : 1;
 
-        CreateGroupHead(item, name, quantity);
-        item.appendChild(CreateElement("div", "GroupContainer DragArea DropArea"));
+            var item = this.CreateItem(parent, name, quantity, "Group DragArea");
 
-        return item;
+            item.appendChild(CreateElement("div", "GroupSpacer"));
+
+            CreateGroupHead(item, name, quantity);
+            item.appendChild(CreateElement("div", "GroupContainer DragArea DropArea"));
+
+            return item;
+        } else {
+            var item = this.CreateItem(parent, name, 1, "Group RootGroup");
+            var container = item.appendChild(CreateElement("div", "GroupContainer DropArea"));
+
+            container.style.height = "100%";
+
+            return item;
+        }
     }
 
-    this.ObjToDom = function (parent, obj) {
+    this.ObjToDom = function (parent, obj, createRootGroup) {
         var keys = Object.keys(obj);
         for (let i = 0; i < keys.length; i++) {
             var value = obj[keys[i]];
@@ -435,8 +467,8 @@ function PresetEditor(presetEditor) {
                 this.CreateProductItem(parent.querySelector(".GroupContainer"), keys[i], value);
             } else {
                 if (typeof (value) == "object") {
-                    let group = this.CreateGroupItem(parent.querySelector(".GroupContainer") || parent, keys[i]);
-                    this.ObjToDom(group, value);
+                    let group = this.CreateGroupItem(parent.querySelector(".GroupContainer") || parent, keys[i], createRootGroup);
+                    this.ObjToDom(group, value, false);
                 }
             }
         }
@@ -448,7 +480,7 @@ function PresetEditor(presetEditor) {
         presetEditorTree.className = "PresetEditorTree";
         presetEditorTree.style.overflow = "auto";
 
-        this.ObjToDom(presetEditorTree, JSON.parse(presetJson));
+        this.ObjToDom(presetEditorTree, JSON.parse(presetJson), true);
     }
 
     this.CreateProductsList = function (parent) {

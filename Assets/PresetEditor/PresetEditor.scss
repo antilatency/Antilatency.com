@@ -37,6 +37,16 @@
         border-radius: 2px;
     }
 
+    .RootGroup {
+        margin: 0px 0px 0px 0px !important;
+        padding: 0px 20px 0px 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+
+        @include BoxShadow(none);
+        @include Transition(none);
+    }
+
     .Group {
         $GroupSpacerWidth: 4px;
 
@@ -105,7 +115,6 @@
             padding: 0;
             overflow: auto;
             min-width: 180px;
-
             border-radius: 2px;
         }
     }
@@ -234,8 +243,12 @@
             background-size: 15px 15px;
         }
 
-        .Dragged > .GroupContainer {
-            background-image: none;
+        .Dragged {
+            pointer-events: none;
+
+            .GroupContainer {
+                background-image: none !important;
+            }
         }
 
         .ProductCard {
