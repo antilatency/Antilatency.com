@@ -5,25 +5,25 @@ partial class Hardware : Scope {
     public static Material PicoG2Socket_en => new Material(
             "Pico G2 Socket",
             PicoG2Socket_Assets.PicoG2SocketProduct0,
-             $"{Hardware.PicoG2Socket} - это wireless {Terms.Socket}, спроектированный под шлем PicoG2 для трекинга шлема и приема данных от беспроводных устройств по {Terms.Antilatency_Radio_Protocol}.")
+             $"The {Hardware.PicoG2Socket} is a wireless {Terms.Socket} designed to track the PicoG2 headset and receive data from wireless devices via {Terms.Antilatency_Radio_Protocol}.")
 
-            [new Section("Дизайн для шлема Pico G2")
-                [$"{Hardware.PicoG2Socket} был специально спроектирован под геометрию шлема Pico G2. {Hardware.PicoG2Socket} позиционируется с помощью разъема USB type-C на шлеме и надежно фиксируется на шлеме."]
+            [new Section("Design for the Pico G2 headset")
+                [$"The {Hardware.PicoG2Socket} has been custom-designed to fit the shape of the Pico G2 headset. The {Hardware.PicoG2Socket} tracks with the help of a USB type-C port on the headset and locks securely in place on the headset."]
             ]
             
-            [new Section("Прием данных от беспроводных устройств по радиопротоколу ")
-                [$"В работе {Terms.Antilatency_Radio_Protocol} {Hardware.PicoG2Socket} выступает в качестве приемника данных от передатчиков. {Hardware.PicoG2Socket} собирает данные от подключенных к нему беспроводных устройств и передает их на шлем по USB вместе с данными своего трекера."] 
+            [new Section("Receiving data from wireless devices via a radio protocol")
+                [$"When the {Terms.Antilatency_Radio_Protocol} is running, the {Hardware.PicoG2Socket} acts as a data receiver from the transmitters. {Hardware.PicoG2Socket} collects data from wireless devices that are connected to it and forwards them to the headset through USB along with the data from its own tracker."] 
             ]
 
-            [new Section("Дополнительный разъем USB type-C Female")
-                [$"Помимо разъема USB type-C Male для подключения к шлему {Hardware.PicoG2Socket} имеет разъем USB type-C Female. При подключении кабеля к разъему USB type-C Female, {Hardware.PicoG2Socket} начинает работать как USB-переходник для зарядки и проброса USB-данных на шлем. Таким образом, единожды подключив {Hardware.PicoG2Socket} к шлему и зафиксировав, {Hardware.PicoG2Socket} уже не нужно будет отключать: зарядка шлема и передача данных по USB для установки приложений будет происходить через указанный разъем USB type-C Female."] 
+            [new Section("An extra USB type-C Female port")
+                [$"Apart from a USB type-C Male port to connect to the headset, the {Hardware.PicoG2Socket} has a USB type-C Female port. When a cable is connected to the USB type-C Female port, the {Hardware.PicoG2Socket} begins to work as a USB-adapter for charging and a USB data interface with the headset. Therefore, once you plug the {Hardware.PicoG2Socket} into the headset once and lock it in place, you will not need to disconnect it. The headset will charge and install applications via USB using the USB type-C Female port we discussed earlier."] 
                 [new Info()
-                    [$"{Hardware.PicoG2Socket} работает в 2-х взаимоисключающих режимах: либо в режиме USB-устройства, передающее данные трекинга на шлем, либо в режиме USB-переходника."]
+                    [$"The {Hardware.PicoG2Socket} operates in two mutually exclusive modes: either as a USB device channeling tracking data into the headset or as a USB-adapter."]
                 ]                
             ]
 
 
-            [new Section("Техническая спецификация")
+            [new Section("Technical specifications")
                 [new Table(2)
                     [$"Connectivity"][@$"2.4GHz Proprietary radio protocol (Master only)
                                         USB 2.0 Full Speed"]
