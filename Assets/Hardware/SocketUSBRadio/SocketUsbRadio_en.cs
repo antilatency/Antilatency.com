@@ -5,35 +5,35 @@ partial class Hardware : Scope {
     public static Material SocketUsbRadio_en => new Material(
             "HMD Radio Socket",
             SocketUsbRadio_Assets.SocketUsbRadioProduct0,
-             $"{Hardware.SocketUsbRadio} - это wireless {Terms.Socket}, который поддерживает как прием данных от беспроводных устройств по {Terms.Antilatency_Radio_Protocol}, так и передачу данных трекинга при размещении на объектах отслеживания. ")
+             $"The {Hardware.SocketUsbRadio} is a wireless {Terms.Socket} that supports both data reception from wireless devices via the {Terms.Antilatency_Radio_Protocol} and tracking data transmission when placed on the objects being tracked.")
 
-            [new Section("Универсальный приемник данных по радиопротоколу ")
-                [@$"В работе {Terms.Antilatency_Radio_Protocol} {Hardware.SocketUsbRadio} выступает, как правило, в качестве приемника данных от передатчиков. USB type-C порт в этом случае используется для питания {Hardware.SocketUsbRadio} и  для передачи данных на {Terms.Host} по USB. 
-                    См. также ниже другие режимы работы {Hardware.SocketUsbRadio}.
+            [new Section("A universal data receiver via a radio protocol")
+                [@$"When the {Terms.Antilatency_Radio_Protocol} is running, as a rule, the {Hardware.SocketUsbRadio} serves as a data receiver from transmitters. In this case the USB type-C port is used to power the {Hardware.SocketUsbRadio} and send data to the {Terms.Host} via USB. 
+                    For other modes of operation, please see {Hardware.SocketUsbRadio}.
                 "]
             ]
             
-            [new Section("Работа в качестве передатчика данных")
-                [$"{Hardware.SocketUsbRadio} через свойство “Mode” может быть сконфигурирован для работы в качестве передатчика данных по радиопротоколу. В этом случае {Hardware.SocketUsbRadio} получает питание от внешней батареи."] 
+            [new Section("Operating as a data transmitter")
+                [$"Using the “Mode” property, you can configure the {Hardware.SocketUsbRadio} to work as a data transmitter via a radio protocol. In this case the {Hardware.SocketUsbRadio} is powered by an external power bank."] 
             ]
 
-            [new Section("Внешняя батарея")
-                [$"К {Hardware.SocketUsbRadio} через порт USB type-C может быть подключена внешний Power bank для питания сокета. {Hardware.SocketUsbRadio} в этом случае работает в качестве передатчика, аналогично {Hardware.Tag}"] 
+            [new Section("External power source")
+                [$"You can power the {Hardware.SocketUsbRadio} from an external power bank via the USB type-C port. In this case the {Hardware.SocketUsbRadio} functions as a transmitter, similarly to the {Hardware.Tag}"] 
             ]
 
-            [new Section("Поддержка Extension board")
-                [@$"{Hardware.SocketUsbRadio} поддерживает работу с {Hardware.ExtensionBoard}. {Hardware.ExtensionBoard} подключается к {Hardware.SocketUsbRadio} через порт USB type-C для передачи данных о внешних триггерах и управлением откликом(вибрация и т.д.). {Hardware.SocketUsbRadio} передает эти данные вместе с данными трекинга своему приемнику. 
-                    Подробнее см. {Terms.Antilatency_Hardware_Extension_Interface}. 
+            [new Section("Extension board support")
+                [@$"The {Hardware.SocketUsbRadio} supports the {Hardware.ExtensionBoard}. The {Hardware.ExtensionBoard} connects to the {Hardware.SocketUsbRadio} through the USB type-C port to transmit data about external triggers and response control (vibration, etc.). The {Hardware.SocketUsbRadio} sends these data, along with tracking data, to its receiver. 
+                    For more details, please see {Terms.Antilatency_Hardware_Extension_Interface}. 
                 "] 
             ]
 
             [new Section("Modular design")
-                [@$"{Hardware.SocketUsbRadio} может рассматриваться как альтернативу использованию {Hardware.Tag} при трекинге объектов, в случае если объект отслеживания обладает собственной батареей или же внешнюю батарею удобно разместить внутри или снаружи корпуса объекта. В этом случае {Hardware.SocketUsbRadio} имеет меньший размер, чем {Hardware.Tag}, а питание приходит с внешней батареи. 
-                    {Hardware.SocketUsbRadio} можно закрепить на двухсторонний скотч или используя крепежные отверстия для надежной фиксации (TODO см. файл с моделькой корпуса).
+                [@$"The {Hardware.SocketUsbRadio} can be used to track objects instead of the {Hardware.Tag} if the tracked object has its own battery or an external battery can be fitted inside or outside the object's casing. In this case the {Hardware.SocketUsbRadio} has smaller dimensions than the {Hardware.Tag} and gets its power from an external power bank. 
+                    The {Hardware.SocketUsbRadio} can be attached with double-sided adhesive tape or using its mounting holes for a secure fit (TODO for more information, please see the file with a model of the casing).
                 "] 
             ]
 
-            [new Section("Техническая спецификация")
+            [new Section("Technical specifications")
                 [new Table(2)
                     [$"Connectivity"][@$"2.4GHz Proprietary radio protocol (Master and Slave modes)
                                         USB 2.0 Full Speed"]
