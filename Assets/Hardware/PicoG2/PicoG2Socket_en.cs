@@ -5,18 +5,18 @@ partial class Hardware : Scope {
     public static Material PicoG2Socket_en => new Material(
             "Pico G2 Socket",
             PicoG2Socket_Assets.PicoG2SocketProduct0,
-             $"The {Hardware.PicoG2Socket} is a wireless {Terms.Socket} designed to track the PicoG2 headset and receive data from wireless devices via {Terms.Antilatency_Radio_Protocol}.")
+             $"The {Hardware.PicoG2Socket} is a wireless {Terms.Socket} designed to track the PicoG2 headset and receive data from wireless devices via the {Terms.Antilatency_Radio_Protocol}.")
 
             [new Section("Design for the Pico G2 headset")
                 [$"The {Hardware.PicoG2Socket} has been custom-designed to fit the shape of the Pico G2 headset. The {Hardware.PicoG2Socket} tracks with the help of a USB type-C port on the headset and locks securely in place on the headset."]
             ]
             
             [new Section("Receiving data from wireless devices via a radio protocol")
-                [$"When the {Terms.Antilatency_Radio_Protocol} is running, the {Hardware.PicoG2Socket} acts as a data receiver from the transmitters. {Hardware.PicoG2Socket} collects data from wireless devices that are connected to it and forwards them to the headset through USB along with the data from its own tracker."] 
+                [$"When the {Terms.Antilatency_Radio_Protocol} is running, the {Hardware.PicoG2Socket} acts as a data receiver from the transmitters. The {Hardware.PicoG2Socket} collects data from wireless devices that are connected to it and forwards them to the headset through USB, along with the data from its own tracker."] 
             ]
 
             [new Section("An extra USB type-C Female port")
-                [$"Apart from a USB type-C Male port to connect to the headset, the {Hardware.PicoG2Socket} has a USB type-C Female port. When a cable is connected to the USB type-C Female port, the {Hardware.PicoG2Socket} begins to work as a USB-adapter for charging and a USB data interface with the headset. Therefore, once you plug the {Hardware.PicoG2Socket} into the headset once and lock it in place, you will not need to disconnect it. The headset will charge and install applications via USB using the USB type-C Female port we discussed earlier."] 
+                [$"Apart from a USB type-C Male port to connect to the headset, the {Hardware.PicoG2Socket} has a USB type-C Female port. When a cable is connected to the USB type-C Female port, the {Hardware.PicoG2Socket} begins to work as a USB-adapter for charging and a USB data interface with the headset. Therefore, if you plug the {Hardware.PicoG2Socket} into the headset once and lock it in place, you will not need to disconnect and remove it. The headset will charge and install applications via USB using the USB type-C Female port we discussed earlier."] 
                 [new Info()
                     [$"The {Hardware.PicoG2Socket} operates in two mutually exclusive modes: either as a USB device channeling tracking data into the headset or as a USB-adapter."]
                 ]                

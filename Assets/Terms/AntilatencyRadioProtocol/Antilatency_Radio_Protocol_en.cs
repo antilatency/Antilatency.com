@@ -1,7 +1,7 @@
 using Csml;
 partial class Terms {
     public static Material Antilatency_Radio_Protocol_en => new Material(null, null,
-    $"Antilatency devices use a proprietory radio protocol to transmit data. The protocol operates on the 2.4gHz frequency. This radio protocol is optimized for real time performance and has a low latency while transmitting data .")
+    $"Antilatency devices use a proprietory radio protocol to transmit data. The protocol operates on the 2.4gHz frequency. This radio protocol is optimized for real time performance and has a low latency while transmitting data.")
         [new Section("Devices supporting Antilatency Radio Protocol")
             [$"Receiver list"]
             [new UnorderedList()
@@ -16,26 +16,26 @@ partial class Terms {
             ]
         ]
         [new Section("Radio channel network topology")
-            [$"In {Terms.Antilatency_Radio_Protocol} we can single out two types of devices: "]
+            [$"In the {Terms.Antilatency_Radio_Protocol} we can single out two types of devices: "]
             [new OrderedList()
                 [$"Receiver (Master)"]
                 [$"Transmitter (Slave)"]
             ]
             [@$"Transmitters connect to a receiver and transmit their data to it. 
-                The task of a receiver is to collect data from all transmitters, add its own data and send the resulting batch to {Terms.Host} using a different interface (for instance, via a USB connection).
-                For example, you can have {Hardware.SocketUsbRadio} or {Hardware.PicoG2Socket} working as receivers. 
-                Possible options for transmitters are, for instance, {Hardware.Tag} or {Hardware.Bracer}.
+                The task of a receiver is to collect data from all transmitters, add its own data and send the resulting batch to the {Terms.Host} using a different interface (for instance, via a USB connection).
+                For example, you can have a {Hardware.SocketUsbRadio} or a {Hardware.PicoG2Socket} working as receivers. 
+                Possible options for transmitters are, for instance, a {Hardware.Tag} or a {Hardware.Bracer}.
             "]
             [new Info()
-                [$"{Hardware.SocketUsbRadio} can act both as a receiver and a transmitter, depending on configuration. "]
+                [$"The {Hardware.SocketUsbRadio} can act both as a receiver and a transmitter, depending on configuration. "]
             ]
-            [$"So, a standard networking connection to {Terms.Host} through a radio protocol looks as follows:"]
+            [$"So, a standard networking connection to the {Terms.Host} through a radio protocol looks as follows:"]
             [new OrderedList()
-                [$"Connecting a receiver to {Terms.Host} via USB."]
+                [$"Connecting a receiver to the {Terms.Host} via USB."]
                 [$"Connecting transmitters to a receiver via a radio protocol"]
             ]
             [AntilatencyRadioProtocolTopology]
-            [$"To configure devices supporting {Terms.Antilatency_Radio_Protocol} please see section {Tutorials.ConfiguringRadioDevices}"]
+            [$"To configure devices supporting the {Terms.Antilatency_Radio_Protocol} please see section {Tutorials.ConfiguringRadioDevices}"]
         ]
 
 
@@ -65,7 +65,7 @@ partial class Terms {
         [new Section("Connecting transmitters to a specified receiver: using MasterSN and ChannelsMask", "MasterSN")
             [@$"When set to default, transmitters will try to connect to the nearest receiver. This scenario is simple and useful for local testing when there is only one receiver working in the room.
                 You can configure your transmitter to connect to a specific receiver (for more information, please see {Tutorials.ConfiguringRadioDevices}).
-                Besides, to speed up the connection you can specify a channel mask for the transmitter to look for and connect to a receiver. If you use the full mask that includes all 141 channels, searching for a receiver will take quite some time. However, if you limit the search to specific channels, the connection may take approximately 100 milliseconds.
+                Besides, to speed up the connection you can specify a channel mask for the transmitter to look for and connect to a receiver. If you use the full mask that includes all 141 channels, searching for a receiver will take quite a long time. However, if you limit the search to specific channels, the connection may take approximately 100 milliseconds.
             "]
         ]
 
@@ -84,7 +84,7 @@ partial class Terms {
                 [$"We do not recommend connecting more than four transmitters with trackers to one receiver"]
             ]
             [new Error()
-                [$"TODO: In case of an unstable radio connection caused by the distance between the USB socket and the wireless socket, look for obstacles between these sockets, or suspect additional radio noise on this channel from other emitters. In this case, some packets from the wireless socket may be lost which will lead to tracking task being restarted on the Alt tracker that connected to the wireless socket."]
+                [$"TODO: In case of an unstable radio connection caused by the distance between the USB socket and the wireless socket, look for obstacles between these sockets, or suspect additional radio noise on this channel from other emitters. In this case, some packets from the wireless socket may be lost, which will lead to tracking task being restarted on the Alt tracker that connected to the wireless socket."]
             ]
         ]
 
@@ -94,9 +94,9 @@ partial class Terms {
             [$"The following factors influence multiple receiver performance in one room:"]
             [new UnorderedList()
                 [@$"outside factors, such as background radio noise on the premises.
-                    The presence and configuration of wireless networks in the room may impact the performance of radio devices. Antilatency Radio Protocol operates at 2.4 gHz. 
+                    The presence and configuration of wireless networks in the room may impact the performance of radio devices. The Antilatency Radio Protocol operates at 2.4 gHz. 
                     You are advised to scan the 2.4 gHz band in the room before choosing your channels.
-                {new Info()[$"If you have access to wireless network settings on the premises, you must configure your wireless devices to operate in the 5 gHz band. "]}"]
+                {new Info()[$"If you have access to the wireless network settings on the premises, you must configure your wireless devices to operate in the 5 gHz band. "]}"]
 
                 [@$"Distance between channels set for receivers.
                     The closer the channels are to each other, the more interference you will get for devices working on neighboring channels. Therefore, you need to adjust the minimal distance between the channels depending on your operating conditions.  
@@ -105,7 +105,7 @@ partial class Terms {
                 {new Warning() [$"To avoid significant network interference, we strongly advise not to use a distance of four channels or less. "]}"]
                 
                 [@$"Physical distance between receivers.
-                    Receivers should not be located in close physical proximity to each other even if they work on different channels. The closer to one another the receivers are, the more mutual interference they will create. 
+                    Receivers should not be located in close physical proximity to each other even if they work on different channels. The closer the receivers are to one another, the more mutual interference they will create. 
                 {new Warning()[$"To prevent interference we recommend placing receivers no closer than 0.5 meters from each other."]}"]            
             ]
         ]

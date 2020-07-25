@@ -28,7 +28,7 @@ partial class Hardware : Scope {
             ]
 
             [new Section("Modular design")
-                [@$"The {Hardware.SocketUsbRadio} can be used to track objects instead of the {Hardware.Tag} if the tracked object has its own battery or an external battery can be fitted inside or outside the object's casing. In this case the {Hardware.SocketUsbRadio} has smaller dimensions than the {Hardware.Tag} and gets its power from an external power bank. 
+                [@$"The {Hardware.SocketUsbRadio} can be used to track objects instead of the {Hardware.Tag} if the tracked object has its own battery or an external battery can be fitted inside or outside the object's casing. In this capacity the {Hardware.SocketUsbRadio} has smaller dimensions than the {Hardware.Tag} and gets its power from an external power bank. 
                     The {Hardware.SocketUsbRadio} can be attached with double-sided adhesive tape or using its mounting holes for a secure fit (TODO for more information, please see the file with a model of the casing).
                 "] 
             ]
