@@ -5,35 +5,35 @@ partial class Hardware : Scope {
     public static Material Bracer_en => new Material(
             "Bracer",
             Bracer_Assets.BracerProduct0,
-             $"{Hardware.Bracer} is a wireless {Terms.Socket} to track the user's hands designed for an ergonomic fit. Unlike standard VR controllers, {Hardware.Bracer} adds on 6DoF hand tracking while keeping the user's hands free to interact with material objects."
+             $"The {Hardware.Bracer} is a wireless {Terms.Socket} to track the user's hands designed for an ergonomic fit. Unlike standard VR controllers, the {Hardware.Bracer} adds on 6DoF hand tracking while keeping the user's hands free to interact with material objects."
              )
 
             [new Section("Low latency radio protocol")
-                [$"{Hardware.Bracer} uses {Terms.Antilatency_Radio_Protocol} to send data. {Hardware.Bracer} can act only as a transmitter."]
+                [$"The {Hardware.Bracer} uses the {Terms.Antilatency_Radio_Protocol} to send data. The {Hardware.Bracer} can act only as a transmitter."]
                 [new Warning()
-                    [$"The host must have a receiver to receive data (for example, {Hardware.SocketUsbRadio}). For more information, please see {Terms.Antilatency_Radio_Protocol}"]
+                    [$"The host must have a receiver to receive data (for example, a {Hardware.SocketUsbRadio}). For more information, please see {Terms.Antilatency_Radio_Protocol}"]
                 ]
             ]
             
             [new Section("Rechargeable battery")
-                [@$"{Hardware.Bracer} has a built-in 250 mAh rechargeable battery. 
-                {Hardware.Bracer} is supplied with a battery charger module. It is inserted into the {Hardware.Alt} tracker slot. {Hardware.Bracer} will not function while charging. 
+                [@$"The {Hardware.Bracer} has a built-in 250 mAh rechargeable battery. 
+                The {Hardware.Bracer} is supplied with a battery charger module. It is inserted into the {Hardware.Alt} tracker slot. The {Hardware.Bracer} will not function while charging. 
                 "] 
             ]
 
             [new Section("Touch pad")
-                [$"{Hardware.Bracer} includes a touch pad. When a {Hardware.Bracer} is worn on a hand, this pad fits on the palm. Thanks to this pad, the {Hardware.Bracer} can detect grasp and release gestures in VR."] 
+                [$"The {Hardware.Bracer} includes a touch pad. When a {Hardware.Bracer} is worn on one's hand, this pad fits on the palm. Thanks to this pad, the {Hardware.Bracer} can detect grasp and release gestures in VR."] 
             ]
 
             [new Section("Haptic feedback")
-                [$"{Hardware.Bracer} has a built-in haptic response unit that allows the user to get tactile feedback from his or her actions. This unit is controlled from a user application with the help of API"] 
+                [$"The {Hardware.Bracer} has a built-in haptic response unit that allows for tactile feedback from user actions. This unit is controlled from a user application with the help of an API"] 
                 [new Error()
                     [$"TODO: Link to API "]
                 ]
             ]
 
             [new Section("Designed for hands ")
-                [$"{Hardware.Bracer} has been custom-designed to be worn on one's hands. {Hardware.Bracer} has a retainer strap that can be fixed in position to fit the size of the user's palm."] 
+                [$"The {Hardware.Bracer} has been custom-designed to be worn on one's hand. The {Hardware.Bracer} has a retainer strap that can be fixed in position to fit the size of the user's palm."] 
             ]
 
             [new Section("Technical specifications")

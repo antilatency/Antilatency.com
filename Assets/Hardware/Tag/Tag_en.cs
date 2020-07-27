@@ -5,27 +5,27 @@ partial class Hardware : Scope {
     public static Material Tag_en => new Material(
             "Tag",
             Tag_Assets.TagProduct0,
-             @$"{Hardware.Tag} - это wireless {Terms.Socket}, который можно закрепить на объекте или части тела человека для их отслеживания. 
-             {Hardware.Tag} сам по себе не определяет свое положение, а передает данные с {Hardware.Alt}, вставленного в него. 
-             С использованием {Hardware.Tag} можно отслеживать физические предметы и кастомные контроллеры, например, макеты оружия."
+             @$"The {Hardware.Tag} is a wireless {Terms.Socket} that can be attached to an object or a part of the human body to track them. 
+             The {Hardware.Tag} does not track its own position, but relays data from the {Hardware.Alt} fitted into it. 
+             The {Hardware.Tag} can track material objects and custom controllers, for example dummy guns."
              )
 
             [new Section("Low latency radio protocol")
-                [$"{Hardware.Tag} для передачи данных использует {Terms.Antilatency_Radio_Protocol}. {Hardware.Tag} может выступать только в качестве передатчика."]
+                [$"The {Hardware.Tag} relies on the {Terms.Antilatency_Radio_Protocol} to transmit data. The {Hardware.Tag} can act only as a transmitter."]
                 [new Warning()
-                    [$"Для приема данных на хосте обязательно наличие приемника (например, {Hardware.SocketUsbRadio}). См. {Terms.Antilatency_Radio_Protocol}"]
+                    [$"In order to receive data the host must have a receiver, for example a {Hardware.SocketUsbRadio}. For more information, please see {Terms.Antilatency_Radio_Protocol}"]
                 ]
             ]
             
             [new Section("Rechargeable battery")
-                [$"{Hardware.Tag} имеет встроенный заряжаемый аккумулятор емкостью 250 mAh. Порт Type-C используется только для зарядки аккумулятора. Функциональность {Hardware.Tag} полностью доступна во время зарядки аккумулятора, включая передачу данных трекинга с {Hardware.Alt}."] 
+                [$"The {Hardware.Tag} has a built-in 250 mAh rechargeable battery. The USB Type-C port is used only to charge the battery. The {Hardware.Tag} is fully functional while the battery is charging, including transmission of tracking data from the {Hardware.Alt}."] 
             ]
 
             [new Section("Compact design")
-                [$"{Hardware.Tag} имеет компактный размер (8.5x18.2x65.7 mm) и маленький вес (18 g), что позволяет закрепить его даже на небольших объектах. {Hardware.Tag} можно закрепить на двухсторонний скотч или используя крепежные отверстия для надежной фиксации (см. TODO файл с моделькой корпуса)."] 
+                [$"The {Hardware.Tag} is highly portable (8.5x18.2x65.7 mm) and weighs as little as 18 grams, so it can be attached even to small objects. You can secure the {Hardware.Tag} with double-sided adhesive tape or use the mounting holes for a tighter fit (please see the TODO file with a model of its casing)."] 
             ]
 
-            [new Section("Техническая спецификация")
+            [new Section("Technical specifications")
                 [new Table(2)
                     [$"Connectivity"][$"2.4GHz Proprietary radio protocol (Slave mode only)"]
                     [$"Ports"][$"Usb Type-C port for charging only"]
