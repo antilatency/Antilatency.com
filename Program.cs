@@ -37,5 +37,9 @@ namespace Csml {
 
             CsmlApplication.DeveloperBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"), watch);
         }
+
+        public static void WatchJsCssWithoutBuild(string outputDirectory)  {
+            CsmlApplication.WatchJsCssWithoutBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"));
+        }
     }
 }
