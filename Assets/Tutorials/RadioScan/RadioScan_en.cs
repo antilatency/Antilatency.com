@@ -9,63 +9,63 @@ partial class Tutorials : Scope {
         new Material(
             "RadioScan",
             null,
-        $"Утилита, которая позволяет примерно понять загруженность радио эфира на частоте 2.4GHz.")
+        $"A utility to assess radio congestion on the 2.4GHz frequency band")
         
-        [$"На частоте 2.4-2.5GHz работает много устройств, которые представляют собой помехи для работы устройств в сети {Terms.Antilatency_Radio_Protocol}. {RadioInterferenceRef}. Основным источником шума является WiFi 2.4GHz ввиду его широкой распространённости и относительно большой мощности сигнала."]
+        [$"A lot of devices using the 2.4-2.5GHz band create network interference. {Terms.Antilatency_Radio_Protocol}. {RadioInterferenceRef}. The main source of radio noise is 2.4GHz wireless internet due to its widespread use and relatively high signal strength."]
 
-        [$"Можно использовать приложения, которые покажут каналы Wi-Fi сетей рядом, например {WiFiAnalyzerRef}. Затем сопоставить номера каналов с реальными частотами по этой таблице {WiFiChannelsRef} И не использовать все каналы из диапазона для  устройств с поддержкой {Terms.Antilatency_Radio_Protocol}. Однако при таком подходе окажется, что почти все каналы заняты. Здесь важно понимать, что само по себе наличие точки доступа ничего не говорит о фактическом уровне шума на данном канале. Чем больше передаваемых данных между WiFi устройствами - тем больше уровень шума."]
+        [$"You can use applications that will detect wireless networks in the vicinity, for example the {WiFiAnalyzerRef}. You can then match channel numbers with the real frequencies using this table {WiFiChannelsRef} It is better not to use all the channels from this band for devices supporting the {Terms.Antilatency_Radio_Protocol}. However, this approach may result in almost all the channels being busy. It is important to understand that the mere availability of an access point says nothing about the actual levels of radio noise on this channel. The more data is exchanged between wireless devices, the higher radio noise levels will be."]
 
-        [$"Утилита RadioScanner позволяет понять состояние зашумлённости всех радиоканалов “здесь и сейчас“. Поэтому для получения более-менее реальной картины радиошума нужно как можно больше запусков этой утилиты в разных местах и в разное время. Во время прохода всех каналов формируется текстовый файл, который содержит статистику по данному запуска."]
+        [$"The RadioScanner utility will help you build a picture of real-time noise levels on all radio channels. To keep this picture up-to-date you need to run the utility as many times as possible in different locations and at different times. Your channel scans will generate text files with relevant statistics."]
 
-        [new Info()[$"В тесте участвуют два устройства. Располагать их нужно на расстоянии 1-2 метра друг от друга. Между ними не должно быть ничего лишнего, особенно не статичного(люди поблизости также могут влиять). Желательно исключить все внешние факторы, которые влияют на работу устройств, так как это создаёт разные условия прохождения теста в зависимости от канала."]]
+        [new Info()[$"The test will involve two devices. You should place them 1-2 meters apart. Make sure that there are no interfering objects between them, especially those that can carry static electricity (this includes people standing nearby). If possible, exclude all the outside factors that influence device operation because it creates variable conditions for the test depending on the channel."]]
         
-        [$"Суть теста: поочерёдно менять каналы и сохранять количество ошибок в передачи радио пакетов. Один проход занимает порядка 12 минут."]
+        [$"The purpose of the test is to keep changing channels and save the number of errors in radio packet transmission. One scan will take approximately 12 minutes."]
 
-        [new Info()[$"Для корректной работы утилит необходимо скачать и установить {MsLibsRef}."]]
-        [new Section("Запуcк теста")
-            [new Info($"Убедитесь, что беспроводные устройства полностью заряжены.")]
+        [new Info()[$"Download and install {MsLibsRef} for the utilities to run correctly."]]
+        [new Section("Test launch")
+            [new Info($"Make sure that your wireless devices are fully charged.")]
             [new OrderedList()
-                [$"Скачать и распаковать {Exe}"]
-                [$"Выключить всё."]
-                [$"Включить 1 {Hardware.SocketUsbRadio} и 1 {Hardware.Bracer} либо {Hardware.Tag}."]
-                [$"Для {Hardware.SocketUsbRadio} поставить `ConnLimit` = `1`"]
-                [$"Убедиться, что два девайса подключились друг к другу по радио."]
-                [$"Открыть консоль и перейти к папке, где лежит `RadioScanner.exe`"]
-                [$"Создать папку, в которую сохранятся результаты измерений, например `Scan`"]
-                [@$"Выполнить: `.\RadioScanner.exe -o Scan/PositionA1.txt` где `Scan` имя папки для результатов, а `PositionA1.txt` имя файла с результатами теста(лучше создавать осмысленно, описав место теста и его номер)."]
-                [@$"Сделать ещё 1, 2 прохода `.\RadioScanner.exe -o Scan/PositionA2.txt`"]
-                [$"Изменить место теста, и повторить пункты 8-9 (файлы назвать, например, `PositionB1.txt`, `PositionB2.txt`)"]]]
+                [$"Download and unpack {Exe}"]
+                [$"Turn off everything."]
+                [$"Turn on 1 {Hardware.SocketUsbRadio} and 1 {Hardware.Bracer} or {Hardware.Tag}."]
+                [$"For {Hardware.SocketUsbRadio} set `ConnLimit` = `1`"]
+                [$"Make sure that the two devices have established a radio connection."]
+                [$"Open the console and access the folder with `RadioScanner.exe`"]
+                [$"Create a folder to store scan results, for example `Scan`"]
+                [@$"Execute: `.\RadioScanner.exe -o Scan/PositionA1.txt` where `Scan` is the name of the folder storing scan results and `PositionA1.txt` is the name of the file with the test results. Your top tip is to include the test location and number in the name of the file)."]
+                [@$"Run one or two more scans `.\RadioScanner.exe -o Scan/PositionA2.txt`"]
+                [$"Change the test location and repeat steps 8 and 9 (for example, you can name the files `PositionB1.txt` and `PositionB2.txt`)"]]]
 
-        [$@"В случае досрочного окончания выполнения утилиты, необходимо вручную вернуть свойства сокетов(`RadioChannel`, `MasterSN`, `ChannelsMask`)"]
+        [$@"If the utility stops running prematurely, you need to restore socket properties manually(`RadioChannel`, `MasterSN`, `ChannelsMask`)"]
 
-        [$@"После запуска теста в консоли будут строки вида:"]
+        [$@"After launch the console will display the following:"]
         [Output1]
 
-        [$@"Аналогичный контент будет записан и в файле с результатами теста.
-После получения всех результатов измерений, необходимо их сгруппировать и проанализировать. Для получения сводной таблицы необходимо выполнить:
+        [$@"Similar content will also be written in the file with test results.
+Group and analyze all your test results. To generate a summary table, run:
 `.\RadioScanner.exe report -i Scan -o scan.txt`
-Вывод будет вида:"]
+The output will look as follows:"]
         [Output2]
 
-        [$@"и должен появится файл `scan.txt` Примерно следующего контента:"]
+        [$@"You will also get a file named `scan.txt` with approximately this content:"]
         [ResultFile]
 
-        [$@"Далее необходимо провести анализ, удобно это сделать, например, в {GoogleDocsRef} либо любом другом табличном редакторе."]
+        [$@"After that you can do your analysis. A convenient way to carry it out is using {GoogleDocsRef} or similar spreadsheet software."]
         [new OrderedList()
-            [$"Копируем весь контент файла `scan.txt` и вставляем на страницу. "]
-            [$"Проставляем номера каналов от `0` до `140` и делаем столбец меньшей ширины для удобного просмотра."]
-            [$"Опционально добавляем условное форматирование для большей наглядности"]]
+            [$"Copy the entire content of your `scan.txt` file and insert it into the page. "]
+            [$"Enter channel numbers from `0` to `140` and make the column narrow for better viewing."]
+            [$"Optionally, you can add conditional format for more visual clarity"]]
         [Process]
 
-        [$@"Число в ячейке показывает сколько пакетов было потеряно(из примерно 10000 пакетов). Пустые ячейки - это каналы, на которых не удалось собрать статистику. Вероятно, из-за нестабильного подключения(на момент подключения было слишком много потерь)."]
+        [$@"The number in the cell shows how many packets were lost (out of roughly 10,000 packets). Empty cells are channels with missing stats, possibly due to an unstable connection (there were too many losses at the time when the connection was established)."]
         [Result]
 
-        [new Section("Анализ")
+        [new Section("Analysis")
             [new UnorderedList()
-            [$"Как правило, диапазон каналов `122-140`(и `0-40`) будет почти свободный от потерь, так как WiFi там не работает. Однако перед использованием стоит проверить легальность их применения в вашей стране. "]
-            [$"Каналы `89-106` выглядят как нестабильные с большим количество потерь."]
-            [$"Каналы `108-121` можно рассматривать для подключения."]]
-            [$"К сожалению, канал на котором почти не потерь во время теста, может оказаться позже плохим. Например, бездействовали устройства, которые там обычно работают. Поэтому для минимизации риска принятия неправильного решение, необходимо рассмотреть много данных. Чем больше измерений будет(желательно проведённых в разное время), то точнее можно оценить реальную картину."]]
+            [$"As a rule, channels`122-140`(and `0-40`) will be almost loss-free because wireless networks do not use them. However, before using them you should check whether it is legal in your country. "]
+            [$"Channels `89-106` appear to be unstable with a lot of losses."]
+            [$"Channels `108-121` are your best picks for connection."]]
+            [$"Unfortunately, a channel that has minimal losses during the test may deteriorate later on. For example, it may happen because the devices that usually occupy it were off but have come back online. To minimize this risk, you ought to include more data in your analysis. The more scans you run (preferably at different times), the better picture of your radio environment you will get."]]
 
             ;
 }

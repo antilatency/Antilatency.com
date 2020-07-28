@@ -12,6 +12,10 @@
     "DeveloperBuild_WatchJsCss": {
       "commandName": "Project",
       "commandLineArgs": "DeveloperBuildWatchJsCss(@~D:\\Antilatency.com.Generated~);"
+    },
+    "WatchJsCssWithoutBuild": {
+      "commandName": "Project",
+      "commandLineArgs": "WatchJsCssWithoutBuild(@~D:\\Antilatency.com.Generated~);"
     }
   }
 }

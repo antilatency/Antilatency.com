@@ -1,51 +1,51 @@
 using Csml;
 partial class Terms {
     public static Material Antilatency_Radio_Protocol_en => new Material(null, null,
-    $"Для передачи данных по радиоканалу в устройствах Antilatency используется проприетарный радиопротокол, работающий на частоте 2.4ГГц. Радиопротокол оптимизирован для работы в режиме реального и обладает низкой задержкой при передаче данных (low latency).")
-        [new Section("Устройства с поддержкой Antilatency Radio Protocol")
-            [$"Список приемников"]
+    $"Antilatency devices use a proprietory radio protocol to transmit data. The protocol operates on the 2.4gHz frequency. This radio protocol is optimized for real time performance and has a low latency while transmitting data.")
+        [new Section("Devices supporting Antilatency Radio Protocol")
+            [$"Receiver list"]
             [new UnorderedList()
                 [$"{Hardware.SocketUsbRadio}"]
                 [$"{Hardware.PicoG2Socket}"]
             ]
 
-            [$"Список передатчиков"]
+            [$"Transmitter list"]
             [new UnorderedList()
                 [$"{Hardware.Tag}"]
                 [$"{Hardware.Bracer}"]
             ]
         ]
-        [new Section("Топология подключения устройств по радиопротоколу")
-            [$"В {Terms.Antilatency_Radio_Protocol} можно выделить два типа устройств: "]
+        [new Section("Radio channel network topology")
+            [$"In the {Terms.Antilatency_Radio_Protocol} we can single out two types of devices: "]
             [new OrderedList()
-                [$"Приёмник (Master)"]
-                [$"Передатчик (Slave)"]
+                [$"Receiver (Master)"]
+                [$"Transmitter (Slave)"]
             ]
-            [@$"Передатчики подключаются к приемнику и передают ему свои данные. 
-                Задача приёмника - собрать данные со всех передатчиков, добавить собственные данные и отправить на {Terms.Host} по другому интерфейсу (например, по USB).
-                В качестве приемника могут выступать, например, {Hardware.SocketUsbRadio} или {Hardware.PicoG2Socket}. 
-                В качестве передатчиков могут выступать например, {Hardware.Tag} или {Hardware.Bracer}.
+            [@$"Transmitters connect to a receiver and transmit their data to it. 
+                The task of a receiver is to collect data from all transmitters, add its own data and send the resulting batch to the {Terms.Host} using a different interface (for instance, via a USB connection).
+                For example, you can have a {Hardware.SocketUsbRadio} or a {Hardware.PicoG2Socket} working as receivers. 
+                Possible options for transmitters are, for instance, a {Hardware.Tag} or a {Hardware.Bracer}.
             "]
             [new Info()
-                [$"{Hardware.SocketUsbRadio} может выступать как в роли приемника, так и в роли передатчика, в зависимости от конфигурации. "]
+                [$"The {Hardware.SocketUsbRadio} can act both as a receiver and a transmitter, depending on configuration. "]
             ]
-            [$"Таким образом, стандартная схема подключения устройств по радиопротоколу к {Terms.Host} выглядит следующим образом:"]
+            [$"So, a standard networking connection to the {Terms.Host} through a radio protocol looks as follows:"]
             [new OrderedList()
-                [$"Подключение приемника к {Terms.Host} по USB."]
-                [$"Подключение передатчиков к приемнику по радиопротколу"]
+                [$"Connecting a receiver to the {Terms.Host} via USB."]
+                [$"Connecting transmitters to a receiver via a radio protocol"]
             ]
             [AntilatencyRadioProtocolTopology]
-            [$"Для конфигурации устройств с поддержкой {Terms.Antilatency_Radio_Protocol} см. раздел {Tutorials.ConfiguringRadioDevices}"]
+            [$"To configure devices supporting the {Terms.Antilatency_Radio_Protocol} please see section {Tutorials.ConfiguringRadioDevices}"]
         ]
 
 
-        [new Section("Доступные каналы", "channels")
-            [$"Для передачи данных по радиопротоколу приемнику может быть установлен любой из 141 радиоканалов из диапазона 2360-2500 MHz."]
+        [new Section("Available channels", "channels")
+            [$"For data transmission you can set a receiver to work on any of 141 radio channels ranging from 2360 to 2500 MHz."]
             [new Warning()
-                [$"В некоторых странах использование части каналов из указанного диапазона требует лицензирования (например, 2360-2400 MHz, 2488-2500 MHz). Перед использованием уточните возможность использования канала из этого диапазона для вашей страны."]
+                [$"Some countries license some of the channels from this range (for example, 2360-2400 MHz, 2488-2500 MHz). Check with the local regulations before using a channel from this frequency band."]
             ]
-            [@$"Выбор радиоканала в программном обеспечении производится по принципу: индекс 0 = 2360 MHz, индекс 140 = 2500 MHz.
-                Если у приемника не был выставлен конкретный радиоканал, приемник случайно выберет первый свободный радиоканал из списка:
+            [@$"Software settings to choose a radio channel match indices with certain radio frequencies. For example, index 0 corresponds to 2360 MHz and index 140 represents 2500 MHz.
+                If you have not set a specific radio channel, the receiver will randomly choose the first available channel from the list:
             "]
             [new UnorderedList()
                 [$"42 = 2402 MHz"]
@@ -54,59 +54,59 @@ partial class Terms {
                 [$"114 = 2474 MHz"]
                 [$"120 = 2480 MHz"]
             ]
-            [$"Данный список каналов приведен на схеме ниже."]
+            [$"This radio channel list is organized for your convenience below."]
             [RadioChannelsImage]
             [new Info()
-                [$"При выборе приемником одного из каналов, отображенных на схеме, светодиод приемника загорится соответствующим цветом канала, указанным на схеме."]
+                [$"When a receiver chooses one of the channels listed above, it will illuminate its LED in the color that corresponds to a certain channel on the list."]
             ]
         ]
 
 
-        [new Section("Подключение передатчиков к конкретному приемнику: использование MasterSN и ChannelsMask", "MasterSN")
-            [@$"По умолчанию передатчики пытаются подключиться к ближайшему приемнику. Это поведение довольно простое и подходит для локального тестирования, когда в помещении работает только 1 приемник.
-                Можно сконфигурировать передатчик, чтобы он подключался только к конкретному приемнику(см. {Tutorials.ConfiguringRadioDevices}).
-                Кроме того, для ускорения подключения к приемнику передатчику можно задать маску каналов, по которой передатчик будет искать приемник для подключения. Если используется полная маска, которая включает все 141 каналов, поиск приемника может занять довольно длительное время. Но если ограничить поиск отдельными каналами, то подключение может занимать около 100 миллисекунд.
+        [new Section("Connecting transmitters to a specified receiver: using MasterSN and ChannelsMask", "MasterSN")
+            [@$"When set to default, transmitters will try to connect to the nearest receiver. This scenario is simple and useful for local testing when there is only one receiver working in the room.
+                You can configure your transmitter to connect to a specific receiver (for more information, please see {Tutorials.ConfiguringRadioDevices}).
+                Besides, to speed up the connection you can specify a channel mask for the transmitter to look for and connect to a receiver. If you use the full mask that includes all 141 channels, searching for a receiver will take quite a long time. However, if you limit the search to specific channels, the connection may take approximately 100 milliseconds.
             "]
         ]
 
-        [new Section("Подключение нескольких устройств к одному приемнику")
-            [@$"К одному приемнику может быть подключено несколько передатчиков. Приемник по очереди опрашивает подключенные к нему передатчики для получения данных.
-                Пропускная способность радиоканала приемника делится между всеми подключенными к нему передатчиками. 
-                Общая пропускная способность радиоканала приемника составляет 1.6Mbit/s. 
-                Таким образом, пропускная способность канала между приемником и передатчиком составляет, в частности:
+        [new Section("Connecting several devices to one receiver")
+            [@$"You can connect several transmitters to one receiver. The receiver will take turns querying the transmitters connected to it to get data from them.
+                The bandwidth of the receiver's radio channel will be divided among all the transmitters connected to it. 
+                The overall bandwidth capacity of the receiver's radio channel is 1.6Mbit/s. 
+                Therefore, the bandwidth capacity between the receiver and transmitters, depending on your setup, will be:
             "]
             [new UnorderedList()
-                [$"1 приемник - 1 передатчик = 1.6 Mbit/s"]
-                [$"1 приемник - 2 передатчика по 0.8 Mbit/s"]
-                [$"1 приемник - 3 передатчика по 0.53 Mbit/s"]
+                [$"1 receiver - 1 transmitter at 1.6 Mbit/s"]
+                [$"1 receiver - 2 transmitters at 0.8 Mbit/s each"]
+                [$"1 receiver - 3 transmitters at 0.53 Mbit/s each"]
             ]
             [new Warning()
-                [$"Рекомендуется к одному приемнику не подключать более 4 передатчиков с трекерами"]
+                [$"We do not recommend connecting more than four transmitters with trackers to one receiver"]
             ]
             [new Error()
-                [$"TODO:Перевод In case of an unstable radio connection caused by the distance between the USB socket and the wireless socket, some obstacles between these sockets, or additional radio noise on this channel from other emitters. In this case, some packets from the wireless socket may be lost which will lead to tracking task being restarted on the Alt tracker that connected to the wireless socket."]
+                [$"TODO: In case of an unstable radio connection caused by the distance between the USB socket and the wireless socket, look for obstacles between these sockets, or suspect additional radio noise on this channel from other emitters. In this case, some packets from the wireless socket may be lost, which will lead to tracking task being restarted on the Alt tracker that connected to the wireless socket."]
             ]
         ]
 
-        [new Section("Работа нескольких приемников в одном помещении")
-            [$"В одном помещении могут работать несколько приемников и даже к одному хосту может быть подключено несколько приемников. При этом у приемников, работающих в одном помещении должны быть установлены разные каналы."]
+        [new Section("Operating several receivers in one room")
+            [$"Several receivers can work in one room. You can even connect several receivers to one host. If this is the case, you should set the receivers operating in one room to different channels."]
             [MultipleChannelsImage]
-            [$"На качество работы нескольких приемников в одном помещении влияют следующие факторы:"]
+            [$"The following factors influence multiple receiver performance in one room:"]
             [new UnorderedList()
-                [@$"внешние факторы, такие как общий радиофон в помещении.
-                    Наличие и конфигурация WiFi сетей в помещении может влиять на качество работы радиоустройств. Antilatency Radio Protocol работает на частоте 2.4 ГГц. 
-                    Перед выбором радиоканалов рекомендуется просканировать диапазон 2.4 ГГц в помещении.
-                {new Info()[$"Если есть возможность конфигурации WiFi сетей в помещении, строго рекомендуется сконфигурировать WiFi устройства на частоте 5 ГГц. "]}"]
+                [@$"outside factors, such as background radio noise on the premises.
+                    The presence and configuration of wireless networks in the room may impact the performance of radio devices. The Antilatency Radio Protocol operates at 2.4 gHz. 
+                    You are advised to scan the 2.4 gHz band in the room before choosing your channels.
+                {new Info()[$"If you have access to the wireless network settings on the premises, you must configure your wireless devices to operate in the 5 gHz band. "]}"]
 
-                [@$"расстояние между каналами, установленными для приемников.
-                    Чем ближе каналы друг к другу, тем сильнее устройства на соседних каналах  мешают друг другу. В зависимости от предполагаемого условия использования необходимо выбрать минимальную дистанцию между каналами. 
-                    Дистанция в 6 каналов обеспечивает почти полное отсутствие влияния на расстоянии пол метра между приемниками. 
-                    Дистанция менее 6 каналов может оказывать влияние на стабильность работы большого количества передатчиков, подключенных к 1 приемнику. Стоит уменьшить количество передатчиков, подключенных к 1 приемнику, чтобы улучшить стабильность и отзывчивость сети.
-                {new Warning() [$"Во избежание нестабильной работы сети из-за взаимных помех строго не рекомендуется использовать дистанцию менее 4 каналов. "]}"]
+                [@$"Distance between channels set for receivers.
+                    The closer the channels are to each other, the more interference you will get for devices working on neighboring channels. Therefore, you need to adjust the minimal distance between the channels depending on your operating conditions.  
+                    A six-channel distance will exclude virtually all interference at a half-a-meter distance between the receivers. 
+                    A distance of fewer than six channels may negatively affect the stability of multiple transmitters connected to one receiver. You will be well-advised to reduce the number of transmitters connected to one receiver to improve stability and network response.
+                {new Warning() [$"To avoid significant network interference, we strongly advise not to use a distance of four channels or less. "]}"]
                 
-                [@$"физическое расстояние между приемниками.
-                    Приемники даже с разными каналами не должны располагаться близко друг к другу. Чем физически приемники ближе друг к другу - тем сильнее взаимное влияние. 
-                {new Warning()[$"Во избежание помех рекомендуется располагать приемники на расстоянии не ближе 0.5 метра друг от друга."]}"]            
+                [@$"Physical distance between receivers.
+                    Receivers should not be located in close physical proximity to each other even if they work on different channels. The closer the receivers are to one another, the more mutual interference they will create. 
+                {new Warning()[$"To prevent interference we recommend placing receivers no closer than 0.5 meters from each other."]}"]            
             ]
         ]
     ;

@@ -4,6 +4,13 @@ using static Tutorials.PrepareRaspberryPiSdCard_Assets;
 public partial class Tutorials : Scope {
 
     public static Material PrepareRaspberryPiSdCard_en => new Material("Prepare SD card image for Raspberry Pi", TitleImage, $"")
+        [new Section("Prepared SDcard image")
+            [$"You can {new ExternalReference("https://yadi.sk/d/wWYRHLgcPli9FQ", "download")} Rasperry Pi 3+ image with installed Antilatency software:"]
+            [new UnorderedList()
+                [$"{Tutorials.Antilatency_Ip_Tracking_Demo_Provider_RaspberryPi}"]
+                [$"{new ExternalReference("https://github.com/antilatency/Antilatency.RaspberryPiSdk.Cpp", "Antilatency Raspberry Pi SDK: C++ bindings")}"]
+            ]
+        ]
 
         [new Section("Raspbian")
             [$"{new ExternalReference("https://www.raspbian.org/", "Raspbian")} is the Raspberry Pi Foundation’s official supported operation system based on Debian GNU/Linux."]
