@@ -28,12 +28,18 @@
             margin-left: -1em;
             margin-top: -16px;
         }
+
+        &:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
     }
 
     .ItemPlaceholder {
         margin: 4px;
         float: left;
-        background-color: #eee;
+        //background-color: #eee;
         border-radius: 2px;
     }
 
@@ -78,7 +84,7 @@
             margin-left: $GroupSpacerWidth;
             margin-right: $GroupSpacerWidth;
             margin-bottom: 0;
-            height: 32px;
+            height: 26px;
 
 
             .GroupTitle {
@@ -187,6 +193,10 @@
         width: 70px;
 
         .ProductsContainer {
+
+            .Product {
+                margin: 0;
+            }
 
             .ProductCard {
                 display: none !important;
