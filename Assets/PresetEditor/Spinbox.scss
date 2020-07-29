@@ -21,6 +21,28 @@
         border-radius: 100%;
     }
 
+    @mixin SpinboxSideButton($width, $height, $left) {
+        position: relative;
+        display: inline-block;
+        color: #000;
+        font-weight: 400;
+        font-size: medium;
+        line-height: 20px;
+        padding: 0;
+        text-align: center;
+        cursor: pointer;
+        vertical-align: middle;
+        width: $width;
+        height: $height;
+
+        @if ($left) {
+            border-left: 1px solid #aaa;
+        }
+        @else {
+            border-right: 1px solid #aaa;
+        }
+    }
+
     @mixin SpinboxButtonDashSign($width) {
         position: absolute;
         display: block;
@@ -50,7 +72,8 @@
     }
 
     .SpinboxButtonUp {
-        @include SpinboxRoundButton(20px);
+        //@include SpinboxRoundButton(20px);
+        @include SpinboxSideButton(24px, 20px, true);
 
         &:after {
             @include SpinboxButtonDashSign(8px);
@@ -63,7 +86,8 @@
     }
 
     .SpinboxButtonDown {
-        @include SpinboxRoundButton(20px);
+        //@include SpinboxRoundButton(20px);
+        @include SpinboxSideButton(24px, 20px, false);
 
         &:after {
             @include SpinboxButtonDashSign(8px);

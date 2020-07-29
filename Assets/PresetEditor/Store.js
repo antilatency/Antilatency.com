@@ -1,6 +1,6 @@
 
-class Store {
-    static PRODUCTS = {
+function Store() {
+    this.products = {
         ACHA0Alt__A: {
             Name: "Alt",
             Prices: [{ From: 1, Price: 650 }, { From: 4, Price: 598 }, { From: 16, Price: 550 }, { From: 64, Price: 506 }, { From: 256, Price: 466 }, { From: 1024, Price: 428 }]
@@ -36,16 +36,18 @@ class Store {
         }
     };
 
-    constructor() {
-        
+    this.GetProductName = function(productId) {
+        var productInfo = this.products[productId];
+
+        return productInfo ? productInfo.Name : "";
     }
 
-    static GetProductUnitPrice(productName, productQuantityGlobal) {
+    this.GetProductUnitPrice = function(productId, productQuantityGlobal) {
         if (isNaN(productQuantityGlobal) || Number(productQuantityGlobal) <= 0) {
             productQuantityGlobal = 1;
         }
 
-        var productInfo = Store.PRODUCTS[productName];
+        var productInfo = this.products[productId];
         var productPrice = 0;
         var productPriceOld = 0;
 
