@@ -9,12 +9,35 @@
     }
 }
 
+.ShowProductBadgeTooltipArrow {
+    .ProductBadgeTooltipArrow {
+        display: block !important;
+    }
+}
+
 .ProductBadge {
     position: relative;
     display: block;
     padding: 4px !important;
     background-color: #00000000;
     width: 68px;
+
+    .ProductBadgeTooltipArrow {
+        position: absolute;
+        display: none;
+        z-index: 3;
+        top: 50%;
+        left: 100%;
+        transform: translate(0%, -50%);
+        pointer-events: none;
+
+        &:after {
+            font-family: "Material Design Icons";
+            font-size: 20px;
+            content: "\F0734";
+            color: rgba(87, 87, 87, 0.80);
+        }
+    }
 
     .ProductBadgeTooltip {
         position: absolute;
@@ -27,7 +50,6 @@
         height: 60px;
         border-radius: 30px;
         text-align: center;
-        pointer-events: none;
 
 
         .ProductBadgeTooltipContainer {
