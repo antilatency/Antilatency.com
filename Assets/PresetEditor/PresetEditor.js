@@ -216,11 +216,25 @@ function PresetEditor(presetEditor) {
             return point;
         }
 
+        var FreezeGroupSizes = function (freeze) {
+            document.querySelectorAll(".GroupContainer").forEach(c => {
+                if (freeze) {
+                    c.style.width = c.offsetWidth + "px";
+                    c.style.height = c.offsetHeight + "px";
+                } else {
+                    c.style.width = null;
+                    c.style.height = null;
+                }  
+            });
+        }
+
         var SetDragActive = function (active) {
             if (dragActive !== active) {
                 dragActive = active;
 
                 if (dragActive) {
+                    FreezeGroupSizes(true);
+
                     presetEditor.classList.add("ItemInTheAir");
 
                     draggedItemPlaceholder = document.createElement("div");
@@ -236,6 +250,8 @@ function PresetEditor(presetEditor) {
                         draggedItem.classList.remove("ShowProductBadgeTooltipArrow");
                     }
                 } else {
+                    FreezeGroupSizes(false);
+
                     presetEditor.classList.remove("ItemInTheAir");
 
                     if (!IsEmptyObject(draggedItemPlaceholder)) {
@@ -576,9 +592,7 @@ function PresetEditor(presetEditor) {
             return item;
         } else {
             var item = this.CreateItem(parent, name, 1, "Group RootGroup");
-            var container = item.appendChild(CreateElement("div", "GroupContainer DropArea"));
-
-            container.style.height = "100%";
+            item.appendChild(CreateElement("div", "GroupContainer DropArea"));
 
             return item;
         }
