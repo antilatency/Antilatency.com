@@ -1,58 +1,58 @@
+@mixin SpinboxRoundButton($diameter) {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    font-weight: 400;
+    font-size: medium;
+    line-height: 20px;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    width: $diameter;
+    height: $diameter;
+    border: 1px solid #aaa;
+    border-radius: 100%;
+}
+
+@mixin SpinboxSideButton($width, $height, $left) {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    font-weight: 400;
+    font-size: medium;
+    line-height: 20px;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    width: $width;
+    height: $height;
+
+    @if ($left) {
+        border-left: 1px solid #aaa;
+    }
+    @else {
+        border-right: 1px solid #aaa;
+    }
+}
+
+@mixin SpinboxButtonDashSign($width) {
+    position: absolute;
+    display: block;
+    content: '';
+    width: $width;
+    height: 1px;
+    background: #000;
+    left: calc(50% - (#{$width}/2));
+    top: 50%;
+}
+
 .Spinbox {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2px;
-
-    @mixin SpinboxRoundButton($diameter) {
-        position: relative;
-        display: inline-block;
-        color: #000;
-        font-weight: 400;
-        font-size: medium;
-        line-height: 20px;
-        padding: 0;
-        text-align: center;
-        cursor: pointer;
-        vertical-align: middle;
-        width: $diameter;
-        height: $diameter;
-        border: 1px solid #aaa;
-        border-radius: 100%;
-    }
-
-    @mixin SpinboxSideButton($width, $height, $left) {
-        position: relative;
-        display: inline-block;
-        color: #000;
-        font-weight: 400;
-        font-size: medium;
-        line-height: 20px;
-        padding: 0;
-        text-align: center;
-        cursor: pointer;
-        vertical-align: middle;
-        width: $width;
-        height: $height;
-
-        @if ($left) {
-            border-left: 1px solid #aaa;
-        }
-        @else {
-            border-right: 1px solid #aaa;
-        }
-    }
-
-    @mixin SpinboxButtonDashSign($width) {
-        position: absolute;
-        display: block;
-        content: '';
-        width: $width;
-        height: 1px;
-        background: #000;
-        left: calc(50% - (#{$width}/2));
-        top: 50%;
-    }
 
     .SpinboxInput {
         position: relative;
@@ -91,6 +91,29 @@
 
         &:after {
             @include SpinboxButtonDashSign(8px);
+        }
+    }
+
+    &.SpinboxRoundButtons {
+        .SpinboxButtonUp {
+            @include SpinboxRoundButton(20px);
+
+            &:after {
+                @include SpinboxButtonDashSign(8px);
+            }
+
+            &:before {
+                @include SpinboxButtonDashSign(8px);
+                transform: rotate(-90deg);
+            }
+        }
+
+        .SpinboxButtonDown {
+            @include SpinboxRoundButton(20px);
+
+            &:after {
+                @include SpinboxButtonDashSign(8px);
+            }
         }
     }
 }

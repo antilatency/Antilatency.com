@@ -464,15 +464,6 @@ function PresetEditor(presetEditor) {
         document.addEventListener("click", OnClick, false);
     }
 
-    function CreateItemCounter(item, quantity) {
-        var spinbox = new Spinbox(quantity, "counter", (value) => {
-            item.setAttribute("quantity", value);
-            UpdatePrices();
-        });
-
-        return spinbox.container;
-    }
-
     this.CreateItem = function (parent, name, quantity, className) {
         var item = parent.appendChild(document.createElement("item"));
         item.setAttribute("quantity", quantity);
@@ -520,7 +511,12 @@ function PresetEditor(presetEditor) {
         var cardContentInfoTitle = cardContentInfo.appendChild(CreateElement("div", "ProductCardTitle"));
         var cardContentPriceTotal = cardContent.appendChild(CreateElement("div", "ProductCardPriceTotal"));
 
-        var viewCounter = card.appendChild(CreateItemCounter(item, quantity));
+
+        var spinbox = new Spinbox(quantity, "counter", (value) => {
+            item.setAttribute("quantity", value);
+            UpdatePrices();
+        });
+        var viewCounter = card.appendChild(spinbox.container);
 
         cardContentImage.src = defaultImage;
 
@@ -549,6 +545,31 @@ function PresetEditor(presetEditor) {
         var counter = head.appendChild(CreateElement("div", "GroupCounter DropArea"));
         counter.id = "counter";
         counter.textContent = quantity;
+
+        var spinbox = new Spinbox(quantity, "", (value) => {
+            group.setAttribute("quantity", value);
+            counter.textContent = value;
+            UpdatePrices();
+        });
+
+        spinbox.container.classList.add("Hide");
+        spinbox.container.classList.add("SpinboxRoundButtons");
+        spinbox.container.style.float = "right";
+
+        head.appendChild(spinbox.container);
+
+        counter.onclick = function (e) {
+            spinbox.input.value = counter.textContent;
+            spinbox.container.classList.remove("Hide");
+            title.classList.add("Hide");
+            counter.classList.add("Hide");   
+        }
+
+        spinbox.input.onblur = function () {
+            title.classList.remove("Hide");
+            counter.classList.remove("Hide");
+            spinbox.container.classList.add("Hide");
+        }
 
 
         title.onclick = function () {
