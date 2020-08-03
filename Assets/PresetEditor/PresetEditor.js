@@ -2,7 +2,9 @@ function PresetEditor(presetEditor) {
     var _this = this;
 
     //window.addEventListener("hashchange", funcRef, false);
-    console.log(location.hash)
+    //console.log(location.hash)
+
+    const store = new Store();
 
     var sourceJson =
         `{
@@ -133,7 +135,7 @@ function PresetEditor(presetEditor) {
                 var productName = product.getAttribute("name");
                 var productQuantity = product.getAttribute("quantity");
                 var productQuantityGlobal = productsQuantity[productName];
-                const { productPrice, productPriceOld } = Store.GetProductUnitPrice(productName, productQuantityGlobal);
+                const { productPrice, productPriceOld } = store.GetProductUnitPrice(productName, productQuantityGlobal);
 
                 product.setAttribute("price", productPrice);
 
@@ -160,7 +162,7 @@ function PresetEditor(presetEditor) {
                 var product = products[i];
                 var productName = product.getAttribute("name");
                 var productQuantityGlobal = productsQuantity[productName];
-                const { productPrice, productPriceOld } = Store.GetProductUnitPrice(productName, productQuantityGlobal);
+                const { productPrice, productPriceOld } = store.GetProductUnitPrice(productName, productQuantityGlobal);
 
                 product.setAttribute("price", productPrice);
 
@@ -170,7 +172,7 @@ function PresetEditor(presetEditor) {
 
         var UpdateCheckoutPrices = function (total) {
             const discount = Object.entries(productsQuantity)
-                                    .map(([k, v]) => Store.GetProductUnitPrice(k, 1).productPrice * v)
+                                    .map(([k, v]) => store.GetProductUnitPrice(k, 1).productPrice * v)
                                     .reduce((r, v) => r + v, 0) - total;
 
             document.querySelector("#totalDiscount").textContent = "$" + discount;
@@ -182,9 +184,10 @@ function PresetEditor(presetEditor) {
         UpdateCheckoutPrices(UpdateGroupPricesRecursively(presetEditorRootGroup));
     }
 
-    function EnableDragAndDrop() {
+    function InputController() {
         var pointedElement = null;
         var pointedGroup = null;
+
         var dragActive = false;
         var dragStartPoint = { x: 0, y: 0 };
         var draggedItem = null;
@@ -192,6 +195,8 @@ function PresetEditor(presetEditor) {
         var draggedItemIsProduct = false;
         var draggedItemFromProductsView = false;
         var draggedItemPlaceholder = null;
+
+        var productBadgeWithActiveTooltip = null;
 
         var IsDraggable = (element) => !IsEmptyObject(element) && element.classList.contains("DragArea");
         var IsDropArea = (element) => !IsEmptyObject(element) && element.classList.contains("DropArea");
@@ -211,11 +216,25 @@ function PresetEditor(presetEditor) {
             return point;
         }
 
+        var FreezeGroupSizes = function (freeze) {
+            document.querySelectorAll(".GroupContainer").forEach(c => {
+                if (freeze) {
+                    c.style.width = c.offsetWidth + "px";
+                    c.style.height = c.offsetHeight + "px";
+                } else {
+                    c.style.width = null;
+                    c.style.height = null;
+                }  
+            });
+        }
+
         var SetDragActive = function (active) {
             if (dragActive !== active) {
                 dragActive = active;
 
                 if (dragActive) {
+                    FreezeGroupSizes(true);
+
                     presetEditor.classList.add("ItemInTheAir");
 
                     draggedItemPlaceholder = document.createElement("div");
@@ -226,7 +245,13 @@ function PresetEditor(presetEditor) {
                     draggedItem.parentElement.insertBefore(draggedItemPlaceholder, draggedItem);
 
                     draggedItem.classList.add("Dragged");
+
+                    if (draggedItemFromProductsView) {
+                        draggedItem.classList.remove("ShowProductBadgeTooltipArrow");
+                    }
                 } else {
+                    FreezeGroupSizes(false);
+
                     presetEditor.classList.remove("ItemInTheAir");
 
                     if (!IsEmptyObject(draggedItemPlaceholder)) {
@@ -237,19 +262,49 @@ function PresetEditor(presetEditor) {
             }
         }
 
-        var UpdatePointedElements = function (x, y) {
-            pointedElement = document.elementFromPoint(x, y);
+        var ShowProductBadgeTooltip = function (badge) {
+            if (productBadgeWithActiveTooltip !== badge) {
+                HideProductBadgeTooltip();
 
-            var group = GetClosestParent(pointedElement, ".Group");
-
-            if (pointedGroup != group) {
-                pointedGroup && pointedGroup.classList.remove("PointedGroup");
-                pointedGroup = group;
-                pointedGroup && pointedGroup.classList.add("PointedGroup");
+                if (badge != null) {
+                    badge.classList.add("ShowProductBadgeTooltip");
+                    productBadgeWithActiveTooltip = badge;
+                }
             }
         }
 
-        var DragStart = function (event) {
+        var HideProductBadgeTooltip = function () {
+            if (productBadgeWithActiveTooltip != null) {
+                productBadgeWithActiveTooltip.classList.remove("ShowProductBadgeTooltip");
+                productBadgeWithActiveTooltip = null;
+            }
+        }
+
+        var UpdatePointedElements = function (x, y) {
+            var target = document.elementFromPoint(x, y);
+
+            if (target != pointedElement) {
+                pointedElement && pointedElement.classList.remove("PointedElement");
+                pointedElement = target;
+                pointedElement && pointedElement.classList.add("PointedElement");
+
+                var group = GetClosestParent(pointedElement, ".Group");
+
+                if (pointedGroup != group) {
+                    pointedGroup && pointedGroup.classList.remove("PointedGroup");
+                    pointedGroup = group;
+                    pointedGroup && pointedGroup.classList.add("PointedGroup");
+                }
+            }
+
+            
+        }
+
+        var OnTouchStart = function (event) {
+            if (productBadgeWithActiveTooltip != GetClosestParent(event.target, ".ProductBadge")) {
+                HideProductBadgeTooltip();
+            }
+
             if (IsDraggable(event.target)) {
                 draggedItem = GetClosestParent(event.target, "item");
                 draggedItemName = draggedItem.getAttribute("name");
@@ -257,10 +312,14 @@ function PresetEditor(presetEditor) {
                 draggedItemFromProductsView = GetClosestParent(draggedItem, ".ProductsView") != null;
 
                 dragStartPoint = GetPointFromEvent(event);
+
+                if (draggedItemFromProductsView) {
+                    draggedItem.classList.add("ShowProductBadgeTooltipArrow");
+                }
             }
         }
 
-        var Drag = function (event) {
+        var OnMove = function (event) {
             const point = GetPointFromEvent(event);
             const isTouchEvent = event instanceof TouchEvent;
 
@@ -357,7 +416,7 @@ function PresetEditor(presetEditor) {
             }
         }
 
-        var DragEnd = function (event) {
+        var OnTouchEnd = function (event) {
             if (dragActive) {
                 Drop(event instanceof TouchEvent ? pointedElement : event.target);
             }
@@ -365,10 +424,22 @@ function PresetEditor(presetEditor) {
             SetDragActive(false);
 
             if (!IsEmptyObject(draggedItem)) {
+                if (draggedItemFromProductsView) {
+                    draggedItem.classList.remove("ShowProductBadgeTooltipArrow");
+                }
+
                 draggedItem.classList.remove("Dragged");
                 draggedItem.style.left = 0;
                 draggedItem.style.top = 0;
                 draggedItem = null;
+            }
+        }
+
+        var OnClick = function (event) {
+            if (event.target.classList.contains("ProductBadge") && GetClosestParent(event.target, ".ProductsView") != null) {
+                ShowProductBadgeTooltip(event.target);
+            } else {
+                HideProductBadgeTooltip();
             }
         }
 
@@ -382,22 +453,15 @@ function PresetEditor(presetEditor) {
 
         var touchOpt = supportsPassive ? { passive: false } : false;
 
-        document.addEventListener("touchstart", DragStart, touchOpt);
-        document.addEventListener("touchmove", Drag, touchOpt);
-        document.addEventListener("touchend", DragEnd, touchOpt);
+        document.addEventListener("touchstart", OnTouchStart, touchOpt);
+        document.addEventListener("touchmove", OnMove, touchOpt);
+        document.addEventListener("touchend", OnTouchEnd, touchOpt);
 
-        document.addEventListener("mousedown", DragStart, false);
-        document.addEventListener("mousemove", Drag, false);
-        document.addEventListener("mouseup", DragEnd, false);
-    }
+        document.addEventListener("mousedown", OnTouchStart, false);
+        document.addEventListener("mousemove", OnMove, false);
+        document.addEventListener("mouseup", OnTouchEnd, false);
 
-    function CreateItemCounter(item, quantity) {
-        var spinbox = new Spinbox(quantity, "counter", (value) => {
-            item.setAttribute("quantity", value);
-            UpdatePrices();
-        });
-
-        return spinbox.container;
+        document.addEventListener("click", OnClick, false);
     }
 
     this.CreateItem = function (parent, name, quantity, className) {
@@ -410,34 +474,15 @@ function PresetEditor(presetEditor) {
         return item;
     }
 
-    var productBadgeWithActiveTooltip = null;
-
-    function ShowProductBadgeTooltip(badge) {
-        if (productBadgeWithActiveTooltip !== badge) {
-            HideProductBadgeTooltip();
-
-            if (badge != null) {
-                badge.classList.add("ShowProductBadgeTooltip");
-                productBadgeWithActiveTooltip = badge;
-            }
-        } 
-    }
-
-    function HideProductBadgeTooltip() {
-        if (productBadgeWithActiveTooltip != null) {
-            productBadgeWithActiveTooltip.classList.remove("ShowProductBadgeTooltip");
-            productBadgeWithActiveTooltip = null;
-        }
-    }
-
     this.CreateProductItem = function (parent, name, quantity) {
         var item = this.CreateItem(parent, name, quantity, "Product");
 
         const defaultImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY2BgYAAAAAQAAVzN/2kAAAAASUVORK5CYII=";
-        const productName = Store.PRODUCTS[name].Name;
+        const productName = store.GetProductName(name);
 
         var productView = item.appendChild(CreateElement("div", "ProductViewContainer"));
         var badge = productView.appendChild(CreateElement("div", "ProductBadge DragArea DropArea"));
+        var badgeTooltipArrow = badge.appendChild(CreateElement("div", "ProductBadgeTooltipArrow"));
         var badgeTooltip = badge.appendChild(CreateElement("div", "ProductBadgeTooltip"));
         var badgeTooltipContainer = badgeTooltip.appendChild(CreateElement("div", "ProductBadgeTooltipContainer"));
 
@@ -466,7 +511,12 @@ function PresetEditor(presetEditor) {
         var cardContentInfoTitle = cardContentInfo.appendChild(CreateElement("div", "ProductCardTitle"));
         var cardContentPriceTotal = cardContent.appendChild(CreateElement("div", "ProductCardPriceTotal"));
 
-        var viewCounter = card.appendChild(CreateItemCounter(item, quantity));
+
+        var spinbox = new Spinbox(quantity, "counter", (value) => {
+            item.setAttribute("quantity", value);
+            UpdatePrices();
+        });
+        var viewCounter = card.appendChild(spinbox.container);
 
         cardContentImage.src = defaultImage;
 
@@ -480,18 +530,6 @@ function PresetEditor(presetEditor) {
 
         cardContentPriceTotal.textContent = "$000";
         cardContentPriceTotal.id = "priceTotal";
-
-        badge.onclick = function () {
-            if (productBadgeWithActiveTooltip !== badge) {
-                ShowProductBadgeTooltip(badge);
-            } else {
-                HideProductBadgeTooltip();
-            } 
-        }
-
-        badge.onblur = function () {
-            badgeTooltip.style.display = "none";
-        }
 
         return item;
     }
@@ -507,6 +545,31 @@ function PresetEditor(presetEditor) {
         var counter = head.appendChild(CreateElement("div", "GroupCounter DropArea"));
         counter.id = "counter";
         counter.textContent = quantity;
+
+        var spinbox = new Spinbox(quantity, "", (value) => {
+            group.setAttribute("quantity", value);
+            counter.textContent = value;
+            UpdatePrices();
+        });
+
+        spinbox.container.classList.add("Hide");
+        spinbox.container.classList.add("SpinboxRoundButtons");
+        spinbox.container.style.float = "right";
+
+        head.appendChild(spinbox.container);
+
+        counter.onclick = function (e) {
+            spinbox.input.value = counter.textContent;
+            spinbox.container.classList.remove("Hide");
+            title.classList.add("Hide");
+            counter.classList.add("Hide");   
+        }
+
+        spinbox.input.onblur = function () {
+            title.classList.remove("Hide");
+            counter.classList.remove("Hide");
+            spinbox.container.classList.add("Hide");
+        }
 
 
         title.onclick = function () {
@@ -550,9 +613,7 @@ function PresetEditor(presetEditor) {
             return item;
         } else {
             var item = this.CreateItem(parent, name, 1, "Group RootGroup");
-            var container = item.appendChild(CreateElement("div", "GroupContainer DropArea"));
-
-            container.style.height = "100%";
+            item.appendChild(CreateElement("div", "GroupContainer DropArea"));
 
             return item;
         }
@@ -590,7 +651,7 @@ function PresetEditor(presetEditor) {
 
         container.appendChild(CreateElement("div", "DropAreaRemoveItem"));
 
-        var keys = Object.keys(Store.PRODUCTS);
+        var keys = Object.keys(store.products);
         for (let i = 0; i < keys.length; i++) {
             this.CreateProductItem(container, keys[i], 1);
         }
@@ -635,7 +696,7 @@ function PresetEditor(presetEditor) {
     CreateCheckoutPanel(presetEditor);
 
     UpdatePrices();
-    EnableDragAndDrop();
+    InputController();
 
 
     this.Head = new RegExp('((".+")|(\w+))\s*(\:\s*\d+)?\s*');
