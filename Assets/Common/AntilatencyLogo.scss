@@ -14,12 +14,13 @@
 .TemplateLanding {
     > .Content > .AntilatencyLogo {
 
+
         $minWidth: 680;
         $fontHeigth: 64;
         $heigth: 1.3*$fontHeigth;
 
         position: static;
-        display: block;
+        display: none;
         height: #{$heigth}px;
         font-size: #{$fontHeigth}px;
         text-align: center;

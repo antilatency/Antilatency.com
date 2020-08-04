@@ -1,7 +1,13 @@
 .TemplateLanding {
+    background-color: #f2f4f6;
+    
     > .Content {
         .Section > .Title {
-            font-size: 3rem;
+            margin: 5rem 0 1rem;
+            font-family: Akrobat, sans-serif;
+            font-weight: 600;
+            color: #081a20;
+            text-decoration: overline solid #acc435;
         }
 
     }

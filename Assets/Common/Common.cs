@@ -30,7 +30,7 @@ partial class Root : Scope {
 
 
     public static Menu MainMenu => new Menu()
-        [LogoGreenBlack]
+        [LogoGreenWhite]
         [Index]
 
         [Terms.Antilatency_Device_Network]
@@ -77,7 +77,7 @@ partial class Root : Scope {
         ]
 
 
-        [$"{new ExternalReference("https://antilatency.com", "Personal data processing policy")} | {new ExternalReference("https://antilatency.com", "Terms of Services")} | Copyright © {CopyrightYear}, ALT LLC. info@antilatency.com"]
+        [$"{new ExternalReference("https://antilatency.com", "Personal data processing policy")} | {new ExternalReference("https://antilatency.com", "Terms of Services")} | Copyright ï¿½ {CopyrightYear}, ALT LLC. info@antilatency.com"]
         ;
 
 }
