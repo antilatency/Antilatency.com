@@ -1,0 +1,23 @@
+.TemplateLeftSideMenu{
+    > .LeftSideMenu{
+        background-color: #3b3a38;
+        color: #f2f4f6;
+        border-right: none;
+
+        > :not(a) {
+            background-color: transparent;
+        }
+
+        > a:hover {
+            background-color: #32312f;
+        }
+    
+        > a:active {
+            background-color: #52514d;
+        }
+    
+        > a {
+            text-decoration: none;
+        }
+    }
+}
