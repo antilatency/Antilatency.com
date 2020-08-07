@@ -17,7 +17,7 @@ public partial class Tutorials : Scope {
             [$"Images:"]
             [new UnorderedList()
                 [$"{new ExternalReference("https://downloads.raspberrypi.org/raspbian_lite_latest", "Raspbian Lite")} - minimal image with command line interface."]
-                [$"{new ExternalReference("https://downloads.raspberrypi.org/raspbian_latest", "Raspbian Destop ")} - Raspbian Lite + graphical user interface: {new ExternalReference("https://www.raspberrypi.org/blog/introducing-pixel/", "PIXEL desktop environment")}"]
+                [$"{new ExternalReference("https://downloads.raspberrypi.org/raspbian_latest", "Raspbian Desktop ")} - Raspbian Lite + graphical user interface: {new ExternalReference("https://www.raspberrypi.org/blog/introducing-pixel/", "PIXEL desktop environment")}"]
             ]
             [$"Download preferred type of image and {new ExternalReference("https://www.raspberrypi.org/documentation/installation/installing-images/README.md", "write it to microSD card")} (you can install or remove GUI apps later)."]
         ]
