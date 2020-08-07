@@ -1,7 +1,9 @@
 using Csml;
+using static Terms.Antilatency_Radio_Protocol_Assets;
+
 partial class Terms {
     public static Material Antilatency_Radio_Protocol_en => new Material(null, null,
-    $"Antilatency devices use a proprietory radio protocol to transmit data. The protocol operates on the 2.4gHz frequency. This radio protocol is optimized for real time performance and has a low latency while transmitting data.")
+    $"Antilatency devices use a proprietory radio protocol to transmit data. The protocol operates on the 2.4GHz frequency. This radio protocol is optimized for real time performance and has a low latency while transmitting data.")
         [new Section("Devices supporting Antilatency Radio Protocol")
             [$"Receiver list"]
             [new UnorderedList()
