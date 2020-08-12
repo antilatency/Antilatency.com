@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using HtmlAgilityPack;
+using Htmlilka;
 
 namespace Csml {
     public abstract class ColorSequence<T> : Element<T> where T : ColorSequence<T> {
 
         public abstract string GetGradient();
         public abstract float TotalDuration { get; }
-        public override IEnumerable<HtmlNode> Generate(Context context) {
-            yield return HtmlNode.CreateNode("<div>").Do(x => {
-                x.AddClass("ColorSequence");
-                x.SetAttributeValue("style", $"background:linear-gradient(to right, {GetGradient()}); animation: animatedBackgroundPositionHorizontal {TotalDuration}s linear infinite;");
-            });
+        public override Node Generate(Context context) {
+            return new Tag("div")
+                .AddClasses("ColorSequence")
+                .Attribute("style", $"background:linear-gradient(to right, {GetGradient()}); animation: animatedBackgroundPositionHorizontal {TotalDuration}s linear infinite;");
         }
     }
 

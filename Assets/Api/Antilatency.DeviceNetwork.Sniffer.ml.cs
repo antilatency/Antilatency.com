@@ -42,14 +42,14 @@ public sealed partial class Api : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("string")} {_Name}");
-									public static IElement _Name => new Modify($"name").SetAttributeValue("title", "parameter name");
+									public static IElement _Name => new Modify($"name").Attribute("title", "parameter name");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope name
 								public sealed partial class id : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-									public static IElement _Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+									public static IElement _Name => new Modify($"id").Attribute("title", "parameter id");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope id
 							} //scope Parameters
@@ -70,7 +70,7 @@ public sealed partial class Api : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-									public static IElement _Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+									public static IElement _Name => new Modify($"id").Attribute("title", "parameter id");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope id
 							} //scope Parameters
@@ -91,21 +91,21 @@ public sealed partial class Api : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-									public static IElement _Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+									public static IElement _Name => new Modify($"id").Attribute("title", "parameter id");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope id
 								public sealed partial class data : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("constPointer")} {_Name}");
-									public static IElement _Name => new Modify($"data").SetAttributeValue("title", "parameter data");
+									public static IElement _Name => new Modify($"data").Attribute("title", "parameter data");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope data
 								public sealed partial class size : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-									public static IElement _Name => new Modify($"size").SetAttributeValue("title", "parameter size");
+									public static IElement _Name => new Modify($"size").Attribute("title", "parameter size");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope size
 							} //scope Parameters
@@ -126,21 +126,21 @@ public sealed partial class Api : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-									public static IElement _Name => new Modify($"id").SetAttributeValue("title", "parameter id");
+									public static IElement _Name => new Modify($"id").Attribute("title", "parameter id");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope id
 								public sealed partial class data : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("constPointer")} {_Name}");
-									public static IElement _Name => new Modify($"data").SetAttributeValue("title", "parameter data");
+									public static IElement _Name => new Modify($"data").Attribute("title", "parameter data");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope data
 								public sealed partial class size : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-									public static IElement _Name => new Modify($"size").SetAttributeValue("title", "parameter size");
+									public static IElement _Name => new Modify($"size").Attribute("title", "parameter size");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope size
 							} //scope Parameters
@@ -173,7 +173,7 @@ public sealed partial class Api : Scope {
 									public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 									public static IElement CodeInline => CodeInline(RawDeclarationCode);
 									public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Sniffer.ISniffer._NameRef} {_Name}");
-									public static IElement _Name => new Modify($"sniffer").SetAttributeValue("title", "parameter sniffer");
+									public static IElement _Name => new Modify($"sniffer").Attribute("title", "parameter sniffer");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 								} //scope sniffer
 							} //scope Parameters

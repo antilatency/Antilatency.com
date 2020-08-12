@@ -30,7 +30,7 @@ public sealed partial class Api : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Fields.TaskID.RawDeclarationCode}");
 							public sealed partial class Fields : Scope {
 								public sealed partial class TaskID : Scope {
-									public static IElement _Name => new Modify($"TaskID").AddClasses("Constant").SetAttributeValue("title", "{{f8b9aeff-3086-4f98-b16b-d7cdc6b3befc}}");
+									public static IElement _Name => new Modify($"TaskID").AddClasses("Constant").Attribute("title", "{{f8b9aeff-3086-4f98-b16b-d7cdc6b3befc}}");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 									public static System.Guid Value => new System.Guid("f8b9aeff-3086-4f98-b16b-d7cdc6b3befc");
 									public static IElement RawDeclarationCode => new Text($"{Keyword("Guid")} {_Name} = {_Value}");

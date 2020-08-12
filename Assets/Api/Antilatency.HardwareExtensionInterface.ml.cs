@@ -38,42 +38,42 @@ public sealed partial class Api : Scope {
 				public static IElement RawDeclarationCode => new Text($"{Fields.AnalogMinRefreshIntervalMs.RawDeclarationCode}\n{Fields.AnalogMaxRefreshIntervalMs.RawDeclarationCode}\n{Fields.PulseCounterMinRefreshIntervalMs.RawDeclarationCode}\n{Fields.PulseCounterMaxRefreshIntervalMs.RawDeclarationCode}\n{Fields.PwmMinFrequency.RawDeclarationCode}\n{Fields.PwmMaxFrequency.RawDeclarationCode}");
 				public sealed partial class Fields : Scope {
 					public sealed partial class AnalogMinRefreshIntervalMs : Scope {
-						public static IElement _Name => new Modify($"AnalogMinRefreshIntervalMs").AddClasses("Constant").SetAttributeValue("title", "1");
+						public static IElement _Name => new Modify($"AnalogMinRefreshIntervalMs").AddClasses("Constant").Attribute("title", "1");
 						public static IElement NameCode => _Name.Modify().Wrap("code");
 						public static System.UInt32 Value => 1;
 						public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 						public static IElement _Value => new Text($"1");
 					} //scope AnalogMinRefreshIntervalMs
 					public sealed partial class AnalogMaxRefreshIntervalMs : Scope {
-						public static IElement _Name => new Modify($"AnalogMaxRefreshIntervalMs").AddClasses("Constant").SetAttributeValue("title", "65535 (0xFFFF)");
+						public static IElement _Name => new Modify($"AnalogMaxRefreshIntervalMs").AddClasses("Constant").Attribute("title", "65535 (0xFFFF)");
 						public static IElement NameCode => _Name.Modify().Wrap("code");
 						public static System.UInt32 Value => 65535;
 						public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 						public static IElement _Value => new Text($"65535 (0xFFFF)");
 					} //scope AnalogMaxRefreshIntervalMs
 					public sealed partial class PulseCounterMinRefreshIntervalMs : Scope {
-						public static IElement _Name => new Modify($"PulseCounterMinRefreshIntervalMs").AddClasses("Constant").SetAttributeValue("title", "1");
+						public static IElement _Name => new Modify($"PulseCounterMinRefreshIntervalMs").AddClasses("Constant").Attribute("title", "1");
 						public static IElement NameCode => _Name.Modify().Wrap("code");
 						public static System.UInt32 Value => 1;
 						public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 						public static IElement _Value => new Text($"1");
 					} //scope PulseCounterMinRefreshIntervalMs
 					public sealed partial class PulseCounterMaxRefreshIntervalMs : Scope {
-						public static IElement _Name => new Modify($"PulseCounterMaxRefreshIntervalMs").AddClasses("Constant").SetAttributeValue("title", "125 (0x7D)");
+						public static IElement _Name => new Modify($"PulseCounterMaxRefreshIntervalMs").AddClasses("Constant").Attribute("title", "125 (0x7D)");
 						public static IElement NameCode => _Name.Modify().Wrap("code");
 						public static System.UInt32 Value => 125;
 						public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 						public static IElement _Value => new Text($"125 (0x7D)");
 					} //scope PulseCounterMaxRefreshIntervalMs
 					public sealed partial class PwmMinFrequency : Scope {
-						public static IElement _Name => new Modify($"PwmMinFrequency").AddClasses("Constant").SetAttributeValue("title", "20 (0x14)");
+						public static IElement _Name => new Modify($"PwmMinFrequency").AddClasses("Constant").Attribute("title", "20 (0x14)");
 						public static IElement NameCode => _Name.Modify().Wrap("code");
 						public static System.UInt32 Value => 20;
 						public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 						public static IElement _Value => new Text($"20 (0x14)");
 					} //scope PwmMinFrequency
 					public sealed partial class PwmMaxFrequency : Scope {
-						public static IElement _Name => new Modify($"PwmMaxFrequency").AddClasses("Constant").SetAttributeValue("title", "10000 (0x2710)");
+						public static IElement _Name => new Modify($"PwmMaxFrequency").AddClasses("Constant").Attribute("title", "10000 (0x2710)");
 						public static IElement NameCode => _Name.Modify().Wrap("code");
 						public static System.UInt32 Value => 10000;
 						public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
@@ -135,7 +135,7 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"state").SetAttributeValue("title", "parameter state");
+								public static IElement _Name => new Modify($"state").Attribute("title", "parameter state");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope state
 						} //scope Parameters
@@ -242,7 +242,7 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Keyword("float")} {_Name}");
-								public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
+								public static IElement _Name => new Modify($"value").Attribute("title", "parameter value");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope value
 						} //scope Parameters
@@ -311,7 +311,7 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
+								public static IElement _Name => new Modify($"pin").Attribute("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
 						} //scope Parameters
@@ -339,14 +339,14 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
+								public static IElement _Name => new Modify($"pin").Attribute("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
 							public sealed partial class initialState : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.PinState._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"initialState").SetAttributeValue("title", "parameter initialState");
+								public static IElement _Name => new Modify($"initialState").Attribute("title", "parameter initialState");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope initialState
 						} //scope Parameters
@@ -374,14 +374,14 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
+								public static IElement _Name => new Modify($"pin").Attribute("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
 							public sealed partial class refreshIntervalMs : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-								public static IElement _Name => new Modify($"refreshIntervalMs").SetAttributeValue("title", "parameter refreshIntervalMs");
+								public static IElement _Name => new Modify($"refreshIntervalMs").Attribute("title", "parameter refreshIntervalMs");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope refreshIntervalMs
 						} //scope Parameters
@@ -409,14 +409,14 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
+								public static IElement _Name => new Modify($"pin").Attribute("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
 							public sealed partial class refreshIntervalMs : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-								public static IElement _Name => new Modify($"refreshIntervalMs").SetAttributeValue("title", "parameter refreshIntervalMs");
+								public static IElement _Name => new Modify($"refreshIntervalMs").Attribute("title", "parameter refreshIntervalMs");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope refreshIntervalMs
 						} //scope Parameters
@@ -447,21 +447,21 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.HardwareExtensionInterface.Interop._NameRef.Modify().ContentReplace($"Interop")}.{Api.Antilatency.HardwareExtensionInterface.Interop.Pins._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"pin").SetAttributeValue("title", "parameter pin");
+								public static IElement _Name => new Modify($"pin").Attribute("title", "parameter pin");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope pin
 							public sealed partial class frequency : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-								public static IElement _Name => new Modify($"frequency").SetAttributeValue("title", "parameter frequency");
+								public static IElement _Name => new Modify($"frequency").Attribute("title", "parameter frequency");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope frequency
 							public sealed partial class initialDuty : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Keyword("float")} {_Name}");
-								public static IElement _Name => new Modify($"initialDuty").SetAttributeValue("title", "parameter initialDuty");
+								public static IElement _Name => new Modify($"initialDuty").Attribute("title", "parameter initialDuty");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope initialDuty
 						} //scope Parameters
@@ -510,14 +510,14 @@ public sealed partial class Api : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork._NameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.INetwork._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"network").SetAttributeValue("title", "parameter network");
+								public static IElement _Name => new Modify($"network").Attribute("title", "parameter network");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope network
 							public sealed partial class node : Scope {
 								public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 								public static IElement CodeInline => CodeInline(RawDeclarationCode);
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork._NameRef.Modify().ContentReplace($"DeviceNetwork")}.{Api.Antilatency.DeviceNetwork.NodeHandle._NameRef} {_Name}");
-								public static IElement _Name => new Modify($"node").SetAttributeValue("title", "parameter node");
+								public static IElement _Name => new Modify($"node").Attribute("title", "parameter node");
 								public static IElement NameCode => _Name.Modify().Wrap("code");
 							} //scope node
 						} //scope Parameters

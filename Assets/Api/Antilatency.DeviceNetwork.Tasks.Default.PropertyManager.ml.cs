@@ -34,11 +34,11 @@ public sealed partial class Api : Scope {
 							public sealed partial class Fields : Scope {
 								public sealed partial class key : Scope {
 									public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {Name}");
-									public static IElement Name => new Modify($"key").SetAttributeValue("title", "field key");
+									public static IElement Name => new Modify($"key").Attribute("title", "field key");
 								} //scope key
 								public sealed partial class size : Scope {
 									public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {Name}");
-									public static IElement Name => new Modify($"size").SetAttributeValue("title", "field size");
+									public static IElement Name => new Modify($"size").Attribute("title", "field size");
 								} //scope size
 							} //scope Fields
 						} //scope Header
@@ -54,7 +54,7 @@ public sealed partial class Api : Scope {
 							public sealed partial class Fields : Scope {
 								public sealed partial class mem : Scope {
 									public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory128._NameRef} {Name}");
-									public static IElement Name => new Modify($"mem").SetAttributeValue("title", "field mem");
+									public static IElement Name => new Modify($"mem").Attribute("title", "field mem");
 								} //scope mem
 							} //scope Fields
 						} //scope ValuePart
@@ -70,11 +70,11 @@ public sealed partial class Api : Scope {
 							public sealed partial class Fields : Scope {
 								public sealed partial class Ok : Scope {
 									public static IElement RawDeclarationCode => new Text($"{Name}");
-									public static IElement Name => new Modify($"Ok").SetAttributeValue("title", "enum element Ok");
+									public static IElement Name => new Modify($"Ok").Attribute("title", "enum element Ok");
 								} //scope Ok
 								public sealed partial class Fail : Scope {
 									public static IElement RawDeclarationCode => new Text($"{Name}");
-									public static IElement Name => new Modify($"Fail").SetAttributeValue("title", "enum element Fail");
+									public static IElement Name => new Modify($"Fail").Attribute("title", "enum element Fail");
 								} //scope Fail
 							} //scope Fields
 						} //scope Status
@@ -89,7 +89,7 @@ public sealed partial class Api : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Fields.TaskID.RawDeclarationCode}");
 							public sealed partial class Fields : Scope {
 								public sealed partial class TaskID : Scope {
-									public static IElement _Name => new Modify($"TaskID").AddClasses("Constant").SetAttributeValue("title", "{{eda66e21-f84b-4d91-9e94-730f0a8225d8}}");
+									public static IElement _Name => new Modify($"TaskID").AddClasses("Constant").Attribute("title", "{{eda66e21-f84b-4d91-9e94-730f0a8225d8}}");
 									public static IElement NameCode => _Name.Modify().Wrap("code");
 									public static System.Guid Value => new System.Guid("eda66e21-f84b-4d91-9e94-730f0a8225d8");
 									public static IElement RawDeclarationCode => new Text($"{Keyword("Guid")} {_Name} = {_Value}");
@@ -123,7 +123,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.AccessLevel._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"level").SetAttributeValue("title", "parameter level");
+											public static IElement _Name => new Modify($"level").Attribute("title", "parameter level");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope level
 									} //scope Parameters
@@ -144,7 +144,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name}");
-											public static IElement _Name => new Modify($"index").SetAttributeValue("title", "parameter index");
+											public static IElement _Name => new Modify($"index").Attribute("title", "parameter index");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope index
 									} //scope Parameters
@@ -165,7 +165,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"key").SetAttributeValue("title", "parameter key");
+											public static IElement _Name => new Modify($"key").Attribute("title", "parameter key");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope key
 									} //scope Parameters
@@ -186,7 +186,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Tasks.Default.PropertyManager.Header._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"header").SetAttributeValue("title", "parameter header");
+											public static IElement _Name => new Modify($"header").Attribute("title", "parameter header");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope header
 									} //scope Parameters
@@ -207,7 +207,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Tasks.Default.PropertyManager.ValuePart._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
+											public static IElement _Name => new Modify($"value").Attribute("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
 									} //scope Parameters
@@ -228,7 +228,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"key").SetAttributeValue("title", "parameter key");
+											public static IElement _Name => new Modify($"key").Attribute("title", "parameter key");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope key
 									} //scope Parameters
@@ -261,7 +261,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Tasks.Default.PropertyManager.Status._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"status").SetAttributeValue("title", "parameter status");
+											public static IElement _Name => new Modify($"status").Attribute("title", "parameter status");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope status
 									} //scope Parameters
@@ -282,7 +282,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Tasks.Default.PropertyManager.Header._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"header").SetAttributeValue("title", "parameter header");
+											public static IElement _Name => new Modify($"header").Attribute("title", "parameter header");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope header
 									} //scope Parameters
@@ -303,7 +303,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Tasks.Default.PropertyManager.ValuePart._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"value").SetAttributeValue("title", "parameter value");
+											public static IElement _Name => new Modify($"value").Attribute("title", "parameter value");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope value
 									} //scope Parameters
@@ -324,7 +324,7 @@ public sealed partial class Api : Scope {
 											public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 											public static IElement CodeInline => CodeInline(RawDeclarationCode);
 											public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Property._NameRef.Modify().ContentReplace($"Property")}.{Api.Antilatency.DeviceNetwork.Property.KeyString._NameRef} {_Name}");
-											public static IElement _Name => new Modify($"key").SetAttributeValue("title", "parameter key");
+											public static IElement _Name => new Modify($"key").Attribute("title", "parameter key");
 											public static IElement NameCode => _Name.Modify().Wrap("code");
 										} //scope key
 									} //scope Parameters

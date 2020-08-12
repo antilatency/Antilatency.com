@@ -1,4 +1,4 @@
-using HtmlAgilityPack;
+using Htmlilka;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -32,11 +32,10 @@ namespace Csml {
 
         }
 
-        public override IEnumerable<HtmlNode> Generate(Context context) {
-            yield return HtmlNode.CreateNode("<div>").Do(x => {
-                x.AddClass("PresetEditor");
-                x.Add(new PresetEditorBehaviour().Generate(context));
-            });
+        public override Node Generate(Context context) {
+            return new Tag("div")
+                .AddClasses("PresetEditor")
+                .Add(new PresetEditorBehaviour().Generate(context));
         }
     }
 }

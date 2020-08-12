@@ -28,11 +28,11 @@ public sealed partial class Api : Scope {
 					public sealed partial class Fields : Scope {
 						public sealed partial class System : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"System").SetAttributeValue("title", "enum element System");
+							public static IElement Name => new Modify($"System").Attribute("title", "enum element System");
 						} //scope System
 						public sealed partial class User : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"User").SetAttributeValue("title", "enum element User");
+							public static IElement Name => new Modify($"User").Attribute("title", "enum element User");
 						} //scope User
 					} //scope Fields
 				} //scope AccessLevel
@@ -48,7 +48,7 @@ public sealed partial class Api : Scope {
 					public sealed partial class Fields : Scope {
 						public sealed partial class mem : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Interop.Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {Name}");
-							public static IElement Name => new Modify($"mem").SetAttributeValue("title", "field mem");
+							public static IElement Name => new Modify($"mem").Attribute("title", "field mem");
 						} //scope mem
 					} //scope Fields
 				} //scope KeyString

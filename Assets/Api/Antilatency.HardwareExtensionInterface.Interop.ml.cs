@@ -29,11 +29,11 @@ public sealed partial class Api : Scope {
 					public sealed partial class Fields : Scope {
 						public sealed partial class Low : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"Low").SetAttributeValue("title", "enum element Low");
+							public static IElement Name => new Modify($"Low").Attribute("title", "enum element Low");
 						} //scope Low
 						public sealed partial class High : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"High").SetAttributeValue("title", "enum element High");
+							public static IElement Name => new Modify($"High").Attribute("title", "enum element High");
 						} //scope High
 					} //scope Fields
 				} //scope PinState
@@ -49,35 +49,35 @@ public sealed partial class Api : Scope {
 					public sealed partial class Fields : Scope {
 						public sealed partial class IO1 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IO1").SetAttributeValue("title", "enum element IO1");
+							public static IElement Name => new Modify($"IO1").Attribute("title", "enum element IO1");
 						} //scope IO1
 						public sealed partial class IO2 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IO2").SetAttributeValue("title", "enum element IO2");
+							public static IElement Name => new Modify($"IO2").Attribute("title", "enum element IO2");
 						} //scope IO2
 						public sealed partial class IOA3 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IOA3").SetAttributeValue("title", "enum element IOA3");
+							public static IElement Name => new Modify($"IOA3").Attribute("title", "enum element IOA3");
 						} //scope IOA3
 						public sealed partial class IOA4 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IOA4").SetAttributeValue("title", "enum element IOA4");
+							public static IElement Name => new Modify($"IOA4").Attribute("title", "enum element IOA4");
 						} //scope IOA4
 						public sealed partial class IO5 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IO5").SetAttributeValue("title", "enum element IO5");
+							public static IElement Name => new Modify($"IO5").Attribute("title", "enum element IO5");
 						} //scope IO5
 						public sealed partial class IO6 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IO6").SetAttributeValue("title", "enum element IO6");
+							public static IElement Name => new Modify($"IO6").Attribute("title", "enum element IO6");
 						} //scope IO6
 						public sealed partial class IO7 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IO7").SetAttributeValue("title", "enum element IO7");
+							public static IElement Name => new Modify($"IO7").Attribute("title", "enum element IO7");
 						} //scope IO7
 						public sealed partial class IO8 : Scope {
 							public static IElement RawDeclarationCode => new Text($"{Name}");
-							public static IElement Name => new Modify($"IO8").SetAttributeValue("title", "enum element IO8");
+							public static IElement Name => new Modify($"IO8").Attribute("title", "enum element IO8");
 						} //scope IO8
 					} //scope Fields
 				} //scope Pins
@@ -92,35 +92,35 @@ public sealed partial class Api : Scope {
 					public static IElement RawDeclarationCode => new Text($"{Fields.MaxInputPinsCount.RawDeclarationCode}\n{Fields.MaxOutputPinsCount.RawDeclarationCode}\n{Fields.MaxAnalogPinsCount.RawDeclarationCode}\n{Fields.MaxPulseCounterPinsCount.RawDeclarationCode}\n{Fields.MaxPwmPinsCount.RawDeclarationCode}");
 					public sealed partial class Fields : Scope {
 						public sealed partial class MaxInputPinsCount : Scope {
-							public static IElement _Name => new Modify($"MaxInputPinsCount").AddClasses("Constant").SetAttributeValue("title", "8");
+							public static IElement _Name => new Modify($"MaxInputPinsCount").AddClasses("Constant").Attribute("title", "8");
 							public static IElement NameCode => _Name.Modify().Wrap("code");
 							public static System.UInt32 Value => 8;
 							public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 							public static IElement _Value => new Text($"8");
 						} //scope MaxInputPinsCount
 						public sealed partial class MaxOutputPinsCount : Scope {
-							public static IElement _Name => new Modify($"MaxOutputPinsCount").AddClasses("Constant").SetAttributeValue("title", "8");
+							public static IElement _Name => new Modify($"MaxOutputPinsCount").AddClasses("Constant").Attribute("title", "8");
 							public static IElement NameCode => _Name.Modify().Wrap("code");
 							public static System.UInt32 Value => 8;
 							public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 							public static IElement _Value => new Text($"8");
 						} //scope MaxOutputPinsCount
 						public sealed partial class MaxAnalogPinsCount : Scope {
-							public static IElement _Name => new Modify($"MaxAnalogPinsCount").AddClasses("Constant").SetAttributeValue("title", "2");
+							public static IElement _Name => new Modify($"MaxAnalogPinsCount").AddClasses("Constant").Attribute("title", "2");
 							public static IElement NameCode => _Name.Modify().Wrap("code");
 							public static System.UInt32 Value => 2;
 							public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 							public static IElement _Value => new Text($"2");
 						} //scope MaxAnalogPinsCount
 						public sealed partial class MaxPulseCounterPinsCount : Scope {
-							public static IElement _Name => new Modify($"MaxPulseCounterPinsCount").AddClasses("Constant").SetAttributeValue("title", "2");
+							public static IElement _Name => new Modify($"MaxPulseCounterPinsCount").AddClasses("Constant").Attribute("title", "2");
 							public static IElement NameCode => _Name.Modify().Wrap("code");
 							public static System.UInt32 Value => 2;
 							public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");
 							public static IElement _Value => new Text($"2");
 						} //scope MaxPulseCounterPinsCount
 						public sealed partial class MaxPwmPinsCount : Scope {
-							public static IElement _Name => new Modify($"MaxPwmPinsCount").AddClasses("Constant").SetAttributeValue("title", "4");
+							public static IElement _Name => new Modify($"MaxPwmPinsCount").AddClasses("Constant").Attribute("title", "4");
 							public static IElement NameCode => _Name.Modify().Wrap("code");
 							public static System.UInt32 Value => 4;
 							public static IElement RawDeclarationCode => new Text($"{Keyword("uint")} {_Name} = {_Value}");

@@ -37,11 +37,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Keyword("byte")} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Keyword("byte")} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 						} //scope Fields
 					} //scope Memory2
@@ -57,11 +57,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory2._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory2._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 						} //scope Fields
 					} //scope Memory4
@@ -77,11 +77,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory4._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory4._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 						} //scope Fields
 					} //scope Memory8
@@ -97,11 +97,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory8._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory8._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 						} //scope Fields
 					} //scope Memory16
@@ -117,11 +117,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 						} //scope Fields
 					} //scope Memory32
@@ -137,11 +137,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 						} //scope Fields
 					} //scope Memory64
@@ -157,11 +157,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory64._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory64._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 						} //scope Fields
 					} //scope Memory128
@@ -177,27 +177,27 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 							public sealed partial class m2 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory8._NameRef} {Name}");
-								public static IElement Name => new Modify($"m2").SetAttributeValue("title", "field m2");
+								public static IElement Name => new Modify($"m2").Attribute("title", "field m2");
 							} //scope m2
 							public sealed partial class m3 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory4._NameRef} {Name}");
-								public static IElement Name => new Modify($"m3").SetAttributeValue("title", "field m3");
+								public static IElement Name => new Modify($"m3").Attribute("title", "field m3");
 							} //scope m3
 							public sealed partial class m5 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory2._NameRef} {Name}");
-								public static IElement Name => new Modify($"m5").SetAttributeValue("title", "field m5");
+								public static IElement Name => new Modify($"m5").Attribute("title", "field m5");
 							} //scope m5
 							public sealed partial class m6 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Keyword("byte")} {Name}");
-								public static IElement Name => new Modify($"m6").SetAttributeValue("title", "field m6");
+								public static IElement Name => new Modify($"m6").Attribute("title", "field m6");
 							} //scope m6
 						} //scope Fields
 					} //scope Memory63
@@ -213,15 +213,15 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory128._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory64._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 							public sealed partial class m2 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory63._NameRef} {Name}");
-								public static IElement Name => new Modify($"m2").SetAttributeValue("title", "field m2");
+								public static IElement Name => new Modify($"m2").Attribute("title", "field m2");
 							} //scope m2
 						} //scope Fields
 					} //scope Memory255
@@ -237,23 +237,23 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class m0 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory32._NameRef} {Name}");
-								public static IElement Name => new Modify($"m0").SetAttributeValue("title", "field m0");
+								public static IElement Name => new Modify($"m0").Attribute("title", "field m0");
 							} //scope m0
 							public sealed partial class m1 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory16._NameRef} {Name}");
-								public static IElement Name => new Modify($"m1").SetAttributeValue("title", "field m1");
+								public static IElement Name => new Modify($"m1").Attribute("title", "field m1");
 							} //scope m1
 							public sealed partial class m2 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory8._NameRef} {Name}");
-								public static IElement Name => new Modify($"m2").SetAttributeValue("title", "field m2");
+								public static IElement Name => new Modify($"m2").Attribute("title", "field m2");
 							} //scope m2
 							public sealed partial class m3 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory4._NameRef} {Name}");
-								public static IElement Name => new Modify($"m3").SetAttributeValue("title", "field m3");
+								public static IElement Name => new Modify($"m3").Attribute("title", "field m3");
 							} //scope m3
 							public sealed partial class m5 : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory2._NameRef} {Name}");
-								public static IElement Name => new Modify($"m5").SetAttributeValue("title", "field m5");
+								public static IElement Name => new Modify($"m5").Attribute("title", "field m5");
 							} //scope m5
 						} //scope Fields
 					} //scope Memory62

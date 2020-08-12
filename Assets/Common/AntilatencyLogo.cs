@@ -1,5 +1,5 @@
 using Csml;
-using HtmlAgilityPack;
+using Htmlilka;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -18,8 +18,24 @@ public class AntilatencyLogo : Element<AntilatencyLogo> {
         PrimaryColor = primaryColor;
         SecondaryColor = secondaryColor;
     }
-    public override IEnumerable<HtmlNode> Generate(Context context) {
-        yield return Root.Index.Generate(context).Single().Do((x) => {
+    public override Node Generate(Context context) {
+        var result = Root.Index.Generate(context) as Tag;
+        result.Children = new List<Node>();
+        result
+            .AddClasses("AntilatencyLogo")
+            .Attribute("style", $"font-family: 'antilatency' !important;")
+            .AddTag("span", x => {
+                x
+                .Attribute("style", $"color: #{PrimaryColor.ToRgbString()}")
+                .AddText("a");
+            })
+            .AddTag("span", x => {
+                x
+                .Attribute("style", $"color: #{SecondaryColor.ToRgbString()}")
+                .AddText("l");
+            });
+        return result;
+        /*yield return Root.Index.Generate(context).Single().Do((x) => {
             x.AddClass("AntilatencyLogo");
             x.InnerHtml = "";
             x.SetAttributeValue("style", $"font-family: 'antilatency' !important;");
@@ -32,6 +48,6 @@ public class AntilatencyLogo : Element<AntilatencyLogo> {
                 x.SetAttributeValue("style", $"color: #{SecondaryColor.ToRgbString()}");
                 x.Add("l");
             });
-        });
+        });*/
     }
 }

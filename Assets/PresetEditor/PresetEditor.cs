@@ -1,4 +1,4 @@
-using HtmlAgilityPack;
+using Htmlilka;
 using System.Collections.Generic;
 
 namespace Csml {
@@ -13,11 +13,10 @@ namespace Csml {
     }
 
     public class PresetEditor<T> : Element<T> where T : PresetEditor<T> {
-        public override IEnumerable<HtmlNode> Generate(Context context) {
-            yield return HtmlNode.CreateNode("<div>").Do(x => {
-                x.AddClass("PresetEditor");
-                x.Add(new PresetEditorBehaviour().Generate(context));
-            });
+        public override Node Generate(Context context) {
+            return new Tag("div")
+                .AddClasses("PresetEditor")
+                .Add(new PresetEditorBehaviour().Generate(context));
         }
     }
 }

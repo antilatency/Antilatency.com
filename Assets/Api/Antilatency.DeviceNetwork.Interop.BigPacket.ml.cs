@@ -29,7 +29,7 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class payload : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory63._NameRef} {Name}");
-								public static IElement Name => new Modify($"payload").SetAttributeValue("title", "field payload");
+								public static IElement Name => new Modify($"payload").Attribute("title", "field payload");
 							} //scope payload
 						} //scope Fields
 					} //scope FullBlock
@@ -45,11 +45,11 @@ public sealed partial class Api : Scope {
 						public sealed partial class Fields : Scope {
 							public sealed partial class payloadSize : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Keyword("byte")} {Name}");
-								public static IElement Name => new Modify($"payloadSize").SetAttributeValue("title", "field payloadSize");
+								public static IElement Name => new Modify($"payloadSize").Attribute("title", "field payloadSize");
 							} //scope payloadSize
 							public sealed partial class payload : Scope {
 								public static IElement RawDeclarationCode => new Text($"{Api.Antilatency.DeviceNetwork.Interop.Memory._NameRef.Modify().ContentReplace($"Memory")}.{Api.Antilatency.DeviceNetwork.Interop.Memory.Memory63._NameRef} {Name}");
-								public static IElement Name => new Modify($"payload").SetAttributeValue("title", "field payload");
+								public static IElement Name => new Modify($"payload").Attribute("title", "field payload");
 							} //scope payload
 						} //scope Fields
 					} //scope PartialBlock

@@ -39,14 +39,14 @@ public sealed partial class Api : Scope {
 							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 							public static IElement CodeInline => CodeInline(RawDeclarationCode);
 							public static IElement RawDeclarationCode => new Text($"{Keyword("pointer")} {_Name}");
-							public static IElement _Name => new Modify($"vm").SetAttributeValue("title", "parameter vm");
+							public static IElement _Name => new Modify($"vm").Attribute("title", "parameter vm");
 							public static IElement NameCode => _Name.Modify().Wrap("code");
 						} //scope vm
 						public sealed partial class context : Scope {
 							public static IElement CodeBlock => CodeBlock(RawDeclarationCode);
 							public static IElement CodeInline => CodeInline(RawDeclarationCode);
 							public static IElement RawDeclarationCode => new Text($"{Keyword("pointer")} {_Name}");
-							public static IElement _Name => new Modify($"context").SetAttributeValue("title", "parameter context");
+							public static IElement _Name => new Modify($"context").Attribute("title", "parameter context");
 							public static IElement NameCode => _Name.Modify().Wrap("code");
 						} //scope context
 					} //scope Parameters
