@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace Csml {
 
@@ -25,7 +26,23 @@ namespace Csml {
 
             var wwwRootUri = new Uri("https://" + Path.GetFileName(workingCopyDirectory) + "/");
 
-            CsmlApplication.ReleaseBuild(GetProjectRootDirectory(), workingCopyDirectory, wwwRootUri);  
+            CsmlApplication.ReleaseBuild(GetProjectRootDirectory(), workingCopyDirectory, wwwRootUri);
+
+            //Add comment with website files build date to index.html => force github.io to update website
+            var indexHtmlPath = Path.Combine(workingCopyDirectory, "index.html");
+            if (File.Exists(indexHtmlPath)) {
+                string startTag = "<!--BuildDate:";
+                string endTag = "-->";
+                string tag = startTag + DateTime.Now.ToString() + endTag;
+
+                var lines = File.ReadAllLines(indexHtmlPath);
+                if (lines.Length == 0 || !lines[0].StartsWith(startTag)) {
+                    lines = lines.Prepend(tag).ToArray();
+                } else {
+                    lines[0] = tag;
+                }
+                File.WriteAllLines(indexHtmlPath, lines);
+            }
         }
 
         public static void DeveloperBuildWatchJsCss(string outputDirectory) {
