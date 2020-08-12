@@ -3,19 +3,30 @@
     "DeployToGithubIoWorkingCopy": {
       "commandName": "Project",
       "commandLineArgs": "DeployToGithubIoWorkingCopy(~D:\\\\antilatency.github.io~);",
-      "nativeDebugging": false
+      "environmentVariables": {
+        "COMPlus_ForceEnc": "1"
+      }
     },
     "DeveloperBuild": {
       "commandName": "Project",
-      "commandLineArgs": "DeveloperBuild(@~D:\\Antilatency.com.Generated~);"
+      "commandLineArgs": "DeveloperBuild(@~D:\\Antilatency.com.Generated~);",
+	  "environmentVariables": {
+        "COMPlus_ForceEnc": "1"
+      }
     },
     "DeveloperBuild_WatchJsCss": {
       "commandName": "Project",
-      "commandLineArgs": "DeveloperBuildWatchJsCss(@~D:\\Antilatency.com.Generated~);"
+      "commandLineArgs": "DeveloperBuildWatchJsCss(@~D:\\Antilatency.com.Generated~);",
+	  "environmentVariables": {
+        "COMPlus_ForceEnc": "1"
+      }
     },
     "WatchJsCssWithoutBuild": {
       "commandName": "Project",
-      "commandLineArgs": "WatchJsCssWithoutBuild(@~D:\\Antilatency.com.Generated~);"
+      "commandLineArgs": "WatchJsCssWithoutBuild(@~D:\\Antilatency.com.Generated~);",
+	  "environmentVariables": {
+        "COMPlus_ForceEnc": "1"
+      }
     }
   }
 }

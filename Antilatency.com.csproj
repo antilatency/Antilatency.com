@@ -10,14 +10,10 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    
     <StartupObject>Csml.Application</StartupObject>
-    
+    <Platforms>x64</Platforms>
   </PropertyGroup>
 
-
-  
-  
   <ItemGroup>
     <PackageReference Include="LibSassHost" Version="1.2.10" />
     <PackageReference Include="LibSassHost.Native.win-x64" Version="1.2.10" />
@@ -33,8 +29,4 @@
     <PackageReference Include="ColorCode.HTML" Version="2.0.6" />
     <PackageReference Include="VideoLibrary" Version="3.0.1" />
   </ItemGroup>
-
-  
-  
-
 </Project>

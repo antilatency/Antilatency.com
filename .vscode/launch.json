@@ -13,6 +13,7 @@
         "args": ["DeveloperBuildWatchJsCss(@~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
+		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
     },
     {
         "name": "DeveloperBuild",
@@ -23,6 +24,7 @@
         "args": ["DeveloperBuild(@~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
+		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
     },
     
     {
@@ -34,6 +36,7 @@
         "args": ["DeployToGithubIoWorkingCopy(@~D:/antilatency.github.io~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
+		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
     }
     ]
 }
