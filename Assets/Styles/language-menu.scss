@@ -7,9 +7,9 @@ nav.language-menu {
     right: 0;
     top: 0;
     z-index: 10;
-    background-color: #eee;
+    background-color: #8c96a0;
     opacity: 0.93;
-    color: #222;
+    color: #081a20;
 
 }
 
@@ -21,5 +21,6 @@ nav.language-menu > *{
     padding-top: 8px;
     padding-bottom: 8px; 
     text-decoration: none; 
-    text-align: right; 
+    font-weight: 400;
+    text-align: center; 
 }
