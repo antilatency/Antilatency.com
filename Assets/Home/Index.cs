@@ -6,9 +6,9 @@ public partial class Root {
     public partial class Index_Assets : Scope {
         public static YoutubeVideo TitleVideo => new YoutubeVideo("qj6S37xIqK0");
 
-        public static IElement AllHardware => new Grid(320, 1, 2, 3, 4)
+        public static IElement AllHardware => new Grid(320, 2, 3, 4)
             [ScopeHelper.GetScopePropertiesOfType<Hardware, ILanguageSelector<IMaterial>>().Where(x=>x.HasTarget).Select(x => new MaterialCard(x))];
-        public static IElement AllTutorials => new Grid(320, 1, 2, 3, 4)
+        public static IElement AllTutorials => new Grid(320, 2, 3, 4)
             [ScopeHelper.GetScopePropertiesOfType<Tutorials, ILanguageSelector<IMaterial>>().Where(x => x.HasTarget).Select(x => new MaterialCard(x))];
         
 

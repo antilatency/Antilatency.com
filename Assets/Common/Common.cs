@@ -61,7 +61,7 @@ partial class Root : Scope {
             ]*/
 
             [new Section("For Developers")
-                [$"{new ExternalReference("https://antilatency.com", "API")}"]
+                [$"{Api.Material}"]
                 [$"{new ExternalReference("https://antilatency.com", "Tutorials")}"]
                 [$"{new ExternalReference("https://antilatency.com", "Tools")}"]
             ]
