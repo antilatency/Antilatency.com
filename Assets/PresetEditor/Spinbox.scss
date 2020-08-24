@@ -50,7 +50,7 @@
 
 .Spinbox {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; //center
     align-items: center;
     padding: 2px;
 
@@ -66,14 +66,14 @@
         border: none;
         text-align: center;
         vertical-align: middle;
-        width: 30px;
+        width: 30%;
         height: 20px;
         cursor: default;
     }
 
     .SpinboxButtonUp {
         //@include SpinboxRoundButton(20px);
-        @include SpinboxSideButton(24px, 20px, true);
+        @include SpinboxSideButton(30%, 20px, true);
 
         &:after {
             @include SpinboxButtonDashSign(8px);
@@ -87,7 +87,7 @@
 
     .SpinboxButtonDown {
         //@include SpinboxRoundButton(20px);
-        @include SpinboxSideButton(24px, 20px, false);
+        @include SpinboxSideButton(30%, 20px, false);
 
         &:after {
             @include SpinboxButtonDashSign(8px);

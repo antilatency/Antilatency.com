@@ -479,6 +479,9 @@ function PresetEditor(presetEditor) {
 
         const defaultImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY2BgYAAAAAQAAVzN/2kAAAAASUVORK5CYII=";
         const productName = store.GetProductName(name);
+        const productImageData = store.GetProductImage(name);
+
+        const productImageSrc = productImageData ? productImageData.Source : defaultImage;
 
         var productView = item.appendChild(CreateElement("div", "ProductViewContainer"));
         var badge = productView.appendChild(CreateElement("div", "ProductBadge DragArea DropArea"));
@@ -491,11 +494,14 @@ function PresetEditor(presetEditor) {
         var badgeTooltipPrice = badgeTooltipContainer.appendChild(CreateElement("div", "ProductBadgePrice"));
 
         var badgeImage = badge.appendChild(CreateElement("img", "ProductBadgeImage"));
-        var badgeTitle = badge.appendChild(CreateElement("div", "ProductBadgeTitle"));
 
-        badgeImage.src = defaultImage;
+        badgeImage.src = productImageSrc;
         badgeTooltipTitle.textContent = productName;
-        badgeTitle.textContent = productName;
+
+        if (!productImageData) {
+            var badgeTitle = badge.appendChild(CreateElement("div", "ProductBadgeTitle"));
+            badgeTitle.textContent = productName;
+        }
 
         badgeTooltipPriceBreak.textContent = "$000";
         badgeTooltipPrice.textContent = "$000";
@@ -518,7 +524,7 @@ function PresetEditor(presetEditor) {
         });
         var viewCounter = card.appendChild(spinbox.container);
 
-        cardContentImage.src = defaultImage;
+        cardContentImage.src = productImageSrc;
 
         cardContentInfoPriceBreak.textContent = "$000";
         cardContentInfoPriceBreak.id = "priceBreak";
@@ -530,6 +536,11 @@ function PresetEditor(presetEditor) {
 
         cardContentPriceTotal.textContent = "$000";
         cardContentPriceTotal.id = "priceTotal";
+
+        /*if (productImageData && productImageData.Roi) {
+            Behaviour.InitializeInternal("RoiImage", cardContent, productImageData.Aspect, productImageData.Roi);
+            Behaviour.InitializeInternal("RoiImage", badge, productImageData.Aspect, productImageData.Roi);
+        }*/
 
         return item;
     }
@@ -546,31 +557,34 @@ function PresetEditor(presetEditor) {
         counter.id = "counter";
         counter.textContent = quantity;
 
-        var spinbox = new Spinbox(quantity, "", (value) => {
-            group.setAttribute("quantity", value);
-            counter.textContent = value;
-            UpdatePrices();
-        });
-
-        spinbox.container.classList.add("Hide");
-        spinbox.container.classList.add("SpinboxRoundButtons");
-        spinbox.container.style.float = "right";
-
-        head.appendChild(spinbox.container);
+        var counterEditor = head.appendChild(CreateElement("input", "GroupCounterEditor Hide"));
+        //SetInputFilter(counterEditor, (v) => /^\d+$/.test(v));
 
         counter.onclick = function (e) {
-            spinbox.input.value = counter.textContent;
-            spinbox.container.classList.remove("Hide");
+            counterEditor.value = counter.textContent;
+            counterEditor.classList.remove("Hide");
+            counterEditor.focus();
             title.classList.add("Hide");
             counter.classList.add("Hide");   
         }
 
-        spinbox.input.onblur = function () {
-            title.classList.remove("Hide");
-            counter.classList.remove("Hide");
-            spinbox.container.classList.add("Hide");
+        counterEditor.onchange = function () {
+            var value = parseInt(counterEditor.value);
+            if (isNaN(value) || value < 1) {
+                value = 1;
+            }
+
+            group.setAttribute("quantity", value);
+            counter.textContent = value;
+            counterEditor.onblur();
+            UpdatePrices();
         }
 
+        counterEditor.onblur = function () {
+            title.classList.remove("Hide");
+            counter.classList.remove("Hide");
+            counterEditor.classList.add("Hide");
+        }
 
         title.onclick = function () {
             titleEditor.classList.remove("Hide");
@@ -687,6 +701,12 @@ function PresetEditor(presetEditor) {
         buy.onclick = () => alert("No");
     }
 
+    function ResizeProductCards() {
+        document.querySelectorAll(".ProductCard").forEach(card => {
+            card.style.width = Math.min(Math.max(presetEditor.offsetWidth / 5, 80), 160) + "px";
+        });
+    }
+
     presetEditor.style.overflow = "auto";
 
     var workspace = presetEditor.appendChild(CreateElement("div", "EditorWorkspace"));
@@ -698,12 +718,14 @@ function PresetEditor(presetEditor) {
     UpdatePrices();
     InputController();
 
+    ResizeProductCards();
+
 
     this.Head = new RegExp('((".+")|(\w+))\s*(\:\s*\d+)?\s*');
 
 
     this.OnWindowResize = function () {
-
+        ResizeProductCards();
     }
 
     this.OnDOMContentLoaded = function (event) {

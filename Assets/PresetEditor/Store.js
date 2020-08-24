@@ -1,42 +1,46 @@
 
 function Store() {
     this.products = {
-        ACHA0Alt__A: {
-            Name: "Alt",
-            Prices: [{ From: 1, Price: 650 }, { From: 4, Price: 598 }, { From: 16, Price: 550 }, { From: 64, Price: 506 }, { From: 256, Price: 466 }, { From: 1024, Price: 428 }]
-        },
-        ACHA0Socket__A: {
-            Name: "USB PC Socket",
-            Prices: [{ From: 1, Price: 50 }, { From: 4, Price: 46 }, { From: 16, Price: 42 }, { From: 64, Price: 39 }, { From: 256, Price: 36 }, { From: 1024, Price: 33 }]
-        },
-        ACHA0RadioSocket__A: {
-            Name: "HMD Radio Socket",
-            Prices: [{ From: 1, Price: 75 }, { From: 4, Price: 69 }, { From: 16, Price: 63 }, { From: 64, Price: 58 }, { From: 256, Price: 54 }, { From: 1024, Price: 49 }]
-        },
-        ACHA0Socket__RA: {
-            Name: "Tag",
-            Prices: [{ From: 1, Price: 75 }, { From: 4, Price: 69 }, { From: 16, Price: 63 }, { From: 64, Price: 58 }, { From: 256, Price: 54 }, { From: 1024, Price: 49 }]
-        },
-        ACHA0Bracer__RA: {
-            Name: "Bracer",
-            Prices: [{ From: 1, Price: 90 }, { From: 4, Price: 83 }, { From: 16, Price: 76 }, { From: 64, Price: 70 }, { From: 256, Price: 64 }, { From: 1024, Price: 59 }]
-        },
-        ACHA0PicoG2Socket__A: {
-            Name: "Pico G2 Socket",
-            Prices: [{ From: 1, Price: 75 }, { From: 4, Price: 69 }, { From: 16, Price: 63 }, { From: 64, Price: 58 }, { From: 256, Price: 54 }, { From: 1024, Price: 49 }]
-        },
-        TrackingArea10m2: {
-            Name: "Tracking area 10m2",
-            Prices: [{ From: 1, Price: 250 }]
-        },
-
         Group: {
             Name: "Group",
             Prices: [{ From: 1, Price: 0 }]
         }
     };
 
-    this.GetProductName = function(productId) {
+    document.querySelectorAll("product-data").forEach(data => {
+        var product = Object.create({});
+        product.Name = data.getAttribute("name");
+        product.Prices = Array.prototype.map.call(data.querySelectorAll("price"), element => ({
+            From: parseInt(element.getAttribute("count")),
+            Price: parseFloat(element.textContent)
+        }));
+
+        var image = data.querySelector("img");
+
+        if (image != null) {
+            product.Image = Object.create({});
+
+            product.Image.Source = image.getAttribute("source");
+            product.Image.Aspect = parseFloat(image.getAttribute("aspect"));
+            product.Image.Roi = JSON.parse(image.getAttribute("Roi"));
+        }
+
+        Object.defineProperty(this.products, data.getAttribute("id"), {
+            value: product,
+            writable: false,
+            enumerable: true
+        });
+    });
+
+    //console.log(this.products);
+
+    this.GetProductImage = function (productId) {
+        var productInfo = this.products[productId];
+
+        return productInfo ? productInfo.Image : null;
+    }
+
+    this.GetProductName = function (productId) {
         var productInfo = this.products[productId];
 
         return productInfo ? productInfo.Name : "";
@@ -53,13 +57,14 @@ function Store() {
 
         for (let i = 0; i < productInfo.Prices.length; i++) {
             let priceInfo = productInfo.Prices[i];
+            productPriceOld = Math.max(productPriceOld, priceInfo.Price);
 
             if (priceInfo.From <= productQuantityGlobal) {
-                if (productPriceOld == 0 || productPrice == 0) {
+                /*if (productPriceOld == 0 || productPrice == 0) {
                     productPriceOld = Math.max(productPriceOld, productPrice);
                 } else {
                     productPriceOld = Math.min(productPriceOld, productPrice);
-                }
+                }*/
 
                 productPrice = priceInfo.Price;
             }
