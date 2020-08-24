@@ -464,6 +464,10 @@ function PresetEditor(presetEditor) {
         document.addEventListener("click", OnClick, false);
     }
 
+    function ResizeProductCard(card) {
+        card.style.width = Math.min(Math.max(presetEditor.offsetWidth / 5, 80), 160) + "px";
+    } 
+
     this.CreateItem = function (parent, name, quantity, className) {
         var item = parent.appendChild(document.createElement("item"));
         item.setAttribute("quantity", quantity);
@@ -541,6 +545,8 @@ function PresetEditor(presetEditor) {
             Behaviour.InitializeInternal("RoiImage", cardContent, productImageData.Aspect, productImageData.Roi);
             Behaviour.InitializeInternal("RoiImage", badge, productImageData.Aspect, productImageData.Roi);
         }*/
+
+        ResizeProductCard(card);
 
         return item;
     }
@@ -702,9 +708,7 @@ function PresetEditor(presetEditor) {
     }
 
     function ResizeProductCards() {
-        document.querySelectorAll(".ProductCard").forEach(card => {
-            card.style.width = Math.min(Math.max(presetEditor.offsetWidth / 5, 80), 160) + "px";
-        });
+        document.querySelectorAll(".ProductCard").forEach(ResizeProductCard);
     }
 
     presetEditor.style.overflow = "auto";
