@@ -188,8 +188,12 @@ function PresetEditor(presetEditor) {
         var pointedElement = null;
         var pointedGroup = null;
 
+        const dragTouchStartDelay = 700;
+
         var dragActive = false;
         var dragStartPoint = { x: 0, y: 0 };
+        var dragStartTime = 0;
+        var dragStartTimer = null;
         var draggedItem = null;
         var draggedItemName = "";
         var draggedItemIsProduct = false;
@@ -312,9 +316,17 @@ function PresetEditor(presetEditor) {
                 draggedItemFromProductsView = GetClosestParent(draggedItem, ".ProductsView") != null;
 
                 dragStartPoint = GetPointFromEvent(event);
+                dragStartTime = new Date().getTime();
 
                 if (draggedItemFromProductsView) {
                     draggedItem.classList.add("ShowProductBadgeTooltipArrow");
+                }
+
+                if (event instanceof TouchEvent) {
+                    dragStartTimer = setTimeout(() => {
+                        SetDragActive(true);
+                        OnMove(event);
+                    }, dragTouchStartDelay);
                 }
             }
         }
@@ -335,13 +347,23 @@ function PresetEditor(presetEditor) {
 
                     updateDraggedItemPosition = true;
                 } else {
-                    if (isTouchEvent && draggedItemFromProductsView) {
-                        const beginHorizontalMove = Math.abs(point.x - dragStartPoint.x) >= 40 && Math.abs(point.y - dragStartPoint.y) < 60;
+                    if (dragStartTimer) {
+                        var x = point.x - dragStartPoint.x;
+                        var y = point.y - dragStartPoint.y;
+
+                        if (Math.sqrt(x * x + y * y) > 10) {
+                            clearTimeout(dragStartTimer);
+                            dragStartTimer = null;
+                        }
+                    }
+
+                    if (isTouchEvent /*&& draggedItemFromProductsView*/) {
+                        /*const beginHorizontalMove = Math.abs(point.x - dragStartPoint.x) >= 40 && Math.abs(point.y - dragStartPoint.y) < 60;
 
                         if (beginHorizontalMove) {
                             SetDragActive(true);
                             updateDraggedItemPosition = true;
-                        }
+                        }*/
                     } else {
                         const beginMove = Math.abs(point.x - dragStartPoint.x) >= 10 || Math.abs(point.y - dragStartPoint.y) >= 10;
 
@@ -421,6 +443,8 @@ function PresetEditor(presetEditor) {
                 Drop(event instanceof TouchEvent ? pointedElement : event.target);
             }
 
+            clearTimeout(dragStartTimer);
+            dragStartTimer = null;
             SetDragActive(false);
 
             if (!IsEmptyObject(draggedItem)) {
@@ -442,7 +466,6 @@ function PresetEditor(presetEditor) {
                 HideProductBadgeTooltip();
             }
         }
-
 
         var supportsPassive = false;
         try {
@@ -570,6 +593,7 @@ function PresetEditor(presetEditor) {
             counterEditor.value = counter.textContent;
             counterEditor.classList.remove("Hide");
             counterEditor.focus();
+            counterEditor.select();
             title.classList.add("Hide");
             counter.classList.add("Hide");   
         }
