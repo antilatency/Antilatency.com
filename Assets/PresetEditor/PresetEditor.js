@@ -48,7 +48,10 @@ function PresetEditor(presetEditor) {
 
     function CreateElement(tag, className) {
         var element = document.createElement(tag);
-        element.className = className;
+
+        if (className) {
+            element.className = className;
+        }
 
         return element;
     }
@@ -184,11 +187,63 @@ function PresetEditor(presetEditor) {
         UpdateCheckoutPrices(UpdateGroupPricesRecursively(presetEditorRootGroup));
     }
 
+    function TouchProgressIndicator(parent, x, y, timeSec) {
+        const size = 80;
+        const halfSize = size / 2;
+        const stroke = 4;
+        const radius = halfSize - (stroke * 2);
+        const progressLength = radius * 2.0 * Math.PI;
+
+        this.parent = parent;
+
+        this.svg = this.parent.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
+        this.circle = this.svg.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
+
+        this.svg.setAttribute("width", size);
+        this.svg.setAttribute("height", size);
+        this.svg.style.position = "fixed";
+        this.svg.style.top = (y - halfSize) + "px";
+        this.svg.style.left = (x - halfSize) + "px";
+        this.svg.style.zIndex = 100;
+
+        this.circle.setAttribute("stroke", "#b3e2fbbf");
+        this.circle.setAttribute("stroke-width", stroke);
+        this.circle.setAttribute("stroke-linecap", "round");
+        this.circle.setAttribute("fill", "transparent");
+        this.circle.setAttribute("r", radius);
+        this.circle.setAttribute("cx", halfSize);
+        this.circle.setAttribute("cy", halfSize);
+
+        this.circle.style.transition = timeSec + "s stroke-dashoffset";
+        this.circle.style.transform = "rotate(-90deg)";
+        this.circle.style.transformOrigin = "50% 50%";
+        this.circle.style.strokeDasharray = `${progressLength} ${progressLength}`;
+        this.circle.style.strokeDashoffset = `${progressLength}`;
+
+
+        this.StartAnimation = function () {
+            //hack 
+            //flush css changes
+            window.getComputedStyle(this.circle).transform;
+
+
+            this.circle.style.strokeDashoffset = 0;
+        }
+
+        this.Remove = function () {
+            this.parent.removeChild(this.svg);
+            this.circle = null;
+            this.svg = null;
+        }
+    }
+
     function InputController() {
         var pointedElement = null;
         var pointedGroup = null;
 
         const dragTouchStartDelay = 700;
+
+        var dragTouchIndicator = null;
 
         var dragActive = false;
         var dragStartPoint = { x: 0, y: 0 };
@@ -326,7 +381,15 @@ function PresetEditor(presetEditor) {
                     dragStartTimer = setTimeout(() => {
                         SetDragActive(true);
                         OnMove(event);
+
+                        if (dragTouchIndicator != null) {
+                            dragTouchIndicator.Remove();
+                            dragTouchIndicator = null;
+                        }
                     }, dragTouchStartDelay);
+
+                    dragTouchIndicator = new TouchProgressIndicator(document.body, dragStartPoint.x, dragStartPoint.y, dragTouchStartDelay / 1000.0);
+                    dragTouchIndicator.StartAnimation();
                 }
             }
         }
@@ -354,6 +417,11 @@ function PresetEditor(presetEditor) {
                         if (Math.sqrt(x * x + y * y) > 10) {
                             clearTimeout(dragStartTimer);
                             dragStartTimer = null;
+
+                            if (dragTouchIndicator != null) {
+                                dragTouchIndicator.Remove();
+                                dragTouchIndicator = null;
+                            }
                         }
                     }
 
@@ -445,6 +513,12 @@ function PresetEditor(presetEditor) {
 
             clearTimeout(dragStartTimer);
             dragStartTimer = null;
+
+            if (dragTouchIndicator != null) {
+                dragTouchIndicator.Remove();
+                dragTouchIndicator = null;
+            }
+
             SetDragActive(false);
 
             if (!IsEmptyObject(draggedItem)) {
