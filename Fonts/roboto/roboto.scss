@@ -1,10 +1,10 @@
-@mixin src($fileName,$localNames...){
+/*@mixin src($fileName,$localNames...){
     $sources: ();
     @each $n in $localNames {
         $sources: append($sources, local($n), $separator: comma);
     }
-    $sources: append($sources, url($current-directory+'/'+$fileName+'.woff2') format('woff2'), $separator: comma);
-    $sources: append($sources, url($current-directory+'/'+$fileName+'.woff') format('woff'), $separator: comma);
+    //$sources: append($sources, url($current-directory+'/'+$fileName+'.woff2') format('woff2'), $separator: comma);
+    //$sources: append($sources, url($current-directory+'/'+$fileName+'.woff') format('woff'), $separator: comma);
     $sources: append($sources, url($current-directory+'/'+$fileName+'.ttf') format('truetype'), $separator: comma);
     src: $sources
 }
@@ -33,4 +33,102 @@
 @include roboto-font-face(italic,700,'Robotobolditalic','Roboto Bold Italic','Roboto-BoldItalic');
 
 @include roboto-font-face(normal,900,'Robotoblack','Roboto Black','Roboto-Black');
-@include roboto-font-face(italic,900,'Robotoblackitalic','Roboto Black Italic','Roboto-BlackItalic');
+@include roboto-font-face(italic,900,'Robotoblackitalic','Roboto Black Italic','Roboto-BlackItalic');*/
+
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-BlackItalic.eot');
+    src: local('Roboto Black Italic'), local('Roboto-BlackItalic'), url($current-directory+'/'+'Roboto-BlackItalic.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-BlackItalic.woff2') format('woff2'), url($current-directory+'/'+'Roboto-BlackItalic.woff') format('woff'), url($current-directory+'/'+'Roboto-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-Bold.eot');
+    src: local('Roboto Bold'), local('Roboto-Bold'), url($current-directory+'/'+'Roboto-Bold.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-Bold.woff2') format('woff2'), url($current-directory+'/'+'Roboto-Bold.woff') format('woff'), url($current-directory+'/'+'Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-BoldItalic.eot');
+    src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'), url($current-directory+'/'+'Roboto-BoldItalic.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-BoldItalic.woff2') format('woff2'), url($current-directory+'/'+'Roboto-BoldItalic.woff') format('woff'), url($current-directory+'/'+'Roboto-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-LightItalic.eot');
+    src: local('Roboto Light Italic'), local('Roboto-LightItalic'), url($current-directory+'/'+'Roboto-LightItalic.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-LightItalic.woff2') format('woff2'), url($current-directory+'/'+'Roboto-LightItalic.woff') format('woff'), url($current-directory+'/'+'Roboto-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-Regular.eot');
+    src: local('Roboto'), local('Roboto-Regular'), url($current-directory+'/'+'Roboto-Regular.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-Regular.woff2') format('woff2'), url($current-directory+'/'+'Roboto-Regular.woff') format('woff'), url($current-directory+'/'+'Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-ThinItalic.eot');
+    src: local('Roboto Thin Italic'), local('Roboto-ThinItalic'), url($current-directory+'/'+'Roboto-ThinItalic.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-ThinItalic.woff2') format('woff2'), url($current-directory+'/'+'Roboto-ThinItalic.woff') format('woff'), url($current-directory+'/'+'Roboto-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-Black.eot');
+    src: local('Roboto Black'), local('Roboto-Black'), url($current-directory+'/'+'Roboto-Black.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-Black.woff2') format('woff2'), url($current-directory+'/'+'Roboto-Black.woff') format('woff'), url($current-directory+'/'+'Roboto-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-MediumItalic.eot');
+    src: local('Roboto Medium Italic'), local('Roboto-MediumItalic'), url($current-directory+'/'+'Roboto-MediumItalic.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-MediumItalic.woff2') format('woff2'), url($current-directory+'/'+'Roboto-MediumItalic.woff') format('woff'), url($current-directory+'/'+'Roboto-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-Thin.eot');
+    src: local('Roboto Thin'), local('Roboto-Thin'), url($current-directory+'/'+'Roboto-Thin.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-Thin.woff2') format('woff2'), url($current-directory+'/'+'Roboto-Thin.woff') format('woff'), url($current-directory+'/'+'Roboto-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-Light.eot');
+    src: local('Roboto Light'), local('Roboto-Light'), url($current-directory+'/'+'Roboto-Light.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-Light.woff2') format('woff2'), url($current-directory+'/'+'Roboto-Light.woff') format('woff'), url($current-directory+'/'+'Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-Italic.eot');
+    src: local('Roboto Italic'), local('Roboto-Italic'), url($current-directory+'/'+'Roboto-Italic.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-Italic.woff2') format('woff2'), url($current-directory+'/'+'Roboto-Italic.woff') format('woff'), url($current-directory+'/'+'Roboto-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url($current-directory+'/'+'Roboto-Medium.eot');
+    src: local('Roboto Medium'), local('Roboto-Medium'), url($current-directory+'/'+'Roboto-Medium.eot?#iefix') format('embedded-opentype'), url($current-directory+'/'+'Roboto-Medium.woff2') format('woff2'), url($current-directory+'/'+'Roboto-Medium.woff') format('woff'), url($current-directory+'/'+'Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
