@@ -39,7 +39,7 @@ namespace Csml {
 
             if (materialImage != null) {
                 var cache = materialImage.GetCache();
-                var image = new Tag("image")
+                var image = new Tag("image-data")
                     .Attribute("source", cache.GetFileUri(cache.Mips.First().Value).ToString())
                     .Attribute("aspect", cache.Aspect.ToString());
 

@@ -15,7 +15,7 @@ function Store() {
             Price: parseFloat(element.textContent)
         }));
 
-        var image = data.querySelector("img");
+        var image = data.querySelector("image-data");
 
         if (image != null) {
             product.Image = Object.create({});

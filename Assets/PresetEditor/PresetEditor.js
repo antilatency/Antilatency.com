@@ -541,6 +541,12 @@ function PresetEditor(presetEditor) {
             }
         }
 
+        var OnContextMenu = function (event) {
+            if ((dragTouchIndicator != null || dragActive) && event.cancelable) {
+                event.preventDefault();
+            }
+        }
+
         var supportsPassive = false;
         try {
             window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
@@ -559,6 +565,7 @@ function PresetEditor(presetEditor) {
         document.addEventListener("mouseup", OnTouchEnd, false);
 
         document.addEventListener("click", OnClick, false);
+        document.addEventListener("contextmenu", OnContextMenu, false);
     }
 
     function ResizeProductCard(card) {
