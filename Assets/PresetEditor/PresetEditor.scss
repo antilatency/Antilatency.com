@@ -122,6 +122,15 @@
                 cursor: pointer;
                 text-decoration: underline;
             }
+
+            .GroupCounterEditor {
+                position: relative;
+                float: right;
+                display: inline;
+                text-align: center;
+                z-index: 2;
+                width: 50px;
+            }
         }
 
         .GroupContainer {

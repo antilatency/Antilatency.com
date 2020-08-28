@@ -48,7 +48,10 @@ function PresetEditor(presetEditor) {
 
     function CreateElement(tag, className) {
         var element = document.createElement(tag);
-        element.className = className;
+
+        if (className) {
+            element.className = className;
+        }
 
         return element;
     }
@@ -184,12 +187,68 @@ function PresetEditor(presetEditor) {
         UpdateCheckoutPrices(UpdateGroupPricesRecursively(presetEditorRootGroup));
     }
 
+    function TouchProgressIndicator(parent, x, y, timeSec) {
+        const size = 80;
+        const halfSize = size / 2;
+        const stroke = 4;
+        const radius = halfSize - (stroke * 2);
+        const progressLength = radius * 2.0 * Math.PI;
+
+        this.parent = parent;
+
+        this.svg = this.parent.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
+        this.circle = this.svg.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "circle"));
+
+        this.svg.setAttribute("width", size);
+        this.svg.setAttribute("height", size);
+        this.svg.style.position = "fixed";
+        this.svg.style.top = (y - halfSize) + "px";
+        this.svg.style.left = (x - halfSize) + "px";
+        this.svg.style.zIndex = 100;
+
+        this.circle.setAttribute("stroke", "#b3e2fbbf");
+        this.circle.setAttribute("stroke-width", stroke);
+        this.circle.setAttribute("stroke-linecap", "round");
+        this.circle.setAttribute("fill", "transparent");
+        this.circle.setAttribute("r", radius);
+        this.circle.setAttribute("cx", halfSize);
+        this.circle.setAttribute("cy", halfSize);
+
+        this.circle.style.transition = timeSec + "s stroke-dashoffset";
+        this.circle.style.transform = "rotate(-90deg)";
+        this.circle.style.transformOrigin = "50% 50%";
+        this.circle.style.strokeDasharray = `${progressLength} ${progressLength}`;
+        this.circle.style.strokeDashoffset = `${progressLength}`;
+
+
+        this.StartAnimation = function () {
+            //hack 
+            //flush css changes
+            window.getComputedStyle(this.circle).transform;
+
+
+            this.circle.style.strokeDashoffset = 0;
+        }
+
+        this.Remove = function () {
+            this.parent.removeChild(this.svg);
+            this.circle = null;
+            this.svg = null;
+        }
+    }
+
     function InputController() {
         var pointedElement = null;
         var pointedGroup = null;
 
+        const dragTouchStartDelay = 700;
+
+        var dragTouchIndicator = null;
+
         var dragActive = false;
         var dragStartPoint = { x: 0, y: 0 };
+        var dragStartTime = 0;
+        var dragStartTimer = null;
         var draggedItem = null;
         var draggedItemName = "";
         var draggedItemIsProduct = false;
@@ -312,9 +371,25 @@ function PresetEditor(presetEditor) {
                 draggedItemFromProductsView = GetClosestParent(draggedItem, ".ProductsView") != null;
 
                 dragStartPoint = GetPointFromEvent(event);
+                dragStartTime = new Date().getTime();
 
                 if (draggedItemFromProductsView) {
                     draggedItem.classList.add("ShowProductBadgeTooltipArrow");
+                }
+
+                if (event instanceof TouchEvent) {
+                    dragStartTimer = setTimeout(() => {
+                        SetDragActive(true);
+                        OnMove(event);
+
+                        if (dragTouchIndicator != null) {
+                            dragTouchIndicator.Remove();
+                            dragTouchIndicator = null;
+                        }
+                    }, dragTouchStartDelay);
+
+                    dragTouchIndicator = new TouchProgressIndicator(document.body, dragStartPoint.x, dragStartPoint.y, dragTouchStartDelay / 1000.0);
+                    dragTouchIndicator.StartAnimation();
                 }
             }
         }
@@ -335,13 +410,28 @@ function PresetEditor(presetEditor) {
 
                     updateDraggedItemPosition = true;
                 } else {
-                    if (isTouchEvent && draggedItemFromProductsView) {
-                        const beginHorizontalMove = Math.abs(point.x - dragStartPoint.x) >= 40 && Math.abs(point.y - dragStartPoint.y) < 60;
+                    if (dragStartTimer) {
+                        var x = point.x - dragStartPoint.x;
+                        var y = point.y - dragStartPoint.y;
+
+                        if (Math.sqrt(x * x + y * y) > 10) {
+                            clearTimeout(dragStartTimer);
+                            dragStartTimer = null;
+
+                            if (dragTouchIndicator != null) {
+                                dragTouchIndicator.Remove();
+                                dragTouchIndicator = null;
+                            }
+                        }
+                    }
+
+                    if (isTouchEvent /*&& draggedItemFromProductsView*/) {
+                        /*const beginHorizontalMove = Math.abs(point.x - dragStartPoint.x) >= 40 && Math.abs(point.y - dragStartPoint.y) < 60;
 
                         if (beginHorizontalMove) {
                             SetDragActive(true);
                             updateDraggedItemPosition = true;
-                        }
+                        }*/
                     } else {
                         const beginMove = Math.abs(point.x - dragStartPoint.x) >= 10 || Math.abs(point.y - dragStartPoint.y) >= 10;
 
@@ -421,6 +511,14 @@ function PresetEditor(presetEditor) {
                 Drop(event instanceof TouchEvent ? pointedElement : event.target);
             }
 
+            clearTimeout(dragStartTimer);
+            dragStartTimer = null;
+
+            if (dragTouchIndicator != null) {
+                dragTouchIndicator.Remove();
+                dragTouchIndicator = null;
+            }
+
             SetDragActive(false);
 
             if (!IsEmptyObject(draggedItem)) {
@@ -443,7 +541,6 @@ function PresetEditor(presetEditor) {
             }
         }
 
-
         var supportsPassive = false;
         try {
             window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
@@ -464,6 +561,10 @@ function PresetEditor(presetEditor) {
         document.addEventListener("click", OnClick, false);
     }
 
+    function ResizeProductCard(card) {
+        card.style.width = Math.min(Math.max(presetEditor.offsetWidth / 5, 80), 160) + "px";
+    } 
+
     this.CreateItem = function (parent, name, quantity, className) {
         var item = parent.appendChild(document.createElement("item"));
         item.setAttribute("quantity", quantity);
@@ -479,6 +580,9 @@ function PresetEditor(presetEditor) {
 
         const defaultImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY2BgYAAAAAQAAVzN/2kAAAAASUVORK5CYII=";
         const productName = store.GetProductName(name);
+        const productImageData = store.GetProductImage(name);
+
+        const productImageSrc = productImageData ? productImageData.Source : defaultImage;
 
         var productView = item.appendChild(CreateElement("div", "ProductViewContainer"));
         var badge = productView.appendChild(CreateElement("div", "ProductBadge DragArea DropArea"));
@@ -491,11 +595,14 @@ function PresetEditor(presetEditor) {
         var badgeTooltipPrice = badgeTooltipContainer.appendChild(CreateElement("div", "ProductBadgePrice"));
 
         var badgeImage = badge.appendChild(CreateElement("img", "ProductBadgeImage"));
-        var badgeTitle = badge.appendChild(CreateElement("div", "ProductBadgeTitle"));
 
-        badgeImage.src = defaultImage;
+        badgeImage.src = productImageSrc;
         badgeTooltipTitle.textContent = productName;
-        badgeTitle.textContent = productName;
+
+        if (!productImageData) {
+            var badgeTitle = badge.appendChild(CreateElement("div", "ProductBadgeTitle"));
+            badgeTitle.textContent = productName;
+        }
 
         badgeTooltipPriceBreak.textContent = "$000";
         badgeTooltipPrice.textContent = "$000";
@@ -518,7 +625,7 @@ function PresetEditor(presetEditor) {
         });
         var viewCounter = card.appendChild(spinbox.container);
 
-        cardContentImage.src = defaultImage;
+        cardContentImage.src = productImageSrc;
 
         cardContentInfoPriceBreak.textContent = "$000";
         cardContentInfoPriceBreak.id = "priceBreak";
@@ -530,6 +637,13 @@ function PresetEditor(presetEditor) {
 
         cardContentPriceTotal.textContent = "$000";
         cardContentPriceTotal.id = "priceTotal";
+
+        /*if (productImageData && productImageData.Roi) {
+            Behaviour.InitializeInternal("RoiImage", cardContent, productImageData.Aspect, productImageData.Roi);
+            Behaviour.InitializeInternal("RoiImage", badge, productImageData.Aspect, productImageData.Roi);
+        }*/
+
+        ResizeProductCard(card);
 
         return item;
     }
@@ -546,31 +660,35 @@ function PresetEditor(presetEditor) {
         counter.id = "counter";
         counter.textContent = quantity;
 
-        var spinbox = new Spinbox(quantity, "", (value) => {
-            group.setAttribute("quantity", value);
-            counter.textContent = value;
-            UpdatePrices();
-        });
-
-        spinbox.container.classList.add("Hide");
-        spinbox.container.classList.add("SpinboxRoundButtons");
-        spinbox.container.style.float = "right";
-
-        head.appendChild(spinbox.container);
+        var counterEditor = head.appendChild(CreateElement("input", "GroupCounterEditor Hide"));
+        //SetInputFilter(counterEditor, (v) => /^\d+$/.test(v));
 
         counter.onclick = function (e) {
-            spinbox.input.value = counter.textContent;
-            spinbox.container.classList.remove("Hide");
+            counterEditor.value = counter.textContent;
+            counterEditor.classList.remove("Hide");
+            counterEditor.focus();
+            counterEditor.select();
             title.classList.add("Hide");
             counter.classList.add("Hide");   
         }
 
-        spinbox.input.onblur = function () {
-            title.classList.remove("Hide");
-            counter.classList.remove("Hide");
-            spinbox.container.classList.add("Hide");
+        counterEditor.onchange = function () {
+            var value = parseInt(counterEditor.value);
+            if (isNaN(value) || value < 1) {
+                value = 1;
+            }
+
+            group.setAttribute("quantity", value);
+            counter.textContent = value;
+            counterEditor.onblur();
+            UpdatePrices();
         }
 
+        counterEditor.onblur = function () {
+            title.classList.remove("Hide");
+            counter.classList.remove("Hide");
+            counterEditor.classList.add("Hide");
+        }
 
         title.onclick = function () {
             titleEditor.classList.remove("Hide");
@@ -687,6 +805,10 @@ function PresetEditor(presetEditor) {
         buy.onclick = () => alert("No");
     }
 
+    function ResizeProductCards() {
+        document.querySelectorAll(".ProductCard").forEach(ResizeProductCard);
+    }
+
     presetEditor.style.overflow = "auto";
 
     var workspace = presetEditor.appendChild(CreateElement("div", "EditorWorkspace"));
@@ -698,12 +820,14 @@ function PresetEditor(presetEditor) {
     UpdatePrices();
     InputController();
 
+    ResizeProductCards();
+
 
     this.Head = new RegExp('((".+")|(\w+))\s*(\:\s*\d+)?\s*');
 
 
     this.OnWindowResize = function () {
-
+        ResizeProductCards();
     }
 
     this.OnDOMContentLoaded = function (event) {
