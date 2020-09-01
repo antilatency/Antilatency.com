@@ -15,6 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dependencies\**\*"/>
+	<ProjectReference Include="Dependencies\Csml\Src\Csml.csproj" />
+  </ItemGroup> 
+
+
+  <ItemGroup>
     <PackageReference Include="LibSassHost" Version="1.2.10" />
     <PackageReference Include="LibSassHost.Native.win-x64" Version="1.2.10" />
     <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.15.4" />

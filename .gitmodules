@@ -2,6 +2,3 @@
 	path = Dependencies/Csml
 	url = https://github.com/antilatency/Csml.git
 	branch = master
-[submodule "Dependencies/Htmlilka"]
-	path = Dependencies/Htmlilka
-	url = https://github.com/antilatency/Htmlilka.git
