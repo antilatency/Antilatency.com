@@ -1,6 +1,9 @@
 //group F0626 F0A3E
 
 .PresetEditor {
+    //disabale logpress context menu on iOS
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 
     .DragArea {
         cursor: move;
