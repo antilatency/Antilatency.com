@@ -10,7 +10,6 @@ public partial class Root {
             [ScopeHelper.GetScopePropertiesOfType<Hardware, ILanguageSelector<IMaterial>>().Where(x=>x.HasTarget).Select(x => new MaterialCard(x))];
         public static IElement AllTutorials => new Grid(320, 2, 3, 4)
             [ScopeHelper.GetScopePropertiesOfType<Tutorials, ILanguageSelector<IMaterial>>().Where(x => x.HasTarget).Select(x => new MaterialCard(x))];
-        
 
     }
 

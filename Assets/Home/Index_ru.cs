@@ -1,5 +1,4 @@
 ﻿using Csml;
-using System.Linq;
 using static Root.Index_Assets;
 
 public partial class Root {
@@ -15,8 +14,5 @@ public partial class Root {
         [new Section("Уроки")
             [AllTutorials]
         ]
-        
-        
-
-    ;    
+        ;    
 }

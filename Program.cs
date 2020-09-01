@@ -10,9 +10,17 @@ namespace Csml {
             var customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = customCulture;
-        }
 
-        static void Main(string[] args) {
+            Csml.Language.All = new Language[] {
+                new Language("en", "English"),
+                new Language("ru", "Русский"),
+                //new Language("zh","中文")
+            };
+
+
+    }
+
+    static void Main(string[] args) {
             CSharpScript.ExecuteCommandLineArguments<Application>(args);
             //DeveloperBuild(@"D:\Antilatency.com.Generated");
         }
@@ -44,7 +52,6 @@ namespace Csml {
                 File.WriteAllLines(indexHtmlPath, lines);
             }
         }
-
         public static void DeveloperBuildWatchJsCss(string outputDirectory) {
             DeveloperBuild(outputDirectory,true);
         }

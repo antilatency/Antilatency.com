@@ -1,8 +1,19 @@
 using Csml;
+using static Root.Index_Assets;
 
+public partial class Root {    
+    public static Material Index_en => new Material("Antilatency", null, $"")
+        [TitleVideo.GetPlayer().ConfigureAsBackgroundVideo()]
 
-public partial class Root {
-    
-    public static Material Index_en => new Material("Antilatency", null, $"");
+        [LogoWhiteBlack]
+
+        [new Section("Hardware")
+            [AllHardware]
+        ]
+
+        [new Section("Tutorials")
+            [AllTutorials]
+        ]
+        ;
 
 }
