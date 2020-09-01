@@ -14,6 +14,24 @@ partial class Terms : Scope {
             [Hardware.ExtensionBoard_Assets.Connection]]
 
             [$"Сокет подключается к {Hardware.ExtensionBoard} при помощи Usb 3.1 Type-C кабеля, во второй разъём подключается питание с помощью любого Type-C кабеля. {Hardware.ExtensionBoard} позволяет подключать различные кнопки, концевики, потенциометры, светодиоды, вибромоторчики и т.д."]
+
+                [new Section("Troubleshooting")
+                    [new OrderedList()
+                        [@$"{Hardware.ExtensionBoard} не реагирует на команды софта
+                            {new UnorderedList()
+                                [$"Не вызван {Api.Antilatency.HardwareExtensionInterface.ICotask.Methods.run.FullNameRefCode}"]
+                                [$"{Api.Antilatency.HardwareExtensionInterface.ICotask.NameRefCode} запущен не на том сокете."]
+                                [$"Для подключения использован неподходящий кабель. Если в описании есть ключевые слова `Usb 2.0`, `480 Mbit/s`, то с очень большой вероятностью, данный кабель не подходит."]
+                                [$"Кабель подключен не к той стороне на {Hardware.ExtensionBoard}."]
+                            }"]
+
+                        [@$"Сигналы на пинах {Hardware.ExtensionBoard} перепутаны {
+                                new UnorderedList()
+                                [$"Кабель подключен не той ориентацией."]
+                            }"]
+                    ]
+                ]
+                    
     ;   
 
 
