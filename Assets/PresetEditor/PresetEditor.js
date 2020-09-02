@@ -551,6 +551,8 @@ function PresetEditor(presetEditor) {
         var OnContextMenu = function (event) {
             if ((dragTouchIndicator != null || dragActive) && event.cancelable) {
                 event.preventDefault();
+                event.stopPropagation();
+                event.stopImmediatePropagation();
             }
         }
 
