@@ -37,6 +37,17 @@
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
 		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
+    },
+	{
+        "name": "WatchJsCssWithoutBuild",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/build/Antilatency.com.dll",
+        "args": ["WatchJsCssWithoutBuild(@~D:/Antilatency.com.Generated~);"],
+        "cwd": "${workspaceFolder}",
+        "console": "externalTerminal",
+		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
     }
     ]
 }
