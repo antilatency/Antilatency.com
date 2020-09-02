@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -58,12 +59,35 @@ namespace Csml {
 
         public static void DeveloperBuild(string outputDirectory, bool watch = false) {
             Log.Info.Here($"DeveloperBuild({outputDirectory},{watch})");
-
             CsmlApplication.DeveloperBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"), watch);
         }
 
         public static void WatchJsCssWithoutBuild(string outputDirectory)  {
             CsmlApplication.WatchJsCssWithoutBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"));
+        }
+
+        public static void WebServer(string outputDirectory, params string[] args) {
+            Log.Info.Here($"WEB server mode");
+            CsmlApplication.ProjectRootDirectory = GetProjectRootDirectory();
+            CsmlApplication.WwwRootDirectory = outputDirectory;
+            CsmlApplication.WwwRootUri = new Uri("http://localhost");
+            CsmlApplication.IsDeveloperMode = false;
+            CsmlApplication.SiteMapMaterials = new List<IMaterial>();
+            GitHub.RepositoryBranch.IgnorePinning = true;
+            ToDo.Enabled = true;
+
+            Log.Info.Here($"WebServer: Enable Scope Properties Caching");
+            ScopeHelper.EnableGetOnce();
+            Log.Info.Here($"WebServer: Setup Cache");
+            CsmlApplication.SetupCache();
+            //Log.Info.Here($"WebServer: Cleanup Output Directory");
+            //CleanupOutputDirectory();
+            Log.Info.Here($"WebServer: Fonts;Sass;Javascript");
+            CsmlApplication.CopyFonts();
+            CsmlApplication.CreateFileProcessors();
+
+            Log.Info.Here($"WebServer: Build Done!");
+            Server.Server.Run(args);
         }
     }
 }

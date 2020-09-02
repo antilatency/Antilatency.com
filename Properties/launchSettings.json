@@ -5,28 +5,41 @@
       "commandLineArgs": "DeployToGithubIoWorkingCopy(~D:\\\\antilatency.github.io~);",
       "environmentVariables": {
         "COMPlus_ForceEnc": "1"
-      }
+      },
+      "applicationUrl": "http://localhost"
     },
     "DeveloperBuild": {
       "commandName": "Project",
       "commandLineArgs": "DeveloperBuild(@~D:\\Antilatency.com.Generated~);",
-	  "environmentVariables": {
+      "environmentVariables": {
         "COMPlus_ForceEnc": "1"
-      }
+      },
+      "applicationUrl": "http://localhost"
     },
     "DeveloperBuild_WatchJsCss": {
       "commandName": "Project",
       "commandLineArgs": "DeveloperBuildWatchJsCss(@~D:\\Antilatency.com.Generated~);",
-	  "environmentVariables": {
+      "environmentVariables": {
         "COMPlus_ForceEnc": "1"
-      }
+      },
+      "applicationUrl": "http://localhost"
     },
     "WatchJsCssWithoutBuild": {
       "commandName": "Project",
       "commandLineArgs": "WatchJsCssWithoutBuild(@~D:\\Antilatency.com.Generated~);",
-	  "environmentVariables": {
+      "environmentVariables": {
         "COMPlus_ForceEnc": "1"
-      }
+      },
+      "applicationUrl": "http://localhost"
+    },
+    "WebServer": {
+      "commandName": "Project",
+      "commandLineArgs": "WebServer(@~D:\\Antilatency.com.Generated~);",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "COMPlus_ForceEnc": "1"
+      },
+      "applicationUrl": "http://localhost"
     }
   }
 }

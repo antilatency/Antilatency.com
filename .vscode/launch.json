@@ -13,7 +13,7 @@
         "args": ["DeveloperBuildWatchJsCss(@~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
-		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
+		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
     },
     {
         "name": "DeveloperBuild",
@@ -24,9 +24,8 @@
         "args": ["DeveloperBuild(@~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
-		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
+		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
     },
-    
     {
         "name": "DeployToGithubIoWorkingCopy",
         "type": "coreclr",
@@ -36,7 +35,7 @@
         "args": ["DeployToGithubIoWorkingCopy(@~D:/antilatency.github.io~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
-		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
+		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
     },
 	{
         "name": "WatchJsCssWithoutBuild",
@@ -47,7 +46,26 @@
         "args": ["WatchJsCssWithoutBuild(@~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
-		"environment": [{ "name": "COMPlus_ForceEnc", "value": "1" }],
+		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
+    },
+	{
+        "name": "WebServer",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/build/Antilatency.com.dll",
+        "args": ["WebServer(@~D:\\Antilatency.com.Generated~);"],
+        "cwd": "${workspaceFolder}",
+        "console": "externalTerminal",
+        "serverReadyAction": {
+            "action": "openExternally"
+        },
+		"env": { 
+            "name": "COMPlus_ForceEnc", 
+            "value": "1",
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "ASPNETCORE_URLS":"http://localhost"
+        }
     }
     ]
 }
