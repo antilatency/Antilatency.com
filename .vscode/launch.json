@@ -54,7 +54,7 @@
         "request": "launch",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/build/Antilatency.com.dll",
-        "args": ["WebServer(@~D:\\Antilatency.com.Generated~);"],
+        "args": ["WebServer(@~D:\\Antilatency.com.WebServer~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
         "serverReadyAction": {

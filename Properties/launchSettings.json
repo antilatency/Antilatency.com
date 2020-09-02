@@ -34,7 +34,7 @@
     },
     "WebServer": {
       "commandName": "Project",
-      "commandLineArgs": "WebServer(@~D:\\Antilatency.com.Generated~);",
+      "commandLineArgs": "WebServer(@~D:\\Antilatency.com.WebServer~);",
       "launchBrowser": true,
       "environmentVariables": {
         "COMPlus_ForceEnc": "1"
