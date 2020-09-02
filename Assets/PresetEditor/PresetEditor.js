@@ -74,7 +74,14 @@ function PresetEditor(presetEditor) {
             var priceBreakTitles = item.querySelectorAll("div#priceBreak");
 
             for (let i = 0; i < priceTitles.length; i++) {
-                priceTitles[i].textContent = "$" + price;
+                let priceTitle = priceTitles[i];
+
+                if (price != 0) {
+                    priceTitle.classList.remove("Hide");
+                    priceTitle.textContent = "$" + price;
+                } else {
+                    priceTitle.classList.add("Hide");
+                }   
             }
 
             if (!IsEmptyObject(priceTotalTitle)) {
@@ -828,6 +835,8 @@ function PresetEditor(presetEditor) {
     InputController();
 
     ResizeProductCards();
+
+    document.body.classList.add("DisablePageSelection");
 
 
     this.Head = new RegExp('((".+")|(\w+))\s*(\:\s*\d+)?\s*');
