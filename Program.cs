@@ -84,10 +84,15 @@ namespace Csml {
             //CleanupOutputDirectory();
             Log.Info.Here($"WebServer: Fonts;Sass;Javascript");
             CsmlApplication.CopyFonts();
-            CsmlApplication.CreateFileProcessors();
+            //CsmlApplication.CreateFileProcessors();
+
+            CsmlApplication.SassProcessor = new SassProcessor(true, CsmlApplication.ProjectRootDirectory, CsmlApplication.WwwRootDirectory, "Style.scss");
+            CsmlApplication.JavascriptProcessor = new JavascriptProcessor(true, CsmlApplication.ProjectRootDirectory, CsmlApplication.WwwRootDirectory);
 
             Log.Info.Here($"WebServer: Build Done!");
+            Server.FilesWatcher.Start();
             Server.Server.Run(args);
+            Server.FilesWatcher.Stop();
         }
     }
 }
