@@ -57,9 +57,6 @@
         "args": ["WebServer(@~D:\\Antilatency.com.WebServer~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
-        "serverReadyAction": {
-            "action": "openExternally"
-        },
 		"env": { 
             "name": "COMPlus_ForceEnc", 
             "value": "1",
