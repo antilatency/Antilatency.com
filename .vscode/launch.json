@@ -10,7 +10,7 @@
         "request": "launch",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/build/Antilatency.com.dll",
-        "args": ["DeveloperBuildWatchJsCss(@~D:/Antilatency.com.Generated~);"],
+        "args": ["DeveloperBuildWatchJsCss(~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
 		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
@@ -21,7 +21,7 @@
         "request": "launch",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/build/Antilatency.com.dll",
-        "args": ["DeveloperBuild(@~D:/Antilatency.com.Generated~);"],
+        "args": ["DeveloperBuild(~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
 		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
@@ -32,7 +32,7 @@
         "request": "launch",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/build/Antilatency.com.dll",
-        "args": ["DeployToGithubIoWorkingCopy(@~D:/antilatency.github.io~);"],
+        "args": ["DeployToGithubIoWorkingCopy(~D:/antilatency.github.io~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
 		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
@@ -43,7 +43,7 @@
         "request": "launch",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/build/Antilatency.com.dll",
-        "args": ["WatchJsCssWithoutBuild(@~D:/Antilatency.com.Generated~);"],
+        "args": ["WatchJsCssWithoutBuild(~D:/Antilatency.com.Generated~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
 		"env": { "name": "COMPlus_ForceEnc", "value": "1" }
@@ -54,7 +54,7 @@
         "request": "launch",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/build/Antilatency.com.dll",
-        "args": ["WebServer(@~D:\\Antilatency.com.WebServer~);"],
+        "args": ["WebServer(~D:/Antilatency.com.WebServer~);"],
         "cwd": "${workspaceFolder}",
         "console": "externalTerminal",
 		"env": { 

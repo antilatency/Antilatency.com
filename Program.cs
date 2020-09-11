@@ -17,12 +17,10 @@ namespace Csml {
                 new Language("ru", "Русский"),
                 //new Language("zh","中文")
             };
+        }
 
-
-    }
-
-    static void Main(string[] args) {
-            CSharpScript.ExecuteCommandLineArguments<Application>(args);
+        static void Main(string[] args) {
+            CommandLineScript.ExecuteCommandLineArguments<Application>(args);
             //DeveloperBuild(@"D:\Antilatency.com.Generated");
         }
 
@@ -54,7 +52,7 @@ namespace Csml {
             }
         }
         public static void DeveloperBuildWatchJsCss(string outputDirectory) {
-            DeveloperBuild(outputDirectory,true);
+            DeveloperBuild(outputDirectory, true);
         }
 
         public static void DeveloperBuild(string outputDirectory, bool watch = false) {
@@ -62,7 +60,7 @@ namespace Csml {
             CsmlApplication.DeveloperBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"), watch);
         }
 
-        public static void WatchJsCssWithoutBuild(string outputDirectory)  {
+        public static void WatchJsCssWithoutBuild(string outputDirectory) {
             CsmlApplication.WatchJsCssWithoutBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"));
         }
 
