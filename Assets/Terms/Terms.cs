@@ -8,5 +8,4 @@ partial class Terms : Scope {
     public static LanguageSelector<IMaterial> Placement => new LanguageSelector<IMaterial>();
     public static LanguageSelector<IMaterial> AntilatencyRPiSocket => new LanguageSelector<IMaterial>();
     public static LanguageSelector<IMaterial> Host => new LanguageSelector<IMaterial>();
-    public static LanguageSelector<IMaterial> SocketReferenceDesign => new LanguageSelector<IMaterial>();
 }
