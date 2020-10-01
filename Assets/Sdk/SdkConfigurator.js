@@ -103,8 +103,6 @@ function SdkConfigurator(sdkConfigurator) {
     }
 
     var UpdateOuter = function () {
-        
-
         elementsToDelete = Object.keys(state);
 
         //previousState = state;
@@ -131,7 +129,7 @@ function SdkConfigurator(sdkConfigurator) {
     var Update = function () {
         var math = ["default"];
 
-        var platform = Enum("Platform", "Native", "Unity3D", "Unreal Engine 4");
+        var platform = Enum("Platform", "Native", "Unity", "Unreal Engine");
 
         if (platform == "Native") {
             var language = Enum("Language", "C++", "C#");
@@ -144,29 +142,67 @@ function SdkConfigurator(sdkConfigurator) {
             }
         }
 
-        if (Bool("Device Network `Library")) {
-            if (platform == "Unity3D") Bool(" Device Network `Unity Component");
-            Bool("Tracking `Library");
+        if (platform == "Unity") {
+            
+        }
+        if (platform == "Unreal Engine") {
+            var ueVersion = Enum("`Unreal Engine Version", "4.18", "4.19", "4.20", "4.21", "4.22", "4.23", "4.24", "4.25");
+            var blueprintWrappers = Bool("Include `Unreal Engine Blueprint Wrappers");
         }
 
-        Bool("Offline Tracking `Library");
+        Label("Libraries")
+        if (Bool(" Device Network `Library")) {
+            Bool(" Alt Tracking `Library");
+            Bool(" Bracer `Library");
+            Bool(" Hardware Extension Interface `Library");
+            Bool(" Radio Metrics `Library");
+        }
+        if (Bool(" Alt Environment Selector `Library")) {
+            Bool(" Alt Environment Horizontal Grid `Library");
+            Bool(" Alt Environment Pillars `Library");
+        }
+        Bool(" Tracking Alignment`Library");
+        Bool(" Storage Client `Library");
+
+        Label("Samples")
+        if (platform == "Unity") {
+            Bool(" Sample `Unity Components");
+        }
+        if (platform == "Unreal Engine") {
+            if (blueprintWrappers) {
+                Bool(" `Unreal Engine Blueprints Samples");
+            }
+            Bool(" `Unreal Engine Code Samples");
+        }
+        if (platform == "Native") {
+            if (language == "C#") {
+                Bool(" C# Project Sample");
+            }
+            if (language == "C++") {
+                Bool(" C++ Project Sample");
+            }
+        }
 
         if (platform == "Unity3D") {
-            math.unshift("Accord.Net");
+            //math.unshift("Accord.Net");
             math.unshift("UnityEngine.Math");
         }
         Enum("Math Types", math);
 
         Label("Operating Systems")
-        if (!(Bool(" Win32") | Bool(" Win64") | Bool(" Android"))) {
+        var win32 = Bool(" Win32");
+        var win64 = Bool(" Win64");
+        if (platform != "Unreal Engine") {
+            var uwpX86 = Bool(" UWP x86");
+            var uwpX64 = Bool(" UWP x64");
+            var uwpArmeabiV7a = Bool(" UWP armeabi-v7a");
+            var uwpArm64V8a = Bool(" UWP arm64-v8a");
+        }
+        var android = Bool(" Android");
+        if (!(win32 | win64 | uwpX86 | uwpX64 | uwpArmeabiV7a | uwpArm64V8a | android)) {
             Warning("No operation systems selected")
         }
-
-    
-
     }
-
-    
 
     try {
         var clearHash = decodeURIComponent(location.hash.replace(/^[#]/, ""));
