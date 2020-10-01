@@ -143,11 +143,11 @@ function SdkConfigurator(sdkConfigurator) {
         }
 
         if (platform == "Unity") {
-            
+            var unityVersion = Enum("Unity Version", "2018.x", "2019.x");
         }
         if (platform == "Unreal Engine") {
             var ueVersion = Enum("`Unreal Engine Version", "4.18", "4.19", "4.20", "4.21", "4.22", "4.23", "4.24", "4.25");
-            var blueprintWrappers = Bool("Include `Unreal Engine Blueprint Wrappers");
+            var ueBlueprintWrappers = Bool("Include `Unreal Engine Blueprint Wrappers");
         }
 
         Label("Libraries")
@@ -196,7 +196,9 @@ function SdkConfigurator(sdkConfigurator) {
             var uwpX86 = Bool(" UWP x86");
             var uwpX64 = Bool(" UWP x64");
             var uwpArmeabiV7a = Bool(" UWP armeabi-v7a");
-            var uwpArm64V8a = Bool(" UWP arm64-v8a");
+            if (!(platform == "Unity" && unityVersion == "2018.x")) {
+                var uwpArm64V8a = Bool(" UWP arm64-v8a");
+            }
         }
         var android = Bool(" Android");
         if (!(win32 | win64 | uwpX86 | uwpX64 | uwpArmeabiV7a | uwpArm64V8a | android)) {
