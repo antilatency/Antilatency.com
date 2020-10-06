@@ -4,17 +4,27 @@
     padding-left: 28px;
     padding-right: 4px;
 
+    & > *{
+        margin-bottom: 4px;
+    }
+
+    & > .Space{
+        height: 1px;
+        background-color: #eee;
+
+    }
+
     & > label {
-        height: 32px;
+        //height: 32px;
         display: block;
-        margin-bottom: 8px;
+        
 
         & > * {
             float: right
         }
 
         @for $i from 0 through 12 {
-            &.Space#{$i} {
+            &.Tab#{$i} {
                 margin-left: $i*20px
             }
         }
@@ -38,7 +48,7 @@
         &:before {
             position: absolute;
             color: #bbb;
-            font-size: 24px;
+            font-size: 20px;
             margin-top: -4px;
             margin-left: -26px;
         }

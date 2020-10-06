@@ -4,6 +4,7 @@ function SdkConfigurator(sdkConfigurator) {
     //var previousState = {};
     var state = {};
     var elementsToDelete = [];
+    var numTabs = 0;
     var KeepAlive = function (name) {
 
         elementsToDelete = elementsToDelete.filter(n => n !== name);
@@ -13,16 +14,39 @@ function SdkConfigurator(sdkConfigurator) {
         var nameNoSS = name.trimStart(name);
         var numSpaces = name.length - nameNoSS.length;
         var classes = [...name.matchAll(/`(\S+)/g)].map(x => x[1]);
-        classes.unshift("Space" + numSpaces);
+        classes.unshift("Tab" + numSpaces);
         var displayName = nameNoSS.replace(/`/g, "");
         var variableName = displayName.replace(/ /g, "");
         return [displayName,variableName, classes];
     }
 
-    var Enum = function (nameRaw, ...optionsRaw) {
-        var options = optionsRaw.flat();
-        var [displayName, variableName, classes] = NameToNameAndClasses(nameRaw);
+    var TabsToClass = function(){ 
+        return "Tab" + numTabs;
 
+    }
+
+    var Tab = function () { 
+        return numTabs++;
+    }
+    var Untab = function () {
+        return numTabs--;
+    }
+
+    var DisplayNameToVariableName = function (displayName) {
+        var words = displayName.split(" ").filter(function (x) { return x.length != 0 });
+        words = words.map(function (x) {
+            x[0] = "A"
+
+            return x;
+        })
+        return words.join('');
+    }
+
+
+    var Enum = function (displayName, ...optionsRaw) {
+        var options = optionsRaw.flat();
+        var variableName = DisplayNameToVariableName(displayName)
+        
         KeepAlive(variableName);
         var selectedIndex = -1;
         for (var i = 0; i < options.length; i++) {
@@ -36,21 +60,21 @@ function SdkConfigurator(sdkConfigurator) {
             state[variableName] = options[selectedIndex];
         }
         
-
+        
 
 
         /*var legend = sdkConfigurator.appendChild(document.createElement("legend"));
         legend.innerText = name;*/
         var select = sdkConfigurator.appendChild(document.createElement("select"));
         
-
-        sdkConfigurator.appendChild(WrapToLabel(displayName, select)).classList = classes.join(" ");
+        
+        sdkConfigurator.appendChild(WrapToLabel(displayName, select)).classList = TabsToClass();
         select.onchange = function () {
-            console.log(this.options[this.selectedIndex].value);
+            //console.log(this.options[this.selectedIndex].value);
             state[variableName] = options[this.selectedIndex];
             UpdateOuter();
         }
-
+        
         for (let i = 0; i < options.length; i++) {
             select.appendChild(new Option(options[i], i, false, selectedIndex==i));            
         }
@@ -65,8 +89,8 @@ function SdkConfigurator(sdkConfigurator) {
         return label;
     }
 
-    var Bool = function (nameRaw, defaultValue = true) {
-        var [displayName, variableName, classes] = NameToNameAndClasses(nameRaw);
+    var Bool = function (displayName, defaultValue = true) {
+        var variableName = DisplayNameToVariableName(displayName)
         KeepAlive(variableName)
         
         if (state[variableName] == undefined) {
@@ -77,7 +101,7 @@ function SdkConfigurator(sdkConfigurator) {
         
         var input = document.createElement("input");
 
-        sdkConfigurator.appendChild(WrapToLabel(displayName, input)).classList = classes.join(" ");
+        sdkConfigurator.appendChild(WrapToLabel(displayName, input)).classList = TabsToClass();
 
         input.type = "checkbox";
         input.checked = state[variableName];
@@ -90,15 +114,20 @@ function SdkConfigurator(sdkConfigurator) {
         return state[variableName];
     }
 
-    var Label = function (nameRaw){
-        var [displayName, variableName, classes] = NameToNameAndClasses(nameRaw);
-        sdkConfigurator.appendChild(WrapToLabel(displayName, null)).classList = classes.join(" ");
+    var Label = function (displayName){
+        sdkConfigurator.appendChild(WrapToLabel(displayName, null)).classList = TabsToClass();;
     }
 
     var Warning = function (message) {
         var panel = sdkConfigurator.appendChild(document.createElement("div"));
         panel.classList = "panel warning";
         panel.appendChild(document.createElement("div")).innerText = message;
+
+    }
+
+    var Space = function () {
+        var space = sdkConfigurator.appendChild(document.createElement("div"));
+        space.classList = "Space";
 
     }
 
@@ -111,15 +140,20 @@ function SdkConfigurator(sdkConfigurator) {
         updateNeeded = true;
         //while (updateNeeded) {
          //   updateNeeded = false;
-            sdkConfigurator.textContent = '';
+        sdkConfigurator.textContent = '';
+        numTabs = 0;
             Update();
         //}
         for (let i = 0; i < elementsToDelete.length; i++) {
             delete state[elementsToDelete[i]]
         }
 
-        console.log(elementsToDelete);
-        location.hash = JSON.stringify(state);
+        //console.log(elementsToDelete);
+        var json = JSON.stringify(state);
+        location.hash = json;
+
+        console.log(Sha1(json));
+
     }
 
     //library F0431
@@ -128,68 +162,80 @@ function SdkConfigurator(sdkConfigurator) {
 
     var Update = function () {
         var math = ["default"];
-
+        
         var platform = Enum("Platform", "Native", "Unity", "Unreal Engine");
+        
+        var language = "";
 
         if (platform == "Native") {
-            var language = Enum("Language", "C++", "C#");
-
-            if (language == "C#") {
-                math.unshift("Accord.Net");
-            }
-            if (language == "C++") {
-                math.unshift("Eigen");
-            }
+            language = Enum("Language", "C++", "C#");
+        } else if (platform == "Unity") {
+            language = "C#";
+        } else if (platform == "Unreal Engine") {
+            language = "C++";
         }
 
         if (platform == "Unity") {
             var unityVersion = Enum("Unity Version", "2018.x", "2019.x");
         }
         if (platform == "Unreal Engine") {
-            var ueVersion = Enum("`Unreal Engine Version", "4.18", "4.19", "4.20", "4.21", "4.22", "4.23", "4.24", "4.25");
-            var ueBlueprintWrappers = Bool("Include `Unreal Engine Blueprint Wrappers");
+            var ueVersion = Enum("Unreal Engine Version", "4.18", "4.19", "4.20", "4.21", "4.22", "4.23", "4.24", "4.25");
+            var ueBlueprintWrappers = Bool("Include Unreal Engine Blueprint Wrappers");
         }
+
+        Space();
 
         Label("Libraries")
-        if (Bool(" Device Network `Library")) {
-            Bool(" Alt Tracking `Library");
-            Bool(" Bracer `Library");
-            Bool(" Hardware Extension Interface `Library");
-            Bool(" Radio Metrics `Library");
+        Tab();
+        if (Bool("Device Network Library")) {
+            Bool("Alt Tracking Library");
+            Bool("Bracer Library");
+            Bool("Hardware Extension Interface Library");
+            Bool("Radio Metrics Library");
         }
-        if (Bool(" Alt Environment Selector `Library")) {
-            Bool(" Alt Environment Horizontal Grid `Library");
-            Bool(" Alt Environment Pillars `Library");
+        if (Bool("Alt Environment Selector Library")) {
+            Bool("Alt Environment Horizontal Grid Library");
+            Bool("Alt Environment Pillars Library");
         }
-        Bool(" Tracking Alignment`Library");
-        Bool(" Storage Client `Library");
+        Bool("Tracking Alignment Library");
+        Bool("Storage Client Library");
+        Untab();
+        
 
-        Label("Samples")
+        if (platform != "Native") {
+            Space();
+            Label("Samples")
+            Tab();
+        
+            if (platform == "Unity") {
+                Bool("Sample Unity Components");
+            } else if (platform == "Unreal Engine") {
+                if (ueBlueprintWrappers) {
+                    Bool("Unreal Engine Blueprints Samples");
+                }
+                Bool("Unreal Engine Code Samples");
+            }
+            Untab();
+        }
+        Space();
+
+        Label("Math");
+        Tab();
+        if (language == "C#") {
+            math.unshift("Accord.Net");
+        } else if (language == "C++" && platform != "Unreal Engine") {
+            math.unshift("Eigen");
+        }
         if (platform == "Unity") {
-            Bool(" Sample `Unity Components");
-        }
-        if (platform == "Unreal Engine") {
-            if (blueprintWrappers) {
-                Bool(" `Unreal Engine Blueprints Samples");
-            }
-            Bool(" `Unreal Engine Code Samples");
-        }
-        if (platform == "Native") {
-            if (language == "C#") {
-                Bool(" C# Project Sample");
-            }
-            if (language == "C++") {
-                Bool(" C++ Project Sample");
-            }
-        }
-
-        if (platform == "Unity3D") {
-            //math.unshift("Accord.Net");
             math.unshift("UnityEngine.Math");
         }
         Enum("Math Types", math);
+        Untab();
+
+        Space();
 
         Label("Operating Systems")
+        Tab();
         var win32 = Bool(" Win32");
         var win64 = Bool(" Win64");
         if (platform != "Unreal Engine") {
@@ -204,6 +250,9 @@ function SdkConfigurator(sdkConfigurator) {
         if (!(win32 | win64 | uwpX86 | uwpX64 | uwpArmeabiV7a | uwpArm64V8a | android)) {
             Warning("No operation systems selected")
         }
+        Untab();
+
+        Space();
     }
 
     try {
