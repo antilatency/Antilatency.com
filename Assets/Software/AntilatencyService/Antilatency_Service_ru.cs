@@ -30,7 +30,7 @@ public partial class Software : Scope {
     
 
         [new Section("Device Network")
-            [($"Во вкладке {(global::Software.Antilatency_Service.Device_Network)} можно посмотреть системные и настраиваемые характеристики каждого из подключённых устройств, получить данные о версии ПО и обновить её при необходимости.")]
+            [($"Во вкладке {(global::Software.Antilatency_Service.Device_Network)} можно посмотреть системные и настраиваемые характеристики каждого из подключённых устройств, получить данные о версии прошивки и обновить её при необходимости.")]
             [DeviceNetworkTabScreenshot]
         ]
 
