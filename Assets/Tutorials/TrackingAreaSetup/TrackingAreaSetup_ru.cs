@@ -6,13 +6,13 @@ partial class Tutorials : Scope {
     public static Material Tracking_Area_Setup_ru => new Material("Сборка напольного сетапа зоны трекинга",
      TitleImage, 
      @$"Пошаговая инструкция, которая поможет собрать напольный сетап зоны трекинга.
-     Данный туториал предполагает, что у вас есть готовый {Terms.Environment} для зоны трекинга, и что этот {Terms.Environment} у вас добавлен в {Software.Antilatency_Service}. 
-     По добавлению готовых {Terms.Environment} в {Software.Antilatency_Service} см. {new ToDo("Add tutorial Работа с Environment в AntilatencyService", false)} Работа с Environment в AntilatencyService. 
+     Данный туториал предполагает, что у вас есть готовый {Terms.Environment} для зоны трекинга, и что этот {Terms.Environment} у вас добавлен в {Software.Antilatency_Service.Material}. 
+     По добавлению готовых {Terms.Environment} в {Software.Antilatency_Service.Material} см. {new ToDo("Add tutorial Работа с Environment в AntilatencyService", false)} Работа с Environment в AntilatencyService. 
      Если вам еще только нужно создать Environment, см. {new ToDo("Add tutorial Туториал по созданию Environment", false)}Туториал по созданию Environment. 
      ")
 
         [new Section("Схема разводки зоны")
-            [$"Откройте вкладку Environments в {Software.Antilatency_Service} и выберите нужную зону трекинга. Кликните правой кнопкой на нужную зону и нажмите “Edit” в контекстном меню."]
+            [$"Откройте вкладку Environments в {Software.Antilatency_Service.Material} и выберите нужную зону трекинга. Кликните правой кнопкой на нужную зону и нажмите “Edit” в контекстном меню."]
             [AntilatencyServiceScreen]
             [$"Откроется экран с выбранной зоной. Перейдите во вкладку Routing."]
             [EnvironmentEditorSelectRouting]

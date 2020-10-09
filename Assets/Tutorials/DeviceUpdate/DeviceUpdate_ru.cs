@@ -18,7 +18,7 @@ partial class Tutorials : Scope {
         
             [$"Подключите устройства к компьютеру. Если вам нужно обновить {Hardware.Alt}, вы можете воспользоваться {Hardware.SocketUsb}, который идет в комплекте с трекером. Если вам нужно обновить радио устройства, такие как {Hardware.Tag} и {Hardware.Bracer}, вам понадобится {Hardware.SocketUsbRadio} или {Hardware.PicoG2Socket}."]
             
-            [$"Для обновления прошивки ваших устройств, воспользуйтесь {Software.Antilatency_Service}"]
+            [$"Для обновления прошивки ваших устройств, воспользуйтесь {Software.Antilatency_Service.Material}"]
             
             [$"1. Откройте вкладку Device Network. Слева вы увидите дерево устройств, подключенных к компьютеру."]
             [DeviceTree]
