@@ -29,7 +29,7 @@ partial class Hardware : Scope {
             ]
 
             [new Section("Стандартный комплект")
-                [$"В {Hardware.TrackingAreaFloor} входит:"] 
+                [$"В комплект входит:"] 
                 [new UnorderedList()
                     [$"Лента с маркерами Reference bar - 4 шт."]
                 ]

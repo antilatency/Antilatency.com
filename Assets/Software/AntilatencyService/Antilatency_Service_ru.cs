@@ -5,15 +5,14 @@ public partial class Software : Scope {
         //todo new Material("Antilatency Service" -> nфw Material(null
         public static Material Material_ru => new Material("Antilatency Service",
         Title,
-        $"Служебное приложение для управления настройками трекинга и для обновления устройств")
-       
-            [$"Настроить любое из устройств Antilatency, загрузить или создать зону трекинга, обновить прошивку —  всё это легко сделать с Antilatency Service. Приложение доступно на Windows 10 и на Android 6.0+."]
+        $"Служебное приложение для управления настройками трекинга и для обновления прошивки. Antilatency Service сохраняет настройки зон трекинга, а также позволяет посмотреть дерево подключённых устройств.")
 
-        [new Success($"После установки приложение необходимо запустить, чтобы выполнить первичную настройку устройств и зон трекинга.")]
         [new Downloadable("AntilatencyService", "AntilatencyServiceBinaries",
                     Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
 
-        [$"Подробнее про установку можно почитать тут:"]
+        [new Success($"После установки приложение необходимо запустить, чтобы выполнить первичную настройку устройств и зон трекинга.")]
+
+        //[$"Подробнее про установку можно почитать тут:"]
         //[$"{How_to_install_Antilatency_Service}"]
         
 
@@ -30,7 +29,7 @@ public partial class Software : Scope {
     
 
         [new Section("Device Network")
-            [($"Во вкладке {(global::Software.Antilatency_Service.Device_Network)} можно посмотреть системные и настраиваемые характеристики каждого из подключённых устройств, получить данные о версии ПО и обновить её при необходимости.")]
+            [($"Во вкладке {(global::Software.Antilatency_Service.Device_Network)} можно посмотреть системные и настраиваемые характеристики каждого из подключённых устройств, получить данные о версии прошивки и обновить её при необходимости.")]
             [DeviceNetworkTabScreenshot]
         ]
 

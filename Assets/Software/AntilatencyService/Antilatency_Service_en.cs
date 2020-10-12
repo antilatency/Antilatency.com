@@ -5,32 +5,31 @@ public partial class Software : Scope {
         //todo new Material("Antilatency Service" -> nфw Material(null
         public static Material Material_en => new Material("Antilatency Service",
         Title,
-        $"An utility allows configuring the tracking and updating Antilatency devices.")
-       
-            [$"Настроить любое из устройств Antilatency, загрузить или создать зону трекинга, обновить прошивку —  всё это легко сделать с Antilatency Service. Приложение доступно на Windows 10 и на Android 6.0+."]
+        $"A utility allows to configure the tracking, to update the firmware and to look through the device tree. Besides Antilatency Service keeps in the settings of the tracking areas and HMDs.")
 
-        [new Success($"После установки приложение необходимо запустить, чтобы выполнить первичную настройку устройств и зон трекинга.")]
         [new Downloadable("AntilatencyService", "AntilatencyServiceBinaries",
                     Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
 
-        [$"Подробнее про установку можно почитать тут:"]
+        [new Success($"You need to run a utility at least once to initialize the system and to make the first-time setup.")]
+
+        //[$"Extra info how to install AS:"]
         //[$"{How_to_install_Antilatency_Service}"]
         
 
         [new Section("Environments")
-            [($"Во вкладке {(global::Software.Environments)} можно загрузить, отредактировать или создать зону трекинга.")]
+            [($"Using the tab {(global::Software.Environments)} you can load and edit the tracking area or create a new one and then share it by the link.")]
             [EnvironmentsTabScreenshot]
         ]
     
 
         [new Section("Placements")
-            [($"Во вкладке {(global::Software.Placements)} можно настроить расположение устройства Antilatency на шлеме виртуальной реальности. По умолчанию в приложении доступны решения для некоторых популярных моделей.")]
+            [($"Using the tab {(global::Software.Placements)} you can set the corresponding placement for Antilatency device on the HMD. The presets for some popular HMDs are available by default.")]
             [PlacementsTabScreenshot]
         ]
     
 
         [new Section("Device Network")
-            [($"Во вкладке {(global::Software.Antilatency_Service.Device_Network)} можно посмотреть системные и настраиваемые характеристики каждого из подключённых устройств, получить данные о версии ПО и обновить её при необходимости.")]
+            [($"Using the tab {(global::Software.Antilatency_Service.Device_Network)} you can read and write device properties, update the firmware, and look through the device tree.")]
             [DeviceNetworkTabScreenshot]
         ]
 
