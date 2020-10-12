@@ -34,7 +34,7 @@ partial class Root : Scope {
         [Hardware.Alt]
         [Internal.Debug]
         [CsmlPredefined.Diagnostics]
-        [Software.Antilatency_Service.Material]
+        [Software.AntilatencyService.Material]
 
         [Store.PresetEditor]
         [Sdk.Configurator]

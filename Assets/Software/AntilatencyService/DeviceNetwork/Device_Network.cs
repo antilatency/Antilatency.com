@@ -1,7 +1,9 @@
 using Csml;
 
 public partial class Software : Scope {
-    public partial class Antilatency_Service : Scope {
-            public static LanguageSelector<IMaterial> Device_Network => new LanguageSelector<IMaterial>();
+    public partial class AntilatencyService : Scope {
+        public partial class Device_Network : Scope {
+            public static LanguageSelector<IMaterial> Material => new LanguageSelector<IMaterial>();
         }
     }
+}

@@ -1,11 +1,11 @@
 using Csml;
 
 public partial class Software : Scope {
-    public partial class Antilatency_Service{
+    public partial class AntilatencyService{
         //todo new Material("Antilatency Service" -> nфw Material(null
-        public static Material Material_en => new Material("Antilatency Service",
+        public static Material Material_en => new Material("AntilatencyService",
         Title,
-        $"A utility allows to configure the tracking, to update the firmware and to look through the device tree. Besides Antilatency Service keeps in the settings of the tracking areas and HMDs.")
+        $"A utility allows to configure the tracking parameters, to update the firmware and to look through the device tree. Besides, AntilatencyService keeps in the settings of the tracking areas and VR gadgets.")
 
         [new Downloadable("AntilatencyService", "AntilatencyServiceBinaries",
                     Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
@@ -17,19 +17,19 @@ public partial class Software : Scope {
         
 
         [new Section("Environments")
-            [($"Using the tab {(global::Software.Environments)} you can load and edit the tracking area or create a new one and then share it by the link.")]
+            [($"Using the tab {(global::Software.AntilatencyService.Environments.Material)} you can load and edit the tracking area or create a new one and then share it by the link.")]
             [EnvironmentsTabScreenshot]
         ]
     
 
         [new Section("Placements")
-            [($"Using the tab {(global::Software.Placements)} you can set the corresponding placement for Antilatency device on the HMD. The presets for some popular HMDs are available by default.")]
+            [($"Using the tab {(global::Software.AntilatencyService.Placements.Material)} you can set the corresponding placement for Antilatency device on the VR gadget. The presets for some popular HMDs are available by default.")]
             [PlacementsTabScreenshot]
         ]
     
 
         [new Section("Device Network")
-            [($"Using the tab {(global::Software.Antilatency_Service.Device_Network)} you can read and write device properties, update the firmware, and look through the device tree.")]
+            [($"Using the tab {(global::Software.AntilatencyService.Device_Network.Material)} you can read and write device properties, update the firmware, and look through the device tree.")]
             [DeviceNetworkTabScreenshot]
         ]
 

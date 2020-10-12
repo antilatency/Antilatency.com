@@ -17,7 +17,7 @@ partial class Tutorials : Scope {
     
     [$"2. Подключите {Hardware.Tag} к {Hardware.SocketUsbRadio}. Подробнее о подключении можно узнать здесь: {Tutorials.ConfiguringRadioDevices}"]
     
-    [$"3. Откройте {Software.Antilatency_Service.Material}, вкладку Device Network"]
+    [$"3. Откройте {Software.AntilatencyService.Material}, вкладку Device Network"]
     [DeviceTreeAS]
 
     [$"4. Выберите {Hardware.Tag} в {Terms.Device_Tree}. Во вкладке справа назначьте нужное свойство _Tag_ (в нашем случае _Gun_). После ввода нового свойства слева от него появится значок жёлтой ручки."]

@@ -65,12 +65,12 @@ partial class Tutorials {
             ]
         ]
 
-        [new Section($"Set MasterSN property by {Software.Antilatency_Service.Material}", "SetMasterSoft")
+        [new Section($"Set MasterSN property by {Software.AntilatencyService.Material}", "SetMasterSoft")
             [$"Below is a configuration where {Hardware.SocketUsbRadio}serves as a receiver."]
             [new OrderedList()
                 [$"Connect the {Hardware.SocketUsbRadio} to the {Terms.Host}"]
                 [$"Power up the wireless socket by the single-click power on button"]
-                [$"Run {Software.Antilatency_Service.Material} application"]
+                [$"Run {Software.AntilatencyService.Material} application"]
                 [$"Open Device Network tab"]
                 [$"Click on the {Hardware.SocketUsbRadio} node in the Device Network tab"]
                 [$"Select the `{Api.Antilatency.DeviceNetwork.Interop.Constants.Fields.HardwareSerialNumberKey.Value}` property value and press Ctrl+C"]

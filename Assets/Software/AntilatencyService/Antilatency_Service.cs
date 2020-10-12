@@ -1,7 +1,7 @@
 using Csml;
 
 public partial class Software : Scope {
-    public partial class Antilatency_Service : Scope{
+    public partial class AntilatencyService : Scope{
         public static LanguageSelector<IMaterial> Material => new LanguageSelector<IMaterial>();
         public static Image Title = new Image("./Title.png");
         
