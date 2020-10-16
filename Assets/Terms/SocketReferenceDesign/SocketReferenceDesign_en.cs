@@ -3,7 +3,7 @@ using Csml;
 using static Terms.SocketReferenceDesignDeploying_Assets;
 
 partial class Terms {
-    public static Material SocketReferenceDesign_en => new Material(null, TopView,
+    public static Material SocketReferenceDesign_en => new Material("Socket Reference Design, TopView,
     @$"A development board for {Terms.Socket}.")
         [new Section("Main components")
             [new UnorderedList()
