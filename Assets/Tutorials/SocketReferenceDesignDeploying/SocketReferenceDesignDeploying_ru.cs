@@ -7,7 +7,7 @@ partial class Tutorials : Scope {
     public static Material SocketReferenceDesignDeploying_ru =>
 
         new Material(
-            "SocketReferenceDesignDeploying",
+            "Socket Reference Design Deploying",
             null,
         $"В данной статье будет описана последовательность действий для изготовления своего {Terms.Socket} с помощью {Terms.SocketReferenceDesign}")
             [new Section("Основные компоненты")
