@@ -12,22 +12,22 @@ partial class Tutorials : Scope {
         $"Learn how to make your {Terms.Socket} using {Terms.SocketReferenceDesign}")
             [new Section("To custom your Socket you need:")
                 [new OrderedList()
-                    [$"Designed board"]
+                    [$"The designed board"]
                     [$"Ready-to-install mechanical components"]
-                    [$"Antilatency firmware"]
+                    [$"An Antilatency firmware"]
                 ]
             ]
 
             [new Section("Board design")
-                [$"You can take {Terms.SocketReferenceDesign} as an example and use its modules for your project. The circuit technique, a tracing example, a 3D model, a BOM, and Gerber are available to download."]
-                [$"We recommend to make the connection between an SPI and {Hardware.Alt} as short as possible and protect it from disturbance."]
+                [$"You can take the {Terms.SocketReferenceDesign} as an example and use its modules for your project. The circuit technique, a tracing example, a 3D model, a BOM, and Gerber are available to download."]
+                [$"We recommend to make the connection between an SPI and the {Hardware.Alt} as short as possible and protect it from the disturbance."]
                 [$"The nRF module position should correspond to its DataSheet requirements. Pay extra attention to the antenna."]
                
                 [new ToDo("Ссылка на даташит.")]
             ]
 
-            [new Section("Preparing the mechanical components")
-                [$"The {Hardware.Alt} mounting is the main thing you need to take into account. It requires the magnet and the frame to keep {Hardware.Alt} in a right and stable position."]
+            [new Section("Prepare the mechanical components")
+                [$"The {Hardware.Alt} mounting is the main thing you need to take into account. It requires the magnet and the frame to keep {Hardware.Alt} in a right position."]
                 [$"We use the magnets that has a diameter of 7mm, 2mm high, and N52 grade. It perfectly matches to the 6.9mm board hole."]
                 
                 [new ToDo("Alt frame 3D model")]
@@ -40,7 +40,7 @@ partial class Tutorials : Scope {
             ]
 
             [new Section("Antilatency firmware")
-                [$"Download *.bin file from the website, it's a bootloader. Install it on the board using SWD pins and a programmer(for example, Jlink)."]
+                [$"Download '*.bin' file from the website, it's a bootloader. Install it on the board using the SWD pins and a programmer(for example, Jlink)."]
                 [new Info($"Some manufacturers offer preinstalled firmware/bootloader. You can even send them your firmware to be installed.")]
                 [$"When bootloader is installed, use the USB connector and update the firmware with{Terms.AntilatencyService}. The functinality is similar to  {Hardware.SocketUsbRadio}, including {Terms.Antilatency_Hardware_Extension_Interface} support, {Terms.AntilatencyService} updating system and two modes for {Terms.Antilatency_Radio_Protocol}."]
             ]

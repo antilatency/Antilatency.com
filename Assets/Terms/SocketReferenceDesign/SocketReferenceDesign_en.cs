@@ -56,23 +56,23 @@ partial class Terms {
         ]
 
         [new Section("SWD connector")
-            [$"You need an SWD connector only for the first bootloader setup. For further firmware uploading or updating, you can use {Terms.AntilatencyService}."]
-            [$"The board has two similar connectors: MicroMatch FOB.06P и Pls-4. You can use any of them for your board."]
+            [$"You need an SWD connector only for the first bootloader setup. For further uploading or updating of the firmware, you can use {Terms.AntilatencyService}."]
+            [$"The board has two similar connectors: a MicroMatch FOB.06P and a Pls-4. You can use either of them with your board."]
             [new Info($"You don't need the connector if your module has preinstalled firmware.")]
         ]
 
         [new Section($"{Hardware.Alt} connector")
-            [$"{Hardware.Alt} connector has 8 contact areas and a hole for the magnet in the center. Alt frame installation requires the holes. Read here to learn more: {Tutorials.SocketReferenceDesignDeploying:mechanics}"]
+            [$"The {Hardware.Alt} connector has 8 contacts and a hole for the magnet in the center. Alt frame installation also requires the holes. Read here to learn more: {Tutorials.SocketReferenceDesignDeploying:mechanics}"]
         ]
 
-        [new Section("RGD status LED")
-            [$"RGB LED allows user to see the Socket state. This LED has different display modes. We highly recommend you not to remove it and use the same LED on your board."]
+        [new Section("RGB status LED")
+            [$"The RGB LED allows users to see the state of the Socket. This LED has different display modes. We highly recommend that you do not remove it and use the same LED on your board."]
             [new Info($"You can choose another LED but make sure their colors correspond.")]
         ]
 
         [new Section($"{Terms.Antilatency_Hardware_Extension_Interface} components")
-            [$"Optional. If you don't need {Terms.Antilatency_Hardware_Extension_Interface}, then just don't use its components and let the controller's pins free."]
-            [$"We set 2 buttons, 2 	potentiometer trimmers, and 4 LEDs on the board. Each component is connected by jumper so you can turn it off on the board and put the external power supply."]
+            [$"Optional. If you don't need the {Terms.Antilatency_Hardware_Extension_Interface}, then just don't use its components and leave the controller's pins free."]
+            [$"There are 2 buttons, 2 	potentiometer trimmers, and 4 LEDs on the board. Each component is connected by jumper so you can turn it off on the board and put the external power supply."]
         ]
         ]
 
