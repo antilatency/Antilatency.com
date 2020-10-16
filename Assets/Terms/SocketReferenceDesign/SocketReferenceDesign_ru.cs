@@ -3,7 +3,7 @@
 using static Terms.SocketReferenceDesignDeploying_Assets;
 
 partial class Terms {
-    public static Material SocketReferenceDesign_ru => new Material(null, TopView,
+    public static Material SocketReferenceDesign_ru => new Material("Socket Reference Design", TopView,
     @$"Отладочная плата для разработчиков {Terms.Socket}")
         [new Section("Ключевые функциональные блоки")
             [new UnorderedList()
