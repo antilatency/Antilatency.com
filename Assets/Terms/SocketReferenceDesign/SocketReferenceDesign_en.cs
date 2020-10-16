@@ -26,22 +26,22 @@ partial class Terms {
         [new Section("Recommendations for the board")
             [new UnorderedList()
                 [$"2mm height - to install the magnet correctly."]
-                [$"ENIG - to provide the throwing power, the high-wearing feature, and the stable connectivity of the {Hardware.Alt} pogo pins and the board."]
+                [$"ENIG - to provide a flat surface, resistance to wear, and the stable connectivity of the {Hardware.Alt} pogo pins and the board."]
             ]
         ]
 
         [new Section("nRF52840 module")
-            [$"We highly recommend using an nRF52840 module instead of an nRF52840 microcontroller with its external required components. Using the module gives some benefits:"]
+            [$"We highly recommend using an nRF52840 module instead of an nRF52840 microcontroller with its required external components. Using the module gives some benefits:"]
 
             [new UnorderedList()
-                [$"The module is certified that accelerates the arrival on the market."]
-                [$"The BOM reduction makes the board assembly process easier, resulting in fewer mistakes."]
+                [$"The module is certified which can accelerate the arrival of your product on the market."]
+                [$"The reduced BOM means less components, therefore making the board assembly process easier, resulting in fewer mistakes."]
                 [$"All the external required components are already installed thereby preventing incorrect assembly."]
                 [$"The market normally offers a range of modules with different antennas or connectors for all tastes. "]
                 [$"Some manufacturers offer to preinstall the firmware/bootloader."]
         
             ]
-            [new Warning($"You can use an nRF52840 microcontroller with its external required components and a RF instead of a module. But this choice has its consequences.")
+            [new Warning($"You can use an nRF52840 microcontroller with its external required components and a RF antenna instead of a module. But this choice has its consequences.")
         ]
 
         [new Section("Power Supply")
@@ -52,7 +52,7 @@ partial class Terms {
 
         [new Section("USB connector")
             [$"The USB connector provides a 5V power supply and a connection to the controller to transfer the data, to update the firmware and to set up the device properties."]
-             [new Info($"Use the USB5V jumper to connect your power supply. When you have no need for USB, for example, when the Socket works in wireless mode, any voltage in the range of 3V - 5.5V can be applied to the VBUS input.")]
+             [new Info($"Use the USB5V jumper if you want to connect your own power supply. When you have no need for USB, for example, when the Socket works in wireless mode, any voltage in the range of 3V - 5.5V can be applied to the VBUS input.")]
         ]
 
         [new Section("SWD connector")
@@ -62,7 +62,7 @@ partial class Terms {
         ]
 
         [new Section($"{Hardware.Alt} connector")
-            [$"The {Hardware.Alt} connector has 8 contacts and a hole for the magnet in the center. Alt frame installation also requires the holes. Read here to learn more: {Tutorials.SocketReferenceDesignDeploying:mechanics}"]
+            [$"The {Hardware.Alt} connector has 8 contacts and a hole for the magnet in the center. The Alt frame installation also requires the holes. Read here to learn more: {Tutorials.SocketReferenceDesignDeploying:mechanics}"]
         ]
 
         [new Section("RGB status LED")
@@ -72,7 +72,7 @@ partial class Terms {
 
         [new Section($"{Terms.Antilatency_Hardware_Extension_Interface} components")
             [$"Optional. If you don't need the {Terms.Antilatency_Hardware_Extension_Interface}, then just don't use its components and leave the controller's pins free."]
-            [$"There are 2 buttons, 2 	potentiometer trimmers, and 4 LEDs on the board. Each component is connected by jumper so you can turn it off on the board and put the external power supply."]
+            [$"There are 2 buttons, 2 	potentiometer trimmers, and 4 LEDs on the board. Each component is connected by jumper so you can take them from the board and use alternatives."]
         ]
         ]
 

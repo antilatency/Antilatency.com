@@ -10,28 +10,28 @@ partial class Tutorials : Scope {
             "SocketReferenceDesignDeploying",
             null,
         $"Learn how to make your {Terms.Socket} using {Terms.SocketReferenceDesign}")
-            [new Section("To custom your Socket you need:")
+            [new Section("To customize your Socket you need:")
                 [new OrderedList()
-                    [$"The designed board"]
+                    [$"The board"]
                     [$"Ready-to-install mechanical components"]
-                    [$"An Antilatency firmware"]
+                    [$"An up-to-date Antilatency firmware"]
                 ]
             ]
 
             [new Section("Board design")
-                [$"You can take the {Terms.SocketReferenceDesign} as an example and use its modules for your project. The circuit technique, a tracing example, a 3D model, a BOM, and Gerber are available to download."]
-                [$"We recommend to make the connection between an SPI and the {Hardware.Alt} as short as possible and protect it from the disturbance."]
-                [$"The nRF module position should correspond to its DataSheet requirements. Pay extra attention to the antenna."]
+                [$"You can take the {Terms.SocketReferenceDesign} as an example and use its modules for your project. The circuitry, a tracing example, a 3D model, a BOM, and Gerber are available to download."]
+                [$"We recommend making the connection between an SPI and the {Hardware.Alt} as short as possible and to protect it from disturbance."]
+                [$"The nRF module's position should correspond to its DataSheet requirements. Pay extra attention to the position of the antenna."]
                
                 [new ToDo("Ссылка на даташит.")]
             ]
 
             [new Section("Prepare the mechanical components")
-                [$"The {Hardware.Alt} mounting is the main thing you need to take into account. It requires the magnet and the frame to keep {Hardware.Alt} in a right position."]
-                [$"We use the magnets that has a diameter of 7mm, 2mm high, and N52 grade. It perfectly matches to the 6.9mm board hole."]
+                [$"The {Hardware.Alt} mounting is the main thing you need to take into account. It requires the magnet and the frame to keep {Hardware.Alt} in the right position."]
+                [$"We use magnets that have a diameter of 7mm, 2mm high, and of grade N52. They perfectly match the 6.9mm board hole."]
                 
                 [new ToDo("Alt frame 3D model")]
-                [$"As a frame for {Hardware.Alt} we use an aluminum cup with 4 foots. After planishing these foot will fix the cup on the board. The cup model is available to download."]
+                [$"As a frame for {Hardware.Alt} we use an aluminum holder with 4 feet. After planishing these foot will fix the holder on the board. The holder model is available to download."]
                 [new ToDo("Обновить фотки, когда будут платы.")]
                 [$"Top view:"]
                 [AltMount1]
@@ -40,9 +40,9 @@ partial class Tutorials : Scope {
             ]
 
             [new Section("Antilatency firmware")
-                [$"Download '*.bin' file from the website, it's a bootloader. Install it on the board using the SWD pins and a programmer(for example, Jlink)."]
-                [new Info($"Some manufacturers offer preinstalled firmware/bootloader. You can even send them your firmware to be installed.")]
-                [$"When bootloader is installed, use the USB connector and update the firmware with{Terms.AntilatencyService}. The functinality is similar to  {Hardware.SocketUsbRadio}, including {Terms.Antilatency_Hardware_Extension_Interface} support, {Terms.AntilatencyService} updating system and two modes for {Terms.Antilatency_Radio_Protocol}."]
+                [$"Download the .bin file from the website, it's a bootloader. Install it on the board using the SWD pins and a programmer (for example, Jlink)."]
+                [new Info($"Some manufacturers offer a preinstalled firmware/bootloader. You can even send them your firmware to be installed.")]
+                [$"When the bootloader is installed, use the USB connector and update the firmware with {Terms.AntilatencyService}. The functionality is similar to  {Hardware.SocketUsbRadio}, including {Terms.Antilatency_Hardware_Extension_Interface} support, the {Terms.AntilatencyService} update system, and two modes for {Terms.Antilatency_Radio_Protocol}."]
             ]
             ;
 }
