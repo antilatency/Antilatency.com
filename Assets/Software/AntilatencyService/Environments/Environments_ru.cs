@@ -21,7 +21,7 @@ public partial class Software : Scope {
      ]
 
      [new Section("Ссылка на зону трекинга","tracking_area_link")
-        [$"Данные зоны трекинга можно отправить другому пользователю в виде ссылки, которая имеет такой вид:"]
+        [$"Данные зоны трекинга можно отправить другому пользователю в виде ссылки, которая имеет следующий вид:"]
         
             [$"`http://www.antilatency.com/antilatencyservice/environment?`*data*`=AAVSaWdpZE8BBnllbGxvdwgIuFOJP9xGoD6vjmO9mpmZPgAAAAAAAAAAAJqZGT8NBQAEAwAGAwYCBAIDAAUHBgQDAwUAAAIHBgcGBwYHBwIHAgcGAgMDdzk&`*name*`=DevKitX&`*setAsDefault*`=true&`*silent*`=true`"]
             [$"\nСсылка может содержать несколько параметров, из которых два - data и name - обязательные."]
