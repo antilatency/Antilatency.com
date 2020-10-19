@@ -5,7 +5,7 @@ public partial class Software : Scope {
         //todo new Material("Antilatency Service" -> nфw Material(null
         public static Material Material_en => new Material("AntilatencyService",
         Title,
-        $"A utility allows to configure the tracking parameters, to update the firmware and to look through the device tree. Besides, AntilatencyService keeps in the settings of the tracking areas and VR gadgets.")
+        $"A utility allows to update the firmware and to look through the device tree. Besides, the AntilatencyService keeps in the settings of the tracking areas and placements for different VR gadgets.")
 
         [new Downloadable("AntilatencyService", "AntilatencyServiceBinaries",
                     Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]

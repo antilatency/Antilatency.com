@@ -20,36 +20,23 @@ public partial class Software : Scope {
          
      ]
 
-/* [new Section("Ссылка на зону трекинга")
-   [$"Информацию о зоне трекинга можно передать другому"]
-    http://www.antilatency.com/antilatencyservice/environment?data=AAVSaWdpZE8BBnllbGxvdwgIuFOJP9xGoD6vjmO9mpmZPgAAAAAAAAAAAJqZGT8NBQAEAwAGAwYCBAIDAAUHBgQDAwUAAAIHBgcGBwYHBwIHAgcGAgMDdzk%name=DevKitX         data и name setAsDefault(установить по умолчанию), и silent(добавить, не открывая диалога). Оба типа bool, то есть setAsDefault=true%silent=true, например.
+     [new Section("Ссылка на зону трекинга","tracking_area_link")
+        [$"Данные зоны трекинга можно отправить другому пользователю в виде ссылки, которая имеет такой вид:"]
+        
+            [$"`http://www.antilatency.com/antilatencyservice/environment?`*data*`=AAVSaWdpZE8BBnllbGxvdwgIuFOJP9xGoD6vjmO9mpmZPgAAAAAAAAAAAJqZGT8NBQAEAwAGAwYCBAIDAAUHBgQDAwUAAAIHBgcGBwYHBwIHAgcGAgMDdzk&`*name*`=DevKitX&`*setAsDefault*`=true&`*silent*`=true`"]
+            [$"\nСсылка может содержать несколько параметров, из которых два - data и name - обязательные."]
+            [$"*data* - данные зоны трекинга; \n*name* - её название (можно изменить в {AntilatencyService.Material}); \n*setAsDefault* - автоматически назначает добавленную зону трекинга зоной по умолчанию; \n*silent* - актуально для Android; позволяет добавить зону трекинга нажатием по ссылке, не открывая окно {AntilatencyService.Material}."]
+        [$"\nИспользуя опцию \"*Share*\", можно скопировать и отправить другому пользователю ссылку на зону трекинга."]
+        [Share]
 
-         [($"Настройки зоны трекинга можно отправить другому пользователю в виде ссылки, используя опцию \"Share\".")]
-                [Share]
+        [$"\nДобавить новый проект по ссылке можно при помощи опции \"*From link*\"."]
+            [new Note($"Если вы заранее скопировали ссылку, то форма добавления зоны трекинга будет автоматически заполнена данными из буфера обмена.")]
+        [FromLink]
+        
+        [$"\nЧтобы добавить зону трекинга на Android устройстве, можно использовать опцию \"From Link\" или нажать непосредственно на ссылку. Тогда откроется уже заполненная форма добавления новой зоны в {AntilatencyService.Material}. Если в ссылке присутствует параметр *silent*, то зона трекинга будет добавлена автоматически без вызова окна приложения."]
+    
+    [new Info($"Подробнее о создании и редактировании зон трекинга читайте тут: \n{Tutorials.Environment_Editor}")]
      ]
-
-    [new Section("Как добавить зону трекинга")
-       [$"С помощью вкладки Environments можно создать новую зону трекинга или добавить проект другого пользователя, используя опцию /\"From link\"."]
-             [FromLink]
-            
-    ]*/
-     [new Info($"Подробнее о том, как собрать зону трекинга: \n{Tutorials.Devkit_Tracking_Area_Setup}")]
-
-   /* [new Section("Качество зоны трекинга")
-    [$"Используя встроенный в {AntilatencyService.Material} редактор зон трекинга, можно посмотреть и настроить качество выбранной зоны. Для правильной работы трекинга важно плотное и равномерное расположение /фич. Фича - это уникальная комбинация баров, благодаря которой {Hardware.Alt} определяет своё положение в пространстве. \nЧтобы увидеть, равномерно ли распределены фичи в конкретной зоне, зайдите в редактор и выберите режим отображения \"Visibility\"."]
-      [new Spoiler("Visibility")
-         [$"*Круговая диаграмма в центре* - ожидаемое качество трекинга"]
-         [$"*Зелёные дуги у границы клетки* - число видимых фич"]
-                [VisibilityViewMode]
-            ]
-   [$"Чтобы увидеть расположение фич, зажмите кнопку \"Show features\" в любом из режимов отображения."]
-       [new Spoiler("Show features")
-             [ShowFeatures]
-         ]
-   
-   [new Info($"Подробнее о создании и редактировании зон трекинга можно почитать тут: \n{Tutorials.Environment_Editor}")]
-    ]*/
-
        ;
         }
     }

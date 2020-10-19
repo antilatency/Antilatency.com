@@ -3,7 +3,7 @@
 using static Terms.SocketReferenceDesignDeploying_Assets;
 
 partial class Terms {
-    public static Material SocketReferenceDesign_ru => new Material(null, TopView,
+    public static Material SocketReferenceDesign_ru => new Material("SocketReferenceDesign", TopView,
     @$"Отладочная плата для разработчиков {Terms.Socket}")
         [new Section("Ключевые функциональные блоки")
             [new UnorderedList()
@@ -60,7 +60,7 @@ partial class Terms {
         ]
 
         [new Section($"{Hardware.Alt} connector")
-            [$"Разъём для {Hardware.Alt} состоит из 8 сигнальных площадок и отверстие под магнит по центру. Рядом необходимо заложить монтажные отверстия для монтажа стенок, которые необходимы для выравнивания. См. {Tutorials.SocketReferenceDesignDeploying:mechanics} для лучшего понимания."]
+            [$"Разъём для {Hardware.Alt} состоит из 8 сигнальных площадок и отверстие под магнит по центру. Рядом необходимо заложить монтажные отверстия для монтажа стенок, которые необходимы для выравнивания. См. {Tutorials.SocketCustomizing:mechanics} для лучшего понимания."]
         ]
 
         [new Section("Rgb status led")

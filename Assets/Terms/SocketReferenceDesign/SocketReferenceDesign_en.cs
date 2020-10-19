@@ -3,7 +3,7 @@ using Csml;
 using static Terms.SocketReferenceDesignDeploying_Assets;
 
 partial class Terms {
-    public static Material SocketReferenceDesign_en => new Material(null, TopView,
+    public static Material SocketReferenceDesign_en => new Material("SocketReferenceDesign", TopView,
     @$"A development board for {Terms.Socket}.")
         [new Section("Main components")
             [new UnorderedList()
@@ -62,7 +62,7 @@ partial class Terms {
         ]
 
         [new Section($"{Hardware.Alt} connector")
-            [$"The {Hardware.Alt} connector has 8 contacts and a hole for the magnet in the center. The Alt frame installation also requires the holes. Read here to learn more: {Tutorials.SocketReferenceDesignDeploying:mechanics}"]
+            [$"The {Hardware.Alt} connector has 8 contacts and a hole for the magnet in the center. The Alt frame installation also requires the holes. Read here to learn more: {Tutorials.SocketCustomizing:mechanics}"]
         ]
 
         [new Section("RGB status LED")
@@ -72,7 +72,7 @@ partial class Terms {
 
         [new Section($"{Terms.Antilatency_Hardware_Extension_Interface} components")
             [$"Optional. If you don't need the {Terms.Antilatency_Hardware_Extension_Interface}, then just don't use its components and leave the controller's pins free."]
-            [$"There are 2 buttons, 2 	potentiometer trimmers, and 4 LEDs on the board. Each component is connected by jumper so you can take them from the board and use alternatives."]
+            [$"There are 2 buttons, 2	potentiometer trimmers, and 4 LEDs on the board. Each component is connected by jumper so you can take them from the board and use alternatives."]
         ]
         ]
 

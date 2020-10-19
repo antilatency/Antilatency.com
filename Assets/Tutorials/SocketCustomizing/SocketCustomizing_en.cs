@@ -1,13 +1,13 @@
 using Csml;
 using System.Net.Sockets;
-using static Tutorials.SocketReferenceDesignDeploying_Assets;
+using static Tutorials.SocketCustomizing_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material SocketReferenceDesignDeploying_en =>
+    public static Material SocketCustomizing_en =>
 
         new Material(
-            "SocketReferenceDesignDeploying",
+            "Customize your Socket",
             null,
         $"Learn how to make your {Terms.Socket} using {Terms.SocketReferenceDesign}")
             [new Section("To customize your Socket you need:")

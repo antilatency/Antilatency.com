@@ -5,7 +5,7 @@ public partial class Software : Scope {
         //todo new Material("Antilatency Service" -> nфw Material(null
         public static Material Material_ru => new Material("AntilatencyService",
         Title,
-        $"Служебное приложение для управления настройками трекинга, обновления прошивки и просмотра дерева подключённых устройств. Кроме этого, AntilatencyService сохраняет настройки зон трекинга и VR устройств.")
+        $"Служебное приложение для обновления прошивки и просмотра дерева подключённых устройств. Кроме этого, AntilatencyService сохраняет настройки зон трекинга и {Terms.Placement} для разных VR устройств.")
 
         [new Downloadable("AntilatencyService", "AntilatencyServiceBinaries",
                     Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
