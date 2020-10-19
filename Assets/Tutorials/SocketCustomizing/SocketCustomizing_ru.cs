@@ -4,7 +4,7 @@ using static Tutorials.SocketCustomizing_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material SocketReferenceDesignDeploying_ru =>
+    public static Material SocketCustomizing_ru =>
 
         new Material(
             "Socket Reference Design Deploying",
