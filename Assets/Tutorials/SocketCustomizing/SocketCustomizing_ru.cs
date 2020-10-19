@@ -1,13 +1,13 @@
-﻿using Csml;
+﻿﻿using Csml;
 using System.Net.Sockets;
 using static Tutorials.SocketCustomizing_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material SocketCustomizing_ru =>
+    public static Material SocketReferenceDesignDeploying_ru =>
 
         new Material(
-            "Разработка пользовательского Socket",
+            "Socket Reference Design Deploying",
             null,
         $"В данной статье будет описана последовательность действий для изготовления своего {Terms.Socket} с помощью {Terms.SocketReferenceDesign}")
             [new Section("Основные компоненты")
