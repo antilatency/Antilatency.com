@@ -11,6 +11,7 @@ public partial class Software : Scope {
                     Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
 
         [new Success($"You need to run a utility at least once to initialize the system and to make the first-time setup.")]
+        [new Warning($"AntilatencyService does not allow simultaneous work of several apps. Before running the new app, close the previous one.")]
 
         //[$"Extra info how to install AS:"]
         //[$"{How_to_install_Antilatency_Service}"]

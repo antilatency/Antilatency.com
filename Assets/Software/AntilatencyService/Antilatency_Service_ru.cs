@@ -11,6 +11,7 @@ public partial class Software : Scope {
                     Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
 
         [new Success($"После установки приложение необходимо запустить, чтобы выполнить первичную настройку устройств и зон трекинга.")]
+        [new Warning($"AntilatencyService не поддерживает параллельную работу двух и более приложений. Поэтому, прежде чем начать работу с новым приложением, закройте предыдущее.")]
 
         //[$"Подробнее про установку можно почитать тут:"]
         //[$"{How_to_install_Antilatency_Service}"]
