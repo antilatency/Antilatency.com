@@ -5,7 +5,7 @@ public partial class Software : Scope {
 
     public static Material Material_ru => new Material("Environments",
     EnvironmentsTabScreenshot,
-    $"Инструмент {AntilatencyService.Material} для управления зонами трекинга. С его помощью можно не только создать или загрузить зону, но также посмотреть её характеристики, проверить качество трекинга и настроить параметры, используя редактор зон трекинга.")
+    $"Инструмент {AntilatencyService.Material} для управления зонами трекинга. С его помощью вы можете создать или загрузить зону, посмотреть её характеристики, настроить параметры и проверить качество расположения фич, используя редактор зон трекинга.")
 
      [new Info($"Подробнее о том, как собрать зону трекинга: \n{Tutorials.Devkit_Tracking_Area_Setup}")]
 
@@ -21,22 +21,22 @@ public partial class Software : Scope {
      ]
 
      [new Section("Ссылка на зону трекинга","tracking_area_link")
-        [$"Данные зоны трекинга можно отправить другому пользователю в виде ссылки, которая имеет следующий вид:"]
+        [$"Данные зоны трекинга вы можете отправить другому пользователю в виде ссылки. Она будет выглядеть:"]
         
             [$"`http://www.antilatency.com/antilatencyservice/environment?`*data*`=AAVSaWdpZE8BBnllbGxvdwgIuFOJP9xGoD6vjmO9mpmZPgAAAAAAAAAAAJqZGT8NBQAEAwAGAwYCBAIDAAUHBgQDAwUAAAIHBgcGBwYHBwIHAgcGAgMDdzk&`*name*`=DevKitX&`*setAsDefault*`=true&`*silent*`=true`"]
-            [$"\nСсылка может содержать несколько параметров, из которых два - data и name - обязательные."]
-            [$"*data* - данные зоны трекинга; \n*name* - её название (можно изменить в {AntilatencyService.Material}); \n*setAsDefault* - автоматически назначает добавленную зону трекинга зоной по умолчанию; \n*silent* - актуально для Android; позволяет добавить зону трекинга нажатием по ссылке, не открывая окно {AntilatencyService.Material}."]
+            [$"\nСсылка содержит несколько параметров, из которых два - data и name - обязательные."]
+            [$"*data* - данные зоны трекинга; \n*name* - её название (можно изменить в редакторе); \n*setAsDefault* - автоматически назначает добавленную зону трекинга зоной по умолчанию; \n*silent* - актуально для Android; позволяет добавить зону трекинга нажатием по ссылке, не открывая окно {AntilatencyService.Material}."]
             [new Section("Как поделиться ссылкой","")]
-        [$"Используя опцию \"*Share*\", можно скопировать и отправить другому пользователю ссылку на зону трекинга."]
+        [$"Используя опцию \"*Share*\", скопируйте, а потом отправьте другому пользователю ссылку на зону трекинга любым удобным способом."]
         [Share]
             [new Section("Как добавить новую зону трекинга","")]
-        [$"Добавить новый проект по ссылке можно при помощи опции \"*From link*\"."]
+        [$"Используйте опцию \"*From link*\", чтобы добавить новый проект по ссылке."]
             [new Note($"Если вы заранее скопировали ссылку, то форма добавления зоны трекинга будет автоматически заполнена данными из буфера обмена.")]
         [FromLink]
         
-        [$"\nЧтобы добавить зону трекинга на Android устройстве, можно использовать опцию \"From Link\" или нажать непосредственно на ссылку. Тогда откроется уже заполненная форма добавления новой зоны в {AntilatencyService.Material}. Если в ссылке присутствует параметр *silent*, то зона трекинга будет добавлена автоматически без вызова окна приложения."]
+        [$"\nЧтобы добавить зону трекинга на Android устройстве, используйте опцию \"From Link\" или нажмите непосредственно на ссылку. После нажатия откроется уже заполненная форма добавления новой зоны в {AntilatencyService.Material}. Если в ссылке содержится параметр *silent*, то зона трекинга будет добавлена автоматически без вызова окна приложения."]
 
-        [$"\nВы также можете добавить зону трекинга через {new ExternalReference("https://developer.android.com/studio/command-line/adb", "adb")}. Для этого введите в командной строке `adb shell am start` и вставьте ссылку на зону."]
+        [$"\nВы также можете добавить зону трекинга через {new ExternalReference("https://developer.android.com/studio/command-line/adb", "adb")}. Для этого введите в командной строке `adb shell am start` и вставьте нужную ссылку."]
         [$"\n`adb shell am start http://www.antilatency.com/antilatencyservice/environment?data=AAVSaWdpZE8BBnllbGxvdwgIuFOJP9xGoD6vjmO9mpmZPgAAAAAAAAAAAJqZGT8NBQAEAwAGAwYCBAIDAAUHBgQDAwUAAAIHBgcGBwYHBwIHAgcGAgMDdzk%name=DevKitX`"]
     
    //[new Info($"Подробнее о создании и редактировании зон трекинга читайте тут: \n{Tutorials.Environment_Editor}")]
