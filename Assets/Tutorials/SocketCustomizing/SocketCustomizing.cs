@@ -10,8 +10,8 @@ partial class Tutorials: Scope {
     public partial class SocketCustomizing_Assets : Scope {
         public static Image AltMount1 => new Image("Images/AltMount1.jpg");
         public static Image AltMount2 => new Image("Images/AltMount2.jpg");
-        public static Downloadable CustomMaterials = new Downloadable("", "CustomMaterials", Downloadable.PathFragment.CanSelectAll);
-        public static Downloadable Holder3D = new Downloadable (null, "Holder 3D model");
+        public static Downloadable CustomMaterials = new Downloadable("Materials", "CustomMaterials", Downloadable.PathFragment.CanSelectAll);
+        public static Downloadable Holder3D = new Downloadable ("Holder 3D-model", "Holder 3D-model");
         public static Image MagnetMount0 = new Image("./Images/MagnetMount/MagnetMount0.jpg");
         public static Image MagnetMount1 = new Image("./Images/MagnetMount/MagnetMount1.jpg");
         public static Image MagnetMount2 = new Image("./Images/MagnetMount/MagnetMount2.jpg");
