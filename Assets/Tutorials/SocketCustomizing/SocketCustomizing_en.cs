@@ -12,26 +12,27 @@ partial class Tutorials : Scope {
         $"Learn how to make your {Terms.Socket} using {Terms.SocketReferenceDesign}")
             [new Section("To customize your Socket you need:")
                 [new OrderedList()
-                    [$"The board"]
+                    [$"A PCB"]
                     [$"Ready-to-install mechanical components"]
                     [$"An up-to-date Antilatency firmware"]
-                    [$"{Hardware.Alt}"]
+                    [$"{Hardware.Alt} (to test your {Terms.Socket})"]
                 ]
             ]
 
             [new Section("Board design")
                 [$"You can take the {Terms.SocketReferenceDesign} as an example and use its modules for your project."]
-                [$"We recommend making the connection between an SPI and the {Hardware.Alt} as short as possible and to protect it from disturbance."]
-                [$"The nRF module's position should correspond to its DataSheet requirements. Pay extra attention to the position of the antenna."]
-                [$"The circuitry, a tracing example, a 3D model, a BOM, and Gerber are *available to download*."]
+                [$"We recommend making the connection between an SPI and the {Hardware.Alt} as short as possible and to protect it from electromagnetic interference."]
+                [$"The nRF module's position should correspond to its dataSheet requirements. Pay extra attention to the position of the antenna."]
+                [$"The circuitry, a 3D model, a BOM, Gerber and nRF52840 MS88SF3 V1.1 datasheet are *available to download*."]
                
                 [CustomMaterials]
             ]
 
-            [new Section("Prepare the mechanical components")
+            [new Section("Prepare the mechanical components","mechanics")
                 [$"The {Hardware.Alt} mounting is the main thing you need to take into account. It requires the magnet and the frame to keep {Hardware.Alt} in the right position."]
                 [new Section("The magnet mounting","")
                     [$"We use magnets that have a diameter of 7mm, 2mm high, and of grade N52. They perfectly match the 6.9mm board hole."]
+                    [new Note($"Keep in mind that after you finished with mounting you are no more allowed to solder the board. The overheated magnet looses its features.")]
                     [$"Before mounting, prepare a board, a magnet, and the {Hardware.Alt}."]
                             [MagnetMount0]
                         [$"*Step 1.* To find out the magnet polarity, connect it to the {Hardware.Alt}. Mark the side of the magnet you need to be on the reverse side of the board. We used a red marker."]
@@ -70,9 +71,9 @@ partial class Tutorials : Scope {
             ]
 
             [new Section("Antilatency firmware")
-                [$"Download the .bin file from the website, it's a bootloader. Install it on the board using the SWD pins and a programmer (for example, Jlink)."]
-                [new Info($"Some manufacturers offer a preinstalled firmware/bootloader. You can even send them your firmware to be installed.")]
-                [$"When the bootloader is installed, use the USB connector and update the firmware with {Terms.AntilatencyService}. The functionality is similar to  {Hardware.SocketUsbRadio}, including {Terms.Antilatency_Hardware_Extension_Interface} support, the {Terms.AntilatencyService} update system, and two modes for {Terms.Antilatency_Radio_Protocol}."]
+                [$"Download the .bin file from the website, it's a bootloader. Load it on the board using the SWD pins and a programmer (for example, Jlink)."]
+                [new Info($"Some manufacturers offer a preloaded firmware/bootloader. You can even send them your firmware to be installed.")]
+                [$"After this, use the USB connector and update the firmware with {Terms.AntilatencyService}. The functionality is similar to  {Hardware.SocketUsbRadio}, including {Terms.Antilatency_Hardware_Extension_Interface} support, the {Terms.AntilatencyService} update system, and two modes for {Terms.Antilatency_Radio_Protocol}."]
             ]
             ;
 }

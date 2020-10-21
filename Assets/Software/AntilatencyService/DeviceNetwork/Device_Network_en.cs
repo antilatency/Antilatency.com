@@ -3,11 +3,11 @@ public partial class Software : Scope {
     public partial class AntilatencyService : Scope {
         public partial class Device_Network {
 
-    public static Material Material_ru => new Material("Device Network",
+    public static Material Material_en => new Material("Device Network",
     DeviceNetworkTabScreenshot,
-    $"Вкладка {AntilatencyService.Material}, где вы можете посмотреть дерево устройств Antilatency, их системные и пользовательские свойства, а также узнать и обновить прошивку подключённых устройств.")
+    $"Use this {AntilatencyService.Material} tab to look through the {Terms.Device_Tree}, to see the system and custom device properties, to see the firmware version of the connected devices and to update it.")
 
-    [$"Используя Device Network, пользователь может читать и писать свойства устройств. Каждое свойство состоит из ключа (имени) и значения. Чтобы посмотреть данные о конкретном устройстве, нажмите на его имя в {Terms.Device_Tree}."]
+    [$"Use {AntilatencyService.Material} to read and write the device properties. Each property has its key(name) and value. To see the device properties choose its name in the {Terms.Device_Tree}."]
 
     [new Section("Системные свойства", $"")
             [$"Обязательные свойства содержат основную информацию об устройстве и не могут быть изменены пользователем:"]

@@ -15,11 +15,11 @@ partial class Terms {
                 [$"DC/DC 3V"]
                 [$"{Hardware.Alt} разъём"]
                 [$"RGB status LED"]
-                [$@"{Terms.Antilatency_Hardware_Extension_Interface} компоненты(опционально):
+                [$@"{Terms.Antilatency_Hardware_Extension_Interface} компоненты (опционально):
                     {new UnorderedList()
-                    [$"Светодиоды"]
-                    [$"Кнопки"]
-                    [$"Триммеры"]}"
+                    [$"cветодиоды"]
+                    [$"rнопки"]
+                    [$"nриммеры"]}"
                 ]
 
             ]
