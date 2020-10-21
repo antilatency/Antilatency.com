@@ -7,8 +7,7 @@ public partial class Software : Scope {
         Title,
         $"A utility allows to update the firmware and to look through the device tree. Besides, the AntilatencyService keeps in the settings of the tracking areas and placements for different VR gadgets.")
 
-        [new Downloadable("AntilatencyService", "AntilatencyServiceBinaries",
-                    Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
+        [InstallFile]
 
         [new Success($"You need to run a utility at least once to initialize the system and to make the first-time setup.")]
         [new Warning($"AntilatencyService does not allow simultaneous work of several apps. Before running the new app, close the previous one.")]

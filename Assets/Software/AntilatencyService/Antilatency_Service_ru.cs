@@ -7,8 +7,7 @@ public partial class Software : Scope {
         Title,
         $"Служебное приложение для обновления прошивки и просмотра дерева подключённых устройств. Кроме этого, AntilatencyService сохраняет настройки зон трекинга и {Terms.Placement} для разных VR устройств.")
 
-        [new Downloadable("AntilatencyService", "AntilatencyServiceBinaries",
-                    Downloadable.PathFragment.Version, Downloadable.PathFragment.Directory, Downloadable.PathFragment.Directory)]
+        [InstallFile]
 
         [new Success($"После установки приложение необходимо запустить, чтобы выполнить первичную настройку устройств и зон трекинга.")]
         [new Warning($"AntilatencyService не поддерживает параллельную работу двух и более приложений. Поэтому, прежде чем начать работу с новым приложением, закройте предыдущее.")]
