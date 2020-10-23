@@ -9,22 +9,22 @@ public partial class Software : Scope {
 
     [$"Use {AntilatencyService.Material} to read and write the device properties. Each property has its key(name) and value. To see the device properties choose its name in the {Terms.Device_Tree}."]
 
-    [new Section("Системные свойства", $"")
-            [$"Обязательные свойства содержат основную информацию об устройстве и не могут быть изменены пользователем:"]
+    [new Section("System properties", $"")
+            [$"The system properties contain the main information about the device. You can not change them."]
                  [new UnorderedList()
-                    [$"sys/HardwareSerialNumber - серийный номер устройства"]
-                    [$"sys/FirmwareName - имя прошивки"]
-                    [$"sys/FirmwareVersion - версия прошивки"]
-                    [$"sys/HardwareName - имя устройства"]
-                    [$"sys/HardwareVersion - версия устройства"]
+                    [$"sys/HardwareSerialNumber"]
+                    [$"sys/FirmwareName"]
+                    [$"sys/FirmwareVersion"]
+                    [$"sys/HardwareName"]
+                    [$"sys/HardwareVersion"]
                  ]
-            [new Info($"О том, как обновить прошивку устройства, читайте тут: \n{Tutorials.Device_Update}")]
+            [new Info($"Please, read here how to update the firmware: \n{Tutorials.Device_Update}")]
     ]
     
-    [new Section("\nПользовательские свойства", $"")
-             [$"Используя кастомные свойства, пользователь может вносить на устройства свои данные."]
+    [new Section("\nCustom properties", $"")
+             [$"Write the custom properties to configure your device."]
     
-     [new Info($"Более подробная информация о пользовательских настройках: \n{Tutorials.Set_Device_Custom_Properties}")]
+     [new Info($"Please, read here how to set the custom properties: \n{Tutorials.Set_Device_Custom_Properties}")]
       ]
        ;
         }

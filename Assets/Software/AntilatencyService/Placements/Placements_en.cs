@@ -5,10 +5,11 @@ public partial class Software : Scope {
 
     public static Material Material_en => new Material("Placements",
     PlacementsTabScreenshot,
-    $"Инструмент {AntilatencyService.Material} для настройки расположения трекера Antilatency на VR устройствах. Вы можете использовать предустановленные решения для популярных моделей шлемов виртуальной реальности или создать собственный проект.")
+    $"Use the {AntilatencyService.Material}'s tab to set the {Terms.Placement} of the {Hardware.Alt} for any VR gadget. You can choose whether one of the preloaded presets, or create your own configuration.")
 
-    [$"Принцип работы с вкладкой Placements такой же, как и с {AntilatencyService.Environments.Material}. Здесь вы можете добавить настройки расположения модуля Alt на VR устройстве, выбрать позицию трекера по умолчанию или отправить свой проект другому пользователю в виде ссылки."]
-            [new Info($"Подробнее о создании пользовательских настроек расположения трекера Alt читайте тут: \n{Tutorials.Alt_HMD_Placement}")]
+    [$"This tab is similar to the {AntilatencyService.Environments.Material}. Here you can set the position of the {Hardware.Alt}."]
+            [new Info($"Please, read here how to custom your {Terms.Placement}: \n{Tutorials.Alt_HMD_Placement}")]
+            // Здесь вы можете добавить настройки расположения модуля Alt на VR устройстве, выбрать позицию трекера по умолчанию или отправить свой проект другому пользователю в виде ссылки.
         ;
         }
     }
