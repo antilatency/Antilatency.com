@@ -8,8 +8,8 @@ public partial class Tutorials : Scope {
     [$"Начиная с версии прошивки 1.3.0, {Hardware.SocketUsbRadio} поддерживает два режима работы:"]
 
         [new UnorderedList()
-            [$"wired, или radio master - подключает к себе другие беспроводные {Terms.Socket}, а данные передаёт через USB)"]
-            [$"wireless, или radio slave - подключается к проводному {Hardware.SocketUsbRadio}, а данные передаёт по радиоканалу)"]
+            [$"wired, или radio master - подключает к себе другие беспроводные {Terms.Socket}, а данные передаёт через USB;"]
+            [$"wireless, или radio slave - подключается к проводному {Hardware.SocketUsbRadio}, а данные передаёт по радиоканалу."]
         ]
 
     [$"\nВы можете изменить режим работы {Hardware.SocketUsbRadio} во вкладке {Software.AntilatencyService.Device_Network.Material} служебного приложения {Software.AntilatencyService.Material}. Режим определяет свойство *Mode*, у которого есть два значения: UsbRadioSocket и RadioSocket. Каждый из них имеет свой независимый набор свойств для конфигурации. Пользовательские свойства, к примеру, Tag, - общие для всех режимов работы."]
