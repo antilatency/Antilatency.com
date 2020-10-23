@@ -22,7 +22,7 @@ public partial class Software : Scope {
     ]
     
     [new Section("\nCustom properties", $"")
-             [$"Write the custom properties to configure your device."]
+             [$"Use the custom properties to configure your device. For example, you can write the Tag `gun` for the specific VR gadget or `LeftHand` for the device on the left hand."]
     
      [new Info($"Please, read here how to set the custom properties: \n{Tutorials.Set_Device_Custom_Properties}")]
       ]
