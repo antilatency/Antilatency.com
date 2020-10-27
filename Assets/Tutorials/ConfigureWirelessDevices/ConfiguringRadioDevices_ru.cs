@@ -24,7 +24,7 @@ partial class Tutorials {
             [new UnorderedList()
                 [@$"`MasterSN`
                     Данное свойство нужно, чтобы передатчик подключался только к конкретному приемнику. Получив Serial number приемника, его можно записать в свойство `MasterSN` передатчика, и теперь он будет подключаться только к приемнику с указанным Serial number.
-                    Существует 2 способа, чтобы задать данное свойство(с помощью кнопки на сокете {ConfiguringRadioDevices:SetMasterSoft} и с помощью {Terms.AntilatencyService} см. {ConfiguringRadioDevices:SetMasterHard}). По индикации передатчика можно понять установлено это свойство или нет см. {Hardware.Tag:LED signals}. "]
+                    Существует 2 способа, чтобы задать данное свойство(с помощью кнопки на сокете {ConfiguringRadioDevices:SetMasterSoft} и с помощью {Software.AntilatencyService.Material} см. {ConfiguringRadioDevices:SetMasterHard}). По индикации передатчика можно понять установлено это свойство или нет см. {Hardware.Tag:LED signals}. "]
 
                 [$@"`ChannelsMask` 
                     задаёт маску каналов, по которой передатчик будет искать приемник для подключения.  

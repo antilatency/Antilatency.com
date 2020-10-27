@@ -24,7 +24,7 @@ partial class Tutorials {
             [new UnorderedList()
                 [@$"`MasterSN`
                     This property enables the transmitter to connect only to a specific receiver. After receiving the serial number from the receiver, you can enter it into the `MasterSN` setting of the transmitter. It will then connect only to the receiver with this serial number.
-                    You can set this up in two ways (by using a button on the socket {ConfiguringRadioDevices:SetMasterSoft} and with the help of {Terms.AntilatencyService}. For more information, please see {ConfiguringRadioDevices:SetMasterHard}). The receiver will display this setting as enabled or not, see {Hardware.Tag:LED signals}. "]
+                    You can set this up in two ways (by using a button on the socket {ConfiguringRadioDevices:SetMasterSoft} and with the help of {Software.AntilatencyService.Material}. For more information, please see {ConfiguringRadioDevices:SetMasterHard}). The receiver will display this setting as enabled or not, see {Hardware.Tag:LED signals}. "]
 
                 [$@"`ChannelsMask` 
                     sets the channel mask for the transmitter to look for a receiver connection.  

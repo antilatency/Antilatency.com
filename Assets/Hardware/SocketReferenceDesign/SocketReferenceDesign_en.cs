@@ -55,7 +55,7 @@ public partial class Hardware : Scope {
         ]
 
         [new Section("SWD connector","")
-            [$"You need an SWD connector only for the first bootloader setup. For further uploading or updating of the firmware, you can use {Terms.AntilatencyService}."]
+            [$"You need an SWD connector only for the first bootloader setup. For further uploading or updating of the firmware, you can use {Software.AntilatencyService.Material}."]
             [$"The board has two similar connectors: a MicroMatch FOB.06P and a Pls-4. You can use either of them with your board."]
             [new Info($"You don't need the connector if your module has preinstalled firmware.")]
         ]

@@ -25,7 +25,7 @@ partial class Tutorials : Scope {
                 [$"Контроллер ({Hardware.Bracer})"]
             ]
 
-            [$@"{ Terms.Placement} для трекера ищется по имени  заданным в свойстве `Tag` у {Hardware.SocketUsb}, если свойство не задано или такой {Terms.Placement} не найдет, то берется установленный по умолчанию в {Terms.AntilatencyService}.
+            [$@"{ Terms.Placement} для трекера ищется по имени  заданным в свойстве `Tag` у {Hardware.SocketUsb}, если свойство не задано или такой {Terms.Placement} не найдет, то берется установленный по умолчанию в {Software.AntilatencyService.Material}.
             {Terms.Placement} для {Hardware.Bracer} устанавливается автоматически в зависимости от свойства `Tag` у {Hardware.SocketUsb}, для левой и для правой руки свойство `Tag` должно быть задано как `LeftHand` или `RightHand`, соответственно."]
 
             [$"*Кнопки брейсера*"]
