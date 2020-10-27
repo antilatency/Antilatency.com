@@ -9,7 +9,7 @@ public partial class Tutorials : Scope {
 
         [new UnorderedList()
             [$"wired, or radio master - any wireless {Terms.Socket} can connect to this one; radio master transfer the data via USB;"]
-            [$"wireless, or radio slave - such device can connect to SocketUsbRadio device and transfer the data via radio channel."]
+            [$"wireless, or radio slave - such device can connect to the SocketUsbRadio device and transfer the data via radio channel."]
         ]
 
     [@$"
