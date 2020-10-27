@@ -11,16 +11,24 @@ partial class Hardware: Scope {
         public static string Weight = "18 g";
         public static string BatteryCapacity = "250 mAh";
 
-        public static LedSignal ChargingLedSignal = new LedSignal(@$"Cyclic 5 second red light � 5 seconds off", $"Socket is charging", $"{new ColorSequence()[System.Drawing.Color.Red, 5f][System.Drawing.Color.Black, 5f]}");
-        public static LedSignal ChargedLedSignal = new LedSignal($"Constant green", $"Socket is fully charged", $"{new ColorSequence()[System.Drawing.Color.Green, 100f]}");
+        public static LedSignal ChargingLedSignal_ru = new LedSignal(@$"{new ColorSequence()[System.Drawing.Color.Red, 5f][System.Drawing.Color.Black, 5f]}", $"Устройство заряжается");
+        public static LedSignal ChargingLedSignal_en = new LedSignal(@$"{new ColorSequence()[System.Drawing.Color.Red, 5f][System.Drawing.Color.Black, 5f]}", $"Socket is charging");
 
-        public static List<LedSignal> TagLedSignals = new List<LedSignal> { ChargingLedSignal, ChargedLedSignal };
+        public static LedSignal ChargedLedSignal_ru = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Green, 100f]}", $"Устройство полностью заряжено");
+        public static LedSignal ChargedLedSignal_en = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Green, 100f]}", $"Socket is fully charged");
 
-        public static Table IndicationTable = new Table("Led signal", "Socket state", "Indication")
-                    [LedSignal.convert(CommonLedSignals)]
-                    [LedSignal.convert(WirelessLedSignals)]
-                    [LedSignal.convert(TagLedSignals)];
+        public static List<LedSignal> TagLedSignals_ru = new List<LedSignal> { ChargingLedSignal_ru, ChargedLedSignal_ru };
+        public static List<LedSignal> TagLedSignals_en = new List<LedSignal> { ChargingLedSignal_en, ChargedLedSignal_en };
 
+        public static Table IndicationTable_ru = new Table("Индикация","Состояние устройства")
+                    [LedSignal.convert(CommonLedSignals_ru)]
+                    [LedSignal.convert(WirelessLedSignals_ru)]
+                    [LedSignal.convert(TagLedSignals_ru)];
+
+        public static Table IndicationTable_en = new Table("Indication","Socket state")
+                    [LedSignal.convert(CommonLedSignals_en)]
+                    [LedSignal.convert(WirelessLedSignals_en)]
+                    [LedSignal.convert(TagLedSignals_en)];
 
     }
 }

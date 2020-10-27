@@ -40,15 +40,9 @@ partial class Hardware : Scope {
             ]
 
             [new Section("LED signals") 
-                [new Table("Led signal","Socket state")
-                    [$"Green to blue cyclic change"][$"Wireless socket is trying to find any receiver to connect"]
-                    [$"Green to blue quick cyclic change"][$"Wireless socket is trying to find a specific receiver (“MasterSN” property is not empty)"]
-                    [$"Smoothly blinking <color>"][$"Wireless socket is connected to the приемник. <color> should be identical on both devices."]
-                    [$"Constant red light"][$"Device error, it will be restarted in a few seconds"]
-                    [$"Red blinking (on/off) for N times"][$"Hardware error, N – error code"]
-                    [$"Cyclic 5 second red light – 5 seconds off"][$"Socket is charging"]
-                    [$"Constant green"][$"Socket is fully charged"]
-                ]
+
+            [Tag_Assets.IndicationTable_en]
+            
             ]
 
         ;

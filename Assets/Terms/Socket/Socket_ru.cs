@@ -9,7 +9,7 @@ partial class Terms {
         ")
 
         [new Section("Создание собственных устройств с поддержкой трекера")
-            [$"Существует открытый дизайн сокета ({Terms.SocketReferenceDesign}). Пользователи могут создавать собственные устройства с поддержкой трекера {Hardware.Alt}, реализуя спецификацию из {Terms.SocketReferenceDesign}."]
+            [$"Существует открытый дизайн сокета ({Hardware.SocketReferenceDesign}). Пользователи могут создавать собственные устройства с поддержкой трекера {Hardware.Alt}, реализуя спецификацию из {Hardware.SocketReferenceDesign}."]
         ]
     ;
 }

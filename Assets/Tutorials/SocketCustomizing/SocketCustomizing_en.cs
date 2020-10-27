@@ -9,7 +9,7 @@ partial class Tutorials : Scope {
         new Material(
             "Customize your Socket",
             null,
-        $"Learn how to make your {Terms.Socket} using {Terms.SocketReferenceDesign}")
+        $"Learn how to make your {Terms.Socket} using {Hardware.SocketReferenceDesign}. You can use the modules from the Antilatency development board or choose other components that correspond to the recommendations given below.")
             [new Section("To customize your Socket you need:")
                 [new OrderedList()
                     [$"A PCB"]
@@ -20,7 +20,7 @@ partial class Tutorials : Scope {
             ]
 
             [new Section("Board design")
-                [$"You can take the {Terms.SocketReferenceDesign} as an example and use its modules for your project."]
+                [$"You can take the {Hardware.SocketReferenceDesign} as an example and use its modules for your project."]
                 [$"We recommend making the connection between an SPI and the {Hardware.Alt} as short as possible and to protect it from electromagnetic interference."]
                 [$"The nRF module's position should correspond to its dataSheet requirements. Pay extra attention to the position of the antenna."]
                 [$"The circuitry, a 3D model, a BOM, Gerber and nRF52840 MS88SF3 V1.1 datasheet are *available to download*."]

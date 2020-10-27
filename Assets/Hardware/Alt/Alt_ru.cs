@@ -2,8 +2,7 @@ using Csml;
 
 partial class Hardware : Scope {
         public static Material Alt_ru => new Material("Alt", AltAndUsbSocket0,
-        @$"{Hardware.Alt} это оптико-инерциальный модуль трекинга. {Hardware.Alt} размещается на объектах отслеживания и определяет свое положение в пространстве относительно инфракрасных маркеров. 
-            {Hardware.Alt} поставляется в комплекте с проводным {Hardware.SocketUsb}.")
+        @$"{Hardware.Alt} это оптико-инерциальный модуль трекинга. Устройство размещается на объектах отслеживания и определяет свое положение в пространстве относительно инфракрасных маркеров. Alt поставляется в комплекте с проводным {Hardware.SocketUsb}.")
         [new Section("Sensor fusion")
             [$"{Hardware.Alt} is based on a sensor fusion approach. It's an inertial measurement unit (IMU) based tracking system with real-time IMU correction based on optical data."]
         ]
@@ -23,16 +22,16 @@ partial class Hardware : Scope {
 
         [new Section("Техническая спецификация")
             [new Table(2)
-                [$"Sensors"][$"Optical sensor,  accelerometer,  gyroscope"]
-                [$"Position frequency"][$"2000Hz"]
-                [$"Latency"][$"2 ms"]
-                [$"Optics FOV"][$"240 degrees"]
-                [$"Power consumption"][@$"In tracking mode: 175mA@3V
+                [$"Датчики"][$"Оптический датчик,  акселерометр,  гироскоп"]
+                [$"Position frequency[Частота]"][$"2000 Гц"]
+                [$"Задержка"][$"2 мс"]
+                [$"Угол обзора"][$"240 градусов"]
+                [$"Потребление энергии"][@$"In tracking mode: 175mA@3V
                                           In idle mode: 130mA@3V"]
                 [$"Connectivity"][@$"No
                                     Connectivity is provided by {Terms.Socket}"]
-                [$"Dimensions"][$"16x16x20.5 mm"]
-                [$"Weight"][$"12 g"]
+                [$"Габариты"][$"16x16x20.5 mm"]
+                [$"Вес"][$"12 g"]
             ]
         ]
 

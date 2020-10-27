@@ -9,7 +9,7 @@ partial class Tutorials : Scope {
         new Material(
             "Создание своего Socket",
             null,
-        $"Как разработать свой {Terms.Socket} на основе {Terms.SocketReferenceDesign}")
+        $"Разработайте свой {Terms.Socket} на основе {Hardware.SocketReferenceDesign}, используя модули с отладочной платы Antilatency. Вы можете использовать и другие компоненты, если это не противоречит общим рекомендациям по созданию Socket.")
             [new Section("Основные компоненты")
                 [new OrderedList()
                     [$"Разработанная плата"]
@@ -20,7 +20,7 @@ partial class Tutorials : Scope {
             ]
 
             [new Section("Разработка платы")
-                [$"В качестве примера вы можете использовать {Terms.SocketReferenceDesign}. Модули этой платы, подойдут и для вашего проекта."]
+                [$"В качестве примера вы можете использовать {Hardware.SocketReferenceDesign}. Модули этой платы, подойдут и для вашего проекта."]
                 
                 [$"Основные рекомендации по разработке:"]
                 [new UnorderedList()

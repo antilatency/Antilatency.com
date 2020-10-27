@@ -1,60 +1,54 @@
 using Csml;
 public partial class Tutorials : Scope {
 
-    public static Material HMDSocketMode_en => new Material("Режим работы HMD Socket",
+    public static Material HMDSocketMode_en => new Material("HMD Socket Modes",
     null, 
-    $"{Hardware.SocketUsbRadio} может работать в одном из двух режимов: wired или wireless. Используя системное приложение {Software.AntilatencyService.Material}, вы можете выбрать режим работы для любого подключённого устройства.")
+    $"The {Hardware.SocketUsbRadio} has two modes: wired and wireless. Use the {Software.AntilatencyService.Material} to configure the mode for any attached Socket. Each mode defines the device properties depending on its functions.")
 
-    [$"Начиная с версии прошивки 1.3.0, {Hardware.SocketUsbRadio} поддерживает два режима работы:"]
+    [$"From the firmware version 1.3.0, the SocketUsbRadio has two modes:"]
 
         [new UnorderedList()
-            [$"wired, или radio master - подключает к себе другие беспроводные {Terms.Socket}, а данные передаёт через USB;"]
-            [$"wireless, или radio slave - подключается к проводному {Hardware.SocketUsbRadio}, а данные передаёт по радиоканалу."]
+            [$"wired, or radio master - any wireless {Terms.Socket} can connect to this one; radio master transfer the data via USB;"]
+            [$"wireless, or radio slave - such device can connect to SocketUsbRadio device and transfer the data via radiochannel."]
         ]
 
-    [$"\nВы можете изменить режим работы {Hardware.SocketUsbRadio} во вкладке {Software.AntilatencyService.Device_Network.Material} служебного приложения {Software.AntilatencyService.Material}. Режим определяет свойство *Mode*, у которого есть два значения: UsbRadioSocket и RadioSocket. Каждый из них имеет свой независимый набор свойств для конфигурации. Пользовательские свойства, к примеру, Tag, - общие для всех режимов работы."]
-    [new Warning($"Обновление прошивки доступно только в режиме UsbRadioSocket.")]
+    [@$"
+    If you need to change the mode use the tab {Software.AntilatencyService.Device_Network.Material} of the AntilatencyService. Write for the Mode property one of the follow values: {new UnorderedList() 
+    [$"UsbRadioSocket (wired)"] 
+    [$"RadioSocket (wireless)"]}"] 
+    [new Warning($"You can update the Socket *ONLY* in UsbRadioSocket mode.")]
+    [$"\nThe device in each mode has an independent bunch of properties. The custom properties, for example, Tag, are the same for all the modes."]
+    [new Info($"Please, read here to learn more about the device properties: {ConfiguringRadioDevices:SetMasterSoft}.")]
 
-    [new Section("UsbRadioSocket (wired)")
+    [new Section("UsbRadioSocket")
 
         [UsbRadioSocket]
 
-        [$"Уникальные свойства:"]
+        [new Section("Special properties","")]
         
         [new UnorderedList()
-                [$"`RadioChannel` Значение по умолчанию `-1`. Приемник выберет случайный первый свободный радиоканал из списка:"]
-                [new UnorderedList()
-                [$"42 = 2402 MHz"]
-                [$"66 = 2426 MHz"]
-                [$"92 = 2452 MHz"]
-                [$"114 = 2474 MHz"] 
-                [$"120 = 2480 MHz"]
-                ]
-                [$"You can set a specific channel in the range of `0 - 140`, that will be used. To know how the channel id is mapped to a radio frequency, см. {Terms.Antilatency_Radio_Protocol:channels}"]
+                [new Paragraph(@$"`RadioChannel` - by default, the receiver chooses one random radiochannel from the five available. Please, read here to learn more about the radio protocol: {Terms.Antilatency_Radio_Protocol:channels}")]
 
-                [$"`ConnLimit`Это максимальное количество передатчиков, которые могу быть подключены к этому приёмнику. Значение `0` полностью отключает радио на устройстве. Если значение больше, чем количество фактически подключённых устройств - часть траффика будет тратиться на поиск новых устройств. Поэтому желательно ставить ровно столько, сколько планируется подключать устройств."]
-            ]
+                [$"`ConnLimit` - the max of the Sockets you can connect to this receiver."]
+        ]
+                [new Info($"We highly recommend setting the exact amount of the devices you are going to connect. Either, you may waste the traffic on searching for the new devices.")]
+                
         ]
     
 
-    [new Section("RadioSocket (wireless)")
+    [new Section("RadioSocket")
 
 
-        [$"С версии прошивки 5.0.0 {Hardware.SocketUsbRadio} в wireless-режиме отображается под именем *AltHmdRadioSocketShadow* в {Terms.Device_Tree}. Для этого устройство необходимо подключить через USB. \nПри этом вам доступны все возможности для настройки параметров wireless режима. Вы можете установить маску каналов, прописать серийный номер radio master или изменить режим работы. Особенно это полезно, если был установлен мастер, к которому сейчас нет доступа."]
-
+        [$"From the firmware version 5.0.0 the wireless {Hardware.SocketUsbRadio} appears in the {Terms.Device_Tree} as the additional node *AltHmdRadioSocketShadow*. But firstly, you need to connect the device via USB. \nYou can also configure its properties: set the channel mask, the MasterSN or change the Socket mode."]
+            [new Info($"If you connect the wireless Socket via USB and at the same time - to the wired Socket, it will be displayed in the Device Tree twice under different names.")]
         [RadioSocket]
+        [RadioSocket1]
 
-        [$"\nУникальные свойства:"]
+        [new Section("Special properties","")]
 
         [new UnorderedList()
-            [$"`MasterSN`Данное свойство нужно, чтобы передатчик подключался только к конкретному приемнику. Получив Serial number приемника, его можно записать в свойство `MasterSN` передатчика, и теперь он будет подключаться только к приемнику с указанным Serial number.Существует 2 способа, чтобы задать данное свойство(с помощью кнопки на сокете {ConfiguringRadioDevices:SetMasterSoft} и с помощью {Terms.AntilatencyService} см.{ConfiguringRadioDevices:SetMasterHard}). По индикации передатчика можно понять установлено это свойство или нет см. {Hardware.Tag:LED signals}. "]
-
-                [$@"`ChannelsMask` задаёт маску каналов, по которой передатчик будет искать приемник для подключения.  Это строка длиной 141 символ (по количеству доступных каналов) , состоящая из `0` и `1`, где `1` означает, что соответствующий канал будет использован при поиске приемника, а `0` - что канал будет проигнорирован. Первый символ в строке отвечает за последний(140) канал. Маска для каналов по умолчанию выглядит следующим образом: `000000000000000000001000001000000000000000000000100000000000000000000000001000000000000000000000001000000000000000000000000000000000000000000`
-                Положение символов `1` в данной маске соответствует списку каналов по умолчанию(42, 66, 92, 114, 120).Для удобства существуют alias, которые можно отправлять вместо строковой маски: {new UnorderedList()
-                        [$"`full` - для поиска активны все каналы"]
-                        [$"`default` - для поиска активны только 5 каналов по умолчанию"]
-                        [$"`N` - для поиска активен только канал `N`. Например, для `140` будет установлена маска `100....000`"]
-                        }"]
+            [$"`MasterSN` - defines the serial number of the master device (receiver);"]
+            [$"`ChannelsMask` - defines the channel mask used to find the receiver to connect to."]
         ]
     
     ]
