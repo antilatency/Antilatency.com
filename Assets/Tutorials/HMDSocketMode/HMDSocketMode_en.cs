@@ -18,7 +18,7 @@ public partial class Tutorials : Scope {
     [$"RadioSocket (wireless)"]}"] 
     [new Warning($"You can update the Socket *ONLY* in UsbRadioSocket mode.")]
     [$"\nThe device in each mode has an independent bunch of properties. The custom properties, for example, Tag, are the same for all the modes."]
-    [new Info($"Please, read here to learn more about the device properties: {ConfiguringRadioDevices:SetMasterSoft}.")]
+    [new Info($"Please, read here to learn more about the device properties: {Tutorials.ConfiguringRadioDevices}.")]
 
     [new Section("UsbRadioSocket")
 
