@@ -35,7 +35,7 @@ public partial class Software : Scope {
             [new Note($"Copy the link beforehand to automatically fill in the add form with data from the clipboard.")]
         [FromLink]
         
-        [$"\nTo add the Environment using the Android device, choose the \"*from link*\" option or click the link itself to open the AntilatencyService with the pre-filled add form. If the link contains the \"*silent*\" parameter, you can add the Environment even without opening the utility's window."]
+        [$"\nTo add the Environment using the Android device, choose the \"*from link*\" option or click the link itself to open the AntilatencyService with the prefilled add form. If the link contains the \"*silent*\" parameter, you can add the Environment even without opening the utility's window."]
 
         [$"\nConversely, use the {new ExternalReference("https://developer.android.com/studio/command-line/adb", "adb")} to add the new Environment. Write `adb shell am start` and add the link. An example of the request:"]
         [$"\n`adb shell am start http://www.antilatency.com/antilatencyservice/environment?data=AAVSaWdpZE8BBnllbGxvdwgIuFOJP9xGoD6vjmO9mpmZPgAAAAAAAAAAAJqZGT8NBQAEAwAGAwYCBAIDAAUHBgQDAwUAAAIHBgcGBwYHBwIHAgcGAgMDdzk%name=DevKitX`"]
