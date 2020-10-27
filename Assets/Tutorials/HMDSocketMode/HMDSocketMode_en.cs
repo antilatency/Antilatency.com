@@ -3,7 +3,7 @@ public partial class Tutorials : Scope {
 
     public static Material HMDSocketMode_en => new Material("HMD Socket Modes",
     null, 
-    $"The {Hardware.SocketUsbRadio} has two modes: wired and wireless. Use the {Software.AntilatencyService.Material} to configure the mode for any attached Socket. Each mode defines the device properties depending on its functions.")
+    $"The {Hardware.SocketUsbRadio} has two modes: wired and wireless. Use the {Software.AntilatencyService.Material} to configure the mode for any attached Socket. Each mode defines the device properties in accordance with its functions.")
 
     [$"From the firmware version 1.3.0, the SocketUsbRadio has two modes:"]
 
