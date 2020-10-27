@@ -9,7 +9,7 @@ public partial class Tutorials : Scope {
 
         [new UnorderedList()
             [$"wired, or radio master - any wireless {Terms.Socket} can connect to this one; radio master transfer the data via USB;"]
-            [$"wireless, or radio slave - such device can connect to SocketUsbRadio device and transfer the data via radiochannel."]
+            [$"wireless, or radio slave - such device can connect to SocketUsbRadio device and transfer the data via radio channel."]
         ]
 
     [@$"
@@ -27,7 +27,7 @@ public partial class Tutorials : Scope {
         [new Section("Special properties","")]
         
         [new UnorderedList()
-                [new Paragraph(@$"`RadioChannel` - by default, the receiver chooses one random radiochannel from the five available. Please, read here to learn more about the radio protocol: {Terms.Antilatency_Radio_Protocol:channels}")]
+                [new Paragraph(@$"`RadioChannel` - by default, the receiver chooses one random radio channel from the five available. Please, read here to learn more about the radio protocol: {Terms.Antilatency_Radio_Protocol:channels}")]
 
                 [$"`ConnLimit` - the max of the Sockets you can connect to this receiver."]
         ]
