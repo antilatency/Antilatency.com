@@ -10,7 +10,7 @@ public partial class Software : Scope {
      [new Info($"Please, read here how to set up the tracking area: \n{Tutorials.Devkit_Tracking_Area_Setup}")]
 
      
-     [new Section("The environment by default")
+     [new Section("The Environment by default")
 
         [($"You can set the Environment by default in two ways. Use the \"*set as default*\" option ...")]
         [SetAsDefault1]
