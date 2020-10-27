@@ -16,7 +16,7 @@ public partial class Tutorials : Scope {
     If you need to change the mode use the tab {Software.AntilatencyService.Device_Network.Material} of the AntilatencyService. Set to the Mode property one of the following values: {new UnorderedList() 
     [$"UsbRadioSocket (wired)"] 
     [$"RadioSocket (wireless)"]}"] 
-    [new Warning($"You can update the Socket *ONLY* in UsbRadioSocket mode.")]
+    [new Warning($"You can update the Socket firmware *ONLY* in UsbRadioSocket mode.")]
     [$"\nThe device in each mode has an independent bunch of properties. The custom properties, for example, Tag, are the same for all the modes."]
     [new Info($"Please, read here to learn more about the device properties: {Tutorials.ConfiguringRadioDevices}.")]
 
