@@ -1,66 +1,54 @@
 using Csml;
+using static Hardware.SocketUsbRadio_Assets;
 
 partial class Hardware : Scope {
 
     public static Material SocketUsbRadio_ru => new Material(
             "HMD Radio Socket",
             SocketUsbRadio_Assets.SocketUsbRadioProduct0,
-             $"{Hardware.SocketUsbRadio} - это wireless {Terms.Socket}, который поддерживает как прием данных от беспроводных устройств по {Terms.Antilatency_Radio_Protocol}, так и передачу данных трекинга при размещении на объектах отслеживания. ")
+             $"HMD Radio Socket - это беспроводной {Terms.Socket}, который поддерживает два режима работы: приём данных от беспроводных устройств по {Terms.Antilatency_Radio_Protocol} и передачу данных трекинга.")
 
-            [new Section("Универсальный приемник данных по радиопротоколу ")
-                [@$"В работе {Terms.Antilatency_Radio_Protocol} {Hardware.SocketUsbRadio} выступает, как правило, в качестве приемника данных от передатчиков. USB type-C порт в этом случае используется для питания {Hardware.SocketUsbRadio} и  для передачи данных на {Terms.Host} по USB. 
-                    См. также ниже другие режимы работы {Hardware.SocketUsbRadio}.
-                "]
-            ]
-            
-            [new Section("Работа в качестве передатчика данных")
-                [$"{Hardware.SocketUsbRadio} через свойство “Mode” может быть сконфигурирован для работы в качестве передатчика данных по радиопротоколу. В этом случае {Hardware.SocketUsbRadio} получает питание от внешней батареи."] 
-            ]
 
-            [new Section("Внешняя батарея")
-                [$"К {Hardware.SocketUsbRadio} через порт USB type-C может быть подключена внешний Power bank для питания сокета. {Hardware.SocketUsbRadio} в этом случае работает в качестве передатчика, аналогично {Hardware.Tag}"] 
-            ]
 
-            [new Section("Поддержка Extension board")
-                [@$"{Hardware.SocketUsbRadio} поддерживает работу с {Hardware.ExtensionBoard}. {Hardware.ExtensionBoard} подключается к {Hardware.SocketUsbRadio} через порт USB type-C для передачи данных о внешних триггерах и управлением откликом(вибрация и т.д.). {Hardware.SocketUsbRadio} передает эти данные вместе с данными трекинга своему приемнику. 
-                    Подробнее см. {Terms.Antilatency_Hardware_Extension_Interface}. 
-                "] 
-            ]
+              [new Section("Функциональные особенности","")
+                [new UnorderedList()
 
-            [new Section("Modular design")
-                [@$"{Hardware.SocketUsbRadio} может рассматриваться как альтернативу использованию {Hardware.Tag} при трекинге объектов, в случае если объект отслеживания обладает собственной батареей или же внешнюю батарею удобно разместить внутри или снаружи корпуса объекта. В этом случае {Hardware.SocketUsbRadio} имеет меньший размер, чем {Hardware.Tag}, а питание приходит с внешней батареи. 
-                    {Hardware.SocketUsbRadio} можно закрепить на двухсторонний скотч или используя крепежные отверстия для надежной фиксации (TODO см. файл с моделькой корпуса).
-                "] 
-            ]
+                    [@$"*Универсальный приёмник*
+                    HMD Radio Socket может работать как приёмник данных от других беспроводных устройств. В таком случае Socket подключается через разъём USB type-C, который используется как для питания, так и для передачи данных на {Terms.Host}."]
+                    [@$"*Передатчик данных
+                    HMD Radio Socket может работать как передатчик данных по радиопротоколу. Питание в таком случае устройство получает от внешней батареи."]
+                    [@$"*Внешняя батарея*
+                    К HMD Radio Socket через порт USB type-C можно подключить внешний источник питания. В таком случае устройство будет работать как передатчик, аналогично, к примеру, {Hardware.Tag}."]
+                    [@$"*Поддержка Extension board*
+                    {Hardware.ExtensionBoard} подключается к HMD Radio Socket через порт USB type-C для передачи данных о внешних триггерах и управлением откликом, к примеру, вибрацией. HMD Radio Socket передает эти данные вместе с данными трекинга своему приемнику.
+                    Подробнее см. {Terms.Antilatency_Hardware_Extension_Interface}."]
+                    [@$"*Компактный дизайн*
+                    HMD Radio Socket может заменить {Hardware.Tag} при трекинге объектов, если объект отслеживания имеет собственную батарею или если внешнюю батарею можно удобно разместить внутри или снаружи корпуса объекта. Главное преимущество HMD Radio Socket - небольшой размер. Его габариты всего {Dimensions} мм.
+                    HMD Radio Socket можно закрепить на двухсторонний скотч или используя крепежные отверстия для надежной фиксации (TODO см. файл с моделькой корпуса)."]
+                ] 
+             ]
+
+    
 
             [new Section("Техническая спецификация")
                 [new Table(2)
-                    [$"Connectivity"][@$"2.4GHz Proprietary radio protocol (Master and Slave modes)
+                    [$"Интерфейс связи"][@$"2.4GHz Proprietary radio protocol (Master and Slave modes)
                                         USB 2.0 Full Speed"]
-                    [$"Ports"][$"Usb Type-C port for Power and Data Transfer"]
-                    [$"Battery"][@$"No built in battery
-                                    External power banks are supported "]
-                    [$"Antilatency Hardware Extension Interface support "][$"Yes"]
-                    [$"Power supply"][$"USB 5V"]
-                    [$"Current consumption"][@$"Without {Hardware.Alt}: 15mA@5V
-                                                With {Hardware.Alt}: 115mA@5V"]
-                    [$"Indication"][@$"RGB LED
-                                       For LED signals see table below TODO"]
-                    [$"Dimensions"][$"9.1x18.2x32.1 mm"]
-                    [$"Weight"][$"7.2 g"]
+                    [$"Разъём"][$"Usb Type-C port (питание и передача данных)"]
+                    [$"Аккумулятор"][@$"Нет аккумулятора.
+                                    Может работать при подключении к внешней батарее."]
+                    [$"Поддержка Antilatency Hardware Extension Interface"][$"Да"]
+                    [$"Питание"][$"USB 5V"]
+                    [$"Энергопотребление"][@$"Без {Hardware.Alt}: 15mA@5V
+                                                С подключённым {Hardware.Alt}: 115mA@5V"]
+                    [$"Индикация"][@$"RGB LED"]
+                    [$"Габариты"][$"{Dimensions} mm"]
+                    [$"Вес"][$"{Weight} g"]
                 ]
             ]
 
             [new Section("LED signals") 
-                [new Table("Led signal","Socket state")
-                    [$"Blinking green light (on/off)"][$"Radio is disabled (Connection limit is 0)"]
-                    [$"Green to blue cyclic change"][$"Searching for a free radio channel or the radio channel is set to a specific value and this channel is occupied by another device"]
-                    [$"Blinking <color> (on/off)"][$"{Hardware.SocketUsbRadio} found a channel to work with and now waits for wireless sockets. <color> is the channel identification, different channels will have different colors"]
-                    [$"Smoothly blinking <color>"][$"{Hardware.SocketUsbRadio} has at least one other wireless socket connected to it, <color> will be equal on these devices"]
-                    [$"Bright red to pale red cyclic change"][$"Bootloader mode"]
-                    [$"Constant red light"][$"Device error, it will be restarted in a few seconds"]
-                    [$"Red blinking (on/off) for N times"][$"Hardware error, N – error code"]
-                ]
+                [SocketUsbRadio_Assets.IndicationTable_ru]
             ]
 
         ;

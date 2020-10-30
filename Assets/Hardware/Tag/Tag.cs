@@ -7,9 +7,10 @@ partial class Hardware: Scope {
     public partial class Tag_Assets : Scope {
         public static Image TagProduct0 => new Image("./TagProduct0.jpg");
 
-        public static string Dimensions = "9 x 18 x 66 mm";
-        public static string Weight = "18 g";
+        public static string Dimensions = "9 x 18 x 66";
+        public static string Weight = "18";
         public static string BatteryCapacity = "250 mAh";
+        public static string ThisDevice = "Tag";
 
         public static LedSignal ChargingLedSignal_ru = new LedSignal(@$"{new ColorSequence()[System.Drawing.Color.Red, 5f][System.Drawing.Color.Black, 5f]}", $"Устройство заряжается");
         public static LedSignal ChargingLedSignal_en = new LedSignal(@$"{new ColorSequence()[System.Drawing.Color.Red, 5f][System.Drawing.Color.Black, 5f]}", $"Socket is charging");

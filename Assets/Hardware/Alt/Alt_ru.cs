@@ -28,10 +28,10 @@ partial class Hardware : Scope {
                 [$"Угол обзора"][$"240 градусов"]
                 [$"Потребление энергии"][@$"In tracking mode: 175mA@3V
                                           In idle mode: 130mA@3V"]
-                [$"Connectivity"][@$"No
+                [$"Интерфейс связи"][@$"No
                                     Connectivity is provided by {Terms.Socket}"]
-                [$"Габариты"][$"16x16x20.5 mm"]
-                [$"Вес"][$"12 g"]
+                [$"Габариты"][$"16x16x20.5 мм"]
+                [$"Вес"][$"12 г"]
             ]
         ]
 

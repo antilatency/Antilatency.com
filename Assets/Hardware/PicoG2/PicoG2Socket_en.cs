@@ -40,16 +40,7 @@ partial class Hardware : Scope {
             ]
 
             [new Section("LED signals") 
-                [new Table("Led signal","Socket state")
-                    [$"Blinking green light (on/off)"][$"Radio is disabled (Connection limit is 0)"]
-                    [$"Green to blue cyclic change"][$"Searching for a free radio channel or the radio channel is set to a specific value and this channel is occupied by another device"]
-                    [$"Blinking <color> (on/off)"][$"{Hardware.PicoG2Socket} found a channel to work with and now waits for wireless sockets. <color> is the channel identification, different channels will have different colors"]
-                    [$"Smoothly blinking <color>"][$"{Hardware.PicoG2Socket} has at least one other wireless socket connected to it, <color> will be equal on these devices"]
-                    [$"Bright red to pale red cyclic change"][$"Bootloader mode"]
-                    [$"Constant red light"][$"Device error, it will be restarted in a few seconds"]
-                    [$"Red blinking (on/off) for N times"][$"Hardware error, N – error code"]
-                    [$"Short green flash"][$"External USB cable connected. Radio and tracker is turned off"]
-                ]
+                [PicoG2Socket_Assets.IndicationTable_en]
             ]
 
         ;

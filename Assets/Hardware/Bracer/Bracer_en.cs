@@ -1,4 +1,5 @@
 using Csml;
+using static Hardware.Bracer_Assets;
 
 partial class Hardware : Scope {
 
@@ -53,18 +54,7 @@ partial class Hardware : Scope {
             ]
 
             [new Section("LED signals") 
-                [new Table("Led signal","Socket state")
-                    [$"Green to blue cyclic change"][$"Wireless socket is trying to find any receiver to connect"]
-                    [$"Green to blue quick cyclic change"][$"Wireless socket is trying to find a specific receiver (“MasterSN” property is not empty)"]
-                    [$"Smoothly blinking <color>"][$"Wireless socket is connected to the receiver. <color> should be identical on both devices."]
-                    [$"Constant red light"][$"Device error, it will be restarted in a few seconds"]
-                    [$"Red blinking (on/off) for N times"][$"Hardware error, N – error code"]
-                ]
-
-                 [new Table("Charing module's Led signal","Socket state")
-                    [$"Blinking green"][$"{Hardware.Bracer} is charging"]
-                    [$"Constant green"][$"{Hardware.Bracer} is fully charged"]
-                 ]
+                [IndicationTable_en]
             ]
 
         ;
