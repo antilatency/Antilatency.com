@@ -187,6 +187,11 @@ var SdkConfiguratorWebGui = {
         this.Button("Generate", this.WebServer_GetSdk);
     },
 
+    ReleaseSelector: function (versions) {
+        this.Enum("Release", versions);
+        this.Space();
+    },
+
     Update: function () {
         CurrentObject = State;
 
@@ -196,13 +201,13 @@ var SdkConfiguratorWebGui = {
 
         CollectObjectsKeys(CurrentObject, this.elementsToDelete, null);
 
-        var versions = Object.keys(SdkVersions);
-        SdkVersionSelector(this, versions);
+        var versions = Object.keys(Releases);
+        this.ReleaseSelector(versions);
 
         var selectedVersion = State["Release"];
 
-        if (selectedVersion in SdkVersions) {
-            SdkVersions[selectedVersion](this);
+        if (selectedVersion in Releases) {
+            Releases[selectedVersion](this);
         }
 
         this.GenerateButton();

@@ -2,9 +2,7 @@ var ConfiguratorInstance = {};
 var WebGuiDrawer = {};
 var State = {};
 var CurrentObject = State;
-var SdkVersions = {};
-
-
+var Releases = {};
 
 var Configurator = {
     WebObject: {},
@@ -26,6 +24,8 @@ function LocationHashToString() {
 }
 
 function SdkConfigurator(sdkConfigurator) {
+    UpdateReleasesList();
+
     try {
         var rawState = LocationHashToString();
         State = JSON.parse(rawState);
@@ -39,6 +39,16 @@ function SdkConfigurator(sdkConfigurator) {
     WebGuiDrawer = Object.create(SdkConfiguratorWebGui);
 
     ConfiguratorInstance.Update();
+}
+
+function UpdateReleasesList() {
+    releaseMethodPrefix = "Release_";
+    releases = Object.getOwnPropertyNames(this).filter(item => typeof this[item] === 'function' && item.startsWith(releaseMethodPrefix));
+
+    releases.forEach(r => {
+        releaseName = r.substring(releaseMethodPrefix.length);
+        Releases[releaseName] = this[r];
+    });
 }
 
 function CollectObjectsKeys(obj, result, parent) {

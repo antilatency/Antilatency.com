@@ -1,4 +1,4 @@
-var SdkConfigurator_2_1_0 = function (context) {
+var Release_Trunk = function (context) {
     var math = ["default"];
 
     var target = context.Enum("Target", "Native", "Unity", "Unreal Engine");
@@ -74,7 +74,7 @@ var SdkConfigurator_2_1_0 = function (context) {
     context.Untab();
 
     context.Space();
-    
+
 
     context.Label("Operating Systems")
     context.Tab();
@@ -100,4 +100,4 @@ var SdkConfigurator_2_1_0 = function (context) {
     context.Space();
 }
 
-SdkVersions["2.1.0"] = SdkConfigurator_2_1_0;
+// Releases["Trunk"] = Release_Trunk;
