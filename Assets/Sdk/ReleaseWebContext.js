@@ -1,8 +1,8 @@
-var SdkConfiguratorWebGui = {
-    UpdateConfig: {},
+var ReleaseWebContext = {
     elementsToDelete: [],
     numTabs: 0,
     stateElementPath: "",
+    WebObject: {},
 
     KeepAlive: function (name) {
         elementPath = "";
@@ -13,13 +13,14 @@ var SdkConfiguratorWebGui = {
             elementPath = this.stateElementPath + "." + name;
         }
 
-        this.elementsToDelete = this.elementsToDelete.filter(n => n !== elementPath);
+        this.elementsToDelete = this.elementsToDelete.filter(function (n) {
+            return n !== elementPath;
+        });
     },
 
     SetContext: function (name) {
-        //console.log("Context:" + name);
         if (name == null || name == "") {
-            CurrentObject = State;
+            ConfiguratorInstance.CurrentObject = ConfiguratorInstance.State;
             this.stateElementPath = "";
         } else {
             if (this.stateElementPath === "") {
@@ -27,17 +28,13 @@ var SdkConfiguratorWebGui = {
             } else {
                 this.stateElementPath = this.stateElementPath + "." + name;
             }
-            //console.log(Object.keys(CurrentObject));
-            if (!(CurrentObject.hasOwnProperty(name))) {
-                // console.log("add");
-                CurrentObject[name] = {};
+
+            if (!(ConfiguratorInstance.CurrentObject.hasOwnProperty(name))) {
+                ConfiguratorInstance.CurrentObject[name] = {};
             }
-            CurrentObject = CurrentObject[name];
+
+            ConfiguratorInstance.CurrentObject = ConfiguratorInstance.CurrentObject[name];
         }
-        // console.log("State");
-        // console.log(State);
-        // console.log("CurrentObject");
-        // console.log(CurrentObject);
     },
 
     TabsToClass: function () {
@@ -58,23 +55,37 @@ var SdkConfiguratorWebGui = {
             x[0] = "A"
 
             return x;
-        })
+        });
         return words.join('');
     },
 
-    Enum: function (displayName, ...optionsRaw) {
-        var options = optionsRaw.flat();
+    Enum: function (displayName) {
+        var options = [];
+        if (arguments.length > 2) {
+            for (var i = 1; i < arguments.length; i++){
+                options.push(arguments[i]);
+            }
+        } else if (arguments.length === 2){
+            if (Array.isArray(arguments[1])) {
+                options = arguments[1];
+            } else if (typeof arguments[1] === 'string') {
+                options.push(arguments[1]);
+            } else {
+                return;
+            }
+        } else {
+            return;
+        }
+
         var variableName = this.DisplayNameToVariableName(displayName)
         var propPath = this.stateElementPath;
 
         this.KeepAlive(variableName);
         var selectedIndex = -1;
 
-        // console.log(CurrentObject);
-        // console.log(State);
 
         for (var i = 0; i < options.length; i++) {
-            if (CurrentObject[variableName] == options[i]) {
+            if (ConfiguratorInstance.CurrentObject[variableName] == options[i]) {
                 selectedIndex = i;
                 break;
             }
@@ -82,14 +93,14 @@ var SdkConfiguratorWebGui = {
 
         if (selectedIndex == -1) {
             selectedIndex = 0;
-            CurrentObject[variableName] = options[selectedIndex];
+            ConfiguratorInstance.CurrentObject[variableName] = options[selectedIndex];
         }
 
-        var select = ConfiguratorInstance.WebObject.appendChild(document.createElement("select"));
+        var select = ConfiguratorInstance.Context.WebObject.appendChild(document.createElement("select"));
 
-        ConfiguratorInstance.WebObject.appendChild(this.WrapToLabel(displayName, select)).classList = this.TabsToClass();
+        ConfiguratorInstance.Context.WebObject.appendChild(this.WrapToLabel(displayName, select)).classList = this.TabsToClass();
         select.onchange = function () {
-            prop = GetObjectProperty(State, propPath);
+            prop = GetObjectProperty(ConfiguratorInstance.State, propPath);
             prop[variableName] = options[this.selectedIndex]
 
             //CurrentObject[variableName] = options[this.selectedIndex];
@@ -100,7 +111,7 @@ var SdkConfiguratorWebGui = {
             select.appendChild(new Option(options[i], i, false, selectedIndex == i));
         }
 
-        return CurrentObject[variableName];
+        return ConfiguratorInstance.CurrentObject[variableName];
     },
 
     WrapToLabel: function (name, element) {
@@ -115,44 +126,44 @@ var SdkConfiguratorWebGui = {
         var propPath = this.stateElementPath;
         this.KeepAlive(variableName)
 
-        if (CurrentObject[variableName] == undefined) {
-            CurrentObject[variableName] = defaultValue;
+        if (ConfiguratorInstance.CurrentObject[variableName] == undefined) {
+            ConfiguratorInstance.CurrentObject[variableName] = defaultValue;
         }
 
         var input = document.createElement("input");
 
-        ConfiguratorInstance.WebObject.appendChild(this.WrapToLabel(displayName, input)).classList = this.TabsToClass();
+        ConfiguratorInstance.Context.WebObject.appendChild(this.WrapToLabel(displayName, input)).classList = this.TabsToClass();
 
         input.type = "checkbox";
-        input.checked = CurrentObject[variableName];
+        input.checked = ConfiguratorInstance.CurrentObject[variableName];
 
         input.onchange = function () {
-            prop = GetObjectProperty(State, propPath);
+            prop = GetObjectProperty(ConfiguratorInstance.State, propPath);
             prop[variableName] = input.checked;
             //CurrentObject[variableName] = input.checked;
             ConfiguratorInstance.Update();
         }
 
-        return CurrentObject[variableName];
+        return ConfiguratorInstance.CurrentObject[variableName];
     },
 
     Label: function (displayName) {
-        ConfiguratorInstance.WebObject.appendChild(this.WrapToLabel(displayName, null)).classList = this.TabsToClass();;
+        ConfiguratorInstance.Context.WebObject.appendChild(this.WrapToLabel(displayName, null)).classList = this.TabsToClass();;
     },
 
     Warning: function (message) {
-        var panel = ConfiguratorInstance.WebObject.appendChild(document.createElement("div"));
+        var panel = ConfiguratorInstance.Context.WebObject.appendChild(document.createElement("div"));
         panel.classList = "panel warning";
         panel.appendChild(document.createElement("div")).innerText = message;
     },
 
     Space: function () {
-        var space = ConfiguratorInstance.WebObject.appendChild(document.createElement("div"));
+        var space = ConfiguratorInstance.Context.WebObject.appendChild(document.createElement("div"));
         space.classList = "Space";
     },
 
     Button: function (displayName, onclick) {
-        var button = ConfiguratorInstance.WebObject.appendChild(document.createElement("button"));
+        var button = ConfiguratorInstance.Context.WebObject.appendChild(document.createElement("button"));
         button.innerText = displayName;
         button.classList = ".Button";
 
@@ -179,7 +190,7 @@ var SdkConfiguratorWebGui = {
         };
 
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(State));
+        xhr.send(JSON.stringify(ConfiguratorInstance.State));
     },
 
     GenerateButton: function () {
@@ -193,30 +204,37 @@ var SdkConfiguratorWebGui = {
     },
 
     Update: function () {
-        CurrentObject = State;
+        this.WebObject.textContent = '';
+
+        ConfiguratorInstance.CurrentObject = ConfiguratorInstance.State;
 
         numTabs = 0;
         stateElementPath = "";
         this.elementsToDelete = [];
 
-        CollectObjectsKeys(CurrentObject, this.elementsToDelete, null);
+        CollectObjectsKeys(ConfiguratorInstance.CurrentObject, this.elementsToDelete, null);
 
-        var versions = Object.keys(Releases);
+        var versions = Object.keys(ConfiguratorInstance.Releases);
         this.ReleaseSelector(versions);
 
-        var selectedVersion = State["Release"];
+        var selectedVersion = ConfiguratorInstance.State["Release"];
 
-        if (selectedVersion in Releases) {
-            Releases[selectedVersion](this);
+        if (selectedVersion in ConfiguratorInstance.Releases) {
+            ConfiguratorInstance.Releases[selectedVersion](this);
         }
 
         this.GenerateButton();
 
         for (let i = 0; i < this.elementsToDelete.length; i++) {
-            DeleteObjectProperty(State, this.elementsToDelete[i]);
+            DeleteObjectProperty(ConfiguratorInstance.State, this.elementsToDelete[i]);
             //delete State[elementsToDelete[i]];
         }
 
-        DeleteEmptyObjects(State);
+        DeleteEmptyObjects(ConfiguratorInstance.State);
+
+        var json = JSON.stringify(ConfiguratorInstance.State);
+        location.hash = json;
+
+        //console.log(Sha1(json));
     }
 };

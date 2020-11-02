@@ -1,21 +1,12 @@
 var ConfiguratorInstance = {};
-var WebGuiDrawer = {};
-var State = {};
-var CurrentObject = State;
-var Releases = {};
 
 var Configurator = {
-    WebObject: {},
+    Releases: {},
+    State: {},
+    CurrentObject: {},
+    Context: {}, 
     Update: function () {
-        this.WebObject.textContent = '';
-        WebGuiDrawer.Update();
-
-        //console.log(State);
-
-        var json = JSON.stringify(State);
-        location.hash = json;
-
-        //console.log(Sha1(json));
+        this.Context.Update();
     }
 }
 
@@ -24,31 +15,34 @@ function LocationHashToString() {
 }
 
 function SdkConfigurator(sdkConfigurator) {
-    UpdateReleasesList();
+    ConfiguratorInstance = Object.create(Configurator);
+    ConfiguratorInstance.Releases = GetReleasesList();
 
     try {
         var rawState = LocationHashToString();
-        State = JSON.parse(rawState);
+        ConfiguratorInstance.State = JSON.parse(rawState);
     } catch (e) {
-        State = {};
+        ConfiguratorInstance.State = {};
     }
 
-    ConfiguratorInstance = Object.create(Configurator);
-    ConfiguratorInstance.WebObject = sdkConfigurator;
-
-    WebGuiDrawer = Object.create(SdkConfiguratorWebGui);
+    webContext = Object.create(ReleaseWebContext);
+    webContext.WebObject = sdkConfigurator;
+    ConfiguratorInstance.Context = webContext;
 
     ConfiguratorInstance.Update();
 }
 
-function UpdateReleasesList() {
+function GetReleasesList() {
+    var result = {};
     releaseMethodPrefix = "Release_";
     releases = Object.getOwnPropertyNames(this).filter(item => typeof this[item] === 'function' && item.startsWith(releaseMethodPrefix));
 
     releases.forEach(r => {
         releaseName = r.substring(releaseMethodPrefix.length);
-        Releases[releaseName] = this[r];
+        result[releaseName] = this[r];
     });
+
+    return result;
 }
 
 function CollectObjectsKeys(obj, result, parent) {
