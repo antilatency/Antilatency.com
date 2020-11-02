@@ -12,7 +12,7 @@ var Configurator = {
         this.WebObject.textContent = '';
         WebGuiDrawer.Update();
 
-        console.log(State);
+        //console.log(State);
 
         var json = JSON.stringify(State);
         location.hash = json;
@@ -50,7 +50,7 @@ function CollectObjectsKeys(obj, result, parent) {
             }
             CollectObjectsKeys(obj[v], result, parentPath);
         } else {
-            if (parent === null) {
+            if (parent === null || parent === "") {
                 result.push(v);
             } else {
                 result.push(parent + "." + v);

@@ -190,14 +190,16 @@ var SdkConfiguratorWebGui = {
     Update: function () {
         CurrentObject = State;
 
-        CollectObjectsKeys(CurrentObject, this.elementsToDelete, null);
-
         numTabs = 0;
+        stateElementPath = "";
+        this.elementsToDelete = [];
+
+        CollectObjectsKeys(CurrentObject, this.elementsToDelete, null);
 
         var versions = Object.keys(SdkVersions);
         SdkVersionSelector(this, versions);
 
-        var selectedVersion = State["SDK"];
+        var selectedVersion = State["Release"];
 
         if (selectedVersion in SdkVersions) {
             SdkVersions[selectedVersion](this);
