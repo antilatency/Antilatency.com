@@ -15,8 +15,8 @@ partial class Tutorials {
         [new Section("Восстановление связи с передатчиком")
             [$"В случае неправильной конфигурации передатчик может не хотеть подключаться. А значит его было бы невозможно настроить. Однако существует способ восстановить связь с устройством."]
             [new UnorderedList()
-                [@$"На передатчике установлен *серийный номер*(`MasterSN`) *неизвестного приёмника* или он утерян. Сбросить это свойство можно с помощью {ConfiguringRadioDevices:ResetMaster} "]                    
-                [@$"На передатчике установлена *неизвестная маска каналов*(`ChannelsMask`). Для решения этой проблемы необходимо на передатчике установить `92` канал. Данный канал всегда активен для поиска и его невозможно сбросить."]]
+                [@$"На передатчике установлен *серийный номер* `MasterSN` *неизвестного приёмника* или он утерян. {new ExternalReference("#ResetMaster","Сбросить")} это свойство можно с помощью"]                    
+                [@$"На передатчике установлена *неизвестная маска каналов* `ChannelsMask`. Для решения этой проблемы необходимо на передатчике установить `92` канал. Данный канал всегда активен для поиска и его невозможно сбросить."]]
         ]
         [new Info($"Сначала необходимо настроить передатчик, и только потом приёмник.")]
 
@@ -57,23 +57,23 @@ partial class Tutorials {
         ]
 
         [new Section($"Set MasterSN property by wireless socket's power button", "SetMasterHard")
-            [$"Ниже описана конфигурация, где приемником выступает {Hardware.SocketUsbRadio}."]
+            [$"Ниже описана конфигурация, где приемником выступает {Hardware.HMD_Radio_Socket}."]
             [new OrderedList()
-                [$"Connect the {Hardware.SocketUsbRadio} to the {Terms.Host}"]
+                [$"Connect the {Hardware.HMD_Radio_Socket} to the {Terms.Host}"]
                 [$"Power up the wireless socket by the single-click power on button"]
-                [$"Check that the wireless socket is connected to the {Hardware.SocketUsbRadio} (both device LEDs will be blinking smoothly with the same color)"]
-                [$"Press and hold the power button on the wireless socket for about 5 seconds, after that the wireless socket will be restarted and save the {Hardware.SocketUsbRadio}’s hardware serial number in the `MasterSN` property."]
+                [$"Check that the wireless socket is connected to the {Hardware.HMD_Radio_Socket} (both device LEDs will be blinking smoothly with the same color)"]
+                [$"Press and hold the power button on the wireless socket for about 5 seconds, after that the wireless socket will be restarted and save the {Hardware.HMD_Radio_Socket}’s hardware serial number in the `MasterSN` property."]
             ]
         ]
 
         [new Section($"Set MasterSN property by {Software.AntilatencyService.Material}", "SetMasterSoft")
-            [$"Ниже описана конфигурация, где приемником выступает {Hardware.SocketUsbRadio}."]
+            [$"Ниже описана конфигурация, где приемником выступает {Hardware.HMD_Radio_Socket}."]
             [new OrderedList()
-                [$"Connect the {Hardware.SocketUsbRadio} to the {Terms.Host}"]
+                [$"Connect the {Hardware.HMD_Radio_Socket} to the {Terms.Host}"]
                 [$"Power up the wireless socket by the single-click power on button"]
                 [$"Run {Software.AntilatencyService.Material} application"]
                 [$"Open Device Network tab"]
-                [$"Click on the {Hardware.SocketUsbRadio} node in the Device Network tab"]
+                [$"Click on the {Hardware.HMD_Radio_Socket} node in the Device Network tab"]
                 [$"Select the `{Api.Antilatency.DeviceNetwork.Interop.Constants.Fields.HardwareSerialNumberKey.Value}` property value and press Ctrl+C"]
                 [$"Click on the wireless radio socket node in the Device Network tab"]
                 [$"Select the `MasterSN` property value, press Ctrl+V, and click on the Set button"]

@@ -3,13 +3,13 @@ public partial class Tutorials : Scope {
 
     public static Material HMDSocketMode_en => new Material("HMD Socket Modes",
     null, 
-    $"The {Hardware.SocketUsbRadio} has two modes: wired and wireless. Use {Software.AntilatencyService.Material} to configure the mode for any attached Socket. Each mode defines the device properties in accordance with its functions.")
+    $"The {Hardware.HMD_Radio_Socket} has two modes: wired and wireless. Use {Software.AntilatencyService.Material} to configure the mode for any attached Socket. Each mode defines the device properties in accordance with its functions.")
 
-    [$"Since firmware version 1.3.0, SocketUsbRadio has two modes:"]
+    [$"Since firmware version 1.3.0, HMD_Radio_Socket has two modes:"]
 
         [new UnorderedList()
             [$"wired, or radio master - any wireless {Terms.Socket} can connect to this one; radio master transfer the data via USB;"]
-            [$"wireless, or radio slave - such a device can connect to the SocketUsbRadio device and transfer the data via a radio channel."]
+            [$"wireless, or radio slave - such a device can connect to the HMD_Radio_Socket device and transfer the data via a radio channel."]
         ]
 
     [@$"
@@ -39,7 +39,7 @@ public partial class Tutorials : Scope {
     [new Section("RadioSocket")
 
 
-        [$"Since firmware version 5.0.0 the wireless {Hardware.SocketUsbRadio} appears in the {Terms.Device_Tree} as an additional node *AltHmdRadioSocketShadow*. But firstly, you need to connect the device via USB. \nYou can also configure its properties: set the channel mask, the MasterSN or change the Socket mode."]
+        [$"Since firmware version 5.0.0 the wireless {Hardware.HMD_Radio_Socket} appears in the {Terms.Device_Tree} as an additional node *AltHmdRadioSocketShadow*. But firstly, you need to connect the device via USB. \nYou can also configure its properties: set the channel mask, the MasterSN or change the Socket mode."]
             [new Info($"If you connect one Socket using both USB and radio connections, it will be displayed in the Device Tree twice under different names.")]
         [RadioSocket]
         [RadioSocket1]

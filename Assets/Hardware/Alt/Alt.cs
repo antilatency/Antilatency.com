@@ -13,6 +13,9 @@ partial class Hardware: Scope {
     static Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
     static Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
 
+    public static string Dimensions = "16x16x20.5";
+        public static string Weight = "12";
+        public static string ThisDevice = "Alt";
 
 
 

@@ -14,7 +14,7 @@ partial class Hardware : Scope {
             [new Section("Low latency radio protocol")
                 [$"The {ThisDevice} relies on the {Terms.Antilatency_Radio_Protocol} to transmit data. The {ThisDevice} can act only as a transmitter."]
                 [new Warning()
-                    [$"In order to receive data the host must have a receiver, for example a {Hardware.SocketUsbRadio}. For more information, please see {Terms.Antilatency_Radio_Protocol}"]
+                    [$"In order to receive data the host must have a receiver, for example a {Hardware.HMD_Radio_Socket}. For more information, please see {Terms.Antilatency_Radio_Protocol}"]
                 ]
             ]
             

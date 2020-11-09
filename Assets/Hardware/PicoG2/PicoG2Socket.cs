@@ -20,12 +20,12 @@ partial class Hardware: Scope {
 
         public static Table IndicationTable_ru = new Table("Индикация", "Состояние устройства")
             [LedSignal.convert(RadioSocketLedSignals_ru)]
-            [LedSignal.convert(CommonLedSignals_ru)]
-            [LedSignal.convert(PicoG2SocketLedIndication_ru)];
+            [LedSignal.convert(PicoG2SocketLedIndication_ru)]
+            [LedSignal.convert(CommonLedSignals_ru)];
         
         public static Table IndicationTable_en = new Table("Indication", "Socket state")
             [LedSignal.convert(RadioSocketLedSignals_en)]
-            [LedSignal.convert(CommonLedSignals_en)]
-            [LedSignal.convert(PicoG2SocketLedIndication_en)];
+            [LedSignal.convert(PicoG2SocketLedIndication_en)]
+            [LedSignal.convert(CommonLedSignals_en)];
     }
 }

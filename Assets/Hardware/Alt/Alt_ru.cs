@@ -2,36 +2,35 @@ using Csml;
 
 partial class Hardware : Scope {
         public static Material Alt_ru => new Material("Alt", AltAndUsbSocket0,
-        @$"{Hardware.Alt} это оптико-инерциальный модуль трекинга. Устройство размещается на объектах отслеживания и определяет свое положение в пространстве относительно инфракрасных маркеров. Alt поставляется в комплекте с проводным {Hardware.SocketUsb}.")
-        [new Section("Sensor fusion")
-            [$"{Hardware.Alt} is based on a sensor fusion approach. It's an inertial measurement unit (IMU) based tracking system with real-time IMU correction based on optical data."]
+        @$"Оптико-инерциальный модуль трекинга небольшого размера имеет угол обзора в 240 градусов. С его помощью вы можете отслеживать положение любого физического объекта. Alt поставляется в комплекте с {Hardware.SocketUsb}.")
+
+        [new Section("Слияние данных","")
+        [$"Alt параллельно обрабатывает данные из двух источников: инфракрасной камеры и IMU, инерциального измерительного модуля. Это обеспечивает точное отслеживание положения объекта в пространстве в режиме реального времени."]
         ]
 
-        [new Section("Latency compensation")
-            [$"A tracking speed up to 2000 measurements per second and low hardware latency of 2ms allows extrapolating the position and compensating for rendering latency."]
+        [new Section("Компенсация задержки", "")
+        [$"Трекер делает около 2000 измерений в секунду, при этом задержка при передаче данных всего 2мс. Быстрое обновление позиции отслеживаемого объекта компенсирует задержку рендеринга."]
         ]
 
-        [new Section("Onboard processing")
-            [$"{Hardware.Alt} is responsible for most of the data processing. This allows the headset to retain performance for other purposes."]
+        [new Section("Работа с данными","")
+        [$"Модуль Alt выполняет большинство задач по обработке данных трекинга, благодаря чему снижается нагрузка на HMD."]
         ]
 
-        [new Section("Custom optics")
-            [$"Custom designed lenses with a 240 degree field of view, factory calibrated."]
-        ]
-
+        [new Section("Широкий угол обзора")
+        [$"Инфракрасная камера Alt охватывает область в 240 градусов. Хорошая видимость маркеров зоны трекинга обеспечивает стабильное отслеживает позиции объекта в пространстве."]
+        ]    
 
         [new Section("Техническая спецификация")
             [new Table(2)
                 [$"Датчики"][$"Оптический датчик,  акселерометр,  гироскоп"]
-                [$"Position frequency[Частота]"][$"2000 Гц"]
+                [$"Частота обновления"][$"2000 Гц"]
                 [$"Задержка"][$"2 мс"]
                 [$"Угол обзора"][$"240 градусов"]
-                [$"Потребление энергии"][@$"In tracking mode: 175mA@3V
-                                          In idle mode: 130mA@3V"]
-                [$"Интерфейс связи"][@$"No
-                                    Connectivity is provided by {Terms.Socket}"]
-                [$"Габариты"][$"16x16x20.5 мм"]
-                [$"Вес"][$"12 г"]
+                [$"Потребление энергии"][@$"В режиме трекинга: 175мA@3В
+                                          В режиме ожидания: 130мA@3В"]
+                [$"Интерфейс связи"][@$"Передача данных через {Terms.Socket}"]
+                [$"Габариты"][$"{Dimensions} мм"]
+                [$"Вес"][$"{Weight} г"]
             ]
         ]
 

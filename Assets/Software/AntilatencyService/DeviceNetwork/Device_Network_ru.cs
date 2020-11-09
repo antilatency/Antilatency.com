@@ -4,10 +4,12 @@ public partial class Software : Scope {
         public partial class Device_Network {
 
     public static Material Material_ru => new Material("Device Network",
-    DeviceNetworkTabScreenshot,
+    Title,
     $"Вкладка {AntilatencyService.Material}, где вы можете посмотреть дерево устройств Antilatency, их системные и пользовательские свойства, а также узнать и обновить прошивку подключённых устройств.")
 
     [$"Используя Device Network, пользователь может читать и писать свойства устройств. Каждое свойство состоит из ключа (имени) и значения. Чтобы посмотреть данные о конкретном устройстве, нажмите на его имя в {Terms.Device_Tree}."]
+
+    [DeviceNetworkTabScreenshot]
 
     [new Section("Системные свойства", $"")
             [$"Обязательные свойства содержат основную информацию об устройстве и не могут быть изменены пользователем:"]
@@ -18,7 +20,7 @@ public partial class Software : Scope {
                     [$"sys/HardwareName - имя устройства"]
                     [$"sys/HardwareVersion - версия устройства"]
                  ]
-            [new Info($"О том, как обновить прошивку устройства, читайте тут: \n{Tutorials.Device_Update}")]
+            [new Info($"О том, как обновить прошивку устройства, читайте тут: \n{Tutorials.Firmware_Update}")]
     ]
     
     [new Section("\nПользовательские свойства", $"")

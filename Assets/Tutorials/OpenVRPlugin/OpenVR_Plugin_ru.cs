@@ -5,16 +5,17 @@ using static Tutorials.OpenVR_Plugin_Assets;
 partial class Tutorials : Scope {
 
     public static Material OpenVR_Plugin_ru => new Material(null, TitleImage, 
-    $"Инструкция по установке OpenVR драйвера, который позволяет использовать систему трекинга Antilatency с приложениями SteamVR. ")
+    $"Драйвер добавляет в SteamVR поддержку системы трекинга Antilatency. После установки драйвера вы сможете использовать трекер и контроллеры Antilatency при работе с приложениями SteamVR.")
+
         
-        [new Section("Структура плагина")
+       /* [new Section("Структура плагина")
             [DirectoryStructure]
-        ]
+        ]*/
 
         [new Section("Установка")
             [new OrderedList()
-                [$"Скопировать папку с драйвером в любую желаемую директорию"]
-                [$"Вызвать `<SteamDirectory>/steamapps/common/SteamVR/bin/win64/vrpathreg.exe adddriver \"<DriverDirectory>/antilatency\"`"]
+                [$"Скопируйте папку с драйвером в любую директорию"]
+               // [$"Вызвать `<SteamDirectory>/steamapps/common/SteamVR/bin/win64/vrpathreg.exe adddriver \"<DriverDirectory>/antilatency\"`"]
             ]
         ]
 

@@ -7,7 +7,7 @@ partial class Terms {
         [new Section("Устройства с поддержкой Antilatency Radio Protocol")
             [$"Список приемников"]
             [new UnorderedList()
-                [$"{Hardware.SocketUsbRadio}"]
+                [$"{Hardware.HMD_Radio_Socket}"]
                 [$"{Hardware.PicoG2Socket}"]
             ]
 
@@ -25,11 +25,11 @@ partial class Terms {
             ]
             [@$"Передатчики подключаются к приемнику и передают ему свои данные. 
                 Задача приёмника - собрать данные со всех передатчиков, добавить собственные данные и отправить на {Terms.Host} по другому интерфейсу (например, по USB).
-                В качестве приемника могут выступать, например, {Hardware.SocketUsbRadio} или {Hardware.PicoG2Socket}. 
+                В качестве приемника могут выступать, например, {Hardware.HMD_Radio_Socket} или {Hardware.PicoG2Socket}. 
                 В качестве передатчиков могут выступать например, {Hardware.Tag} или {Hardware.Bracer}.
             "]
             [new Info()
-                [$"{Hardware.SocketUsbRadio} может выступать как в роли приемника, так и в роли передатчика, в зависимости от конфигурации. "]
+                [$"{Hardware.HMD_Radio_Socket} может выступать как в роли приемника, так и в роли передатчика, в зависимости от конфигурации. "]
             ]
             [$"Таким образом, стандартная схема подключения устройств по радиопротоколу к {Terms.Host} выглядит следующим образом:"]
             [new OrderedList()

@@ -73,7 +73,7 @@ partial class Tutorials : Scope {
             [new Section("Antilatency firmware")
                 [$"Download the .bin file from the website, it's a bootloader. Load it on the board using the SWD pins and a programmer (for example, Jlink)."]
                 [new Info($"Some manufacturers offer a pre-loaded firmware/bootloader. You can even send them your firmware to be installed.")]
-                [$"After this, use the USB connector and update the firmware with {Software.AntilatencyService.Material}. The functionality is similar to {Hardware.SocketUsbRadio}, including {Terms.Antilatency_Hardware_Extension_Interface} support, the AntilatencyService update system, and two modes for {Terms.Antilatency_Radio_Protocol}."]
+                [$"After this, use the USB connector and update the firmware with {Software.AntilatencyService.Material}. The functionality is similar to {Hardware.HMD_Radio_Socket}, including {Terms.Antilatency_Hardware_Extension_Interface} support, the AntilatencyService update system, and two modes for {Terms.Antilatency_Radio_Protocol}."]
             ]
             ;
 }

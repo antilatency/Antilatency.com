@@ -1,21 +1,20 @@
 using Csml;
 public partial class Tutorials : Scope {
-
     public static Material HMDSocketMode_ru => new Material("Режим работы HMD Socket",
     null, 
-    $"{Hardware.SocketUsbRadio} работает в одном из двух режимов: проводной или беспроводной. Используя системное приложение {Software.AntilatencyService.Material}, вы можете настроить режим работы любого подключённого устройства.")
+    $"{Hardware.HMD_Radio_Socket} работает в одном из двух режимов: radio master или radio slave. Используя системное приложение {Software.AntilatencyService.Material}, вы можете настроить режим работы любого подключённого устройства.")
 
-    [$"Начиная с версии прошивки 1.3.0, SocketUsbRadio поддерживает два режима работы:"]
+    [$"Начиная с версии прошивки 1.3.0, HMD_Radio_Socket поддерживает два режима работы:"]
 
         [new UnorderedList()
-            [$"проводной, или radio master - устройство подключает к себе другие беспроводные {Terms.Socket}, а данные передаёт через USB;"]
-            [$"беспроводной, или radio slave - устройство подключается к проводному SocketUsbRadio, а данные передаёт по радиоканалу."]
+            [$"radio master - устройство подключает к себе другие slave {Terms.Socket}, а данные передаёт через USB;"]
+            [$"radio slave - устройство подключается к master HMD_Radio_Socket, а данные передаёт по радиоканалу."]
         ]
 
     [@$"
-    Вы можете изменить режим работы SocketUsbRadio во вкладке {Software.AntilatencyService.Device_Network.Material} служебного приложения AntilatencyService. Для этого задайте свойству *Mode* нужное значение: {new UnorderedList() 
-    [$"UsbRadioSocket (проводной режим работы)"] 
-    [$"RadioSocket (беспроводной режим работы)"]}"] 
+    Вы можете изменить режим работы HMD_Radio_Socket во вкладке {Software.AntilatencyService.Device_Network.Material} служебного приложения AntilatencyService. Для этого задайте свойству *Mode* нужное значение: {new UnorderedList() 
+    [$"UsbRadioSocket (radio master)"] 
+    [$"RadioSocket (radio slave)"]}"] 
     [new Warning($"Обновление прошивки доступно только в режиме UsbRadioSocket.")]
     [$"\nУстройство в каждом из режимов обладает независимым набором свойств для конфигурации. Пользовательские свойства, к примеру, Tag, - общие для всех режимов работы."]
     [new Info($"Подробнее о свойствах читайте тут: {ConfiguringRadioDevices:SetMasterSoft}.")]
@@ -39,7 +38,7 @@ public partial class Tutorials : Scope {
     [new Section("RadioSocket")
 
 
-        [$"С версии прошивки 5.0.0 {Hardware.SocketUsbRadio} в беспроводном режиме отображается дополнительным узлом в {Terms.Device_Tree} под именем *AltHmdRadioSocketShadow*. Для этого устройство необходимо подключить через USB.  \nПри этом вам доступны все возможности для настройки параметров беспроводного режима: можно установить маску каналов, прописать серийный номер приёмника или изменить режим работы."]
+        [$"С версии прошивки 5.0.0 {Hardware.HMD_Radio_Socket} в беспроводном режиме отображается дополнительным узлом в {Terms.Device_Tree} под именем *AltHmdRadioSocketShadow*. Для этого устройство необходимо подключить через USB.  \nПри этом вам доступны все возможности для настройки параметров беспроводного режима: можно установить маску каналов, прописать серийный номер приёмника или изменить режим работы."]
             [new Info($"Если вы подключите Socket в беспроводном режиме одновременно через USB и к Socket в режиме radio master, то устройство дважды отобразится в дереве устройств под разными именами.")]
         [RadioSocket]
         [RadioSocket1]

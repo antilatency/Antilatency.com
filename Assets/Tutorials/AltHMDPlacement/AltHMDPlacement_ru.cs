@@ -4,11 +4,12 @@ using static Tutorials.Alt_HMD_Placement_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material Alt_HMD_Placement_ru => new Material("Расположение трекера на VR гарнитуре",
+    public static Material Alt_HMD_Placement_ru => new Material("Создание пользовательского Placement",
      TitleImage, 
-     $"Как настроить правильное расположение трекера на примере VR гарнитуры c использованием {Hardware.SocketUsbRadio}.")
+     $"")
 
-     [new Section("Расположение (placement) трекера")
+    /* move : troubleshooting 
+    [new Section("Расположение (placement) трекера")
      [$"Правильное расположение трекера на VR гарнитуре полностью определяет качество виртуального опыта, так как определяет главную точку восприятия виртуального мира пользователем."]
      [$"Неправильное, даже на несколько градусов, расположение может вызвать у пользователя дискомфорт."]
      [CorrectPlacementScene]
@@ -16,40 +17,48 @@ partial class Tutorials : Scope {
      [IncorrectPlacementScene]
      [$"Отображение демо сцены с ошибкой в расположении на 2 градуса по оси Z"]
      ]
+     */
 
-     [new Section("Как установить правильное расположение трекера")
-     [$"Мы подготовили инструкцию и предустановки в {Software.AntilatencyService.Material} для популярных VR Гарнитур. Найдите нужную гарнитуру ниже или воспользуйтесь инструкцией по установке расположения трекера вручную."]
-     [$"Для установки трекера в этой инструкции мы использовали {Hardware.SocketUsbRadio}. Вы можете использовать {Hardware.SocketUsb}, если подключение проводное или проприетарный сокет для конкретного устройства, к примеру {Hardware.PicoG2Socket}"]
-     ]
+     [$"Шлем виртуальной реальности. Макет оружия. Накладка на руку или на другую часть тела. Благодаря небольшому размеру и весу трекер Alt можно установить на любую VR гарнитуру. Все настройки Placement для трекера хранятся в служебном приложении AntilatencyService во вкладке {Software.AntilatencyService.Placements.Material}. Здесь вы можете найти предустановленные решения для некоторых моделей VR гарнитуры или создать свой Placement."]
+     [$"Для этого используйте опцию \"Custom\"."]
+     [$" "]
+
+
+
+     [$"В качестве Socket для трекера мы рекомендуем использовать {Hardware.HMD_Radio_Socket}, {Hardware.SocketUsb} или {Hardware.Tag}."]
+     [$"Перед началом трекинга вам нужно выбрать Placement, с которым вы планируете работать. Сделать это можно во вкладке {Software.AntilatencyService.Placements.Material} служебного приложения AntilatencyService. В приложении есть предустановленные решения для некоторых популярных моделей VR гарнитуры, уже готовые к использованию."]
+     [$"\nЕсли нужного вам устройства нет в списке, вы можете настроить расположение трекера вручную."]
+     [new Section("Создание Placement")]
+     
 
      [new Warning()[$"При установке трекера на VR гарнитуру убедитесь, что трекер надежно закреплен. Важно, чтобы точка вращения трекера была расположена в правильном положении относительно глаз пользователя!"]]
      
-     [new Section("Установка трекера на OculusQuest")
-        [$"1. Прикрепите {Hardware.SocketUsbRadio} к VR гарнитуре, используя фото. "]
+    /*[new Section("Установка трекера на OculusQuest")
+        [$"1. Прикрепите {Hardware.HMD_Radio_Socket} к VR гарнитуре, используя фото. "]
         [OculusQuestPlacement]
         [$"2. Выберите _OculusQuest_ во вкладке _Placement_"]
       ]
 
       [new Section("Установка трекера на OculusRiftS")
-        [$"1. Прикрепите {Hardware.SocketUsbRadio} к VR гарнитуре, используя фото. "]
+        [$"1. Прикрепите {Hardware.HMD_Radio_Socket} к VR гарнитуре, используя фото. "]
         [OculusRiftSPlacement]
         [$"2. Выберите _OculusRiftS_ во вкладке _Placement_"]
       ]
 
       [new Section("Установка трекера на OculusGo")
-        [$"1. Прикрепите {Hardware.SocketUsbRadio} к VR гарнитуре, используя фото. "]
+        [$"1. Прикрепите {Hardware.HMD_Radio_Socket} к VR гарнитуре, используя фото. "]
         [OculusGoPlacement]
         [$"2. Выберите _OculusGoUniversal_ во вкладке _Placement_"]
       ]
 
       [new Section("Установка трекера на OculusRift")
-        [$"1. Прикрепите {Hardware.SocketUsbRadio} к VR гарнитуре, используя фото. "]
+        [$"1. Прикрепите {Hardware.HMD_Radio_Socket} к VR гарнитуре, используя фото. "]
         [OculusRiftPlacement]
         [$"2. Выберите _OculusRiftUniversal_ во вкладке _Placement_"]
       ]
 
       [new Section("Установка трекера на VivePro")
-        [$"1. Прикрепите {Hardware.SocketUsbRadio} к VR гарнитуре, используя фото. "]
+        [$"1. Прикрепите {Hardware.HMD_Radio_Socket} к VR гарнитуре, используя фото. "]
         [ViveProPlacement]
         [$"2. Выберите _ViveProUniversal_ во вкладке _Placement_"]
       ]
@@ -57,12 +66,13 @@ partial class Tutorials : Scope {
       [new Section("Установка трекера на Pico G2")
         [$"1. Мы разработали проприетарный {Hardware.PicoG2Socket}, который облегчает размещение трекера. Он присоединяется через USB снизу VR гарнитуры. Если вы используете этот сокет, выберите _PicoGoblin2_ во вкладке _Placement_ "]
         [PicoG2Socket]
-        [$"Если вы решили использовать универсальный {Hardware.SocketUsbRadio}, выполните следующие шаги:"]
-        [$"1. Прикрепите {Hardware.SocketUsbRadio} к VR гарнитуре, используя фото."]
+        [$"Если вы решили использовать универсальный {Hardware.HMD_Radio_Socket}, выполните следующие шаги:"]
+        [$"1. Прикрепите {Hardware.HMD_Radio_Socket} к VR гарнитуре, используя фото."]
         [PicoG2Placement]
         [$"2. Выберите _PicoGoblin2Universal_ во вкладке _Placement_"]
         
       ]
+      */
 
       [new Section("Пользовательское расположение трекера")
       [$"У пользователя есть возможность сконфигурировать расположение трекера самостоятельно. Это может понадобится при использовании других VR гарнитур, а также при особенностях сетапа. Для этого нужно сделать следущее:"]

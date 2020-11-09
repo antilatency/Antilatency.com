@@ -22,14 +22,14 @@ partial class Hardware: Scope {
         public static List<LedSignal> BracerLedSignals_en = new List<LedSignal>{ChargingLedSignal_en, ChargedLedSignal_en};
 
         public static Table IndicationTable_ru = new Table("Индикация", "Состояние устройства")
-                        [LedSignal.convert(CommonLedSignals_ru)]
+                        [LedSignal.convert(BracerLedSignals_ru)]
                         [LedSignal.convert(WirelessLedSignals_ru)]
-                        [LedSignal.convert(BracerLedSignals_ru)];
+                        [LedSignal.convert(CommonLedSignals_ru)];
         
         public static Table IndicationTable_en = new Table("Indication","Bracer state")
-                        [LedSignal.convert(CommonLedSignals_en)]
+                        [LedSignal.convert(BracerLedSignals_en)]
                         [LedSignal.convert(WirelessLedSignals_en)]
-                        [LedSignal.convert(BracerLedSignals_en)];
+                        [LedSignal.convert(CommonLedSignals_en)];
     
     }
 }

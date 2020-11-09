@@ -27,8 +27,8 @@ partial class Tutorials : Scope {
             [new OrderedList()
                 [$"Скачать и распаковать {Exe}"]
                 [$"Выключить всё."]
-                [$"Включить 1 {Hardware.SocketUsbRadio} и 1 {Hardware.Bracer} либо {Hardware.Tag}."]
-                [$"Для {Hardware.SocketUsbRadio} поставить `ConnLimit` = `1`"]
+                [$"Включить 1 {Hardware.HMD_Radio_Socket} и 1 {Hardware.Bracer} либо {Hardware.Tag}."]
+                [$"Для {Hardware.HMD_Radio_Socket} поставить `ConnLimit` = `1`"]
                 [$"Убедиться, что два девайса подключились друг к другу по радио."]
                 [$"Открыть консоль и перейти к папке, где лежит `RadioScanner.exe`"]
                 [$"Создать папку, в которую сохранятся результаты измерений, например `Scan`"]

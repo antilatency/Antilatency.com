@@ -77,11 +77,11 @@ partial class Tutorials : Scope {
         ]
         
         [new Section("Конфигурация потолочного сетапа в AntilatencyService")
-            [$"Для сборки потолочного сетапа воспользуйтесь схемой из AntilatencyService. (TODO скрин)"]
+            [$"Для сборки потолочного сетапа воспользуйтесь схемой из AntilatencyService. {new ToDo("скрин",true)}"]
             [new Warning()
                 [$"Схема имеет вид, как будто мы смотрим на нее из-под потолка сверху вниз."]
             ]
-            [$"В параметрах Environment в AntilatencyService указывается высота потолка. ({new ToDo("скрин")} )"]
+            [$"В параметрах Environment в AntilatencyService указывается высота потолка. ({new ToDo("скрин",true)} )"]
             [$"Убедитесь, что шаг потолочной системы составляет 60 см, и если шаг отличается, то надо поменять параметры в AntilatencyService. (TODO скрин)"]
         ]
 

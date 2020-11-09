@@ -3,11 +3,11 @@ using static Terms.Antilatency_Hardware_Extension_Interface_Assets;
 
 partial class Terms : Scope {
     static Material Antilatency_Hardware_Extension_Interface_ru => new Material(null, null,
-    $"Реализаци доступа к GPIO сокета через UsbTypeC разъём с помощью {Hardware.ExtensionBoard} и {Software.Antilatency_Hardware_Extension_Interface_Library}")
+    $"Вы можете управлять внешними устройствами, используя GPIO {Hardware.HMD_Radio_Socket}. Получить доступ к GPIO можно с помощью {Software.Antilatency_Hardware_Extension_Interface_Library} и {Hardware.ExtensionBoard}.")
         [Video.GetPlayer()]
         [new Section("Поддерживаемые сокеты")
             [new UnorderedList()
-                [$"*{Hardware.SocketUsbRadio}*(hardware version 2.0.0) - режим UsbRadioSocket и RadioSocket."]]]
+                [$"*{Hardware.HMD_Radio_Socket}*(hardware version 2.0.0) - режим UsbRadioSocket и RadioSocket."]]]
 
         [new Section("Схема подключение")
             [$"Используется {Hardware.ExtensionBoard} 2.0.0."]
@@ -15,7 +15,9 @@ partial class Terms : Scope {
 
             [$"Сокет подключается к {Hardware.ExtensionBoard} при помощи Usb 3.1 Type-C кабеля, во второй разъём подключается питание с помощью любого Type-C кабеля. {Hardware.ExtensionBoard} позволяет подключать различные кнопки, концевики, потенциометры, светодиоды, вибромоторчики и т.д."]
 
-                [new Section("Troubleshooting")
+            [new ToDo("move to troubleshooting", true)]
+               /* move : troubleshooting 
+               [new Section("Troubleshooting")
                     [new OrderedList()
                         [@$"{Hardware.ExtensionBoard} не реагирует на команды софта
                             {new UnorderedList()
@@ -30,7 +32,7 @@ partial class Terms : Scope {
                                 [$"Кабель подключен не той ориентацией."]
                             }"]
                     ]
-                ]
+                ]*/
                     
     ;   
 

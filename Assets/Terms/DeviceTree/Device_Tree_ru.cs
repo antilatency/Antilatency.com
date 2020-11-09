@@ -18,11 +18,13 @@ partial class Terms {
             [$"Вот так выглядит дерево девайсов для данного сетапа в AntilatencyService."]
         ]
 
-        [new Section("Полезные ссылки")
+       /* [new Section("Полезные ссылки")
         [$"{Tutorials.ConfiguringRadioDevices}"]
-        [$"{Tutorials.Device_Update}"]
+        [$"{Tutorials.Firmware_Update}"]
         [$"{Tutorials.Set_Device_Custom_Properties}"]
-        ];
+        ]
+        */
+        ;
 
         
         

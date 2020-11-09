@@ -20,7 +20,7 @@ partial class Store : Scope {
         .AddPriceBreak(256, 36)
         .AddPriceBreak(1024, 33);
 
-    public static Product ACHA0RadioSocket__A => new Product(Hardware.SocketUsbRadio, "ACHA0RadioSocket__A", 75)
+    public static Product ACHA0RadioSocket__A => new Product(Hardware.HMD_Radio_Socket, "ACHA0RadioSocket__A", 75)
         .AddPriceBreak(4, 69)
         .AddPriceBreak(16, 63)
         .AddPriceBreak(64, 58)

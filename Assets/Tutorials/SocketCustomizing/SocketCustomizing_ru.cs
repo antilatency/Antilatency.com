@@ -80,7 +80,7 @@ partial class Tutorials : Scope {
             [new Section("Прошивка от Antilatency")
                 [$"Скачайте `*.bin` файл, который представляет собой bootloader. Данный файл прошивки загрузите в контроллер на плате, используя SWD пины и программатор(например, Jlink)."]
                 [new Info($"Некоторые производители nRF модулей могут по запросу клиента прошить контроллер перед отправкой. В таком случае вам не нужно прошивать устройство самостоятельно.")]
-                [$"После прошивки bootloader, подключите USB и с помощью {Software.AntilatencyService.Material} установите акутальную версию прошивку. Вы получите доступ к полному функционалу системы Antilatency. Набор функций аналогичен {Hardware.SocketUsbRadio} и включает в себя поддержку {Terms.Antilatency_Hardware_Extension_Interface}, обновление через AntilatencyService и работу {Terms.Antilatency_Radio_Protocol} в двух режимах."]
+                [$"После прошивки bootloader, подключите USB и с помощью {Software.AntilatencyService.Material} установите акутальную версию прошивку. Вы получите доступ к полному функционалу системы Antilatency. Набор функций аналогичен {Hardware.HMD_Radio_Socket} и включает в себя поддержку {Terms.Antilatency_Hardware_Extension_Interface}, обновление через AntilatencyService и работу {Terms.Antilatency_Radio_Protocol} в двух режимах."]
                 ]
             ;
 }

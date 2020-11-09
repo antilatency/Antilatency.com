@@ -13,9 +13,9 @@ partial class Tutorials : Scope {
      
 
     [new Section("Установка")
-    [$"1. Подключите {Hardware.SocketUsbRadio} к компьютеру, или любому другому хосту."]
+    [$"1. Подключите {Hardware.HMD_Radio_Socket} к компьютеру, или любому другому хосту."]
     
-    [$"2. Подключите {Hardware.Tag} к {Hardware.SocketUsbRadio}. Подробнее о подключении можно узнать здесь: {Tutorials.ConfiguringRadioDevices}"]
+    [$"2. Подключите {Hardware.Tag} к {Hardware.HMD_Radio_Socket}. Подробнее о подключении можно узнать здесь: {Tutorials.ConfiguringRadioDevices}"]
     
     [$"3. Откройте {Software.AntilatencyService.Material}, вкладку Device Network"]
     [DeviceTreeAS]

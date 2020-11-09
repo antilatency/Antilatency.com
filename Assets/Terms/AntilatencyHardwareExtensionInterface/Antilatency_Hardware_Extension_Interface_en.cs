@@ -7,7 +7,7 @@ partial class Terms : Scope {
         [Video.GetPlayer()]
         [new Section("Currently supported")
             [new UnorderedList()
-                [$"*{Hardware.SocketUsbRadio}*(hardware version 2.0.0) - UsbRadioSocket and RadioSocket modes."]]]
+                [$"*{Hardware.HMD_Radio_Socket}*(hardware version 2.0.0) - UsbRadioSocket and RadioSocket modes."]]]
 
         [new Section("Connection")
             [$"{Hardware.ExtensionBoard} 2.0.0 is used."]

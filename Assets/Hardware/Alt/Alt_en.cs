@@ -2,10 +2,10 @@ using Csml;
 
 partial class Hardware : Scope {
         public static Material Alt_en => new Material("Alt", AltAndUsbSocket0,
-        @$"The {Hardware.Alt} is an optical inertial tracking module. The {Hardware.Alt} is located on objects being tracked and determines their position in space in relation to infrared markers. 
-            {Hardware.Alt} is supplied as a bundle with a wired {Hardware.SocketUsb}.")
+        @$"The Alt is an optical inertial tracking module. The Alt is located on objects being tracked and determines their position in space in relation to infrared markers. 
+            Alt is supplied as a bundle with a wired {Hardware.SocketUsb}.")
         [new Section("Sensor fusion")
-            [$"The {Hardware.Alt} is based on a sensor fusion approach. It's an inertial measurement unit (IMU) based tracking system with real-time IMU correction based on optical data."]
+            [$"The Alt is based on a sensor fusion approach. It's an inertial measurement unit (IMU) based tracking system with real-time IMU correction based on optical data."]
         ]
 
         [new Section("Latency compensation")
@@ -13,7 +13,7 @@ partial class Hardware : Scope {
         ]
 
         [new Section("Onboard processing")
-            [$"The {Hardware.Alt} is responsible for most of the data processing. This allows the headset to preserve its processing power for other tasks."]
+            [$"The Alt is responsible for most of the data processing. This allows the headset to preserve its processing power for other tasks."]
         ]
 
         [new Section("Custom optics")
@@ -35,8 +35,6 @@ partial class Hardware : Scope {
                 [$"Weight"][$"12 g"]
             ]
         ]
-
-
 
         ;
 }

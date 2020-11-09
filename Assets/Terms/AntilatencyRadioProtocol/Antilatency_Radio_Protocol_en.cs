@@ -7,7 +7,7 @@ partial class Terms {
         [new Section("Devices supporting Antilatency Radio Protocol")
             [$"Receiver list"]
             [new UnorderedList()
-                [$"{Hardware.SocketUsbRadio}"]
+                [$"{Hardware.HMD_Radio_Socket}"]
                 [$"{Hardware.PicoG2Socket}"]
             ]
 
@@ -25,11 +25,11 @@ partial class Terms {
             ]
             [@$"Transmitters connect to a receiver and transmit their data to it. 
                 The task of a receiver is to collect data from all transmitters, add its own data and send the resulting batch to the {Terms.Host} using a different interface (for instance, via a USB connection).
-                For example, you can have a {Hardware.SocketUsbRadio} or a {Hardware.PicoG2Socket} working as receivers. 
+                For example, you can have a {Hardware.HMD_Radio_Socket} or a {Hardware.PicoG2Socket} working as receivers. 
                 Possible options for transmitters are, for instance, a {Hardware.Tag} or a {Hardware.Bracer}.
             "]
             [new Info()
-                [$"The {Hardware.SocketUsbRadio} can act both as a receiver and a transmitter, depending on configuration. "]
+                [$"The {Hardware.HMD_Radio_Socket} can act both as a receiver and a transmitter, depending on configuration. "]
             ]
             [$"So, a standard networking connection to the {Terms.Host} through a radio protocol looks as follows:"]
             [new OrderedList()
