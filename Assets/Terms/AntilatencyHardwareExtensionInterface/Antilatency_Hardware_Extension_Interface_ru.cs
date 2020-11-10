@@ -4,7 +4,6 @@ using static Terms.Antilatency_Hardware_Extension_Interface_Assets;
 partial class Terms : Scope {
     static Material Antilatency_Hardware_Extension_Interface_ru => new Material(null, null,
     $"Вы можете управлять внешними устройствами, используя GPIO {Hardware.HMD_Radio_Socket}. Получить доступ к GPIO можно с помощью {Software.Antilatency_Hardware_Extension_Interface_Library} и {Hardware.ExtensionBoard}.")
-        [Video.GetPlayer()]
         [new Section("Поддерживаемые сокеты")
             [new UnorderedList()
                 [$"*{Hardware.HMD_Radio_Socket}*(hardware version 2.0.0) - режим UsbRadioSocket и RadioSocket."]]]
