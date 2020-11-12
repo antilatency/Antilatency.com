@@ -86,7 +86,7 @@ var Release_Trunk = function (context) {
     context.Label("Windows")
     context.Tab();
     context.SetContext("Platforms.Windows");
-    var win32 = context.Bool("x32");
+    var win32 = context.Bool("x86");
     var win64 = context.Bool("x64");
     context.Untab();
     
