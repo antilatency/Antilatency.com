@@ -29,11 +29,14 @@ var ReleaseWebContext = {
                 this.stateElementPath = this.stateElementPath + "." + name;
             }
 
-            if (!(ConfiguratorInstance.CurrentObject.hasOwnProperty(name))) {
-                ConfiguratorInstance.CurrentObject[name] = {};
-            }
+            splitted = name.split('.');
+            for (i = 0; i < splitted.length; i++) {
+                if (!(ConfiguratorInstance.CurrentObject.hasOwnProperty(splitted[i]))) {
+                    ConfiguratorInstance.CurrentObject[splitted[i]] = {};
+                }
 
-            ConfiguratorInstance.CurrentObject = ConfiguratorInstance.CurrentObject[name];
+                ConfiguratorInstance.CurrentObject = ConfiguratorInstance.CurrentObject[splitted[i]];
+            }
         }
     },
 
@@ -225,15 +228,20 @@ var ReleaseWebContext = {
 
         this.GenerateButton();
 
+        // console.log(this.elementsToDelete);
+
         for (let i = 0; i < this.elementsToDelete.length; i++) {
             DeleteObjectProperty(ConfiguratorInstance.State, this.elementsToDelete[i]);
-            //delete State[elementsToDelete[i]];
         }
 
         DeleteEmptyObjects(ConfiguratorInstance.State);
 
         var json = JSON.stringify(ConfiguratorInstance.State);
         location.hash = json;
+
+        // console.log(ConfiguratorInstance.State);
+
+        console.log(json.replace(/"/gi, "\\\""));
 
         //console.log(Sha1(json));
     }

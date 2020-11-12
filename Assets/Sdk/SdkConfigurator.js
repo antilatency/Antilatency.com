@@ -92,6 +92,9 @@ function DeleteObjectProperty(obj, elementPath) {
         if (i == (pathParts.length - 1)) {
             delete element[pathParts[i]];
         } else {
+            if (!element.hasOwnProperty(pathParts[i])) {
+                return;
+            }
             element = element[pathParts[i]];
         }
     }
