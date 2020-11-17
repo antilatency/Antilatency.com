@@ -6,6 +6,8 @@ partial class Tutorials {
     public partial class ConfiguringRadioDevices_Assets : Scope {
             public static Image TitleImage => new Image("./TitleImage.jpg");   
 
+            public static Image accessPointSN = new Image("./AccessPointSerialNumber.png");
+
     }
     
 }
