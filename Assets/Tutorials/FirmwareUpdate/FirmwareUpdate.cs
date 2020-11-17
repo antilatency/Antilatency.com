@@ -6,11 +6,14 @@ partial class Tutorials : Scope {
     public partial class Firmware_Update_Assets : Scope {
         public static Image TitleImage => new Image("./TitleImage.jpg");
         
-        public static Image DeviceTree => new Image("./DeviceTree.jpg");
-        public static Image ReflashFirmware => new Image("./ReflashFirmware.jpg");
-        public static Image SelectFirmware => new Image("./SelectFirmware.jpg");
         public static YoutubeVideo TitleVideo => new YoutubeVideo("zq3w-tXyk4w");
-        
+
+        public static Image Step2 = new Image("./Images/Step2.png");
+        public static Image Step3 = new Image("./Images/Step3.png");
+        public static Image Step4 = new Image("./Images/Step4.png");
+        public static Image Step5 = new Image("./Images/Step5.png");
+        public static Image Step6 = new Image("./Images/Step6.png");
+
     }
     }
     
