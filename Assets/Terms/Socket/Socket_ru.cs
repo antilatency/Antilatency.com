@@ -1,6 +1,6 @@
 using Csml;
 partial class Terms {
-    public static Material Socket_ru => new Material(null,  SocketImage,
+    public static Material Socket_ru => new Material("Socket",  SocketImage,
     @$"Socket - это устройство с разъёмом для подключения модуля {Hardware.Alt}, которое через {Terms.Antilatency_Radio_Protocol} или по USB может передавать данные с трекера.")
 
     [$"Сам по себе Alt не может передавать данные о положении объекта в пространстве. Для этого его нужно подключить к Socket с радиомодулем. Например, к {Hardware.Tag} или к {Hardware.HMD_Radio_Socket}."]

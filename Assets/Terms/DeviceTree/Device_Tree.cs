@@ -1,6 +1,6 @@
 using Csml;
 
-partial class Terms {
+partial class Terms : Scope {
     public static LanguageSelector<IMaterial> Device_Tree => new LanguageSelector<IMaterial>();
 
     public static Image RadioScheme => new Image("./RadioScheme.png");
