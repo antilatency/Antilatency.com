@@ -8,7 +8,7 @@ partial class Tutorials : Scope {
      TitleImage, 
      $"Устройства Antilatency имеют ряд системных и пользовательских свойств. Управляя пользовательскими свойствами, вы можете настроить устройство для конкретной задачи.")
      
-    [$"Все свойства устройств Antilatency отображаются во вкладке {Software.AntilatencyService.Device_Network.Material} приложения AntilatencyService. Чтобы их увидеть, подключите устройство к {Terms.Host} (например, к компьютеру)."] 
+    [$"Все свойства устройств Antilatency отображаются во вкладке {Software.AntilatencyService.Device_Network.Material} приложения AntilatencyService. Чтобы их увидеть, подключите устройство к  Host (например, к компьютеру)."] 
     [$"\nВо вкладке Device Network вы можете:"]
     [new UnorderedList()
     [$"{new ExternalReference("#edit","отредактировать пользовательское свойство")}"]

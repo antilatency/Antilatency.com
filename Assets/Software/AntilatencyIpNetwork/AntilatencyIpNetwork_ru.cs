@@ -7,6 +7,7 @@ partial class Software : Scope {
 
         [new Section("API")
             [$"Интерфейс библиотеки для объекта NetworkServer, который может отправлять и получать данные о состоянии устройств, подключённых к той же сети. Например, информацию о положении устройства в пространстве."]
+            [$""]
             [$"ILibrary interface produces INetworkServer interface (getNetworkServer method). INetworkServer can “listen” the network to get messages from other devices in LAN (startMessageListening then getDeviceList methods). Also it can send message with data from all connected position trackers (sendStateMessages method)."]
             [$"StateMessage structure represents a tracking data: data source name (32 bytes UTF8 string), Cartesian coordinates (in meters, float), rotation quaternion components (float) and error code. To get fixed size representation of a standard string for the data source name (StateMessage.rawTag) you need to use getRawTagFromString method from ILibrary interface."]
             [ApiDesc]

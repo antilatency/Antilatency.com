@@ -58,7 +58,7 @@ partial class Tutorials {
         [new Section($"Set MasterSN property by wireless socket's power button", "SetMasterHard")
             [$"Below is a configuration where {Hardware.HMD_Radio_Socket} serves as a receiver."]
             [new OrderedList()
-                [$"Connect the {Hardware.HMD_Radio_Socket} to the {Terms.Host}"]
+                [$"Connect the {Hardware.HMD_Radio_Socket} to the Host"]
                 [$"Power up the wireless socket by the single-click power on button"]
                 [$"Check that the wireless socket is connected to the {Hardware.HMD_Radio_Socket} (both device LEDs will be blinking smoothly with the same color)"]
                 [$"Press and hold the power button on the wireless socket for about 5 seconds, after that the wireless socket will be restarted and save the {Hardware.HMD_Radio_Socket}’s hardware serial number in the `MasterSN` property."]
@@ -68,7 +68,7 @@ partial class Tutorials {
         [new Section($"Set MasterSN property by {Software.AntilatencyService.Material}", "SetMasterSoft")
             [$"Below is a configuration where {Hardware.HMD_Radio_Socket}serves as a receiver."]
             [new OrderedList()
-                [$"Connect the {Hardware.HMD_Radio_Socket} to the {Terms.Host}"]
+                [$"Connect the {Hardware.HMD_Radio_Socket} to the  Host"]
                 [$"Power up the wireless socket by the single-click power on button"]
                 [$"Run {Software.AntilatencyService.Material} application"]
                 [$"Open Device Network tab"]
