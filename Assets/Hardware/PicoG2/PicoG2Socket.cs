@@ -15,7 +15,7 @@ partial class Hardware: Scope {
         public static LedSignal ExternalUsbLedSignal_ru = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Green,0.3f][System.Drawing.Color.Black,2.5f][System.Drawing.Color.Green,0.3f][System.Drawing.Color.Black,2.5f]}",$"Подключёно внешнее питание через USB. Передача данных и отслеживание трекинга не доступно.");
         public static LedSignal ExternalUsbLedSignal_en = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Green,0.3f][System.Drawing.Color.Black,2.5f][System.Drawing.Color.Green,0.3f][System.Drawing.Color.Black,2.5f]}",$"External USB cable connected. Radio and tracker is turned off");
 
-        public static List<LedSignal> PicoG2SocketLedIndication_ru = new List<LedSignal>{ExternalUsbLedSignal_en};
+        public static List<LedSignal> PicoG2SocketLedIndication_ru = new List<LedSignal>{ExternalUsbLedSignal_ru};
         public static List<LedSignal> PicoG2SocketLedIndication_en = new List<LedSignal>{ExternalUsbLedSignal_en};
 
         public static Table IndicationTable_ru = new Table("Индикация", "Состояние устройства")
