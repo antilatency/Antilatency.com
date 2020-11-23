@@ -1,4 +1,5 @@
 using Csml;
+using static Hardware.Alt_Assets;
 
 partial class Hardware : Scope {
         public static Material Alt_ru => new Material("Alt", AltAndUsbSocket0,
@@ -16,7 +17,7 @@ partial class Hardware : Scope {
         [$"Модуль Alt выполняет большинство задач по обработке данных трекинга, благодаря чему снижается нагрузка на HMD."]
         ]
 
-        [new Section("Широкий угол обзора")
+        [new Section("Широкий угол обзора","")
         [$"Инфракрасная камера Alt охватывает область в 240 градусов. Хорошая видимость маркеров зоны трекинга обеспечивает стабильное отслеживает позиции объекта в пространстве."]
         ]    
 

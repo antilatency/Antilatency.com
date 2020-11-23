@@ -8,7 +8,7 @@ partial class Hardware: Scope {
     public partial class PicoG2Socket_Assets : Scope {
         public static Image PicoG2SocketProduct0 => new Image("./PicoG2SocketProduct0.jpg");
 
-        public static string Dimensions = "44.1×21×36 ";
+        public static string Dimensions = "44 × 21 × 36 ";
         public static string Weight = "12";
         public static string ThisDevice = "PicoG2Socket";
 
