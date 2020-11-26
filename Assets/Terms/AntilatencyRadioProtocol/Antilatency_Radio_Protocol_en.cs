@@ -24,20 +24,20 @@ partial class Terms {
                 [$"Transmitter (Slave)"]
             ]
             [@$"Transmitters connect to a receiver and transmit their data to it. 
-                The task of a receiver is to collect data from all transmitters, add its own data and send the resulting batch to the {Terms.Host} using a different interface (for instance, via a USB connection).
+                The task of a receiver is to collect data from all transmitters, add its own data and send the resulting batch to the Host using a different interface (for instance, via a USB connection).
                 For example, you can have a {Hardware.HMD_Radio_Socket} or a {Hardware.PicoG2Socket} working as receivers. 
                 Possible options for transmitters are, for instance, a {Hardware.Tag} or a {Hardware.Bracer}.
             "]
             [new Info()
                 [$"The {Hardware.HMD_Radio_Socket} can act both as a receiver and a transmitter, depending on configuration. "]
             ]
-            [$"So, a standard networking connection to the {Terms.Host} through a radio protocol looks as follows:"]
+            [$"So, a standard networking connection to the Host through a radio protocol looks as follows:"]
             [new OrderedList()
-                [$"Connecting a receiver to the {Terms.Host} via USB."]
+                [$"Connecting a receiver to the  Host via USB."]
                 [$"Connecting transmitters to a receiver via a radio protocol"]
             ]
             [AntilatencyRadioProtocolTopology]
-            [$"To configure devices supporting the {Terms.Antilatency_Radio_Protocol} please see section {Tutorials.ConfiguringRadioDevices}"]
+            [$"To configure devices supporting the  Antilatency_Radio_Protocol please see section {Tutorials.ConfiguringRadioDevices}"]
         ]
 
 

@@ -1,4 +1,5 @@
 using Csml;
+using static Hardware.Alt_Assets;
 
 partial class Hardware : Scope {
         public static Material Alt_en => new Material("Alt", AltAndUsbSocket0,

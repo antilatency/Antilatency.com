@@ -124,12 +124,12 @@ var ReleaseWebContext = {
         return label;
     },
 
-    Bool: function (displayName, defaultValue = true) {
+    Bool: function (displayName, defaultValue = true, readonly = false, readonlyValue = true) {
         var variableName = this.DisplayNameToVariableName(displayName);
         var propPath = this.stateElementPath;
         this.KeepAlive(variableName)
 
-        if (ConfiguratorInstance.CurrentObject[variableName] == undefined) {
+        if (ConfiguratorInstance.CurrentObject[variableName] === undefined) {
             ConfiguratorInstance.CurrentObject[variableName] = defaultValue;
         }
 
@@ -138,7 +138,14 @@ var ReleaseWebContext = {
         ConfiguratorInstance.Context.WebObject.appendChild(this.WrapToLabel(displayName, input)).classList = this.TabsToClass();
 
         input.type = "checkbox";
-        input.checked = ConfiguratorInstance.CurrentObject[variableName];
+        if (readonly){
+            input.checked = readonlyValue;
+            ConfiguratorInstance.CurrentObject[variableName] = readonlyValue;
+        }else{
+            input.checked = ConfiguratorInstance.CurrentObject[variableName];
+        }
+        
+        input.disabled = readonly;
 
         input.onchange = function () {
             prop = GetObjectProperty(ConfiguratorInstance.State, propPath);

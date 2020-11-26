@@ -5,21 +5,21 @@ using System.Drawing;
 
 partial class Hardware : Scope {
 
-    public static LedSignal ErrorLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Red, 100f]}", $"Ошибка устройства, принудительная перезагрузка через несколько секунд");
-    public static LedSignal ErrorLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Red, 100f]}", $"Device error, it will be restarted in a few seconds");
+    public static LedSignal ErrorLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Red, 100f]}", $"Ошибка устройства, принудительная перезагрузка через несколько секунд.");
+    public static LedSignal ErrorLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Red, 100f]}", $"Device error, it will be restarted in a few seconds.");
 
-    public static LedSignal FatalLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Red, 0.3f][Color.Black, 0.3f][Color.Red, 0.3f][Color.Black, 0.3f][Color.Black, 3f]}", $"Аппаратный сбой. Количество красных вспышек означает номер ошибки");
-    public static LedSignal FatalLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Red, 0.3f][Color.Black, 0.3f][Color.Red, 0.3f][Color.Black, 0.3f][Color.Black, 3f]}", $"Hardware error, the number of the red blinking is the error code");
+    public static LedSignal FatalLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Red, 0.3f][Color.Black, 0.3f][Color.Red, 0.3f][Color.Black, 0.3f][Color.Black, 3f]}", $"Аппаратный сбой. Количество красных вспышек означает номер ошибки.");
+    public static LedSignal FatalLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Red, 0.3f][Color.Black, 0.3f][Color.Red, 0.3f][Color.Black, 0.3f][Color.Black, 3f]}", $"Hardware error, the number of the red blinking is the error code.");
 
    
-    public static LedSignal SearchLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Green, 1f][Color.Blue, 1f]}", $"Беспроводное устройство ищет доступный для подключения приёмник");
-    public static LedSignal SearchLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Green, 1f][Color.Blue, 1f]}", $"Wireless socket is trying to find any receiver to connect");
+    public static LedSignal SearchLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Green, 1f][Color.Blue, 1f]}", $"Клиент ищет доступную для подключения точку доступа.");
+    public static LedSignal SearchLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Green, 1f][Color.Blue, 1f]}", $"Client is trying to find any access point to connect.");
     
-    public static LedSignal ConcreteSearchLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Green, 0.5f][Color.Blue, 0.5f][Color.Green, 0.5f][Color.Blue, 0.5f]}", $"Wireless устройство ищет конкретный приёмник (задано значение для свойства `MasterSN`)");
-    public static LedSignal ConcreteSearchLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Green, 0.5f][Color.Blue, 0.5f][Color.Green, 0.5f][Color.Blue, 0.5f]}", $"Wireless socket is trying to find a specific receiver (`MasterSN` property is not empty)");
+    public static LedSignal ConcreteSearchLedSignal_ru = new LedSignal($"{new ColorSequence()[Color.Green, 0.5f][Color.Blue, 0.5f][Color.Green, 0.5f][Color.Blue, 0.5f]}", $"Клиет ищет конкретную точку доступа (задано значение для свойства `MasterSN`).");
+    public static LedSignal ConcreteSearchLedSignal_en = new LedSignal($"{new ColorSequence()[Color.Green, 0.5f][Color.Blue, 0.5f][Color.Green, 0.5f][Color.Blue, 0.5f]}", $"Client is trying to find a specific access point (`MasterSN` property is not empty).");
 
-    public static LedSignal ConnectedLedSignal_ru = new LedSignal($"{new ColorSequenceCos(Color.Black, Color.Magenta, 1.8f)}", $"Беспроводное устройство подключено к приёмнику. Цвет сигнала соответствует каналу подключения, поэтому у пары подключённых устройств цвет будет одинаковый.");
-    public static LedSignal ConnectedLedSignal_en = new LedSignal($"{new ColorSequenceCos(Color.Black, Color.Magenta, 1.8f)}", $"Wireless socket is connected to the receiver. <color> should be identical on both devices.");
+    public static LedSignal ConnectedLedSignal_ru = new LedSignal($"{new ColorSequenceCos(Color.Black, Color.Magenta, 1.8f)}", $"Клиент подключён к точке доступа. Цвет сигнала соответствует каналу подключения, поэтому у пары подключённых устройств цвет будет одинаковый.");
+    public static LedSignal ConnectedLedSignal_en = new LedSignal($"{new ColorSequenceCos(Color.Black, Color.Magenta, 1.8f)}", $"Client is connected to the access point. <color> should be identical on both devices.");
 
     public static LedSignal RadioDisabledLedSignal_ru = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Green,0.5f][System.Drawing.Color.Black,0.5f][System.Drawing.Color.Green,0.5f][System.Drawing.Color.Black,0.5f]}",$"Радио отключено. Лимит подключений равен `0`.");
     public static LedSignal RadioDisabledLedSignal_en = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Green,0.5f][System.Drawing.Color.Black,0.5f][System.Drawing.Color.Green,0.5f][System.Drawing.Color.Black,0.5f]}",$"Radio is disabled. Connection limit is `0`.");
@@ -30,8 +30,8 @@ partial class Hardware : Scope {
     public static LedSignal ChannelFoundLedSignal_ru = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Magenta, 0.5f][System.Drawing.Color.Black, 0.5f][System.Drawing.Color.Magenta, 0.5f][System.Drawing.Color.Black, 0.5f]}",$"Устройство заняло радиоканал и ожидает подключения беспроводных устройств. <Цвет индикации> соответствует номеру канала.");
     public static LedSignal ChannelFoundLedSignal_en = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Magenta, 0.5f][System.Drawing.Color.Black, 0.5f][System.Drawing.Color.Magenta, 0.5f][System.Drawing.Color.Black, 0.5f]}",$"Pico G2 Socket found a channel to work with and now waits for wireless sockets. <color> is the channel identification, different channels will have different colors");
 
-    public static LedSignal RadioSocketConnectedLedSignal_ru = new LedSignal($"{new ColorSequenceCos(System.Drawing.Color.Magenta, System.Drawing.Color.Black, 1.8f)}",$"К master устройству подключено как минимум одно беспроводное устройство. <Цвет индикации> одинаковый на паре подключённых устройств.");
-    public static LedSignal RadioSocketConnectedLedSignal_en = new LedSignal($"{new ColorSequenceCos(System.Drawing.Color.Magenta, System.Drawing.Color.Black, 1.8f)}",$"Pico G2 Socket has at least one other wireless socket connected to it, <color> will be equal on these devices");
+    public static LedSignal RadioSocketConnectedLedSignal_ru = new LedSignal($"{new ColorSequenceCos(System.Drawing.Color.Magenta, System.Drawing.Color.Black, 1.8f)}",$"К точке доступа подключен как минимум один клиент. <Цвет индикации> одинаковый на паре подключённых устройств.");
+    public static LedSignal RadioSocketConnectedLedSignal_en = new LedSignal($"{new ColorSequenceCos(System.Drawing.Color.Magenta, System.Drawing.Color.Black, 1.8f)}",$"Pico G2 Socket has at least one other client connected to it, <color> will be equal on these devices");
 
     public static LedSignal BootloaderModeLedSignal_ru = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Red,0.5f][System.Drawing.Color.DarkRed,0.5f][System.Drawing.Color.Red,0.5f][System.Drawing.Color.DarkRed,0.5f]}", $"Устройство в режиме обновления прошивки.");
     public static LedSignal BootloaderModeLedSignal_en = new LedSignal($"{new ColorSequence()[System.Drawing.Color.Red,0.5f][System.Drawing.Color.DarkRed,0.5f][System.Drawing.Color.Red,0.5f][System.Drawing.Color.DarkRed,0.5f]}", $"Device is in the bootloader mode.");
@@ -45,4 +45,7 @@ partial class Hardware : Scope {
 
     public static List<LedSignal> WirelessLedSignals_ru = new List<LedSignal> { SearchLedSignal_ru, ConcreteSearchLedSignal_ru, ConnectedLedSignal_ru };
     public static List<LedSignal> WirelessLedSignals_en = new List<LedSignal> { SearchLedSignal_en, ConcreteSearchLedSignal_en, ConnectedLedSignal_en };
+
+    public static List<LedSignal> SearchSignals_ru = new List<LedSignal> {SearchLedSignal_ru, ConcreteSearchLedSignal_ru};
+    public static List<LedSignal> SearchSignals_en = new List<LedSignal> {SearchLedSignal_en, ConcreteSearchLedSignal_en};
 }

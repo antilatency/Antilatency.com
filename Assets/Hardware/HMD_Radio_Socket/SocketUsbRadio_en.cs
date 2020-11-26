@@ -8,7 +8,7 @@ partial class Hardware : Scope {
              $"The HMD Radio Socket is a wireless {Terms.Socket} that supports both data reception from wireless devices via the {Terms.Antilatency_Radio_Protocol} and tracking data transmission when placed on the objects being tracked.")
 
             [new Section("A universal data receiver via a radio protocol")
-                [@$"When the {Terms.Antilatency_Radio_Protocol} is running, as a rule, the HMD Radio Socket serves as a data receiver from transmitters. In this case the USB type-C port is used to power the HMD Radio Socket and send data to the {Terms.Host} via USB. 
+                [@$"When the {Terms.Antilatency_Radio_Protocol} is running, as a rule, the HMD Radio Socket serves as a data receiver from transmitters. In this case the USB type-C port is used to power the HMD Radio Socket and send data to the Host via USB. 
                     For other modes of operation, please see HMD Radio Socket.
                 "]
             ]

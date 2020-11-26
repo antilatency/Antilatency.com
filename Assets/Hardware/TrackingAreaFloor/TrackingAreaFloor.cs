@@ -7,8 +7,8 @@ partial class Hardware: Scope {
     public partial class TrackingAreaFloor_Assets : Scope {
         public static Image TrackingAreaFloorProduct0 => new Image("./TrackingAreaFloorProduct0.jpg");
 
-        public static string Dimensions = "70x30x63";
-        public static string Weight = "10,3";
+        public static string Dimensions = "70 x 30 x 63";
+        public static string Weight = "10";
 
     }
 }

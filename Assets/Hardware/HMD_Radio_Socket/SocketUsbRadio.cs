@@ -6,8 +6,8 @@ partial class Hardware: Scope {
     public partial class HMD_Radio_Socket_Assets : Scope {
         public static Image HMD_Radio_SocketProduct0 => new Image("./SocketUsbRadioProduct0.jpg");
 
-        public static string Dimensions = "9.1x18.2x32.1";
-        public static string Weight = "7.2";
+        public static string Dimensions = "9 x 18 x 32";
+        public static string Weight = "7";
         public static string ThisDevice = "HMD Radio Socket";
 
         public static Table IndicationTable_ru = new Table("Индикация", "Состояние устройства")

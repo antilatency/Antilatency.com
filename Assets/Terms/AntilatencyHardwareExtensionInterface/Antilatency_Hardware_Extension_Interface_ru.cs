@@ -1,19 +1,18 @@
 ﻿using Csml;
 using static Terms.Antilatency_Hardware_Extension_Interface_Assets;
+using static Hardware.ExtensionBoard_Assets;
 
 partial class Terms : Scope {
     static Material Antilatency_Hardware_Extension_Interface_ru => new Material(null, null,
-    $"Вы можете управлять внешними устройствами, используя GPIO {Hardware.HMD_Radio_Socket}. Получить доступ к GPIO можно с помощью {Software.Antilatency_Hardware_Extension_Interface_Library} и {Hardware.ExtensionBoard}.")
-        [new Section("Поддерживаемые сокеты")
-            [new UnorderedList()
-                [$"*{Hardware.HMD_Radio_Socket}*(hardware version 2.0.0) - режим UsbRadioSocket и RadioSocket."]]]
+    $"Вы можете управлять внешними устройствами, используя GPIO {Hardware.HMD_Radio_Socket}. Получить доступ к GPIO можно с помощью {Hardware.ExtensionBoard} и {Software.Antilatency_Hardware_Extension_Interface_Library}.")
+    
 
-        [new Section("Схема подключение")
-            [$"Используется {Hardware.ExtensionBoard} 2.0.0."]
+            [new Section("Схема подключения платы","")
             [Hardware.ExtensionBoard_Assets.Connection]]
-
-            [$"Сокет подключается к {Hardware.ExtensionBoard} при помощи Usb 3.1 Type-C кабеля, во второй разъём подключается питание с помощью любого Type-C кабеля. {Hardware.ExtensionBoard} позволяет подключать различные кнопки, концевики, потенциометры, светодиоды, вибромоторчики и т.д."]
-
+            [$"\nЧтобы подключить питание, используйте кабель `USB Type-C`. \nЧтобы подключить Socket, используйте `USB 3.1 Type-C`."]
+            [new Info($"Обратите внимание на ориентацию коннекторов. При подключении Socket к плате сигнальные линии не должны перекрещиваться.")]
+        
+        
             [new ToDo("move to troubleshooting", true)]
                /* move : troubleshooting 
                [new Section("Troubleshooting")

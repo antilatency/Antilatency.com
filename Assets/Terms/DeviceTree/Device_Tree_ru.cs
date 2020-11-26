@@ -1,35 +1,45 @@
 ﻿using Csml;
 using static Api.Antilatency.DeviceNetwork;
 partial class Terms {
-    public static Material Device_Tree_ru => new Material(null, null,
-    $"Дерево устройств - это способ подключения устройств Antilatency и объединения их в одну сеть.")
-        [new Section("Принцип работы")
-            [$"Все устройства Antilatency, подключенные к одному хосту, образуют сеть в виде дерева устройств, где корневой точкой (root) является хост, а остальные устройства образуют узлы. В каждом из узлов этого дерева может находится нода, выполняющая таск."]
-            [$"Дерево устройств формирует иерархию подключения устройств и порядок передачи данных на хост."]
+    public static Material Device_Tree_ru => new Material("Device Tree", null,
+    $"Способ подключения устройств Antilatency друг к другу и объединения их в одну сеть.")
+
+            [$"Все устройства Antilatency, подключённые к одному {Terms.Host}, образуют сеть в виде дерева устройств. Корневой точкой является Host, а остальные устройства образуют узлы, или {Terms.Node}. Каждый узел этого дерева может выполнять {Terms.Task}. Дерево устройств формирует иерархию подключения устройств и порядок передачи данных на Host."]
+           
+            [$"Дерево устройств отображается в приложении {Software.AntilatencyService.Material} во вкладке {Software.AntilatencyService.Device_Network.Material}. Здесь вы можете управлять свойствами любого из подключённых устройств."]
+
+            [new UnorderedList()
+                [$"Чтобы настроить {Hardware.HMD_Radio_Socket}, {Hardware.SocketUsb} и {Hardware.PicoG2Socket} подключите их напрямую через USB."]
+                [$"{Hardware.Tag} и {Hardware.Bracer}, нужно подключить их через HMD Radio Socket."]
+                [$"{Hardware.Alt} можно подключить через любой совместимый {Terms.Socket}."]
+            ]
+
+            [new Info($"Подробнее о конфигурации устройств и работе с деревом устройств {new ExternalReference("#usefulLinks","читайте тут")}.")]
+
+
+            [$"Для обмена данными устройства Antilatency могут использовать проприетарный радиопротокол. В зависимости от роли в процессе обмена данными, все устройства можно разделить на две группы: клиенты и точки доступа. Подробнее читайте тут: {Terms.Antilatency_Radio_Protocol}."]
+
+            [$"Рассмотрим дерево устройств на примере полного комплекта устройств для одного пользователя:"]
+                 [new UnorderedList() 
+                     [$"HMD Radio Socket и трекер Alt - для отслеживания головы;"]
+                     [$"два Bracer и два трекера Alt - для отслеживания рук;"]
+                     [$"два Tag и два трекера Alt - для отслеживания ног."]
+            ]
+                     [DeviceHierarchy]
+
+                     [$"HMD Radio Socket, подключённый к шлему виртуальной реальности по USB, выполняет роль точки доступа. А Tag и Bracer выступают как клиенты. Вместе устройства образуют сеть, с помощью которой можно отслеживать положение тела пользователя на основе знаний о позиции пяти точек."]
+                     [$"Так выглядит дерево устройств для описанного выше комплекта в AntilatencyService:"]
             
-        ]
+        [DeviceTreeInAntilatencyService]
 
-        [new Section("Пример")
-            [$"Рассмотрим дерево девайсов на примере fullbody сетапа для виртуальной реальности"]
-            [DeviceHierarchy]
-            [$"Мастер сокет подключается к HMD или backpack PC, в обоих случаях возможно подключение Antilatency трекера к этому сокету для отслеживания головы или любой другой части тела."]
-            [$"К мастер сокету подключаются четыре сокета - два Tag и два Bracer. Эти сокеты являются передатчиками данных своих трекеров к мастер - сокету. Таким образом создается сеть, позволяющая создать fullbody трекинг на основе знания о позиции пяти точек."]
-            [DeviceTreeInAntilatencyService]
-            [$"Вот так выглядит дерево девайсов для данного сетапа в AntilatencyService."]
-        ]
 
-       /* [new Section("Полезные ссылки")
-        [$"{Tutorials.ConfiguringRadioDevices}"]
-        [$"{Tutorials.Firmware_Update}"]
-        [$"{Tutorials.Set_Device_Custom_Properties}"]
+       [new Section("Полезные ссылки","usefulLinks")
+            [$"{Tutorials.ConfiguringRadioDevices}"]
+            [$"{Tutorials.Set_Device_Custom_Properties}"]
+            [$"{Tutorials.Firmware_Update}"]
         ]
-        */
         ;
 
-        
-        
-    
-    
 
 
 }

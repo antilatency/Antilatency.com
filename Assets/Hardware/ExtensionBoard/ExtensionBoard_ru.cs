@@ -16,22 +16,17 @@ partial class Hardware : Scope {
 
         [ExtensionBoard_Assets.Video.GetPlayer()]
 
-        [new Info($"Плата расширения работает через Extension Hardware Interface с помощью {Software.Antilatency_Hardware_Extension_Interface_Library}.")]
-        
-        [new Section("Схема подключения платы","")
-            [Hardware.ExtensionBoard_Assets.Connection]]
-            [$"\nЧтобы подключить питание, используйте кабель `USB Type-C`. \nЧтобы подключить Socket, используйте `USB 3.1 Type-C`."]
-            [new Info($"Обратите внимание на ориентацию коннекторов. Gри подключении Socket к плате не должно быть перекрещивания сигнальных линий.")]
-        
+        [new Info($"Плата расширения работает через {Terms.Antilatency_Hardware_Extension_Interface} с помощью {Software.Antilatency_Hardware_Extension_Interface_Library}.")]
+
         [new Section("Pinout","")
             [$"Для подключения доступно 8 пинов. Максимальное напряжение на всех пинах, включая аналоговые, - не более 3В. \nКаждый пин может быть в режиме входа(Input) или выхода(Output). Любые 2 пина могут находиться в режиме подсчёта импульсов. Любые 4 могут быть в режиме ШИМ выхода. И только 2 определённых пина могут работать в аналоговом режиме."]
-            [ExtensionBoard_Assets.PinFunctions]
+            [Hardware.ExtensionBoard_Assets.PinFunctions]
             [new Warning()[$"IOA_3 и IOA_4 - низкоскоростные пины. Частота сигнала не должна превышать 10кГц."]]
 
             [$"*Input* \nРежим входа с внутренним Pull-Up(≈13 кОм). \nКаждые 5мс запрашивается состояние пина. Если оно изменилось, данные отправляются на хост."]
 
-           /* [$"Типичная схема подключение кнопки: "]
-            [ExtensionBoard_Assets.Input]*/
+           /*[$"Типичная схема подключение кнопки: "]
+            [Input]*/
 
             [$"*Output* \nРежим выхода Push-Pull. \nТок, потребляемый с пина, не должен превышать 4мA."]
 
@@ -51,5 +46,7 @@ partial class Hardware : Scope {
             [new Info()[$"Резистор R3 обеспечивает ограничение напряжения на пине IOA. Напряжение должно быть в диапазоне 0-3 В."]]*/
         
             ]
+
+        
             ;
 }

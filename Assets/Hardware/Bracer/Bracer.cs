@@ -7,7 +7,7 @@ partial class Hardware: Scope {
         
         public static Image BracerProduct0 => new Image("./BracerProduct0.jpg");
 
-        public static string Dimensions = "111х38х32.6";
+        public static string Dimensions = "111 х 38 х 33";
         public static string Weight = "35";
         public static string BatteryCapacity = "250mAh";
         public static string ThisDevice = "Bracer";

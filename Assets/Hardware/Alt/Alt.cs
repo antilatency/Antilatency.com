@@ -8,14 +8,17 @@ using System.Linq;
 partial class Hardware: Scope {
 
     public static LanguageSelector<IMaterial> Alt => new LanguageSelector<IMaterial>();
-
     static Image AltAndUsbSocket0 => new Image("./AltAndUsbSocket0.jpg");
     static Image AltAndUsbSocket1 => new Image("./AltAndUsbSocket1.jpg");
     static Image AltAndUsbSocket2 => new Image("./AltAndUsbSocket2.jpg");
 
-    public static string Dimensions = "16x16x20.5";
+    public partial class Alt_Assets : Scope{
+
+    public static string Dimensions = "16 x 16 x 21";
         public static string Weight = "12";
         public static string ThisDevice = "Alt";
+
+    }
 
 
 
