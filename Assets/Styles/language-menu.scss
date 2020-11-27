@@ -10,17 +10,20 @@ nav.language-menu {
     background-color: #8c96a0;
     opacity: 0.93;
     color: #081a20;
-
+    border-radius: 8rem;
+    margin: 1rem 1rem;
 }
 
-nav.language-menu > *{
+nav.language-menu > * {
     display: block;
     color: inherit;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
     padding-top: 8px;
-    padding-bottom: 8px; 
-    text-decoration: none; 
+    padding-bottom: 8px;
+    text-decoration: none;
     font-weight: 400;
-    text-align: center; 
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.9rem;
 }
