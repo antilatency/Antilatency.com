@@ -1,4 +1,5 @@
 using Csml;
+using static Hardware.PicoG2Socket_Assets;
 
 partial class Hardware : Scope {
 
@@ -25,17 +26,16 @@ partial class Hardware : Scope {
 
             [new Section("Technical specifications")
                 [new Table(2)
-                    [$"Connectivity"][@$"2.4GHz Proprietary radio protocol (Master only)
+                    [$"Connectivity"][@$"2.4GHz Proprietary radio protocol (access point mode)
                                         USB 2.0 Full Speed"]
                     [$"Ports"][@$"Usb Type-C Male connector for connection between Pico G2 Socket and headset
                                   Usb Type-C Female connector for charging and connection between headset and PC"]
                     [$"Power supply"][$"USB 5V"]
                     [$"Current consumption"][@$"Without {Hardware.Alt}: 15mA@5V
                                                 With {Hardware.Alt}: 115mA@5V"]
-                    [$"Indication"][@$"RGB LED
-                                       For LED signals see table below TODO"]
-                    [$"Dimensions"][$"44.1×21×36 mm"]
-                    [$"Weight"][$"12 g"]
+                    [$"Indication"][@$"RGB LED"]
+                    [$"Dimensions"][$"{Dimensions} mm"]
+                    [$"Weight"][$"{Weight} g"]
                 ]
             ]
 

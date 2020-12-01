@@ -28,15 +28,14 @@ partial class Hardware : Scope {
 
             [new Section("Technical specifications")
                 [new Table(2)
-                    [$"Connectivity"][$"2.4GHz Proprietary radio protocol (Slave mode only)"]
+                    [$"Connectivity"][$"2.4GHz Proprietary radio protocol (client mode)"]
                     [$"Ports"][$"Usb Type-C port for charging only"]
-                    [$"Battery"][$"250mAh internal LiPo rechargeable battery"]
+                    [$"Battery"][$"{BatteryCapacity} internal LiPo rechargeable battery"]
                     [$"Charging mode"][@$"Fully functional while charging
                                          Current consumption by charging: 350mA@5V"]
-                    [$"Indication"][@$"RGB LED
-                                       For LED signals see table below TODO"]
-                    [$"Dimensions"][$"8.5x18.2x65.7 mm"]
-                    [$"Weight"][$"18 g"]
+                    [$"Indication"][@$"RGB LED"]
+                    [$"Dimensions"][$"{Dimensions} mm"]
+                    [$"Weight"][$"{Weight} g"]
                 ]
             ]
 

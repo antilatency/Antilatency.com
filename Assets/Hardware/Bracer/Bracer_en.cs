@@ -39,17 +39,16 @@ partial class Hardware : Scope {
 
             [new Section("Technical specifications")
                 [new Table(2)
-                    [$"Connectivity"][$"2.4GHz Proprietary radio protocol (Slave mode only)"]
-                    [$"Battery"][$"250mAh internal LiPo rechargeable battery"]
+                    [$"Connectivity"][$"2.4GHz Proprietary radio protocol (client mode only)"]
+                    [$"Battery"][$"{BatteryCapacity} internal LiPo rechargeable battery"]
                     [$"Charging mode"][@$"Charging through the {Hardware.Alt} slot with a dedicated charger module
                                         Bracer cannot be used during charging.
                                         Current consumption by charging: 250mA@5V"]
                     [$"Haptic feedback "][$"LRA haptic feedback"]
                     [$"Touch sensing element"][$"worn on the palm"]
-                    [$"Indication"][@$"RGB LED
-                                       For LED signals see table below TODO"]
-                    [$"Dimensions"][$"111х38х32.6 mm"]
-                    [$"Weight"][$"35 g"]
+                    [$"Indication"][@$"RGB LED"]
+                    [$"Dimensions"][$"{Dimensions} mm"]
+                    [$"Weight"][$"{Weight} g"]
                 ]
             ]
 

@@ -32,8 +32,8 @@ partial class Hardware : Scope {
                                           In idle mode: 130mA@3V"]
                 [$"Connectivity"][@$"No
                                     Connectivity is provided by {Terms.Socket}"]
-                [$"Dimensions"][$"16x16x20.5 mm"]
-                [$"Weight"][$"12 g"]
+                [$"Dimensions"][$"{Dimensions} mm"]
+                [$"Weight"][$"{Weight} g"]
             ]
         ]
 

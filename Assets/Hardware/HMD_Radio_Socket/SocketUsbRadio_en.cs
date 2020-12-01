@@ -1,4 +1,5 @@
 using Csml;
+using static Hardware.HMD_Radio_Socket_Assets;
 
 partial class Hardware : Scope {
 
@@ -35,21 +36,21 @@ partial class Hardware : Scope {
 
             [new Section("Technical specifications")
                 [new Table(2)
-                    [$"Connectivity"][@$"2.4GHz Proprietary radio protocol (Master and Slave modes)
+                    [$"Connectivity"][@$"2.4GHz Proprietary radio protocol (access point and client modes)
                                         USB 2.0 Full Speed"]
                     [$"Ports"][$"Usb Type-C port for Power and Data Transfer"]
                     [$"Battery"][@$"No built in battery
-                                    External power banks are supported "]
+                                    External power banks are supported. "]
                     [$"Antilatency Hardware Extension Interface support "][$"Yes"]
                     [$"Power supply"][$"USB 5V"]
                     [$"Current consumption"][@$"Without {Hardware.Alt}: 15mA@5V
                                                 With {Hardware.Alt}: 115mA@5V"]
-                    [$"Indication"][@$"RGB LED
-                                       For LED signals see table below TODO"]
-                    [$"Dimensions"][$"9.1x18.2x32.1 mm"]
-                    [$"Weight"][$"7.2 g"]
+                    [$"Indication"][@$"RGB LED"]
+                    [$"Dimensions"][$"{Dimensions} mm"]
+                    [$"Weight"][$"{Weight} g"]
                 ]
             ]
+
 
             [new Section("LED signals") 
                 [HMD_Radio_Socket_Assets.IndicationTable_en]
