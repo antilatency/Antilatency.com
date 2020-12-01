@@ -1,16 +1,23 @@
 ﻿using Csml;
 using static Terms.Antilatency_Hardware_Extension_Interface_Assets;
-using static Hardware.ExtensionBoard_Assets;
 
 partial class Terms : Scope {
     static Material Antilatency_Hardware_Extension_Interface_ru => new Material(null, null,
     $"Вы можете управлять внешними устройствами, используя GPIO {Hardware.HMD_Radio_Socket}. Получить доступ к GPIO можно с помощью {Hardware.ExtensionBoard} и {Software.Antilatency_Hardware_Extension_Interface_Library}.")
-    
+
+        [$"С помощью технологии Hardware Extension можно создать контроллер в виде любого предмета, существующего в реальном мире."]
+
+        [$"Мы в Antilatency разработали демонстрационную модель огнетушителя. Её корпус в точности повторяет размеры настоящего огнетушителя. Нажмите на рычаг устройства в реальном мире - оно заработает в виртуальном. Потрясающее сочетание тактильного и визуального восприятия."]
+
+        [Video.GetPlayer()]
 
             [new Section("Схема подключения платы","")
-            [Hardware.ExtensionBoard_Assets.Connection]]
-            [$"\nЧтобы подключить питание, используйте кабель `USB Type-C`. \nЧтобы подключить Socket, используйте `USB 3.1 Type-C`."]
-            [new Info($"Обратите внимание на ориентацию коннекторов. При подключении Socket к плате сигнальные линии не должны перекрещиваться.")]
+
+                [Hardware.ExtensionBoard_Assets.Connection]]
+
+                [$"\nЧтобы подключить питание, используйте кабель `USB Type-C`. \nЧтобы подключить Socket, используйте `USB 3.1 Type-C`."]
+                
+                     [new Info($"Обратите внимание на ориентацию коннекторов. При подключении Socket к плате сигнальные линии не должны перекрещиваться.")]
         
         
             [new ToDo("move to troubleshooting", true)]

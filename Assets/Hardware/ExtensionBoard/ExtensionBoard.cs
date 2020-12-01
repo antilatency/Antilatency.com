@@ -16,7 +16,6 @@ partial class Hardware: Scope {
         public static Image HighLoadOutput => new Image("Images/HighLoadOutput.png");
         public static Image Analog => new Image("Images/Analog.png");
 
-        public static YoutubeVideo Video => new YoutubeVideo("d2bnT24EWTM");
 
         public static Table PinFunctions => new Table("Pin", "Input", "Output", "PulseCounter", "PWM", "Analog")
                 [$"IO_1"]   [$"+"][$"+"][$"+"][$"+"][$"-"]
