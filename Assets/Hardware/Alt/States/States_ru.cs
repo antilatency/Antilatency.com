@@ -29,10 +29,10 @@ partial class Hardware : Scope {
                 [$"6"][$"Silver (0xc0, 0xc0 , 0xc0)"]
                 [$"7"][$"Navy (0x00, 0x00 , 0x80)"]
             ]
-            [new Info($"Код ошибки #0 сигнализирует об остутствии ошибки. Все остальные коды сигнализируют о наличии ошибки.")]
+            [new Info($"Код ошибки #0 сигнализирует об отсутствии ошибки. Все остальные коды сигнализируют о наличии ошибки.")]
         ]
 
-         [new Section("Пример ошибки")
+         [new Section("Примеры ошибки")
             [$"Ошибка #1 в подсистеме #1"]
             [new ColorSequence()
                 [Color.Green, 0.3f]
@@ -40,7 +40,27 @@ partial class Hardware : Scope {
                 [Color.Red, 0.3f]
                 [Color.Black, 0.3f]
                 [Color.Green, 0.3f]
-                [Color.Black, 2.3f]
+                [Color.Black, 2.0f]
+            ]
+        
+            [$"Ошибка #3 в подсистеме #0"]
+            [new ColorSequence()
+                [Color.FromArgb(0xff, 0x00, 0xff), 0.3f]
+                [Color.Black, 0.3f]
+                [Color.Green, 0.3f]
+                [Color.Black, 0.3f]
+                [Color.Green, 0.3f]
+                [Color.Black, 2.0f]
+            ]
+        
+            [$"Ошибка #4 в подсистеме #2"]
+            [new ColorSequence()
+                [Color.Green, 0.3f]
+                [Color.Black, 0.3f]
+                [Color.Green, 0.3f]
+                [Color.Black, 0.3f]
+                [Color.FromArgb(0xff, 0xff, 0x00), 0.3f]
+                [Color.Black, 2.0f]
             ]
         ]
 
@@ -50,7 +70,7 @@ partial class Hardware : Scope {
                 [new ColorSequence()
                     [Color.FromArgb(0xff, 0x00, 0x00), 1.0f]
                     [Color.FromArgb(0xff / 2, 0x00, 0x00), 1.0f]
-                ][$"*Normal* - режим, сигнализируйющий о готовности загрузчика к работе."]
+                ][$"*Normal* - режим, сигнализирующий о готовности загрузчика к работе."]
             ]
         ];
 
