@@ -40,7 +40,7 @@ partial class Hardware : Scope {
                 [Color.Red, 0.3f]
                 [Color.Black, 0.3f]
                 [Color.Green, 0.3f]
-                [Color.Black, 2.0f]
+                [Color.Black, 2.3f]
             ]
         
             [$"Ошибка #3 в подсистеме #0"]
@@ -50,7 +50,7 @@ partial class Hardware : Scope {
                 [Color.Green, 0.3f]
                 [Color.Black, 0.3f]
                 [Color.Green, 0.3f]
-                [Color.Black, 2.0f]
+                [Color.Black, 2.3f]
             ]
         
             [$"Ошибка #4 в подсистеме #2"]
@@ -60,7 +60,7 @@ partial class Hardware : Scope {
                 [Color.Green, 0.3f]
                 [Color.Black, 0.3f]
                 [Color.FromArgb(0xff, 0xff, 0x00), 0.3f]
-                [Color.Black, 2.0f]
+                [Color.Black, 2.3f]
             ]
         ]
 

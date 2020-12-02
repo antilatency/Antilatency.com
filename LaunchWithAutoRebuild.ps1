@@ -1,0 +1,1 @@
+dotnet watch run --configuration Debug --launch-profile WebServer -- "WebServer(~D:\\Antilatency.com.WebServer~);"
