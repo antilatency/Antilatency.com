@@ -6,28 +6,28 @@ partial class Software : Scope {
     
 
     public static Material Antilatency_Hardware_Extension_Interface_Library_ru => new Material(null, null,
-    $"Библиотека для {Terms.Antilatency_Hardware_Extension_Interface}")
+    $"Библиотека для работы с {Terms.Antilatency_Hardware_Extension_Interface}.")
         [new Section("Использование библиотеки")
             [new OrderedList()
                 [$"Загрузка библиотеки."]
                 [$"Получение {ILibrary.NameRefCode}."]
-                [$"Получение {ICotaskConstructor.NameRefCode}, с помощю {ILibrary.Methods.getCotaskConstructor.NameRefCode}."]
-                [$"Запуск таска с помощью {ICotaskConstructor.Methods.startTask.NameRefCode}"]
-                [$"Декларирование режимов работы нужных пинов, вызывая методы {new UnorderedList()[createPinMethods]}"]
-                [$"Перевод таска в режим {Modes.Run} с помощью метода {ICotask.Methods.run.NameRefCode}."]
+                [$"Получение {ICotaskConstructor.NameRefCode} с помощью {ILibrary.Methods.getCotaskConstructor.NameRefCode}."]
+                [$"Запуск {Terms.Task} через {ICotaskConstructor.Methods.startTask.NameRefCode}"]
+                [$"Декларирование режимов работы нужных пинов с помощью {new UnorderedList()[createPinMethods]}"]
+                [$"Перевод Task в режим {Modes.Run} с помощью метода {ICotask.Methods.run.NameRefCode}."]
                 [$"Работа с полученными ранее интерфейсами({IInputPin.NameRefCode}, {IOutputPin.NameRefCode} и т.д.)"]
             ]
         ]
 
         [new Section("IInputPin")
             [IInputPin.CodeBlock]
-            [$"{IInputPin.Methods.getState.NameRefCode} возвращает актуальное состояние пина(изменяется не чаще, чем раз в 5мс)."]
+            [$"{IInputPin.Methods.getState.NameRefCode} возвращает актуальное состояние пина (изменяется не чаще, чем раз в 5мс)."]
         ]
 
         [new Section("IOutputPin")
             [IOutputPin.CodeBlock]
             [$"{IOutputPin.Methods.setState.NameRefCode} отправляет устройству запрос на изменение состояния пина. Кидает исключение, если не удалось отправить запрос."]
-            [$"{IOutputPin.Methods.getState.NameRefCode} возвращает последние состояние, модифицированное с помощью {IOutputPin.Methods.setState.NameRefCode}(запрос на устройство не отправляется)."]
+            [$"{IOutputPin.Methods.getState.NameRefCode} возвращает последнее состояние, модифицированное с помощью {IOutputPin.Methods.setState.NameRefCode}. Запрос на устройство при этом не отправляется."]
         ]
 
         [new Section("IAnalogPin")
@@ -43,29 +43,29 @@ partial class Software : Scope {
         [new Section("IPwmPin")
             [IPwmPin.CodeBlock]
             [$"{IPwmPin.Methods.setDuty.NameRefCode} отправляет устройству запрос на изменение скважности ШИМ сигнала. Кидает исключение, если не удалось отправить запрос."]
-            [$"{IPwmPin.Methods.getDuty.NameRefCode} возвращает текущую скважность ШИМ сигнала.(без запроса к устройству)"]
+            [$"{IPwmPin.Methods.getDuty.NameRefCode} возвращает текущую скважность ШИМ сигнала, не отправляя запрос на устройство."]
             [$"{IPwmPin.Methods.getFrequency.NameRefCode} возвращает актуальную частоту ШИМ сигнала."]
-            [$"Для более высокой частоты `duty` будет иметь больше градаций. Но сама частота может быть установлена менее точно(для некоторых значений). Список рекомендованных частот, которые установлены со 100% точностью(Гц):"]
+            [$"Для более высокой частоты `duty` будет иметь больше градаций. Но сама частота для некоторых может быть установлена менее точно. Список рекомендованных частот:"]
             [new UnorderedList()[$"20"][$"100"][$"500"][$"1000"][$"2000"][$"5000"][$"10000"]]
             [$"Узнать реальную частоту и скважность можно с помощью {IPwmPin.Methods.getFrequency.NameRefCode} и {IPwmPin.Methods.getDuty.NameRefCode} соответственно."]
         ]
 
-        [new Info()[$"До перехода таска в состояние {Modes.Run} все методы данных интерфейсов будут возвращать значение по умолчанию."]
+        [new Info()[$"До перехода Task в состояние {Modes.Run}, все методы данных интерфейсов будут возвращать значение по умолчанию."]
         ]
 
         [new Section("ICotask")
             [ICotask.CodeBlock]
             [new Info()[$"Методы по созданию пинов только формируют таблицу инициализации, которая будет отправлена на устройство в методе {ICotask.Methods.run.NameRefCode}."]]
-            [$"Сразу после запуска таск находится в состоянии {Modes.Init}. Только в этом состоянии работают методы по созданию пинов."]
+            [$"Сразу после запуска Task находится в состоянии {Modes.Init}. Только в этом состоянии работают методы по созданию пинов."]
             [$"{ICotask.Methods.createInputPin.NameRefCode} создаёт пин в режиме входа."]
-            [$"{ICotask.Methods.createOutputPin.NameRefCode} создаёт пин в режиме выхода. Необходимо указать состояние, которое примет пин сразу после инициализации({ICotask.Methods.createOutputPin.Parameters.initialState.NameCode})."]
+            [$"{ICotask.Methods.createOutputPin.NameRefCode} создаёт пин в режиме выхода. Вам необходимо указать состояние, которое примет пин сразу после инициализации ({ICotask.Methods.createOutputPin.Parameters.initialState.NameCode})."]
             [$"{ICotask.Methods.createAnalogPin.NameRefCode} создаёт пин в режиме аналогового входа."]
-            [$"{ICotask.Methods.createAnalogPin.Parameters.refreshIntervalMs.NameCode} - время(в миллисекундах) обновления значение. Значение должно быть в интервале [{Constants.Fields.AnalogMinRefreshIntervalMs.Value}..{Constants.Fields.AnalogMaxRefreshIntervalMs.Value}] См. {Constants.NameRefCode}"]
-            [$"{ICotask.Methods.createPulseCounterPin.NameRefCode} создаёт пин в режиме счетчика импульсов. {ICotask.Methods.createPulseCounterPin.Parameters.refreshIntervalMs.NameCode} - время(в миллисекундах) обновления значение. Должно быть в интервале [{Constants.Fields.PulseCounterMinRefreshIntervalMs.Value}..{Constants.Fields.PulseCounterMaxRefreshIntervalMs.Value}] См. {Constants.NameRefCode}"]
-            [new Info()[$"На текущий момент поддерживается только одинаковое время обновления для двух пинов в режиме счетчика импульсов."]]
-            [$"{ICotask.Methods.createPwmPin.NameRefCode} создаёт пин в режиме ШИМ выхода.{ICotask.Methods.createPwmPin.Parameters.frequency.NameCode} - частота сигнала в герцах из интервала [{Constants.Fields.PwmMinFrequency.Value}..{Constants.Fields.PwmMaxFrequency.Value}]. {ICotask.Methods.createPwmPin.Parameters.initialDuty.NameCode} - скважность ШИМ сигнала сразу после инициализации в интервале [0;1]."]
+            [$"{ICotask.Methods.createAnalogPin.Parameters.refreshIntervalMs.NameCode} - время обновления в миллисекундах. Значение должно быть в интервале [{Constants.Fields.AnalogMinRefreshIntervalMs.Value}..{Constants.Fields.AnalogMaxRefreshIntervalMs.Value}] См. {Constants.NameRefCode}"]
+            [$"{ICotask.Methods.createPulseCounterPin.NameRefCode} создаёт пин в режиме счётчика импульсов. {ICotask.Methods.createPulseCounterPin.Parameters.refreshIntervalMs.NameCode} - время обновления в миллисекундах. Должно быть в рамках интервала [{Constants.Fields.PulseCounterMinRefreshIntervalMs.Value}..{Constants.Fields.PulseCounterMaxRefreshIntervalMs.Value}] См. {Constants.NameRefCode}"]
+            [new Info()[$"Для двух пинов в режиме счётчика импульсов время обновления должно быть одинаковым."]]
+            [$"{ICotask.Methods.createPwmPin.NameRefCode} создаёт пин в режиме ШИМ выхода. {ICotask.Methods.createPwmPin.Parameters.frequency.NameCode} - частота сигнала в герцах из интервала [{Constants.Fields.PwmMinFrequency.Value}..{Constants.Fields.PwmMaxFrequency.Value}]. {ICotask.Methods.createPwmPin.Parameters.initialDuty.NameCode} - скважность ШИМ сигнала сразу после инициализации в интервале [0;1]."]
             [new Info()[$"Частота для всех ШИМ пинов должна быть одинаковая."]]
-            [$"Причины исключений, которые могут быть кинуты в методах создания пинов:"]
+            [$"Причины исключений в методах создания пинов:"]
             [new OrderedList()
                 [$"Был уже вызван метод {ICotask.Methods.run.NameRefCode}."]
                 [$"Указанный пин уже используется."]
