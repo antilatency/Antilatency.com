@@ -6,7 +6,6 @@
       "environmentVariables": {
         "COMPlus_ForceEnc": "1"
       },
-      "applicationUrl": "http://localhost"
     },
     "DeveloperBuild": {
       "commandName": "Project",
@@ -14,7 +13,6 @@
       "environmentVariables": {
         "COMPlus_ForceEnc": "1"
       },
-      "applicationUrl": "http://localhost"
     },
     "DeveloperBuild_WatchJsCss": {
       "commandName": "Project",
@@ -22,7 +20,6 @@
       "environmentVariables": {
         "COMPlus_ForceEnc": "1"
       },
-      "applicationUrl": "http://localhost"
     },
     "WatchJsCssWithoutBuild": {
       "commandName": "Project",
@@ -30,7 +27,6 @@
       "environmentVariables": {
         "COMPlus_ForceEnc": "1"
       },
-      "applicationUrl": "http://localhost"
     },
     "WebServer": {
       "commandName": "Project",
@@ -39,7 +35,6 @@
       "environmentVariables": {
         "COMPlus_ForceEnc": "1"
       },
-      "applicationUrl": "http://localhost"
     }
   }
 }

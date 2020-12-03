@@ -61,7 +61,6 @@
             "name": "COMPlus_ForceEnc", 
             "value": "1",
             "ASPNETCORE_ENVIRONMENT": "Development",
-            "ASPNETCORE_URLS":"http://localhost"
         }
     }
     ]
