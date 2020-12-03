@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Csml {
 
@@ -37,13 +39,13 @@ namespace Csml {
 
             //Add comment with website files build date to index.html => force github.io to update website
             var indexHtmlPath = Path.Combine(workingCopyDirectory, "index.html");
-            if (File.Exists(indexHtmlPath)) {
+            if(File.Exists(indexHtmlPath)) {
                 string startTag = "<!--BuildDate:";
                 string endTag = "-->";
                 string tag = startTag + DateTime.Now.ToString() + endTag;
 
                 var lines = File.ReadAllLines(indexHtmlPath);
-                if (lines.Length == 0 || !lines[0].StartsWith(startTag)) {
+                if(lines.Length == 0 || !lines[0].StartsWith(startTag)) {
                     lines = lines.Prepend(tag).ToArray();
                 } else {
                     lines[0] = tag;
@@ -64,11 +66,55 @@ namespace Csml {
             CsmlApplication.WatchJsCssWithoutBuild(GetProjectRootDirectory(), outputDirectory, new Uri(outputDirectory + "/"));
         }
 
+        private static string _url;
+
+        public static string GetUrlFromEnviroment() {
+            if(!string.IsNullOrEmpty(_url)) {
+                return _url;
+            }
+            _url = Environment.GetEnvironmentVariable("DOTNET_URLS");
+            if(string.IsNullOrEmpty(_url) || !Uri.IsWellFormedUriString(_url, UriKind.RelativeOrAbsolute)) {
+                Log.Warning.Here("Empty or invalid URL, replaced with localhost:");
+                _url = @"http://localhost";
+            } else if(_url.Contains("0.0.0.0")) {
+                _url = $"http://{AddressSelector()}";
+            }
+            return _url;
+        }
+
+        private static string AddressSelector() {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            var adresses = new List<string>();
+            foreach(var ip in host.AddressList) {
+                if(ip.AddressFamily == AddressFamily.InterNetwork) {
+                    adresses.Add(ip.ToString());
+                }
+            }
+            if (adresses.Count > 1) {
+                Console.WriteLine($"{adresses.Count} adresses has been found. Enter the number of adrees whitch you prefer:");
+                for (int i = 0; i < adresses.Count; i++) {
+                    Console.WriteLine($"{i}) {adresses[i]}");
+                }
+                var enteredValue = Console.ReadLine();
+                int result;
+                while(!int.TryParse(enteredValue, out result) || result >= adresses.Count) {
+                    Console.WriteLine($"Invalid number try again");
+                    enteredValue = Console.ReadLine();
+                }
+                return adresses[result];
+            } else if (adresses.Count == 0){
+                Log.Warning.Here("No adapters found, url set to localhost:");
+                return "localhost";
+            } else {
+                return adresses.First();
+            }
+        }
+
         public static void WebServer(string outputDirectory, params string[] args) {
             Log.Info.Here($"WEB server mode");
             CsmlApplication.ProjectRootDirectory = GetProjectRootDirectory();
             CsmlApplication.WwwRootDirectory = outputDirectory;
-            CsmlApplication.WwwRootUri = new Uri("http://localhost");
+            CsmlApplication.WwwRootUri = new Uri(GetUrlFromEnviroment());
             CsmlApplication.IsDeveloperMode = false;
             CsmlApplication.SiteMapMaterials = new List<IMaterial>();
             GitHub.RepositoryBranch.IgnorePinning = true;
