@@ -6,7 +6,7 @@ partial class Hardware {
     public static Material ExtensionModule_ru =>
     new Material ("Extension Module", 
     null,
-    $" Модуль для подключения к {Hardware.HMD_Radio_Socket} дополнительных компонентов с помощью {Terms.Antilatency_Hardware_Extension_Interface}. Используя модуль, можно считывать внешние триггеры с кнопок или, например, управлять виброоткликом устройства через встроенный вибромоторчик.")
+    $" Модуль для подключения к {Hardware.HMD_Radio_Socket} дополнительных компонентов с помощью {Terms.Antilatency_Hardware_Extension_Interface}. Используя модуль, можно считывать внешние триггеры с кнопок или, например, подключать дополнительные микросхемы.")
 
     [$"Чтобы подключить питание к {ThisDevice}, используйте кабель USB Type-C."]
 
