@@ -5,7 +5,7 @@ partial class Terms : Scope {
     public static Material Antilatency_Device_Network_ru => new Material(null, null,
     $"Сеть устройств Antilatency, подключённых к одному {Terms.Host}. Коммуникация между устройствами осуществляется с помощью библиотеки {Api.Antilatency.DeviceNetwork.Material}.")
 
-    [$"Графически Antilatency Device Network можно представить в виде {Terms.Device_Tree}, где корневой точкой будет выступать хост."]
+    [$"При подключении устройства Antilatency Device Network образуют {Terms.Device_Tree}, где корневой точкой выступает хост."]
     
         [new Section("Библиотека Antilatency Device Network")
         
