@@ -3,11 +3,11 @@ using static Terms.Antilatency_Hardware_Extension_Interface_Assets;
 
 partial class Terms : Scope {
     static Material Antilatency_Hardware_Extension_Interface_ru => new Material(null, null,
-    $"Вы можете управлять внешними устройствами, используя GPIO {Hardware.HMD_Radio_Socket}. С помощью технологии Hardware Extension можно создать контроллер в виде любого предмета, существующего в реальном мире.")
+    $"Интерфейс для управления внешними устройствами через GPIO {Hardware.HMD_Radio_Socket}. С его помощью можно, например, считывать внешние триггеры или управлять яркостью светодиодов. ")
 
-        [$"Получить доступ к GPIO можно с помощью {Software.Antilatency_Hardware_Extension_Interface_Library} и {Hardware.ExtensionBoard} или {Hardware.ExtensionModule}."]
+        [$"Чтобы получить доступ к GPIO, используйте {Hardware.ExtensionBoard} или {Hardware.ExtensionModule} и библиотеку {Software.Antilatency_Hardware_Extension_Interface_Library}. На основе этой технологии можно собрать контроллер в виде любого предмета, существующего в реальном мире."]
 
-        [$"Мы в Antilatency разработали демонстрационную модель огнетушителя. Её корпус в точности повторяет размеры настоящего огнетушителя. Нажмите на рычаг устройства в реальном мире - оно заработает в виртуальном. Потрясающее сочетание тактильного и визуального восприятия."]
+        [$"Мы в Antilatency разработали демонстрационную модель огнетушителя. Её корпус в точности повторяет размеры настоящего огнетушителя. Нажмите на рычаг устройства в реальном мире - оно заработает в виртуальном, создавая единство визуальных и тактильных ощущений."]
 
         [Video.GetPlayer()]
         
