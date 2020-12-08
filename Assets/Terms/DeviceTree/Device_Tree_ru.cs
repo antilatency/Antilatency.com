@@ -8,12 +8,6 @@ partial class Terms {
            
             [$"Дерево устройств отображается в приложении {Software.AntilatencyService.Material} во вкладке {Software.AntilatencyService.Device_Network.Material}. Здесь вы можете управлять свойствами любого из подключённых устройств."]
 
-            [new UnorderedList()
-                [$"Чтобы настроить {Hardware.HMD_Radio_Socket}, {Hardware.SocketUsb} и {Hardware.PicoG2Socket} подключите их напрямую через USB."]
-                [$"{Hardware.Tag} и {Hardware.Bracer}, нужно подключить их через HMD Radio Socket."]
-                [$"{Hardware.Alt} можно подключить через любой совместимый {Terms.Socket}."]
-            ]
-
             [new Info($"Подробнее о конфигурации устройств и работе с деревом устройств {new ExternalReference("#usefulLinks","читайте тут")}.")]
 
 
