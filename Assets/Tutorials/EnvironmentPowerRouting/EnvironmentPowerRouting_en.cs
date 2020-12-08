@@ -1,9 +1,9 @@
 using Csml;
-using static Tutorials.Tracking_Area_Setup_Assets;
+using static Tutorials.EnvironmentPowerRouting_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material Tracking_Area_Setup_en => new Material("Сборка напольного сетапа зоны трекинга",
+    public static Material EnvironmentPowerRouting_en => new Material("Сборка напольного сетапа зоны трекинга",
      TitleImage, 
      @$"")
 

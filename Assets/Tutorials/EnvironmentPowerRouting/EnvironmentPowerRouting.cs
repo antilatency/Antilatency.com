@@ -2,8 +2,8 @@ using Csml;
 
 
 partial class Tutorials : Scope {
-    public static LanguageSelector<IMaterial> Tracking_Area_Setup => new LanguageSelector<IMaterial>();
-    public partial class Tracking_Area_Setup_Assets : Scope {
+    public static LanguageSelector<IMaterial> EnvironmentPowerRouting => new LanguageSelector<IMaterial>();
+    public partial class EnvironmentPowerRouting_Assets : Scope {
         public static Image TitleImage => new Image("./Images/TitleImage.jpg");
         
         public static Image ConnectionScheme => new Image("./Images/ConnectionScheme.jpg");

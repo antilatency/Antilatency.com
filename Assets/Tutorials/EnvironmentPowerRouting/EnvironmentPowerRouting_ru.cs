@@ -1,9 +1,9 @@
 using Csml;
-using static Tutorials.Tracking_Area_Setup_Assets;
+using static Tutorials.EnvironmentPowerRouting_Assets;
 
 partial class Tutorials : Scope {
 
-    public static Material Tracking_Area_Setup_ru => new Material("Разводка соединений для зоны трекинга",
+    public static Material EnvironmentPowerRouting_ru => new Material("Разводка соединений для зоны трекинга",
      TitleImage, 
      @$"Создать или загрузить схему разводки питания для выбранного Environment можно с помощью редактора зоны трекинга. Такая схема нужна для правильной сборки зоны трекинга с учётом расположения источников питания.")
 
@@ -40,7 +40,7 @@ partial class Tutorials : Scope {
             [$"Обязательно соблюдайте направление лент на схеме при сборке зоны. Ориентируйтесь на расположение маркеров на каждой ленте."]
 
             [ConnectionScheme]
-            
+
             [new Info ($"Рекомендуем в конце сборки ещё раз свериться со схемой и подключить блоки питания, чтобы проверить правильность подключения. Все маркеры должны гореть зелёным светом.")]
         ;
 } 
