@@ -8,7 +8,7 @@ partial class Tutorials : Scope {
     new Material(
         "Tracking: Консольное приложение на C#",
         TitleImage,
-        $"В этом уроке напишем минимальное консольное приложение на C#, которое: находит {Hardware.Alt}, создает {Terms.Environment}, запускает {Terms.Task} трекинга и выводит координаты в консоль.")
+        $"Консольное демонстрационное приложение на C#, которое находит {Hardware.Alt}, создает {Terms.Environment}, запускает {Terms.Task} трекинга и выводит координаты в консоль.")
         [new Section("Оборудование")
             [Hardware.Alt]
         ]
