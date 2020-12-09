@@ -38,7 +38,7 @@ function GetReleasesList() {
     releases = Object.getOwnPropertyNames(this).filter(item => typeof this[item] === 'function' && item.startsWith(releaseMethodPrefix));
 
     releases.forEach(r => {
-        releaseName = r.substring(releaseMethodPrefix.length);
+        releaseName = r.substring(releaseMethodPrefix.length).replaceAll('_', '.');
         result[releaseName] = this[r];
     });
 

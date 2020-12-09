@@ -1,6 +1,6 @@
-var Release_Trunk = function (context) {
+var Release_2_1_1 = function (context) {
     var math = ["Default"];
-    
+
     context.Label("General");
     context.Tab();
     var target = context.Enum("Target", "Native", "Unity", "Unreal Engine");
@@ -19,12 +19,11 @@ var Release_Trunk = function (context) {
 
     if (target === "Unity") {
         var unityVersion = context.Enum("Unity Version", "2018.x", "2019.x");
-        
         var unityComponents = context.Bool("Unity Components");
     }
-    
+
     if (target === "Unreal Engine") {
-        var ueVersion = context.Enum("Unreal Engine Version", "4.18", "4.19", "4.20", "4.21", "4.22", "4.23", "4.24", "4.25");
+        var ueVersion = context.Enum("Unreal Engine Version", "4.18", "4.19", "4.20", "4.21", "4.22", "4.23", "4.24", "4.25", "4.26");
 
         // var ueBlueprintWrappers = context.Bool("Include Unreal Engine Blueprint Wrappers");
         // if (ueBlueprintWrappers) {
@@ -32,15 +31,14 @@ var Release_Trunk = function (context) {
         // }
         // context.Bool("Unreal Engine Code Samples");
     }
-    
+
     if (target === "Native"){
         if (language === "CPlusPlus"){
             context.Bool("Exceptions");
         }
     }
-    
     context.Untab();
-
+    
     context.Space();
     context.Label("Math");
     context.Tab();
@@ -53,13 +51,13 @@ var Release_Trunk = function (context) {
     }
     context.Enum("Math Types", math);
     context.Untab();
-    
+
     if (unityComponents){
         context.Space();
         context.Label("Components")
         context.Tab();
         context.SetScope("Components");
-        
+
         if (unityComponents){
             var unityAltTracking = context.Bool("Alt Tracking Components");
             var unityBracer = context.Bool("Bracer Components");
@@ -72,6 +70,7 @@ var Release_Trunk = function (context) {
         context.SetScope("TargetSettings");
         context.Untab();
     }
+
     context.SetScope("");
 
     context.Space();
@@ -85,10 +84,6 @@ var Release_Trunk = function (context) {
         context.Bool("Bracer", true, unityBracer, true);
         context.Bool("Hardware Extension Interface");
         context.Bool("Radio Metrics");
-    }
-    if (context.Bool("Alt Environment Selector", true, unityAltEnvironment, true)) {
-        context.Bool("Alt Environment Horizontal Grid");
-        context.Bool("Alt Environment Pillars");
     }
     context.Bool("Tracking Alignment");
     context.Bool("Storage Client", true, unityStorageClient, true);
@@ -105,11 +100,11 @@ var Release_Trunk = function (context) {
     var win32 = context.Bool("x86");
     var win64 = context.Bool("x64");
     context.Untab();
-    
+
     if (target !== "Unreal Engine") {
         context.Label("UWP")
         context.Tab();
-        
+
         context.SetScope("");
         context.SetScope("Platforms.WinRT");
         var uwpX86 = context.Bool("x86");
@@ -118,13 +113,13 @@ var Release_Trunk = function (context) {
         if (!(target === "Unity" && unityVersion === "2018.x")) {
             var uwpArm64V8a = context.Bool("arm64-v8a");
         }
-        
+
         context.Untab();
     }
 
 
     context.SetScope("");
-    
+
     context.Label("Android");
     context.Tab();
     context.SetScope("Platforms.Android");
@@ -136,6 +131,6 @@ var Release_Trunk = function (context) {
     if (!(win32 || win64 || uwpX86 || uwpX64 || uwpArmeabiV7a || uwpArm64V8a || android)) {
         context.Warning("Warning: No operation systems selected")
     }
-
-    //context.Space();
 }
+
+// Releases["2.1.1"] = Release_2_1_1;

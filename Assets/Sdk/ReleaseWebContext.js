@@ -18,7 +18,7 @@ var ReleaseWebContext = {
         });
     },
 
-    SetContext: function (name) {
+    SetScope: function (name) {
         if (name == null || name == "") {
             ConfiguratorInstance.CurrentObject = ConfiguratorInstance.State;
             this.stateElementPath = "";
